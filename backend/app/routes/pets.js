@@ -1,10 +1,12 @@
-import {Router} from 'express'
 import PetController from '../controllers/PetController.js'
+import {Router} from 'express'
 
 const petRouter = Router()
-/* GET users listing. */
-petRouter.get('/', function(req, res, _) {
-	res.send('respond with a resource')
-})
+
+petRouter.get('/', PetController.index)
+petRouter.get('/:id', PetController.show)
+petRouter.post('/', PetController.create)
+petRouter.put('/:id', PetController.update)
+petRouter.delete('/:id', PetController.delete)
 
 export default petRouter
