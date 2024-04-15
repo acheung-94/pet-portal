@@ -1,11 +1,8 @@
-const express = require('express')
-const router = express.Router()
+import { Router } from 'express'
+import CSRFController from '../controllers/CSRFController.js'
 
-router.get('/restore', (req, res, _) => {
-	const csrfToken = req.csrfToken()
-	res.status(200).json({
-		'CSRF-Token': csrfToken
-	})
-})
+const csrfRouter = Router()
 
-module.exports = router
+csrfRouter.get('/restore', CSRFController.restore)
+
+export default csrfRouter
