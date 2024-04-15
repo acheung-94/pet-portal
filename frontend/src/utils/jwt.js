@@ -26,6 +26,6 @@ const getCookie = (cookieName) => {
         if (name.trim() === cookieName) return value;
     }
     return null;
-  }
+}
   
 export default jwtFetch;
