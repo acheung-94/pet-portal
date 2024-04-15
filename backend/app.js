@@ -5,6 +5,7 @@ var logger = require('morgan')
 
 const cors = require('cors')
 const {isProduction} = require('./config/keys')
+const csurf = require('csurf')
 require('dotenv').config()
 
 var app = express()
@@ -19,6 +20,14 @@ if (!isProduction) {
 	app.use(cors())
 }
 
+
+app.use(csurf({
+	cookie: {
+		secure: isProduction,
+		sameSite: isProduction && 'Lax',
+		httpOnly: true
+	}
+}))
 
 require('./app/routes/router').default(app)
 
