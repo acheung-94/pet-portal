@@ -2,6 +2,8 @@ import ApplicationController from './ApplicationController.js'
 import bcrypt from 'bcryptjs'
 import passport from 'passport'
 import User from '../models/User.js'
+import { loginUser } from '../../config/passport.js'
+
 export default class UserController extends ApplicationController{
 	constructor() {
 		super()
@@ -34,7 +36,7 @@ export default class UserController extends ApplicationController{
 				try {
 					newUser.hashedPassword = hashedPassword
 					const user = await newUser.save()
-					return res.json({ user })
+					return res.json(await loginUser(user))
 				} catch (err) {
 					next(err)
 				}
@@ -50,7 +52,7 @@ export default class UserController extends ApplicationController{
 				err.errors = {email: 'invalid email' }
 				return next(err)
 			}
-			return res.json({user})
+			return res.json(await loginUser(user))
 		})(req, res, next)
 	}
 }

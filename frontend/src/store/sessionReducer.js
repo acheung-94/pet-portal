@@ -13,7 +13,6 @@ export const removeCurrentUser = () => ({
     type: REMOVE_CURRENT_USER
 })
 
-
 //THUNK CREATOR
 export const createUser = userInfo => dispatch => (
     postUser(userInfo)
@@ -25,6 +24,7 @@ export const createUser = userInfo => dispatch => (
             }
         })
         .then(({user, token}) => {
+            console.log(token)
             localStorage.setItem('jwtToken', token)
             localStorage.setItem('currentUser', JSON.stringify(user))
             dispatch(setCurrentUser(user))
@@ -42,6 +42,7 @@ export const loginUser = sessionInfo => dispatch => (
             }
         })
         .then(({user, token}) => {
+            
             localStorage.setItem('jwtToken', token)
             localStorage.setItem('currentUser', JSON.stringify(user))
             dispatch(setCurrentUser(user))

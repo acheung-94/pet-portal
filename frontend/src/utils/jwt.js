@@ -4,7 +4,7 @@ const jwtFetch = async (url, options = {}) => {
 
     const jwtToken = localStorage.getItem("jwtToken");
     if (jwtToken) options.headers["Authorization"] = 'Bearer ' + jwtToken;
-    
+    console.log(jwtToken)
     if (options.method.toUpperCase() !== "GET") {
         options.headers["Content-Type"] =
             options.headers["Content-Type"] || "application/json";
@@ -12,7 +12,6 @@ const jwtFetch = async (url, options = {}) => {
     }   
 
     const res = await fetch(url, options);
-  
     if (res.status >= 400) throw res;
   
     return res;
@@ -29,3 +28,7 @@ const getCookie = (cookieName) => {
 }
   
 export default jwtFetch;
+
+export const restoreSession = () => (
+    fetch('/api/csrf/restore')
+)
