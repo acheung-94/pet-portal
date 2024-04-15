@@ -23,3 +23,26 @@ Pet Portal is a web application designed to simplify pet care management for pet
 
 ## Group Members and Work Breakdown
 1. **Day 1 - User Auth and Project Setup**
+- User Auth
+  - MongoDB & repo setup - Andrea
+  - ESLint config - Chris
+- Project breakdown, assign tasks, set up PM 
+  - backend User auth - Chris & Sam
+  - frontend User auth - set up redux store for auth - Andrea & Jenny
+
+2. **Day 2 - Reminders**
+- Backend CRUD API endpoints for reminders - Chris & Sam
+- Front end dashboard components to access Reminder module for creating/editing reminders. - Andrea & Jenny
+
+3. **Day 3 - Pet Profiles**
+- Backend CRUD API endpoints for Pets and their reminders - Chris & Sam
+- Frontend components for pet profile page, +/- data vis implementation - Andrea & Jenny
+
+4. **Day 4 - Continued frontend metrics, dashboard metrics**
+- continue coordination with backend for access/formatting of documents for data vis.
+
+5. **Day 5 - Shared heuristics module**
+- coordination with backend for researching and integrating third party api. 
+
+6. **Day 6 - Integration testing & bugfixes**
+- Assess for smooth interactions and flow, accurate and reliable data served from backend, etc.
