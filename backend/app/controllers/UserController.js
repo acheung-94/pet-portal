@@ -9,15 +9,15 @@ export default class UserController extends ApplicationController{
 
 	static async register(req, res, next) {
 		const user = await User.findOne({
-			username: req.body.username
+			email: req.body.email
 		})
 		if (user) {
 			const err = new Error('Validation Error')
 			err.statusCode = 400
 
 			const errors = {}
-			if (user.username === req.body.username) {
-				errors.username = 'A user has already been registered with this username'
+			if (user.email === req.body.email) {
+				errors.email = 'A user has already been registered with this email'
 			}
 
 			err.errors = errors
@@ -25,7 +25,7 @@ export default class UserController extends ApplicationController{
 		}
 
 		const newUser = new User({
-			username: req.body.username,
+			email: req.body.email,
 		})
 		bcrypt.genSalt(10, (err, salt) => {
 			if (err) throw err
@@ -47,7 +47,7 @@ export default class UserController extends ApplicationController{
 			if (!user) {
 				const err = new Error('invalid credentials')
 				err.statusCode = 400
-				err.errors = {username: 'invalid username' }
+				err.errors = {email: 'invalid email' }
 				return next(err)
 			}
 			return res.json({user})
