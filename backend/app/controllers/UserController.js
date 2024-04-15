@@ -1,7 +1,7 @@
 import ApplicationController from './ApplicationController'
 import {bcrypt} from 'bcryptjs'
 import User from '../models/User.js'
-class UserController extends ApplicationController{
+export default class UserController extends ApplicationController{
 	constructor() {
 		super()
 	}
@@ -41,5 +41,3 @@ class UserController extends ApplicationController{
 		})
 	}
 }
-
-export default UserController
