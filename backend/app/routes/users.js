@@ -7,5 +7,6 @@ userRouter.get('/', function(req, res, _) {
 	res.send('respond with a resource')
 })
 userRouter.post('/login', UserController.login)
+userRouter.post('/register', UserController.register)
 
 export default userRouter

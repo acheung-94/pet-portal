@@ -8,8 +8,9 @@ import cors from 'cors'
 import csurf from 'csurf'
 import express from 'express'
 import { fileURLToPath } from 'url'
+console.log(typeof mongoURI) 
+import mongoose from 'mongoose'
 import morgan from 'morgan'
-console.log(mongoURI)
 import setupRouter from './app/routes/router.js'
 import './config/passport.js'
 // eslint-disable-next-line sort-imports
@@ -17,7 +18,7 @@ import passport from 'passport'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-
+await mongoose.connect(mongoURI)
 var app = express()
 
 app.use(morgan('dev'))
