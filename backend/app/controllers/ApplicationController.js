@@ -1,5 +1,3 @@
-class ApplicationController{
+export default class ApplicationController{
 
 }
-
-module.exports = ApplicationController
