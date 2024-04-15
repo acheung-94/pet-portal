@@ -1,8 +1,8 @@
 import bcrypt from 'bcryptjs'
 import LocalStrategy from 'passport-local'
-import { Mongoose } from 'mongoose'
+import mongoose from 'mongoose'
 import passport from 'passport'
-const User = Mongoose().model('User')
+const User = mongoose.model('User')
 
 passport.use(new LocalStrategy({
 	session: false,

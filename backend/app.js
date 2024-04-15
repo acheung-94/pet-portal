@@ -1,25 +1,31 @@
-import * as express from 'express'
-import * as logger from 'morgan'
 import * as path from 'path'
+import dotenv from 'dotenv'
+dotenv.config()
+// eslint-disable-next-line sort-imports
+import {isProduction, mongoURI} from './config/keys.js'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import csurf from 'csurf'
-import dotenv from 'dotenv'
-import {isProduction} from './config/keys.js'
+import express from 'express'
+import { fileURLToPath } from 'url'
+import morgan from 'morgan'
+console.log(mongoURI)
 import setupRouter from './app/routes/router.js'
 import './config/passport.js'
 // eslint-disable-next-line sort-imports
 import passport from 'passport'
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-dotenv.config()
+
 var app = express()
 
-app.use(logger('dev'))
+app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
+
 
 app.use(passport.initialize())
 if (!isProduction) {
@@ -38,4 +44,4 @@ app.use(csurf({
 
 setupRouter(app)
 
-module.exports = app
+export default app

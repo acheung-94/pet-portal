@@ -1,5 +1,4 @@
-import { mongoose } from 'mongoose'
-const {model, Schema} = mongoose
+import mongoose, { Schema } from 'mongoose'
 
 const userSchema = Schema({
 	username: {
@@ -13,4 +12,4 @@ const userSchema = Schema({
 } , {
 	timestamps: true
 })
-export default model('User', userSchema)
+export default mongoose.model('User', userSchema)
