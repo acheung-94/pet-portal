@@ -1,6 +1,6 @@
+import csrfRouter from './csrf.js'
 import indexRouter from './index.js'
 import userRouter from './users.js'
-import csrfRouter from './csrf.js'
 /**
  * sets up routing for the application
  * @param {Express} app 

@@ -1,5 +1,5 @@
-import { Router } from 'express'
 import CSRFController from '../controllers/CSRFController.js'
+import { Router } from 'express'
 
 const csrfRouter = Router()
 

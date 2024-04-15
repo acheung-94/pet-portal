@@ -1,12 +1,13 @@
 import ApplicationController from './ApplicationController'
 import {bcrypt} from 'bcryptjs'
+import passport from 'passport'
 import User from '../models/User.js'
 export default class UserController extends ApplicationController{
 	constructor() {
 		super()
 	}
 
-	async register(req, res, next) {
+	static async register(req, res, next) {
 		const user = await User.findOne({
 			username: req.body.username
 		})
@@ -39,5 +40,17 @@ export default class UserController extends ApplicationController{
 				}
 			})
 		})
+	}
+	static async login(req, res, next) {
+		passport.authenticate('local', async function(err, user) {
+			if (err) return next(err)
+			if (!user) {
+				const err = new Error('invalid credentials')
+				err.statusCode = 400
+				err.errors = {username: 'invalid username' }
+				return next(err)
+			}
+			return res.json({user})
+		})(req, res, next)
 	}
 }

@@ -43,6 +43,10 @@ module.exports = {
 			{
 				'argsIgnorePattern': '^_'
 			}
-		]
+		],
+		'sort-imports': ['error', {
+			'ignoreCase': true,
+			'memberSyntaxSortOrder': ['all', 'multiple', 'single', 'none']
+		}]
 	}
 }
