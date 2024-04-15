@@ -8,7 +8,6 @@ import cors from 'cors'
 import csurf from 'csurf'
 import express from 'express'
 import { fileURLToPath } from 'url'
-console.log(typeof mongoURI) 
 import mongoose from 'mongoose'
 import morgan from 'morgan'
 import setupRouter from './app/routes/router.js'
