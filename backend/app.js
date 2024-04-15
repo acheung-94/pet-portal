@@ -6,7 +6,7 @@ import cors from 'cors'
 import csurf from 'csurf'
 import dotenv from 'dotenv'
 import {isProduction} from './config/keys.js'
-import setupRouter from './app/routes/router'
+import setupRouter from './app/routes/router.js'
 import './config/passport.js'
 // eslint-disable-next-line sort-imports
 import passport from 'passport'

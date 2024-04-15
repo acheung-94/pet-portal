@@ -1,5 +1,5 @@
-import ApplicationController from './ApplicationController'
-import {bcrypt} from 'bcryptjs'
+import ApplicationController from './ApplicationController.js'
+import bcrypt from 'bcryptjs'
 import passport from 'passport'
 import User from '../models/User.js'
 export default class UserController extends ApplicationController{
