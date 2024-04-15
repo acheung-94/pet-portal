@@ -5,5 +5,5 @@ var router = express.Router()
 router.get('/', function(req, res, _) {
 	res.send('respond with a resource')
 })
-
+router.post('/')
 module.exports = router

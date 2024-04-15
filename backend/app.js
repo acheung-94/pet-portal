@@ -13,6 +13,6 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-require('./routes/router').default(app)
+require('./app/routes/router').default(app)
 
 module.exports = app
