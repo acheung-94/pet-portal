@@ -1,26 +1,25 @@
-# App Academy React Vite Template
+# Welcome to your Pet Portal
 
-This repo contains a basic Vite React template configured for use in App Academy
-projects.
+## Background and Overview
+Pet Portal is a web application designed to simplify pet care management for pet owners. With Pet Portal, users can create profiles for their pets, track their health records, set reminders for important events like vaccinations, preventatives, and appointments, and track metrics on their pets over time. The platform aims to streamline the pet care process, providing users with a centralized hub for managing some common aspects of their pets' well-being.
 
-## How to clone
+## Functionality and MVP:
 
-To clone this repo as `<new-project-name>`, run
+1. **User Authentication and Home Page:** Users must log in to access the Pet Portal platform. Upon logging in, users are directed to the dashboard where they can navigate to other sections of the application. The home page provides an overview of the user's pets, upcoming reminders, and recent activity.
 
-```shell
-npx tiged appacademy/aa-react18-vite-template#main <new-project-name>
-```
+2. **Reminders:** This module provides a user-friendly interface for adding, editing, and deleting reminders. Reminders can be made under several categories, including appointments/procedures, vaccines, labwork, preventatives, and contain details specific to each type of reminder.  Users can set reminders for specific dates and times, as well as assign reminders to individual pets.
 
-in the directory where you want the new project to appear.
+3. **Pet Profiles:** Clicking on a pet from the dashboard brings users to the pet's profile page. Here, users can view individual records, health metrics, weight trends, vaccine history, and past and upcoming events or reminders. The pet profile page includes a navigation bar for easy access to different sections, allowing users to track their progress and stay organized.
 
-## How to install and run
+4. **Dashboard:** The dashboard serves as the central hub for users to manage their pets and appointments. It displays an index of the user's pets along with any upcoming reminders or events, such as vaccinations, heartworm tests, and insurance renewals. Users can navigate to their pet profiles from here to view detailed information.
 
-Once the repo is cloned, run `cd <new-project-name> && npm install` to install
-dependencies. You will probably also want to run `git init`.
+5. **Shared Heuristics Module:** As part of the MVP, Pet Portal includes a shared heuristics module accessible to non-member users. This module serves as a mock pet cost calculator, providing estimates for services based on breed, age, and other factors. It offers valuable insights for pet owners seeking financial planning and budgeting assistance.
 
-To run the app, type `npm run dev` in the root directory.
+## Technologies and Technical Challenges
+-This project will be built using the MERN (MongoDB/Express backend, React/Redux frontend, Node runtime) tech stack.
+- This project may also include the use of other libraries:
+  - data-vis libraries like d3 or chart js.
+  - 3rd party pet heuristics API for getting data on pet care costs. 
 
-## Reminders
-
-Don't forget to update this README, change the `title` in __index.html__, and
-change the `"name"` in __package.json__ when making a new project!
+## Group Members and Work Breakdown
+1. **Day 1 - User Auth and Project Setup**
