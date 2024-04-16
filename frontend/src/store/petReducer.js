@@ -13,7 +13,7 @@ export const receivePets = pets => ({
 
 export const receivePet = pet => ({
     type: RECEIVE_PET,
-    pet
+    pet: pet.pet
 })
 
 export const removePet = petId => ({
@@ -34,8 +34,8 @@ export const fetchPets = () => dispatch => (
         .then(pets => dispatch(receivePets(pets)))
 )
 
-export const fetchPet = petId => dispatch => (
-    getPet(petId)
+export const fetchPet = petInfo => dispatch => (
+    getPet(petInfo)
         .then(res => {
             if (res.ok) {
                 return res.json()
@@ -75,7 +75,7 @@ export const destroyPet = petId => dispatch => (
     deletePet(petId)
         .then(res => {
             if (res.ok) {
-                dispatch(removePet(petId)
+                dispatch(removePet(petId))
             } else {
                 throw res
             }
@@ -87,10 +87,13 @@ const petReducer = (state = {}, action) => {
 
     switch(action.type) {
         case RECEIVE_PETS:
-            return action.pets;
+            return ({...state,
+                ...action.pets.pets.reduce(
+                  (a, e) => ({...a, [e._id]: e}), {}
+                )
+            })
         case RECEIVE_PET:
-            nextState[action.pet.id] = action.pet
-            return nextState
+            return {...state, [action.pet._id]: action.pet}
         case REMOVE_PET:
             delete nextState[action.petId]
             return nextState
