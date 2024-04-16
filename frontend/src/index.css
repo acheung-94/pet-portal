@@ -1,1 +1,37 @@
 /* TODO: Add sitewide styles */
+:root{
+    --main-bg-beige: #f6f0eb;
+    --green-dark: #283333;
+    --steel-blue: #9db4c4;
+    --pale-purple: #d8d8f8;
+    --gold: #a58c49;
+    --bright-gold: #ffcb53;
+    --sage: #9aa184;
+}
+
+@font-face{
+    font-family: olivera;
+    src: url('./assets/oliver.a.ttf');
+    font-weight: 400;
+}
+@font-face{
+    font-family: borish;
+    src: url('./assets/borish.regular.ttf');
+    font-weight: 400;
+}
+@font-face{
+    font-family: domine;
+    src: url('./assets/Domine-VariableFont_wght.ttf');
+}
+
+html{
+    background-color: var(--main-bg-beige);
+}
+
+h1{
+    font-family: borish;
+}
+
+p{
+    font-family: domine;
+}
