@@ -8,7 +8,7 @@ const Dashboard = () => {
         <div className='page-container'>
             <Navbar />
             <div className='dashboard-container'>
-                <h1 className='dashboard-header'>Dashboard</h1>
+                <h1 className='dashboard-header'>Your Dashboard</h1>
                 <span className='dashboard-sep'></span>
                 <div className="reminder-container">
                     <h2>Upcoming Reminders</h2>
