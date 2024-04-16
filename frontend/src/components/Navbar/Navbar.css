@@ -1,0 +1,133 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+    font-family: "Saol text", Times, "Times New Roman", sans-serif;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+#root {
+    margin: 0;
+    padding:0;
+}
+.header-container {
+    box-sizing: border-box;
+    display: flex;
+    margin: 0;
+    margin-top: 0px;
+    width: 100vw;
+    border-bottom: 1px solid;
+    border-bottom-color: #d3d3d3;
+    position: fixed;
+    z-index: 99;
+    background-color: #CAC9D9;
+    font-family: Saol, Times, "Times New Roman", serif
+}
+.navbar {
+    padding: 10px 0;
+    list-style-type: none;
+    justify-content: space-between;
+    font-family: Saol, Times, "Times New Roman", serif;
+    font-size: 14px;
+    height: 60px;
+    width: 100%;
+    left: 0px;
+    line-break: strict;
+    line-height: 20.02px;
+    position: relative;
+    text-size-adjust :100%;
+    align-items: center;
+    cursor: pointer;
+    box-sizing:  border-box;
+}
+.navbar-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+.petportal-icon {
+    padding:0;
+    padding-right: 10px;
+}
+.title-section span{
+    vertical-align: middle ;
+
+}
+.title-section {
+    padding-left: 20px;
+    text-decoration: none;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+.auth-section {
+    display: flex;
+    flex-direction: row;
+    padding-right: 20px;
+    justify-content: center;
+}
+.login-button-container {
+    padding-right: 10px;
+}
+
+.login-button-container,
+.signup-button-container {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+}
+.login-button-container button,
+.signup-button-container button {
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    padding-right: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    overflow: hidden;
+    outline: none;
+    vertical-align: middle ;
+    font-family: Saol, Times, "Times New Roman", serif;
+}
