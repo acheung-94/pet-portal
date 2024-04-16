@@ -5,6 +5,7 @@ import { useLocation } from "react-router"
 import { useDispatch, useSelector } from "react-redux";
 import { createUser, loginUser, selectCurrentUser } from "../../store/sessionReducer";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Auth = () =>{
     const location = useLocation()
@@ -70,8 +71,19 @@ const Auth = () =>{
                                         <input id="password-input" type="password" onChange={(e) => setPw(e.target.value)}/>
                                     </label>
                                 </div>
-                                <div className="submit-container">
-                                    <button type="submit">Submit</button>
+                                <div className="auth-button-container">
+                                    <div className="auth-button-submit">
+                                        <button type="submit">Submit</button>
+                                    </div>
+                                {pathname === '/login' ? (
+                                    <div className="auth-button-new-to-portal">
+                                        <Link to={'/register'}>
+                                            <button>New to Pet Portal</button>
+                                        </Link>
+                                    </div>
+                                ): (
+                                    <div></div>
+                                )}
                                 </div>
                             </form>
                         </div>
