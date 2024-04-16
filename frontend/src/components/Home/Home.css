@@ -1,24 +1,40 @@
 .welcome-container-1{
-    border:1px solid red;
     display: flex;
-    justify-content: center;
-    height: 100vh; /* change to 100% */
+    justify-content: space-evenly;
+    height: 100%; 
     box-sizing: border-box;
+    flex-direction: column;
+    overflow: auto;
 }
 
-.welcome-container-2{
-    width: 75%;
+.section-1{
+    width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     box-sizing: border-box;
+    padding: 10%;
 }
 
+.display-border{
+    width: 800px;
+    border: 4px solid var(--gold);
+    box-sizing: border-box;
+    padding: 20px;
+    border-top-left-radius: 75%;
+    border-top-right-radius: 75%;
+    margin: 5%;
+}
+
+.display-dog{
+    border-top-left-radius: 75%;
+    border-top-right-radius: 75%;
+}
 .welcome-heading{
     border-bottom: 1px solid gray;
     padding: 20px;
     box-sizing: border-box;
-    color: var(--green-dark)
+    color: var(--green-dark);
 }
 .welcome-heading h1{
     font-size: 64px;
@@ -32,40 +48,40 @@
 .welcome-message p{
     line-height: 1.5rem;
 }
+.h2-splash{
+    width: 45%;
+    height: 20px;
+    position: relative;
+    background-color: var(--bright-gold);
+    border-radius: 10px;
+}
 
-.user-modules{
+.h2-splash h3{
+    font-family: borish;
+    color: var(--green-dark);
+    position:absolute;
+    bottom: 4px;
+    font-size: 24px;
+    text-wrap: nowrap;
+    margin: 0;
+}
+
+.welcome-links{
     display: flex;
     justify-content: space-evenly;
-    height: 30%;
-}
-.user-mod-title{
-    text-align: center;
-}
-.to-mock-pet, .to-auth{
-    border: 1px solid black;
     height: 100%;
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    box-sizing: border-box;
 }
 
-.img-placeholder{
-    width: 50%;
-    height: 50%;
-    border: 1px solid blue;
-}
-
-.to-mock-pet a, .to-auth a{
+.welcome-links a{
     font-family: borish;
-    font-size: 28px;
+    font-size: 24px;
     text-decoration: none;
     color: var(--main-bg-beige);
     background-color: var(--green-dark);
     font-style: bold;
     border-radius: 20px;
     padding: 20px;
+    width: fit-content;
+    height: fit-content;
 }
