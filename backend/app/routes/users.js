@@ -3,9 +3,7 @@ import UserController from '../controllers/UserController.js'
 
 const userRouter = Router()
 /* GET users listing. */
-userRouter.get('/', function(req, res, _) {
-	res.send('respond with a resource')
-})
+userRouter.get('/:id/pets', UserController.pets)
 userRouter.post('/login', UserController.login)
 userRouter.post('/register', UserController.register)
 

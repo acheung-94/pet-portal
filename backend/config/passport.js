@@ -5,7 +5,7 @@ import passport from 'passport'
 import passportJwt from 'passport-jwt'
 const { Strategy: JwtStrategy, ExtractJwt } = passportJwt
 import {secretOrKey} from './keys.js'
-const User = mongoose.model('User')
+import User from '../app/models/User.js'
 import jwt from 'jsonwebtoken'
 
 passport.use(new LocalStrategy({
