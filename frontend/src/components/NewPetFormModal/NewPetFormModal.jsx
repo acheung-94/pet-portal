@@ -41,9 +41,9 @@ const NewPetForm = ({modalState, setModalState}) => {
                     onChange={e => setSex(e.target.value)}>
                     <optgroup>
                         <option disabled selected value="">  </option>
-                        <option id="female">Female</option>
-                        <option id="male">Male</option>
-                        <option id="unknown">Unknown</option>
+                        <option id="female">female</option>
+                        <option id="male">male</option>
+                        <option id="unknown">unknown</option>
 
                     </optgroup>
                 </select>
