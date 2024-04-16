@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom"
 import Footer from "../Footer/Footer"
+import Navbar from "../Navbar/Navbar"
 import './Home.css'
 const Home = () => {
     return(
         <>
+            <Navbar/>
             <div className="welcome-container-1">
                 <div className="section-1">
                     <div className="display-border">
