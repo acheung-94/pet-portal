@@ -1,0 +1,134 @@
+.modal-background {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  width: 500px;
+  height: 80%;
+  transform: translate(-50%, -50%);
+  background-color: var(--main-bg-beige);
+  padding: 10px;
+  border-radius: 30px;
+  position: absolute;
+  border: 1px solid #333;
+  font-weight: bold;
+  font-size: 20px;
+}
+.modal-content-top {
+    display: flex;
+    padding: 8px;
+    justify-content: flex-end; /* Align the button to the right */
+}
+.modal-content-top button {
+    cursor: pointer;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border-radius: 50px;
+    border: none;
+    overflow: hidden;
+    outline: none;
+}
+.modal-content-top button:hover {
+    background-color: var(--pale-purple);
+}
+
+.modal-content-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+
+}
+
+.modal-content-center-title {
+    font-size: 28px;
+    margin-bottom: 30px; 
+}
+
+optgroup {
+    font-size: 0.5px;
+}
+.add-new-pet-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.add-new-pet-form label:nth-child(9) {
+    margin-bottom: 50px;
+}
+.name-input-label,
+.dob-input-label,
+.sex-select-label,
+.species-input-label,
+.color-input-label,
+.breed-input-label,
+.microchipNum-input-label,
+.insurance-policy-input-label,
+.weight-input-label {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: block;
+    text-align: left;
+    box-sizing: border-box;
+    font-size: 15px;
+    font-weight: bold;
+}
+.add-new-pet-form input::placeholder,
+.add-new-pet-form select::placeholder {
+    color: #999; 
+    font-style: italic; 
+    padding-left: 10px;
+}
+.sex-select {
+    height: 30px;
+    width: 310px;
+    border:2px solid rgb(205, 205, 205);
+    border-radius: 16px;
+    font-size: 16px;
+}
+.input-label input{
+    height: 25px;
+    width: 300px;
+    border: 2px solid rgb(205, 205, 205);
+    border-radius: 16px;
+    font-size: 16px;
+}
+
+.add-new-pet-button button{
+    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    overflow: hidden;
+    outline: none;
+    vertical-align: middle ;
+    font-family: borish;
+    font-size: 17px;
+    font-weight: bold;
+}
+.add-new-pet-button::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 1px;
+    background-color: rgb(255,163,128); /* Adjust color as needed */
+    position: absolute;
+    bottom: 20px; /* Adjust distance from the button text */
+    left: 209px;
+}

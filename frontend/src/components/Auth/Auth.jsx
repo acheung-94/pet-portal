@@ -4,15 +4,21 @@ import Footer from "../Footer/Footer.jsx";
 import '../Home/Home.css'
 import './Auth.css'
 import { useLocation } from "react-router"
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createUser, loginUser, selectCurrentUser } from "../../store/sessionReducer";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import NewPetFormModal from "../NewPetFormModal/NewPetFormModal";
 
 const Auth = () =>{
+    /* 
+        FROM HERE THIS IS TEMP FOR CHECKING MODAL
+    */
+    const [modalState, setModalState] = useState(false)
+
+    /* */
     const location = useLocation()
     const {pathname} = location
-    const currentUser = useSelector(selectCurrentUser)
     const dispatch = useDispatch();
     const isRegister = pathname === '/register'
     const isLogin = pathname === '/login'
@@ -89,6 +95,10 @@ const Auth = () =>{
                                 </div>
                             </form>
                         </div>
+                        <div>
+                            <button onClick={() => setModalState(true)}>THIS IS JUST A TEMP BUTTON</button>
+                        </div>
+                        {modalState && <NewPetFormModal modalState={modalState} setModalState={setModalState}/>}
                     </div>
                 </div>
                 <Footer></Footer>
