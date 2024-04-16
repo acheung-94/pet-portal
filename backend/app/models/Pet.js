@@ -39,8 +39,9 @@ const petSchema = Schema({
 		type: Number,
 		required: false
 	},
-	ownerId: {
-		type: mongoose.ObjectId
+	owner: {
+		type: Schema.Types.ObjectId,
+		ref: 'User'
 	}
 })
 
