@@ -9,7 +9,7 @@
     left: 0;
     top: 60px;
     height: 100vh;
-    background-color: #E9E0D6;
+    background-color: var(--main-bg-beige);
 }
 
 .content-container {
@@ -20,20 +20,22 @@
     margin-right: 150px;
     padding: 50px;
     height: 100vh;
-    background-color: #B6C6BC;
+    background-color: transparent;
+    font-size: 28px;
+
 }
 .session-form-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    /* box-shadow: 0 4px 8px rgba(0,0,0,0.3); */
 
 }
 .session-title {
     text-align: center;
     padding-top: 30px;
     padding-bottom: 30px;
-    background-color: #B9D5E1;
+    background-color: transparent
 }
 .session-input-field {
     display: flex;
@@ -41,7 +43,7 @@
     text-align: center;
     padding-top: 10px;
     padding-bottom: 30px;
-    background-color: #B9D5E1;
+    background-color: transparent
 }
 .session-form{
     display: flex;
@@ -63,7 +65,7 @@
     border-radius: 50px;
     border: 1px solid #B6C6BC;
 }
-.submit-container {
+.auth-button-container {
     cursor: pointer;
     background-color: transparent;
     border: none;
@@ -71,12 +73,27 @@
     padding: 0;
     padding-top: 20px;
     text-align: center;
-
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
-.submit-container button {
+.auth-button-submit{
+  margin-right: 10px;
+  margin-left: 27px;
+  margin-bottom: 10px;
+  position:relative;
+}
+.auth-button-new-to-portal {
+    position:relative;
+}
+
+.auth-button-submit button, 
+.auth-button-new-to-portal button{
     align-items: center;
     text-align: center;
     padding: 0;
+    padding-left: 10px;
     padding-right: 10px;
     cursor: pointer;
     background-color: transparent;
@@ -85,5 +102,25 @@
     overflow: hidden;
     outline: none;
     vertical-align: middle ;
-    font-family: Saol, Times, "Times New Roman", serif;
+    font-family: borish;
+    font-size: 17px;
+}
+.auth-button-submit button::after,
+.auth-button-new-to-portal button::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: rgb(255,163,128);
+  position: absolute;
+  bottom: 10px;
+  left: -2px;
+}
+.auth-button-submit button:hover, 
+.auth-button-new-to-portal button:hover{
+    background-color: var(--pale-purple);
+    color: var(--green-dark);
+    border: 1px solid var(--green-dark);
+    box-sizing: border-box;
+    border-radius: 20px;
 }
