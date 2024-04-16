@@ -1,7 +1,11 @@
 import './Navbar.css'
 import { MdOutlinePets } from "react-icons/md";
+import { useDispatch, useSelector } from 'react-redux';
 import {Link} from "react-router-dom"
+import { logoutUser, selectCurrentUser } from '../../store/sessionReducer';
 const Navbar = () => {
+    const currentUser = useSelector(selectCurrentUser)
+    const dispatch = useDispatch();
 
     return(
         <div className='header-container'>
@@ -24,20 +28,33 @@ const Navbar = () => {
                         </span>
                     </div>
                     <div className='auth-section'>
-                        <div className='login-button-container'>
-                            <Link to={'/login'}>
-                                <button value="Login">
-                                    Log in
-                                </button>
-                            </Link>
-                        </div>
-                        <div className='signup-button-container'>
-                            <Link to={'/register'}>
-                                <button value="Signup">
-                                    Sign up
-                                </button>
-                            </Link>
-                        </div>
+                        {!currentUser ? (
+                            <>
+                            <div className='login-button-container'>
+                                <Link to={'/login'}>
+                                    <button value="Login">
+                                        Log in
+                                    </button>
+                                </Link>
+                            </div>
+                            <div className='signup-button-container'>
+                                <Link to={'/register'}>
+                                    <button value="Signup">
+                                        Sign up
+                                    </button>
+                                </Link>
+                            </div>
+                            </>
+                        ): (
+                            <div className='logout-button-container'>
+                                <Link to={'/'}>
+                                    <button value="Logout" onClick={() => dispatch(logoutUser())}>
+                                        Log out
+                                    </button>
+                                </Link>
+
+                            </div>
+                        )}
                     </div>
                 </div>
 

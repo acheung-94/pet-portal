@@ -109,7 +109,8 @@ a {
 }
 
 .login-button-container,
-.signup-button-container {
+.signup-button-container,
+.logout-button-container {
     cursor: pointer;
     background-color: transparent;
     border: none;
@@ -117,7 +118,8 @@ a {
     padding: 0;
 }
 .login-button-container button,
-.signup-button-container button {
+.signup-button-container button,
+.logout-button-container button {
     align-items: center;
     text-align: center;
     padding: 0;
