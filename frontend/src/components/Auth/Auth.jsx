@@ -27,7 +27,7 @@ const Auth = () =>{
         }
         setEmail('');
         setPw('');
-        window.location.href= "/"
+        // window.location.href= "/"
     }
     useEffect(() => {
 

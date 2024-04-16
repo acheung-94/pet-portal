@@ -6,8 +6,8 @@ export const getPets = () => (
     })
 )
 
-export const getPet = petId => (
-    jwtFetch(`/api/pets/${petId}`, {
+export const getPet = petInfo => (
+    jwtFetch(`/api/pets/${petInfo._id}`, {
         method: 'GET'
     })
 )
@@ -20,7 +20,7 @@ export const postPet = petInfo => (
 )
 
 export const putPet = petInfo => (
-    jwtFetch(`/api/pets/${petInfo.id}`, {
+    jwtFetch(`/api/pets/${petInfo._id}`, {
         method: 'PUT',
         body: JSON.stringify(petInfo) 
     })
