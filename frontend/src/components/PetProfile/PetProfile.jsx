@@ -8,16 +8,12 @@ const PetProfile = () => {
     const petAttributes = Object.entries(pet)
 
     const renderAttributes = () => {
-        return petAttributes.map( (pair, idx) => {
-            let key = pair[0]
-            let val = pair[1]
-            return (
-                <div key={idx} className="pet-attribute">
-                    <h3>{key}</h3>
-                    <p>{val}</p>
-                </div>
-            )
-        })
+        return petAttributes.map( ([key, val], idx) => (
+            <div key={idx} className="pet-attribute">
+                <h3>{key}</h3>
+                <p>{val}</p>
+            </div>
+        ))
     }
 
     return(
