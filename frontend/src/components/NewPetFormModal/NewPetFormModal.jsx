@@ -8,15 +8,15 @@ const NewPetForm = ({modalState, setModalState}) => {
     const [species, setSpecies] = useState('')
     const [color, setColor] = useState('')
     const [breed, setBreed] = useState('')
-    const [microchipNum, setMicrochipNum] = useState(0)
-    const [insurancePolicyId, setInsurancePolicyId] = useState(0)
-    const [weight, setWeight] = useState(0.0)
+    const [microchipNum, setMicrochipNum] = useState()
+    const [insurancePolicyId, setInsurancePolicyId] = useState()
+    const [weight, setWeight] = useState()
 
     const formContent = () => (
          <>
             <label className="input-label">
                 <div className='name-input-label'>
-                    Name
+                    <span>Name<span className="required">* required</span></span>
                 </div>
                 <input placeholder='Name' 
                     type='text' value={name} onChange={e => setName(e.target.value)} />
@@ -24,7 +24,7 @@ const NewPetForm = ({modalState, setModalState}) => {
             
             <label className="input-label">
                 <div className='dob-input-label'>
-                    Date of birth
+                    <span>Date of Birth<span className="required">* required</span></span>
                 </div>
                 <input placeholder='date of birth' 
                     type='date' value={dob} onChange={e => setDob(e.target.value)} />
@@ -32,7 +32,7 @@ const NewPetForm = ({modalState, setModalState}) => {
 
             <label className="input-label">
                 <div className='sex-select-label'>
-                    Sex
+                    <span>Sex<span className="required">* required</span></span>
                 </div>
                 <select
                     className="sex-select"
@@ -50,42 +50,42 @@ const NewPetForm = ({modalState, setModalState}) => {
             </label>
             <label className="input-label">
                 <div className='species-input-label'>
-                    Species 
+                    <span>Species<span className="required">* required</span></span>
                 </div>
                 <input placeholder='species' 
                     type='text' value={species} onChange={e => setSpecies(e.target.value)} />
             </label>
             <label className="input-label">
                 <div className='color-input-label'>
-                    Color 
+                    <span>Color<span className="required">* required</span></span> 
                 </div>
                 <input placeholder='color' 
                     type='text' value={color} onChange={e => setColor(e.target.value)} />
             </label>
             <label className="input-label">
                 <div className='breed-input-label'>
-                    Breed 
+                    <span>Breed <span className="optional">* optional</span></span>
                 </div>
                 <input placeholder='breed' 
                     type='text' value={breed} onChange={e => setBreed(e.target.value)} />
             </label>
             <label className="input-label">
                 <div className='microchipNum-input-label'>
-                    Microchip Number 
+                    <span>Microchip Number <span className="optional">* optional</span></span>
                 </div>
                 <input placeholder='microchipNum' 
                     type='text' value={microchipNum} onChange={e => setMicrochipNum(e.target.value)} />
             </label>
             <label className="input-label">
                 <div className='insurance-policy-input-label'>
-                    Insurance Policy Id 
+                    <span>Insurance Policy Id <span className="optional">* optional</span></span>
                 </div>
                 <input placeholder='insurance policy id' 
                     type='text' value={insurancePolicyId} onChange={e => setInsurancePolicyId(e.target.value)} />
             </label>
             <label className="input-label">
                 <div className='weight-input-label'>
-                    Weight 
+                    <span>Weight <span className="optional">* optional</span></span>
                 </div>
                 <input placeholder='weight' 
                     type='text' value={weight} onChange={e => setWeight(e.target.value)} />
