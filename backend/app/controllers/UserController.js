@@ -2,6 +2,7 @@ import ApplicationController from './ApplicationController.js'
 import bcrypt from 'bcryptjs'
 import passport from 'passport'
 import User from '../models/User.js'
+import Pet from '../models/Pet.js'
 import { loginUser } from '../../config/passport.js'
 export default class UserController extends ApplicationController{
 	constructor() {
@@ -53,5 +54,14 @@ export default class UserController extends ApplicationController{
 			}
 			return res.json(await loginUser(user))
 		})(req, res, next)
+	}
+
+	static async pets (req, res, _) {
+		//console.log('passed to controller')
+		const petsForUser = await Pet.find({owner: req.params.id})
+		if (petsForUser) {
+			return res.json(petsForUser)
+		}
+		return res.status(404)
 	}
 }

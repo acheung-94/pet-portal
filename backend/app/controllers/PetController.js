@@ -16,7 +16,8 @@ export default class PetController extends ApplicationController{
 			breed: req.body.breed,
 			microchipNumber: req.body.microchipNumber,
 			insurancePolicyId: req.body.insurancePolicyId,
-			weight: req.body.weight
+			weight: req.body.weight,
+			owner: req.user._id
 		})
 
 		const pet = await newPet.save()
@@ -45,9 +46,11 @@ export default class PetController extends ApplicationController{
 			)
 		)
 
-		const pet = await Pet.findByIdAndUpdate(req.params.id, updated, {
-			returnDocument: 'after'
-		})
+		const pet = await Pet.findByIdAndUpdate(
+			{ _id: req.params.id, owner: req.user._id }, 
+			updated, 
+			{ returnDocument: 'after' }
+		)
 		if (pet) {
 			return res.json({ pet })
 		} else {
