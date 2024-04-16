@@ -2,9 +2,11 @@ import { combineReducers, legacy_createStore, applyMiddleware } from "redux"
 import { thunk } from "redux-thunk"
 import logger from "redux-logger"
 import sessionReducer from './sessionReducer'
+import petReducer from "./petReducer"
 
 const rootReducer = combineReducers({
-    session: sessionReducer
+    session: sessionReducer,
+    pets: petReducer
 })
 
 const configureStore = (initialState) => {
