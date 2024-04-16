@@ -1,4 +1,4 @@
-import ApplicationController from '../controllers/ApplicationController'
+import ApplicationController from '../controllers/ApplicationController.js'
 import Pet from '../models/Pet.js'
 
 export default class PetController extends ApplicationController{
@@ -28,19 +28,26 @@ export default class PetController extends ApplicationController{
 	}
 
 	static async update(req, res, _) {
-		const updatedPet = new Pet({
-			name: req.body.name,
-			dob: req.body.dob,
-			sex: req.body.sex,
-			species: pet.body.species,
-			color: req.body.color,
-			breed: req.body.breed,
-			microchipNumber: req.body.microchipNumber,
-			insurancePolicyId: req.body.insurancePolicyId,
-			weight: req.body.weight
-		})
+		const allowed = [
+			'name',
+			'dob',
+			'sex',
+			'species',
+			'color',
+			'breed',
+			'microchipNumber',
+			'insurancePolicyId',
+			'weight'
+		]
+		const updated = Object.fromEntries(
+			Object.entries(req.body).filter(
+				([k, _]) => allowed.includes(k)
+			)
+		)
 
-		const pet = await Pet.findOneAndUpdate({ _id: req.params.id }, updatedPet)
+		const pet = await Pet.findByIdAndUpdate(req.params.id, updated, {
+			returnDocument: 'after'
+		})
 		if (pet) {
 			return res.json({ pet })
 		} else {
