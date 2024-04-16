@@ -21,7 +21,6 @@ export default class PetController extends ApplicationController{
 		})
 
 		const pet = await newPet.save()
-		pet = await pet.populate('owner', '_id email')
 		if (pet) {
 			return res.json({ pet })
 		} else {
