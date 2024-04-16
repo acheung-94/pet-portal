@@ -2,13 +2,14 @@ import { useState } from "react"
 import Navbar from "../Navbar/Navbar"
 import './Auth.css'
 import { useLocation } from "react-router"
-import { useDispatch } from "react-redux";
-import { createUser, loginUser } from "../../store/sessionReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { createUser, loginUser, selectCurrentUser } from "../../store/sessionReducer";
+import { useEffect } from "react";
 
 const Auth = () =>{
     const location = useLocation()
     const {pathname} = location
-
+    const currentUser = useSelector(selectCurrentUser)
     const dispatch = useDispatch();
     const isRegister = pathname === '/register'
     const isLogin = pathname === '/login'
@@ -24,9 +25,18 @@ const Auth = () =>{
         } else if (isLogin) {
             dispatch(loginUser({email: email, password: pw}))
         }
-        setEmail('')
-        setPw('')
+        setEmail('');
+        setPw('');
+        window.location.href= "/"
     }
+    useEffect(() => {
+
+        console.log("Email or password changed:", email, pw);
+    }, [email, pw]);
+    useEffect(() => {
+        setEmail('');
+        setPw('');
+    }, [location.pathname]);
     return(
         <>
             <Navbar/>
@@ -34,7 +44,12 @@ const Auth = () =>{
                 <div className="content-container">
                     <div className="session-form-container">
                         <div className="session-title">
-                            <h2>Log in / Sign Up!</h2>
+                            {pathname === '/login' ? (
+                                <h2>Log in</h2>
+                            ) : (
+                                <h2>Sign Up</h2>
+                            )
+                            }
                         </div>
                         <div className="session-input-field">
                             <form className="session-form" onSubmit={handleSubmit}>
