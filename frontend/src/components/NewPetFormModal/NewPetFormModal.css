@@ -189,3 +189,14 @@ optgroup {
     color: #f34607;
     padding-left: 10px;
 }
+.optional {
+    font-size: 10px;
+    font-style: italic;
+    padding-left: 5px;
+}
+.required {
+    font-size: 10px;
+    font-style: italic;
+    color: #f34607;
+    padding-left: 10px;
+}
