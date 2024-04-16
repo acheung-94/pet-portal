@@ -5,7 +5,9 @@ import Auth from "./components/Auth/Auth"
 const router = createBrowserRouter([
   {path: '/', element: <Home />},
   {path: '/login', element: <Auth />}, //useParams to determine if login vs sign up
-  {path: '/register', element: <Auth />}
+  {path: '/register', element: <Auth />},
+  {path: '/dashboard'},
+  {path: '/pets/:id'}
 ])
 
 const App = () => {
