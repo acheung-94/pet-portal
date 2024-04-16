@@ -38,6 +38,9 @@ const petSchema = Schema({
 	weight: {
 		type: Number,
 		required: false
+	},
+	ownerId: {
+		type: mongoose.ObjectId
 	}
 })
 
