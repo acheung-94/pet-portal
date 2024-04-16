@@ -6,7 +6,7 @@ import petReducer from "./petReducer"
 
 const rootReducer = combineReducers({
     session: sessionReducer,
-    pet: petReducer
+    pets: petReducer
 })
 
 const configureStore = (initialState) => {
