@@ -1,3 +1,4 @@
+import Footer from '../Footer/Footer'
 import Navbar from '../Navbar/Navbar'
 import './Dashboard.css'
 
@@ -18,6 +19,7 @@ const Dashboard = () => {
                     
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 }
