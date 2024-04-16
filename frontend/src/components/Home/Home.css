@@ -1,0 +1,71 @@
+.welcome-container-1{
+    border:1px solid red;
+    display: flex;
+    justify-content: center;
+    height: 100vh; /* change to 100% */
+    box-sizing: border-box;
+}
+
+.welcome-container-2{
+    width: 75%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.welcome-heading{
+    border-bottom: 1px solid gray;
+    padding: 20px;
+    box-sizing: border-box;
+    color: var(--green-dark)
+}
+.welcome-heading h1{
+    font-size: 64px;
+    letter-spacing: 0.1rem;
+}
+.welcome-message{
+    height: 40%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.welcome-message p{
+    line-height: 1.5rem;
+}
+
+.user-modules{
+    display: flex;
+    justify-content: space-evenly;
+    height: 30%;
+}
+.user-mod-title{
+    text-align: center;
+}
+.to-mock-pet, .to-auth{
+    border: 1px solid black;
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.img-placeholder{
+    width: 50%;
+    height: 50%;
+    border: 1px solid blue;
+}
+
+.to-mock-pet a, .to-auth a{
+    font-family: borish;
+    font-size: 28px;
+    text-decoration: none;
+    color: var(--main-bg-beige);
+    background-color: var(--green-dark);
+    font-style: bold;
+    border-radius: 20px;
+    padding: 20px;
+}
