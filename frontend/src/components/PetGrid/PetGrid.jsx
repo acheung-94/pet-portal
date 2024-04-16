@@ -4,7 +4,7 @@ import './PetGrid.css'
 
 const PetGrid = () => {
     const currentUser = useSelector(selectCurrentUser)
-    const currentPets = currentUser.pets // placeholder
+    const currentPets = useSelector(state => state.pets) // placeholder
 
     return (
         <>
