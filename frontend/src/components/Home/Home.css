@@ -52,7 +52,7 @@
     width: 45%;
     height: 20px;
     position: relative;
-    background-color: var(--bright-gold);
+    background-color: var(--pale-purple);
     border-radius: 10px;
 }
 
@@ -71,6 +71,7 @@
     justify-content: space-evenly;
     height: 100%;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .welcome-links a{
@@ -84,4 +85,13 @@
     padding: 20px;
     width: fit-content;
     height: fit-content;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.welcome-links a:hover{
+    background-color: var(--pale-purple);
+    color: var(--green-dark);
+    border: 1px solid var(--green-dark);
+    box-sizing: border-box;
 }
