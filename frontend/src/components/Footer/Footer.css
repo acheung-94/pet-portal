@@ -1,0 +1,37 @@
+.main-footer{
+    width: 100%;
+    background-color: var(--green-dark);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.main-footer a{
+    color: var(--main-bg-beige);
+    font-family: domine;
+    text-decoration: none;
+    padding: 8px;
+ 
+}
+
+.main-footer a:hover{
+    border-bottom: 1px solid var(--gold);
+}
+
+.main-footer h1{
+    color: var(--gold);
+    align-self: center;
+}
+
+.footer-links{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.footer-sep{
+    border: 1px solid var(--gold);
+}

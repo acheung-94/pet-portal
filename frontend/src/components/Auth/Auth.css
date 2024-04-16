@@ -63,3 +63,27 @@
     border-radius: 50px;
     border: 1px solid #B6C6BC;
 }
+.submit-container {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    padding-top: 20px;
+    text-align: center;
+
+}
+.submit-container button {
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    padding-right: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    overflow: hidden;
+    outline: none;
+    vertical-align: middle ;
+    font-family: Saol, Times, "Times New Roman", serif;
+}

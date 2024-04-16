@@ -70,7 +70,7 @@ const Auth = () =>{
                                         <input id="password-input" type="password" onChange={(e) => setPw(e.target.value)}/>
                                     </label>
                                 </div>
-                                <div>
+                                <div className="submit-container">
                                     <button type="submit">Submit</button>
                                 </div>
                             </form>
