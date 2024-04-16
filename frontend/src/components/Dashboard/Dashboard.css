@@ -5,8 +5,10 @@
     padding-top: 10%;
     display: flex;
     flex-direction: column;
-
+    padding-left: 15%;
+    padding-right: 15%;
 }
+
 
 .dashboard-header{
     font-size: 36px;
@@ -17,4 +19,12 @@
 .reminder-container{
     height: 25%;
 
+}
+
+.dashboard-sep{
+    border: 1px solid gray;
+}
+
+.index-container{
+    height: 100%;
 }
