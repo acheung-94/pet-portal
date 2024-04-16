@@ -1,0 +1,89 @@
+.below-navbar {
+    font-family: Saol, Times, "Times New Roman", serif;
+    margin-top: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 60px;
+    height: 100vh;
+    background-color: #E9E0D6;
+}
+
+.content-container {
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding: 50px;
+    height: 100vh;
+    background-color: #B6C6BC;
+}
+.session-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+
+}
+.session-title {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #B9D5E1;
+}
+.session-input-field {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    background-color: #B9D5E1;
+}
+.session-form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.session-form div:first-child {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.session-form div:nth-child(2) {
+    /* padding-top: 10px; */
+    padding-bottom: 10px;
+}
+#email-input, 
+#password-input {
+    padding: 8px;
+    border-radius: 50px;
+    border: 1px solid #B6C6BC;
+}
+.submit-container {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    padding-top: 20px;
+    text-align: center;
+
+}
+.submit-container button {
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    padding-right: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    overflow: hidden;
+    outline: none;
+    vertical-align: middle ;
+    font-family: Saol, Times, "Times New Roman", serif;
+}
