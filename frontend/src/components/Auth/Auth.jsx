@@ -1,5 +1,7 @@
 import { useState } from "react"
 import Navbar from "../Navbar/Navbar"
+import Footer from "../Footer/Footer.jsx";
+import '../Home/Home.css'
 import './Auth.css'
 import { useLocation } from "react-router"
 import { useDispatch, useSelector } from "react-redux";
@@ -46,9 +48,9 @@ const Auth = () =>{
                     <div className="session-form-container">
                         <div className="session-title">
                             {pathname === '/login' ? (
-                                <h2>Log in</h2>
+                                <h2>Log in as an existing user</h2>
                             ) : (
-                                <h2>Sign Up</h2>
+                                <h2>Welcome to Pet Portal</h2>
                             )
                             }
                         </div>
@@ -88,10 +90,9 @@ const Auth = () =>{
                             </form>
                         </div>
                     </div>
-                    
-
                 </div>
             </div>
+            <Footer/>
         </>
     )
 }

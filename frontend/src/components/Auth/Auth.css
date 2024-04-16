@@ -20,22 +20,22 @@
     margin-right: 150px;
     padding: 50px;
     height: 100vh;
-    background-color: #B6C6BC;
-    font-size: 20px;
+    background-color: transparent;
+    font-size: 28px;
 
 }
 .session-form-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    /* box-shadow: 0 4px 8px rgba(0,0,0,0.3); */
 
 }
 .session-title {
     text-align: center;
     padding-top: 30px;
     padding-bottom: 30px;
-    background-color: #B9D5E1;
+    background-color: transparent
 }
 .session-input-field {
     display: flex;
@@ -43,7 +43,7 @@
     text-align: center;
     padding-top: 10px;
     padding-bottom: 30px;
-    background-color: #B9D5E1;
+    background-color: transparent
 }
 .session-form{
     display: flex;
@@ -81,16 +81,19 @@
 .auth-button-submit{
   margin-right: 10px;
   margin-left: 27px;
+  margin-bottom: 10px;
+  position:relative;
+}
+.auth-button-new-to-portal {
+    position:relative;
 }
 
-.auth-button-submit {
-    margin-bottom: 10px;
-}
 .auth-button-submit button, 
 .auth-button-new-to-portal button{
     align-items: center;
     text-align: center;
     padding: 0;
+    padding-left: 10px;
     padding-right: 10px;
     cursor: pointer;
     background-color: transparent;
@@ -101,4 +104,23 @@
     vertical-align: middle ;
     font-family: borish;
     font-size: 17px;
+}
+.auth-button-submit button::after,
+.auth-button-new-to-portal button::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: rgb(255,163,128); /* Adjust color as needed */
+  position: absolute;
+  bottom: 10px; /* Adjust distance from the button text */
+  left: -2px;
+}
+.auth-button-submit button:hover, 
+.auth-button-new-to-portal button:hover{
+    background-color: var(--pale-purple);
+    color: var(--green-dark);
+    border: 1px solid var(--green-dark);
+    box-sizing: border-box;
+    border-radius: 20px;
 }

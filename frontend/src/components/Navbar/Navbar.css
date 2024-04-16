@@ -106,9 +106,6 @@ a {
     padding-right: 20px;
     justify-content: center;
 }
-.login-button-container {
-    padding-right: 10px;
-}
 
 .login-button-container,
 .signup-button-container,
@@ -117,8 +114,18 @@ a {
     background-color: transparent;
     border: none;
     outline: none;
-    padding: 0;
+    padding-left: 10px;
 }
+.login-button-container:hover,
+.signup-button-container:hover,
+.logout-button-container:hover {
+    background-color: var(--pale-purple);
+    color: var(--green-dark);
+    border: 1px solid var(--green-dark);
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
 .login-button-container button,
 .signup-button-container button,
 .logout-button-container button {
