@@ -9,7 +9,7 @@
     left: 0;
     top: 60px;
     height: 100vh;
-    background-color: #E9E0D6;
+    background-color: var(--main-bg-beige);
 }
 
 .content-container {
@@ -85,5 +85,5 @@
     overflow: hidden;
     outline: none;
     vertical-align: middle ;
-    font-family: Saol, Times, "Times New Roman", serif;
+    font-family: borish;
 }
