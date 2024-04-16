@@ -3,7 +3,6 @@ import bcrypt from 'bcryptjs'
 import passport from 'passport'
 import User from '../models/User.js'
 import { loginUser } from '../../config/passport.js'
-
 export default class UserController extends ApplicationController{
 	constructor() {
 		super()
