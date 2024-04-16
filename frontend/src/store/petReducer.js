@@ -82,7 +82,7 @@ export const destroyPet = petId => dispatch => (
         })
 )
 
-const petsReducer = (state = {}, action) => {
+const petReducer = (state = {}, action) => {
     const nextState = { ...state }
 
     switch(action.type) {
@@ -99,4 +99,4 @@ const petsReducer = (state = {}, action) => {
     }
 }
 
-export default petsReducer
+export default petReducer
