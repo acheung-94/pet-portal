@@ -13,6 +13,7 @@
     box-sizing: border-box;
 }
 
+
 .dashboard-header{
     font-size: 36px;
     color: var(--green-dark);
@@ -31,3 +32,4 @@
 .index-container{
     height: 100%;
 }
+
