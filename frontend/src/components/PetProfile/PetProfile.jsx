@@ -11,6 +11,7 @@ const PetProfile = () => {
     const dispatch = useDispatch()
     
     
+    
     const calculateAge = (dateString) => {
         const birthday = new Date(dateString)
         const today = new Date()
@@ -49,6 +50,7 @@ const PetProfile = () => {
     }
 
     const renderAttributes = () => {
+        const petAttributes = Object.entries(pet)
         const petAttributes = Object.entries(pet)
         return petAttributes.map( ([key, val], idx) => {
             if ( key !== '_id' && key !== '__v' && key !== 'owner') {
