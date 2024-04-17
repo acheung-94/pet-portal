@@ -1,13 +1,20 @@
-import { useSelector } from 'react-redux'
-import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { selectCurrentUser } from '../../store/sessionReducer'
-import NewPetFormModal from '../NewPetFormModal/NewPetFormModal'
 import './PetGrid.css'
+import { useEffect } from 'react'
+import { fetchPets } from '../../store/petReducer'
+import ImgPlaceholder from '../../assets/striped-cat.jpg'
 
 const PetGrid = () => {
+    const dispatch = useDispatch();
     const currentUser = useSelector(selectCurrentUser)
-    const currentPets = useSelector(state => state.pets) // placeholder
-    const [modalState, setModalState] = useState(false)
+    const currentPets = useSelector(state => state.pets)
+
+    useEffect(() => {
+        if (currentUser) {
+            dispatch(fetchPets())
+        }
+    }, [currentUser, currentPets.length, dispatch])
 
     return (
         <>
@@ -24,16 +31,16 @@ const PetGrid = () => {
                     
                 </div>
                 <div className='pet-grid-index'>
-
                     {currentPets &&
                         Object.values(currentPets).map((pet, idx) => (
                             <div key={idx} className='pet-item'>
-                                <div className='pet-name'>
-                                    <span>{pet.name}</span>
-                                </div>
-                                <div className='pet-img'>
-                                    {/* pet's image */}
-                                </div>
+                              <div className='pet-img'>
+                                  {/* Link to Pet Show */}
+                                  <img src={ImgPlaceholder}/>
+                              </div>
+                              <div className='pet-name'>
+                                  <p>{pet.name}</p>
+                              </div>
                             </div>
                         ))
                     }
@@ -41,7 +48,6 @@ const PetGrid = () => {
                 </div>
             </div>
             {modalState && <NewPetFormModal modalState={modalState} setModalState={setModalState}/>}
-
         </>
     )
 }
