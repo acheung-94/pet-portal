@@ -3,6 +3,9 @@ import './PetProfile.css'
 import { Link, useParams } from 'react-router-dom'
 import { currentPet, fetchPets } from '../../store/petReducer'
 import { useEffect } from 'react'
+import Appointments from '../Appointments/Appointments'
+import Vaccines from '../Vaccines/Vaccines'
+import Medications from '../Medications/Medications'
 const PetProfile = () => {
     const { petId } = useParams()
     const pet = useSelector(currentPet(petId))
@@ -78,7 +81,9 @@ const PetProfile = () => {
                                 <h3>Reminders</h3>
                                 <button className='pet-dash-buttons'> + </button>
                             </div>
-                            <div> Module w/ overflow </div>
+                            <div className='appointment-index-container'>
+                                <Appointments/>
+                            </div>
                         </div>
                         <div className="preventatives-module">
                             <div className="vaccines">
@@ -86,15 +91,18 @@ const PetProfile = () => {
                                     <h3>Vaccines</h3>
                                     <button className='pet-dash-buttons'> + </button>
                                 </div>
-                                <div>Module w/ overflow</div>
+                                <div className='vaccines-index-container'>
+                                    <Vaccines/>
+                                </div>
                             </div>
                             <div className="medications">
                                 <div className='medications-header'>
                                     <h3>Medications</h3>
                                     <button className='pet-dash-buttons'> + </button>
                                 </div>
-                                <div>Module w/ overflow</div>
-    
+                                <div className='medications-index-container'>
+                                    <Medications/>
+                                </div>
                             </div>
                         </div>
                     </div>
