@@ -5,6 +5,7 @@ import { currentPet, fetchPets } from '../../store/petReducer'
 import { useEffect } from 'react'
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
+
 const PetProfile = () => {
     const { petId } = useParams()
     const pet = useSelector(currentPet(petId))
@@ -64,7 +65,11 @@ const PetProfile = () => {
 
     useEffect( () => {
         dispatch(fetchPets())
+<<<<<<< HEAD
     }, [dispatch])
+=======
+    }, [])
+>>>>>>> 4db2c6b (move petAttributes inside renderAttributes)
 
     if (pet) {
 
