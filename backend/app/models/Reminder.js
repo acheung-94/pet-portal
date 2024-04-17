@@ -30,3 +30,5 @@ const reminderSchema = Schema({
 		ref: 'User'
 	}
 })
+
+export default reminderSchema
