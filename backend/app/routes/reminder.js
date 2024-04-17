@@ -8,7 +8,7 @@ reminderRouter.get('/user/:id', ReminderController.indexByUser)
 reminderRouter.get('/pet/:id', ReminderController.indexByPet)
 reminderRouter.get('/:id', ReminderController.show)
 reminderRouter.post('/', requireUser, ReminderController.create)
-reminderRouter.put('/:id', ReminderController.update)
-reminderRouter.delete('/:id', ReminderController.delete)
+reminderRouter.put('/:id', requireUser, ReminderController.update)
+reminderRouter.delete('/:id', requireUser, ReminderController.delete)
 
 export default reminderRouter

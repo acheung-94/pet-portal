@@ -39,4 +39,4 @@ const reminderSchema = Schema({
 	}
 })
 
-export default reminderSchema
+export default mongoose.model('Reminder', reminderSchema)

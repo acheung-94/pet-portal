@@ -1,5 +1,6 @@
 import ApplicationController from "./ApplicationController.js";
 import Reminder from '../models/Reminder.js'
+import { convertObjectToStateShape } from "../../util/jsonUtils.js";
 
 export default class ReminderController extends ApplicationController {
 	static async show(req, res, _) {
@@ -14,7 +15,7 @@ export default class ReminderController extends ApplicationController {
 			{pet: req.params.id}
 		)
 		if (reminders) {
-			return res.json({reminders})
+			return res.json(convertObjectToStateShape(reminders))
 		}
 		return res.status(404)
 	}
@@ -23,11 +24,15 @@ export default class ReminderController extends ApplicationController {
 			{user: req.params.id}
 		)
 		if (reminders) {
-			return res.json({reminders})
+			return res.json(convertObjectToStateShape(reminders))
 		}
 		return res.status(404)
 	}
 	static async update(req, res, _) {
+		const reminder = await Reminder.findById(req.params.id)
+		if (req.user._id !== reminder.user) {
+			return res.status(403)
+		}
 		const allowed = [
 			'title',
 			'dueDate',
@@ -35,32 +40,32 @@ export default class ReminderController extends ApplicationController {
 			'description',
 			'location'
 		]
-		const updated = Object.fromEntries(
-			Object.entries(req.body).filter(
-				([k, _]) => allowed.includes(k)
-			)
-		)
+		Object.entries(req.body).filter(
+			([k, _]) => allowed.includes(k)
+		).forEach(([k, v]) => {
+			reminder[k] = v
+		})
 
-		const reminder = await Reminder.findByIdAndUpdate(
-			{_id: req.params.id},
-			updated,
-			{returnDocument: 'after'}
-		)
+		const updated = await reminder.save()
 
-		if (reminder) {
-			return res.json({ reminder })
+		if (updated) {
+			return res.json(convertObjectToStateShape(updated))
 		}
 		return res.status(400)
 	}
 	static async delete(req, res, _) {
+		const reminder = await Reminder.findById(req.params.id)
+		if (req.user._id !== reminder.user) {
+			return res.status(403)
+		}
 		const result = await Reminder.findByIdAndDelete(req.params.id)
 		if (result) {
-			return res.json({result})
+			return res.json(result)
 		}
 		return res.status(404)
 	}
 	static async create(req, res, _) {
-		const newReminder = Reminder.new({
+		const newReminder = new Reminder({
 			title: req.body.title,
 			dueDate: req.body.dueDate,
 			performDate: req.body.performDate,
@@ -69,9 +74,9 @@ export default class ReminderController extends ApplicationController {
 			pet: req.body.pet,
 			user: req.user._id
 		})
-		const pet = await newPet.save()
-		if (pet) {
-			return res.json( {pet} )
+		const reminder = await newReminder.save()
+		if (reminder) {
+			return res.json( reminder )
 		}
 		return res.status(400)
 	}
