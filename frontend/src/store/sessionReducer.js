@@ -4,7 +4,7 @@ import { postUser, postSession } from "../utils/sessionApiUtils"
 //CONST TYPES
 export const SET_CURRENT_USER = 'session/SET_CURRENT_USER'
 export const REMOVE_CURRENT_USER = 'sesison/REMOVE_CURRENT_USER'
-
+export const SET_EXPIRATION = 'session/SET_EXPIRATION'
 //ACTION CREATOR
 export const setCurrentUser = sessionInfo => ({
     type: SET_CURRENT_USER, 
@@ -12,6 +12,10 @@ export const setCurrentUser = sessionInfo => ({
 })
 export const removeCurrentUser = () => ({
     type: REMOVE_CURRENT_USER
+})
+export const setExpiration = (expiresAt) => ({
+    type: SET_EXPIRATION,
+    expiresAt
 })
 
 //THUNK CREATOR
@@ -42,8 +46,10 @@ export const loginUser = sessionInfo => dispatch => (
                 throw res
             }
         })
-        .then(({user, token}) => {
-            
+        .then(({user, token, issued, expiresSeconds}) => {
+            const issuedDate = new Date(issued)
+            const expiresAt = issuedDate + expiresSeconds
+            dispatch(setExpiration(expiresAt))
             localStorage.setItem('jwtToken', token)
             localStorage.setItem('currentUser', JSON.stringify(user))
             dispatch(setCurrentUser(user))
@@ -70,6 +76,8 @@ const sessionReducer = (state=initialState, action) => {
             return action.sessionInfo
         case REMOVE_CURRENT_USER:
             return null
+        case SET_EXPIRATION:
+            return action.expiresAt
         default:
             return state
     }
