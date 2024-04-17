@@ -64,4 +64,8 @@ export default class UserController extends ApplicationController{
 		}
 		return res.status(404)
 	}
+	static async sessionRestore(req, res, _) {
+		const newToken = await loginUser(req.user)
+		return res.json(newToken)
+	}
 }
