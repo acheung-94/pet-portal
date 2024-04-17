@@ -7,6 +7,8 @@ import passportJwt from 'passport-jwt'
 const { Strategy: JwtStrategy, ExtractJwt } = passportJwt
 import {secretOrKey} from './keys.js'
 
+const JWT_EXPIRATION = 3600
+
 passport.use(new LocalStrategy({
 	session: false,
 	usernameField: 'email',
@@ -27,13 +29,16 @@ export const loginUser = async (user) => {
 		username: user.username,
 		email: user.email
 	}
-	const token = await jwt.sign(
+	/** @type {String} */
+	const token = jwt.sign(
 		userInfo, // Payload
 		secretOrKey, // Sign with secret key
-		{ expiresIn: 3600 } // Tell the key to expire in one hour
+		{ expiresIn: JWT_EXPIRATION } // Tell the key to expire in one hour
 	)
 	return {
 		user: userInfo,
+		issued: new Date(),
+		expiresSeconds: JWT_EXPIRATION,
 		token
 	}
 }
