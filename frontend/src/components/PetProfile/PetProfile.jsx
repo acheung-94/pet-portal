@@ -7,8 +7,7 @@ const PetProfile = () => {
     const { petId } = useParams()
     const pet = useSelector(currentPet(petId))
     const dispatch = useDispatch()
-    const petAttributes = Object.entries(pet)
-
+    
     
     const calculateAge = (dateString) => {
         const birthday = new Date(dateString)
@@ -48,6 +47,7 @@ const PetProfile = () => {
     }
 
     const renderAttributes = () => {
+        const petAttributes = Object.entries(pet)
         return petAttributes.map( ([key, val], idx) => {
             if ( key !== '_id' && key !== '__v' && key !== 'owner') {
                 return (
@@ -60,10 +60,9 @@ const PetProfile = () => {
         })
     }
 
-    // useEffect( () => {
-    //     console.log(pet)
-    //     dispatch(fetchPets())
-    // }, [petId])
+    useEffect( () => {
+        dispatch(fetchPets())
+    }, [])
 
     if (pet) {
 
