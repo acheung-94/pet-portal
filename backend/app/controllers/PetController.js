@@ -29,6 +29,11 @@ export default class PetController extends ApplicationController{
 	}
 
 	static async update(req, res, _) {
+		const pet = await Pet.findOne({_id: req.params.id})
+
+		if (req.user._id.toString() != pet.owner.toString()) {
+			return res.status(403).json({"status": "forbidden"})
+		}
 		const allowed = [
 			'name',
 			'dob',
@@ -40,18 +45,19 @@ export default class PetController extends ApplicationController{
 			'insurancePolicyId',
 			'weight'
 		]
-		const updated = Object.fromEntries(
-			Object.entries(req.body).filter(
-				([k, _]) => allowed.includes(k)
-			)
-		)
+		Object.entries(req.body).filter(
+			([k, _]) => allowed.includes(k)
+		).forEach(([k, v]) => {
+			pet[k] = v
+		})
 
-		const pet = await Pet.findByIdAndUpdate(
-			{ _id: req.params.id, owner: req.user._id }, 
-			updated, 
-			{ returnDocument: 'after' }
-		)
-		if (pet) {
+
+		// const pet = await Pet.findByIdAndUpdate(
+		// 	{ _id: req.params.id, owner: req.user._id }, 
+		// 	updated, 
+		// 	{ returnDocument: 'after' }
+		// )
+		if (await pet.save()) {
 			return res.json({ pet })
 		} else {
 			res.status(400)
@@ -68,11 +74,16 @@ export default class PetController extends ApplicationController{
 	}
 
 	static async delete(req, res, _) {
-		const pet = await Pet.deleteOne({ _id: req.params.id })
-		if (pet) {
-			return res.json({ pet })
+		const pet = await Pet.findOne({_id: req.params.id})
+
+		if (req.user._id.toString() != pet.owner.toString()) {
+			return res.status(403).json({"status": "forbidden"})
+		}
+		const deleted = await Pet.deleteOne({ _id: req.params.id })
+		if (deleted) {
+			return res.json({ deleted })
 		} else {
-			res.status(404)
+			return res.status(404).json({"status": "not found"})
 		}
 	}
 
