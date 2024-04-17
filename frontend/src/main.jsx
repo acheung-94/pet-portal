@@ -5,6 +5,7 @@ import './index.css';
 import configureStore from './store/store';
 import { Provider } from 'react-redux';
 import { restoreSession } from './utils/jwt';
+
 const store = configureStore()
 const initializeApp = () =>{
   

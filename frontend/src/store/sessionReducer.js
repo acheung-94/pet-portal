@@ -47,13 +47,13 @@ export const loginUser = sessionInfo => dispatch => (
             }
         })
         .then(({user, token, issued, expiresSeconds}) => {
-            const issuedDate = new Date(issued)
-            const expiresAt = issuedDate + expiresSeconds
-            dispatch(setExpiration(expiresAt))
+            const issuedAt = new Date(issued)
+            const expiresAt = new Date(issuedAt.getTime() + (expiresSeconds * 1000))
+            user["sessionExpiration"] = expiresAt.toISOString()
             localStorage.setItem('jwtToken', token)
             localStorage.setItem('currentUser', JSON.stringify(user))
             dispatch(setCurrentUser(user))
-            redirect('/dashboard')
+            redirect('dashboard')
         })
         .catch(err => console.error(err))
 )

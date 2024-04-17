@@ -28,7 +28,7 @@ const Auth = () =>{
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log("THIS IS ", email, pw)
+        // console.log("THIS IS ", email, pw)
         if(isRegister) {
             dispatch(createUser({email: email, password: pw}))
         } else if (isLogin) {
@@ -40,7 +40,7 @@ const Auth = () =>{
     }
     useEffect(() => {
 
-        console.log("Email or password changed:", email, pw);
+        // console.log("Email or password changed:", email, pw);
     }, [email, pw]);
     useEffect(() => {
         setEmail('');
