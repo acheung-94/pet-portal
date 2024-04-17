@@ -8,15 +8,6 @@ import { createUser, loginUser, logoutUser } from './store/sessionReducer';
 import { restoreSession } from './utils/jwt';
 import { createPet, destroyPet, fetchPet, fetchPets, updatePet } from './store/petReducer';
 const store = configureStore()
-window.store = store
-window.loginUser = loginUser
-window.createUser = createUser
-window.logoutUser = logoutUser
-window.fetchPets = fetchPets
-window.fetchPet = fetchPet
-window.createPet = createPet
-window.updatePet = updatePet
-window.destroyPet = destroyPet
 const initializeApp = () =>{
   
   ReactDOM.createRoot(document.getElementById('root')).render(
