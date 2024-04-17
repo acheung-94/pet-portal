@@ -3,6 +3,7 @@ import { selectCurrentUser } from '../../store/sessionReducer'
 import './PetGrid.css'
 import { useEffect } from 'react'
 import { fetchPets } from '../../store/petReducer'
+import ImgPlaceholder from '../../assets/striped-cat.jpg'
 
 const PetGrid = () => {
     const dispatch = useDispatch();
@@ -33,10 +34,10 @@ const PetGrid = () => {
                     {Object.values(currentPets).map(pet => (
                         <div key={pet._id} className='pet-item'>
                             <div className='pet-img'>
-                                {/* pet's image */}
+                                <img src={ImgPlaceholder}/>
                             </div>
                             <div className='pet-name'>
-                                <span>{pet.name}</span>
+                                <p>{pet.name}</p>
                             </div>
                         </div>
                     ))}
