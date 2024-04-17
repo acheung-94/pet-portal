@@ -1,10 +1,19 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { selectCurrentUser } from '../../store/sessionReducer'
 import './PetGrid.css'
+import { useEffect } from 'react'
+import { fetchPets } from '../../store/petReducer'
 
 const PetGrid = () => {
+    const dispatch = useDispatch();
     const currentUser = useSelector(selectCurrentUser)
-    const currentPets = useSelector(state => state.pets) // placeholder
+    const currentPets = useSelector(state => state.pets)
+
+    useEffect(() => {
+        if (currentUser) {
+            dispatch(fetchPets())
+        }
+    }, [currentUser, currentPets.length, dispatch])
 
     return (
         <>
@@ -21,13 +30,13 @@ const PetGrid = () => {
                     
                 </div>
                 <div className='pet-grid-index'>
-                    {currentPets.map(pet => (
-                        <div key={pet.id} className='pet-item'>
-                            <div className='pet-name'>
-                                <span>{pet.name}</span>
-                            </div>
+                    {Object.values(currentPets).map(pet => (
+                        <div key={pet._id} className='pet-item'>
                             <div className='pet-img'>
                                 {/* pet's image */}
+                            </div>
+                            <div className='pet-name'>
+                                <span>{pet.name}</span>
                             </div>
                         </div>
                     ))}

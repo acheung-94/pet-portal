@@ -1,5 +1,6 @@
 import Footer from '../Footer/Footer'
 import Navbar from '../Navbar/Navbar'
+import PetGrid from '../PetGrid/PetGrid'
 import './Dashboard.css'
 
 const Dashboard = () => {
@@ -16,7 +17,7 @@ const Dashboard = () => {
                 </div>
                 <span className='dashboard-sep'></span>
                 <div className='index-container'>
-                    
+                    <PetGrid />
                 </div>
             </div>
             <Footer/>
