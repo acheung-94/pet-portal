@@ -6,11 +6,8 @@ import configureStore from './store/store';
 import { Provider } from 'react-redux';
 import { createUser, loginUser, logoutUser } from './store/sessionReducer';
 import { restoreSession } from './utils/jwt';
+import { createPet, destroyPet, fetchPet, fetchPets, updatePet } from './store/petReducer';
 const store = configureStore()
-window.store = store
-window.loginUser = loginUser
-window.createUser = createUser
-window.logoutUser = logoutUser
 const initializeApp = () =>{
   
   ReactDOM.createRoot(document.getElementById('root')).render(

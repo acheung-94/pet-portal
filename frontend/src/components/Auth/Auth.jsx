@@ -1,15 +1,24 @@
 import { useState } from "react"
 import Navbar from "../Navbar/Navbar"
+import Footer from "../Footer/Footer.jsx";
+import '../Home/Home.css'
 import './Auth.css'
 import { useLocation } from "react-router"
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createUser, loginUser, selectCurrentUser } from "../../store/sessionReducer";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import NewPetFormModal from "../NewPetFormModal/NewPetFormModal";
 
 const Auth = () =>{
+    /* 
+        FROM HERE THIS IS TEMP FOR CHECKING MODAL
+    */
+    const [modalState, setModalState] = useState(false)
+
+    /* */
     const location = useLocation()
     const {pathname} = location
-    const currentUser = useSelector(selectCurrentUser)
     const dispatch = useDispatch();
     const isRegister = pathname === '/register'
     const isLogin = pathname === '/login'
@@ -27,7 +36,7 @@ const Auth = () =>{
         }
         setEmail('');
         setPw('');
-        window.location.href= "/"
+        // window.location.href= "/"
     }
     useEffect(() => {
 
@@ -45,9 +54,9 @@ const Auth = () =>{
                     <div className="session-form-container">
                         <div className="session-title">
                             {pathname === '/login' ? (
-                                <h2>Log in</h2>
+                                <h2>Log in as an existing user</h2>
                             ) : (
-                                <h2>Sign Up</h2>
+                                <h2>Welcome to Pet Portal</h2>
                             )
                             }
                         </div>
@@ -70,16 +79,31 @@ const Auth = () =>{
                                         <input id="password-input" type="password" onChange={(e) => setPw(e.target.value)}/>
                                     </label>
                                 </div>
-                                <div className="submit-container">
-                                    <button type="submit">Submit</button>
+                                <div className="auth-button-container">
+                                    <div className="auth-button-submit">
+                                        <button type="submit">Submit</button>
+                                    </div>
+                                {pathname === '/login' ? (
+                                    <div className="auth-button-new-to-portal">
+                                        <Link to={'/register'}>
+                                            <button>New to Pet Portal</button>
+                                        </Link>
+                                    </div>
+                                ): (
+                                    <div></div>
+                                )}
                                 </div>
                             </form>
                         </div>
+                        <div>
+                            <button onClick={() => setModalState(true)}>THIS IS JUST A TEMP BUTTON</button>
+                        </div>
+                        {modalState && <NewPetFormModal modalState={modalState} setModalState={setModalState}/>}
                     </div>
-                    
-
                 </div>
+                <Footer></Footer>
             </div>
+            
         </>
     )
 }

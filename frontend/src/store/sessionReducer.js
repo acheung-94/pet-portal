@@ -1,3 +1,4 @@
+import { redirect } from "react-router-dom"
 import { postUser, postSession } from "../utils/sessionApiUtils"
 
 //CONST TYPES
@@ -46,12 +47,14 @@ export const loginUser = sessionInfo => dispatch => (
             localStorage.setItem('jwtToken', token)
             localStorage.setItem('currentUser', JSON.stringify(user))
             dispatch(setCurrentUser(user))
+            redirect('/dashboard')
         })
         .catch(err => console.error(err))
 )
 
 export const logoutUser = () => dispatch => {
     localStorage.removeItem('jwtToken')
+    localStorage.removeItem('currentUser')
     dispatch(removeCurrentUser());
 }
 
