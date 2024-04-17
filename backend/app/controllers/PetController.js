@@ -1,3 +1,4 @@
+import { convertObjectToStateShape } from '../../util/jsonUtils.js'
 import ApplicationController from '../controllers/ApplicationController.js'
 import Pet from '../models/Pet.js'
 
@@ -22,7 +23,7 @@ export default class PetController extends ApplicationController{
 
 		const pet = await newPet.save()
 		if (pet) {
-			return res.json({ pet })
+			return res.json(pet)
 		} else {
 			res.status(400)
 		}
@@ -58,7 +59,7 @@ export default class PetController extends ApplicationController{
 		// 	{ returnDocument: 'after' }
 		// )
 		if (await pet.save()) {
-			return res.json({ pet })
+			return res.json(pet)
 		} else {
 			res.status(400)
 		}
@@ -67,7 +68,7 @@ export default class PetController extends ApplicationController{
 	static async show(req, res, _) {
 		const pet = await Pet.findOne({ _id: req.params.id })
 		if (pet) {
-			return res.json({ pet })
+			return res.json(pet)
 		} else {
 			res.status(404)
 		}
@@ -81,7 +82,7 @@ export default class PetController extends ApplicationController{
 		}
 		const deleted = await Pet.deleteOne({ _id: req.params.id })
 		if (deleted) {
-			return res.json({ deleted })
+			return res.json(deleted)
 		} else {
 			return res.status(404).json({"status": "not found"})
 		}
@@ -90,7 +91,7 @@ export default class PetController extends ApplicationController{
 	static async index(req, res, _) {
 		const pets = await Pet.find({})
 		if (pets) {
-			return res.json({ pets })
+			return res.json(convertObjectToStateShape(pets))
 		} else {
 			res.status(404)
 		}
