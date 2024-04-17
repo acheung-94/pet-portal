@@ -1,0 +1,133 @@
+.pet-dashboard-container{
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    border: 1px solid green;
+    padding-top: 5%;
+    display: flex;
+}
+
+.pet-dashboard{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid purple;
+    box-sizing: border-box;
+    padding: 20px;
+}
+.back-link{
+    color: var(--green-dark);
+    font-size: 20px;
+}
+.pet-dash-header{
+    font-size: 36px;
+    box-sizing: border-box;
+    padding: 24px;
+}
+
+.pet-dash-sep{
+    border-bottom: 1px solid gray;
+}
+
+.pet-metrics-container{
+    display: flex;
+    gap: 24px;
+    border: 1px solid brown;
+    height: 100%;
+}
+
+.pet-reminder-header, .pet-vaccines-header, .medications-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    border-bottom: 1px solid pink;
+    font-size: 24px;
+}
+
+.pet-reminder-module{
+    width: 40%;
+    border: 1px solid gray;
+    height: 100%;
+}
+
+.preventatives-module{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px dashed green;
+    box-sizing: border-box;
+}
+
+.vaccines{
+    height: 50%;
+}
+
+.medications{
+    height: 50%;
+}
+
+.pet-dash-buttons{
+    border: 1px solid var(--green-dark);
+    background: none;
+    box-sizing: border-box;
+    width: 28px;
+    height: 28px;
+    border-radius: 14px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--green-dark);
+}
+
+.pet-signalment{
+    border: 1px solid aqua;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+}
+
+.profile-pic-border{
+    width: 240px;
+    height: 240px;
+    box-sizing: border-box;
+    border: 4px solid var(--gold);
+    border-radius: 120px;
+    padding: 8px;
+}
+
+.profile-pic{
+    width: 100%;
+    height: 100%;
+}
+
+.pet-summary{
+    width: 100%;
+    border: 1px solid green;
+    height: 100%;
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.pet-attribute{
+    display: flex;
+    border: 1px dashed maroon;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 8px;
+    align-items: center;
+}
+
+.pet-attribute h3{
+    font-size: 24px;
+}
