@@ -1,8 +1,9 @@
 .pet-grid-header-container {
     display: flex;
     justify-content: space-between;
-    padding-top: 20px;
+    height: 48px;
     font-size: 20px; 
+    background-color: var(--green-dark);
 }
 
 .get-grid-header-form button{
@@ -41,6 +42,11 @@
 
 .pet-grid-header-text {
     font-size: 32px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
 }
 
 .pet-grid-index {

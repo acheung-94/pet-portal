@@ -34,6 +34,7 @@ const PetGrid = () => {
                     {Object.values(currentPets).map(pet => (
                         <div key={pet._id} className='pet-item'>
                             <div className='pet-img'>
+                                {/* Link to Pet Show */}
                                 <img src={ImgPlaceholder}/>
                             </div>
                             <div className='pet-name'>
