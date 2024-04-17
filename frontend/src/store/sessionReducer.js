@@ -54,6 +54,7 @@ export const loginUser = sessionInfo => dispatch => (
 
 export const logoutUser = () => dispatch => {
     localStorage.removeItem('jwtToken')
+    localStorage.removeItem('currentUser')
     dispatch(removeCurrentUser());
 }
 

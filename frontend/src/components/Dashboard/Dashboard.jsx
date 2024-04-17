@@ -17,7 +17,7 @@ const Dashboard = () => {
                 </div>
                 <span className='dashboard-sep'></span>
                 <div className='index-container'>
-                    <PetGrid />
+                    <PetGrid/>
                 </div>
             </div>
             <Footer/>

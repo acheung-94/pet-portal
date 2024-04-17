@@ -24,26 +24,30 @@ const PetGrid = () => {
                         <h1>Your Pets</h1>
                     </div>
                     <div className='get-grid-header-form'>
-                        {/* add new pet form */}
+                        <button className='grid-add-pet-button' onClick={() => setModalState(true)}>Add pet</button>
                     </div>
                 </div>
                 <div className='pet-grid-divider'>
                     
                 </div>
                 <div className='pet-grid-index'>
-                    {Object.values(currentPets).map(pet => (
-                        <div key={pet._id} className='pet-item'>
-                            <div className='pet-img'>
-                                {/* Link to Pet Show */}
-                                <img src={ImgPlaceholder}/>
+                    {currentPets &&
+                        Object.values(currentPets).map((pet, idx) => (
+                            <div key={idx} className='pet-item'>
+                              <div className='pet-img'>
+                                  {/* Link to Pet Show */}
+                                  <img src={ImgPlaceholder}/>
+                              </div>
+                              <div className='pet-name'>
+                                  <p>{pet.name}</p>
+                              </div>
                             </div>
-                            <div className='pet-name'>
-                                <p>{pet.name}</p>
-                            </div>
-                        </div>
-                    ))}
+                        ))
+                    }
+                    {!currentPets && <div>Loading...</div>}
                 </div>
             </div>
+            {modalState && <NewPetFormModal modalState={modalState} setModalState={setModalState}/>}
         </>
     )
 }

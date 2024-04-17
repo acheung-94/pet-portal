@@ -1,4 +1,5 @@
 import { getPet, getPets, postPet, putPet, deletePet } from "../utils/petApiUtils"
+import { createSelector } from 'reselect'
 
 //CONST TYPES
 export const RECEIVE_PETS = 'pets/RECEIVE_PETS'
@@ -81,6 +82,9 @@ export const destroyPet = petId => dispatch => (
             }
         })
 )
+
+export const selectPets = createSelector(state => state.pets, pets => Object.values(pets))
+export const currentPet = (petId) => state => state.pets[petId]
 
 const petReducer = (state = {}, action) => {
     const nextState = { ...state }
