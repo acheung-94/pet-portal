@@ -1,11 +1,17 @@
 import './Navbar.css'
-import { MdOutlinePets } from "react-icons/md";
 import { useDispatch, useSelector } from 'react-redux';
 import {Link} from "react-router-dom"
 import { logoutUser, selectCurrentUser } from '../../store/sessionReducer';
+import { useEffect } from 'react';
+import { fetchPets } from '../../store/petReducer';
+
 const Navbar = () => {
     const currentUser = useSelector(selectCurrentUser)
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchPets())
+    }, [dispatch])
 
     return(
         <div className='header-container'>
@@ -14,8 +20,9 @@ const Navbar = () => {
                     <div className='title-section'>
                         <span>
                             <Link to={'/'}>
-                                <svg className="petportal-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" 
-                                    viewBox="-50 20 120 80" style={{ enableBackground: 'new 0 0 64 64' }} xml:space="preserve">
+                                <svg className="petportal-icon" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" 
+                                    viewBox="-50 20 120 80" style={{ enableBackground: 'new 0 0 64 64' }} xmlSpace="preserve">
+
                                     <path d="M6.342,46.317c-1.024-0.512-2.228-0.402-3.143,0.284C2.448,47.165,2,48.062,2,49v7c0,0.345,0.178,0.665,0.47,0.848l8,5  
                                     C10.629,61.947,10.812,62,11,62h20h4h21c0.155,0,0.309-0.036,0.447-0.105l4-2c0.181-0.09,0.329-0.233,0.427-0.409  
                                     c0.104-0.186,2.496-4.598-0.006-8.981c-2.111-3.702-5.98-4.395-6.735-4.496C54.089,46.003,54.045,46,54,46H43.414l-0.419-0.419  

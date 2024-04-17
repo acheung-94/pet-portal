@@ -1,0 +1,26 @@
+.pet-grid-header-container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    font-size: 20px; 
+}
+
+.get-grid-header-form button{
+    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    overflow: hidden;
+    outline: none;
+    vertical-align: middle ;
+    font-family: borish;
+    font-weight: bold;
+    border-radius: 20px;
+    font-size: 20px; 
+}
+.get-grid-header-form button:hover {
+    background-color: var(--pale-purple);
+}
