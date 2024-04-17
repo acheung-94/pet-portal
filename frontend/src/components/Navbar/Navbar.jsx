@@ -9,9 +9,25 @@ const Navbar = () => {
     const currentUser = useSelector(selectCurrentUser)
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(fetchPets())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(fetchPets())
+    // }, [dispatch])
+    useEffect( () => {
+        if (currentUser && currentUser.sessionExpiration){
+            const checkTime = setInterval(()=>{
+                let currentTime = Date.now() //ms
+                let expirationTime = new Date(currentUser.sessionExpiration).getTime() // date obj
+
+                console.log(currentTime, expirationTime)
+
+            } , 1000)
+
+            return(() => {
+                console.log('unmounting!')
+                clearInterval(checkTime)
+            } )
+        }
+    }, [currentUser])
 
     return(
         <div className='header-container'>
