@@ -47,6 +47,7 @@ const NewPetForm = ({modalState, setModalState}) => {
         setInsurancePolicyId()
         setWeight()
     } 
+
     const formContent = () => (
          <>
             <label className="input-label">

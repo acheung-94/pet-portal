@@ -100,9 +100,11 @@ optgroup {
     border-radius: 16px;
     font-size: 16px;
 }
+
 .input-label {
     padding-bottom: 5px;
 }
+
 .input-label input{
     height: 25px;
     width: 300px;
@@ -112,6 +114,7 @@ optgroup {
 }
 
 .add-new-pet-button button{
+
     padding: 10px;
     /* padding-left: 10px;
     padding-right: 10px; */
@@ -125,6 +128,7 @@ optgroup {
     font-family: borish;
     font-size: 17px;
     font-weight: bold;
+
     border-radius: 20px;
 }
 

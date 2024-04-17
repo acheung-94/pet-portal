@@ -24,6 +24,7 @@ const PetGrid = () => {
                     
                 </div>
                 <div className='pet-grid-index'>
+
                     {currentPets &&
                         Object.values(currentPets).map((pet, idx) => (
                             <div key={idx} className='pet-item'>
