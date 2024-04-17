@@ -1,14 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { selectCurrentUser } from '../../store/sessionReducer'
-import './PetGrid.css'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { fetchPets } from '../../store/petReducer'
+import NewPetFormModal from '../NewPetFormModal/NewPetFormModal'
 import ImgPlaceholder from '../../assets/striped-cat.jpg'
+import './PetGrid.css'
 
 const PetGrid = () => {
     const dispatch = useDispatch();
     const currentUser = useSelector(selectCurrentUser)
     const currentPets = useSelector(state => state.pets)
+    const [modalState, setModalState] = useState(false)
 
     useEffect(() => {
         if (currentUser) {
