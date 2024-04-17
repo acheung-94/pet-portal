@@ -15,9 +15,9 @@
 .modal-content {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 400px;
   width: 500px;
-  height: 80%;
+  height: 730px;
   transform: translate(-50%, -50%);
   background-color: var(--main-bg-beige);
   padding: 10px;
@@ -54,7 +54,7 @@
 
 .modal-content-center-title {
     font-size: 28px;
-    margin-bottom: 30px; 
+    margin-bottom: 10px; 
 }
 
 optgroup {
@@ -67,7 +67,7 @@ optgroup {
     align-items: center;
 }
 .add-new-pet-form label:nth-child(9) {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 .name-input-label,
 .dob-input-label,
@@ -79,7 +79,7 @@ optgroup {
 .insurance-policy-input-label,
 .weight-input-label {
     padding-top: 5px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     display: block;
     text-align: left;
     box-sizing: border-box;
@@ -99,6 +99,9 @@ optgroup {
     border:2px solid rgb(205, 205, 205);
     border-radius: 16px;
     font-size: 16px;
+}
+.input-label {
+    padding-bottom: 5px;
 }
 .input-label input{
     height: 25px;
@@ -134,7 +137,7 @@ optgroup {
     height: 1px;
     background-color: rgb(255,163,128); 
     position: absolute;
-    bottom: 120px; /* Adjust distance from the button text */
+    bottom: 25px; /* Adjust distance from the button text */
     left: 209px;
 }
 .optional {

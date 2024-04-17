@@ -99,28 +99,28 @@ const NewPetForm = ({modalState, setModalState}) => {
             </label>
             <label className="input-label">
                 <div className='breed-input-label'>
-                    <span>Breed <span className="optional">* optional</span></span>
+                    <span>Breed</span>
                 </div>
                 <input placeholder='Breed' 
                     type='text' value={breed} onChange={e => setBreed(e.target.value)} />
             </label>
             <label className="input-label">
                 <div className='microchipNum-input-label'>
-                    <span>Microchip Number <span className="optional">* optional</span></span>
+                    <span>Microchip Number</span>
                 </div>
                 <input placeholder='Microchip number' 
                     type='text' value={microchipNum} onChange={e => setMicrochipNum(e.target.value)} />
             </label>
             <label className="input-label">
                 <div className='insurance-policy-input-label'>
-                    <span>Insurance Policy Id <span className="optional">* optional</span></span>
+                    <span>Insurance Policy Id</span>
                 </div>
                 <input placeholder='Insurance policy id' 
                     type='text' value={insurancePolicyId} onChange={e => setInsurancePolicyId(e.target.value)} />
             </label>
             <label className="input-label">
                 <div className='weight-input-label'>
-                    <span>Weight <span className="optional">* optional</span></span>
+                    <span>Weight</span>
                 </div>
                 <input placeholder='Weight' 
                     type='text' value={weight} onChange={e => setWeight(e.target.value)} />
