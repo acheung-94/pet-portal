@@ -1,5 +1,5 @@
 import { redirect } from "react-router-dom"
-import { postUser, postSession } from "../utils/sessionApiUtils"
+import { postUser, postSession, refreshSession, updateValues } from "../utils/sessionApiUtils"
 
 //CONST TYPES
 export const SET_CURRENT_USER = 'session/SET_CURRENT_USER'
@@ -28,11 +28,9 @@ export const createUser = userInfo => dispatch => (
                 throw res
             }
         })
-        .then(({user, token}) => {
-            console.log(token)
-            localStorage.setItem('jwtToken', token)
-            localStorage.setItem('currentUser', JSON.stringify(user))
-            dispatch(setCurrentUser(user))
+        .then((blob) => {
+            updateValues(blob)
+            dispatch(setCurrentUser(blob.user))
         })
         .catch(err => console.error(err))
 )
@@ -46,13 +44,9 @@ export const loginUser = sessionInfo => dispatch => (
                 throw res
             }
         })
-        .then(({user, token, issued, expiresSeconds}) => {
-            const issuedAt = new Date(issued)
-            const expiresAt = new Date(issuedAt.getTime() + (expiresSeconds * 1000))
-            user["sessionExpiration"] = expiresAt.toISOString()
-            localStorage.setItem('jwtToken', token)
-            localStorage.setItem('currentUser', JSON.stringify(user))
-            dispatch(setCurrentUser(user))
+        .then((blob) => {
+            updateValues(blob)
+            dispatch(setCurrentUser(blob.user))
             redirect('dashboard')
         })
         .catch(err => console.error(err))
@@ -62,6 +56,21 @@ export const logoutUser = () => dispatch => {
     localStorage.removeItem('jwtToken')
     localStorage.removeItem('currentUser')
     dispatch(removeCurrentUser());
+}
+
+export const refreshUser = () => dispatch => {
+    refreshSession()
+    .then(res => {
+        if (res.ok){
+            return res.json()
+        }else{
+            throw res
+        }
+    })
+    .then((blob) => {
+        updateValues(blob)
+        dispatch(setCurrentUser(blob.user))
+    })
 }
 
 //SELECTOR

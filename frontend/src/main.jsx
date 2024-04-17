@@ -5,8 +5,11 @@ import './index.css';
 import configureStore from './store/store';
 import { Provider } from 'react-redux';
 import { restoreSession } from './utils/jwt';
+import { refreshUser } from './store/sessionReducer';
 
 const store = configureStore()
+window.store = store
+window.refreshUser = refreshUser
 const initializeApp = () =>{
   
   ReactDOM.createRoot(document.getElementById('root')).render(

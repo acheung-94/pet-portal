@@ -1,7 +1,7 @@
 import './Navbar.css'
 import { useDispatch, useSelector } from 'react-redux';
 import {Link} from "react-router-dom"
-import { logoutUser, selectCurrentUser } from '../../store/sessionReducer';
+import { logoutUser, refreshUser, selectCurrentUser } from '../../store/sessionReducer';
 import { useEffect } from 'react';
 import { fetchPets } from '../../store/petReducer';
 
@@ -16,14 +16,15 @@ const Navbar = () => {
         if (currentUser && currentUser.sessionExpiration){
             const checkTime = setInterval(()=>{
                 let currentTime = Date.now() //ms
-                let expirationTime = new Date(currentUser.sessionExpiration).getTime() // date obj
+                let expirationTime = new Date(currentUser.sessionExpiration).getTime() //ms
 
-                console.log(currentTime, expirationTime)
-
-            } , 1000)
+                if (currentTime >= (expirationTime-2000) ){
+                    dispatch(refreshUser())
+                    clearInterval(checkTime)
+                }   
+            } , 500)
 
             return(() => {
-                console.log('unmounting!')
                 clearInterval(checkTime)
             } )
         }
