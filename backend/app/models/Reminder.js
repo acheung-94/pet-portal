@@ -3,7 +3,8 @@ import mongoose, { Schema } from 'mongoose'
 const reminderSchema = Schema({
 	title: {
 		type: String,
-		required: true
+		required: true,
+		maxLength: 32
 	},
 	dueDate: {
 		type: Date,
@@ -15,11 +16,18 @@ const reminderSchema = Schema({
 	},
 	description: {
 		type: String,
-		required: false
+		required: false,
+		maxLength: 512
 	},
 	location: {
 		type: String,
-		required: false
+		required: false,
+		maxLength: 256
+	},
+	type: {
+		type: String,
+		lowercase: true,
+		enum: ['appointment', 'vaccination', 'medication', 'surgery']
 	},
 	pet: {
 		type: Schema.Types.ObjectId,
