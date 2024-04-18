@@ -3,7 +3,7 @@ import './NewPetFormModal.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { createPet } from '../../store/petReducer'
 
-const NewPetForm = ({modalState, setModalState}) => {
+const NewPetForm = ({setModalState}) => {
     const [name, setName] = useState('')
     const [dob, setDob] = useState('')
     const [sex, setSex] = useState('')
@@ -131,10 +131,10 @@ const NewPetForm = ({modalState, setModalState}) => {
     )
     return(
         <>
-            <div className="modal-background" onClick={e => setModalState(null)}>
+            <div className="modal-background" onClick={_ => setModalState(null)}>
                 <div className="modal-content" onClick={e => e.stopPropagation()}>
                     <div className='modal-content-top'>
-                        <button onClick={e => setModalState(null)}>
+                        <button onClick={_ => setModalState(null)}>
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" 
                                     role="presentation" focusable="false" 

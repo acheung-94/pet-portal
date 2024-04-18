@@ -64,7 +64,7 @@ export const selectCurrentUser = state => state.session
 //REDUCER
 const initialState = JSON.parse(localStorage.getItem('currentUser')) || null;
 const sessionReducer = (state=initialState, action) => {
-    const newState = {...state}
+    //const newState = {...state}
     switch(action.type) {
         case SET_CURRENT_USER:
             return action.sessionInfo

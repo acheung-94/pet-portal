@@ -1,12 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import './PetProfile.css'
 import { Link, useParams } from 'react-router-dom'
-import { currentPet, fetchPets } from '../../store/petReducer'
-import { useEffect } from 'react'
+import { currentPet } from '../../store/petReducer'
 const PetProfile = () => {
     const { petId } = useParams()
     const pet = useSelector(currentPet(petId))
-    const dispatch = useDispatch()
     const petAttributes = Object.entries(pet)
 
     
@@ -32,7 +30,7 @@ const PetProfile = () => {
         if (years < 1) {
             if(months < 4){
                 let weeks = Math.floor(days / 7)
-                let daysDiff = days % 7
+                //let daysDiff = days % 7
                 if (weeks > 1) {
                     return (`${weeks} weeks & ${days} days`)
                 }else{
