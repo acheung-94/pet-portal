@@ -3,14 +3,16 @@ import './PetProfile.css'
 import { Link, useParams } from 'react-router-dom'
 import { currentPet, fetchPets } from '../../store/petReducer'
 import { useEffect } from 'react'
+import { fetchPetReminders } from '../../store/reminderReducer'
+import { useState } from 'react'
+import NewReminderFormModal from '../NewReminderFormModal/NewReminderFormModal'
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
 const PetProfile = () => {
     const { petId } = useParams()
     const pet = useSelector(currentPet(petId))
     const dispatch = useDispatch()
-    
-    
+    const [modalState, setModalState] = useState(null)
     
     const calculateAge = (dateString) => {
         const birthday = new Date(dateString)
@@ -66,7 +68,8 @@ const PetProfile = () => {
 
     useEffect( () => {
         dispatch(fetchPets())
-    }, [dispatch])
+        dispatch(fetchPetReminders(petId))
+    }, [petId])
 
     if (pet) {
 

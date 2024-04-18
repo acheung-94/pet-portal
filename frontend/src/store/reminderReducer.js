@@ -83,11 +83,13 @@ export const updateReminder = (reminderInfo) => dispatch => (
         .then(reminder => dispatch(receiveReminder(reminder)))
         .catch(err => console.error(err))
 )
+
 export const destroyReminder = (reminderId) => dispatch => (
     deleteReminder(reminderId)
         .then(res => {
-            if(res.ok) {
+            if (res.ok) {
                 dispatch(removeReminder(reminderId))
+                return res.json()
             } else {
                 throw res
             }
@@ -95,49 +97,22 @@ export const destroyReminder = (reminderId) => dispatch => (
         .catch(err => console.error(err))
 )
 
+
 //SELECTOR
 export const selectReminder = createSelector(state => state.reminders, reminders => Object.values(reminders))
 export const currentReminder = reminderId => state => state.reminders[reminderId]
 
 //REDUCER
-const initialState = { 
-    appointment: {},
-    vaccination: {},
-    medication: {} 
-}
-const reminderReducer = (state=initialState, action) => {
+
+const reminderReducer = (state={}, action) => {
     const newState = {...state}
     switch(action.type) {
         case RECEIVE_REMINDER:
-            return {
-                ...state,
-                [action.reminder.type]: {
-                ...state[action.reminder.type],
-                [action.reminder._id]: action.reminder
-                }
-            };
+            return {...state, [action.reminder._id]: action.reminder}
         case RECEIVE_REMINDERS:
-            action.reminders.forEach(reminder => {
-                newState[reminder.type][reminder._id] = reminder;
-            });
-            return newState;
+            return {...state, ...action.reminders}
         case REMOVE_REMINDER:
-            const { appointment, vaccination, medication } = newState
-            appointment.forEach(appt => {
-                if(appt._id === action.reminderId) {
-                    delete appointment[action.reminderId]
-                }
-            })
-            vaccination.forEach(vax => {
-                if(vax._id === action.reminderId) {
-                    delete vaccination[action.reminderId]
-                }
-            })
-            medication.forEach(med => {
-                if(med._id === action.reminderId) {
-                    delete medication[action.reminderId]
-                }
-            })
+            delete newState[action.reminderId]
             return newState
         default:
             return state

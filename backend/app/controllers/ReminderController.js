@@ -34,6 +34,7 @@ export default class ReminderController extends ApplicationController {
 			return res.status(403)
 		}
 		const allowed = [
+			'type',
 			'title',
 			'dueDate',
 			'performDate',
@@ -55,10 +56,13 @@ export default class ReminderController extends ApplicationController {
 	}
 	static async delete(req, res, _) {
 		const reminder = await Reminder.findById(req.params.id)
+		console.log("REMINDER IS", reminder)
 		if (req.user._id !== reminder.user) {
 			return res.status(403)
 		}
-		const result = await Reminder.findByIdAndDelete(req.params.id)
+		const result = await Reminder.deleteOne()
+		console.log("RESULT IS", result)
+
 		if (result) {
 			return res.json(result)
 		}
@@ -66,6 +70,7 @@ export default class ReminderController extends ApplicationController {
 	}
 	static async create(req, res, _) {
 		const newReminder = new Reminder({
+			type: req.body.type,
 			title: req.body.title,
 			dueDate: req.body.dueDate,
 			performDate: req.body.performDate,
