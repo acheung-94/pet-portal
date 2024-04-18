@@ -12,8 +12,8 @@
     align-items: center;
 }
 
-.modal-content-reminder,
-.modal-content-vaccine,
+.modal-content-appointment,
+.modal-content-vaccination,
 .modal-content-medication {
   position: absolute;
   left: 50%;
@@ -30,6 +30,23 @@
   border: 1px solid #333;
   font-weight: bold;
   font-size: 20px;
+}
+.modal-content-edit{
+    position: absolute;
+    left: 50%;
+    top: 400px;
+    width: 350px;
+    height: 520px;
+    transform: translate(-50%, -50%);
+    /* background-color: var(--main-bg-beige); */
+    background-color: var(--main-bg-beige);
+    color: var(--green-dark);
+    padding: 10px;
+    border-radius: 30px;
+    position: absolute;
+    border: 1px solid #333;
+    font-weight: bold;
+    font-size: 20px;
 }
 .reminder-modal-content-top {
     display: flex;
@@ -136,4 +153,8 @@ textarea {
 }
 .description-input::placeholder {
     padding-left: 15px;
+}
+
+.reminder-button-edit{
+    color: var(--green-dark);
 }

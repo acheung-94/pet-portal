@@ -97,9 +97,9 @@
     margin-bottom: 10px; 
 }
 
-optgroup {
+/* optgroup {
     font-size: 0.5px;
-}
+}*/
 .add-new-pet-form,
 .edit-new-pet-form  {
     display: flex;
