@@ -1,6 +1,6 @@
 import ApplicationController from '../controllers/ApplicationController.js'
 import { convertObjectToStateShape } from '../../util/jsonUtils.js'
-import { DEFAULT_IMAGE_URI } from '../../db/seeds/images.js'
+import { DEFAULT_IMAGE_URI } from '../../config/configConstants.js'
 import Pet from '../models/Pet.js'
 import { singleFileUpload } from '../../util/s3Utils.js'
 
