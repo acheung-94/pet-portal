@@ -1,6 +1,8 @@
 import ApplicationController from '../controllers/ApplicationController.js'
 import { convertObjectToStateShape } from '../../util/jsonUtils.js'
+import { DEFAULT_IMAGE_URI } from '../../db/seeds/images.js'
 import Pet from '../models/Pet.js'
+import { singleFileUpload } from '../../util/s3Utils.js'
 
 export default class PetController extends ApplicationController{
 	constructor() {
@@ -8,6 +10,10 @@ export default class PetController extends ApplicationController{
 	}
 
 	static async create(req, res, _) {
+
+		const imageUrl = req.file ? 
+			await singleFileUpload({file: req.file, isPublic: true}) :
+			DEFAULT_IMAGE_URI
 		const newPet = new Pet({
 			name: req.body.name,
 			dob: req.body.dob,
@@ -18,7 +24,8 @@ export default class PetController extends ApplicationController{
 			microchipNumber: req.body.microchipNumber,
 			insurancePolicyId: req.body.insurancePolicyId,
 			weight: req.body.weight,
-			owner: req.user._id
+			owner: req.user._id,
+			imageUrl: imageUrl
 		})
 
 		const pet = await newPet.save()
