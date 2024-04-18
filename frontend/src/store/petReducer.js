@@ -60,7 +60,11 @@ export const createPet = petInfo => dispatch => (
         .catch(err => console.error(err))
 )
 
-export const updatePet = petInfo => dispatch => (
+export const updatePet = petInfo => dispatch => {
+    if (! petInfo?._id) {
+        console.error('attempted to update a pet without an id')
+        return petInfo
+    }
     putPet(petInfo)
         .then(res => {
             if (res.ok) {
@@ -70,7 +74,7 @@ export const updatePet = petInfo => dispatch => (
             }
         })
         .then(pet => dispatch(receivePet(pet)))
-)
+}
 
 export const destroyPet = petId => dispatch => (
     deletePet(petId)

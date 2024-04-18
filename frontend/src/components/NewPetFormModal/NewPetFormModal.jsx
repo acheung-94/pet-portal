@@ -19,6 +19,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
     const location = useLocation()
     const {pathname} = location
 
+    console.log(pathname)
 
     useEffect(() => {
     }, [currentPets])
@@ -44,6 +45,8 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
     const handleCreateSubmit = (e) => {
         e.preventDefault();
         const petInfo = {
+            //! this is important, it crashes the server if you don't do it.
+            _id: initialPetData._id,
             name: name,
             dob: dob,
             sex: sex,
