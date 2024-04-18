@@ -49,8 +49,7 @@
     padding: 8px;
     justify-content: flex-end; /* Align the button to the right */
 }
-.modal-content-top-add button,
-.modal-content-top-edit button {
+.modal-content-top-add button {
     cursor: pointer;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -60,13 +59,26 @@
     outline: none;
 }
 .modal-content-top-edit button {
+    cursor: pointer;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border-radius: 14px;
+    border: 1.5px solid; 
+    border-color:var(--bright-gold);
+    overflow: hidden;
+    outline: none;
+    color: white;
+}
+.modal-content-top-edit button {
     color: var(--main-bg-beige);
 }
 .modal-content-top-add button:hover {
     background-color: var(--pale-purple);
+    cursor: pointer;
 }
 .modal-content-top-edit button:hover {
     background-color:  #f8d78986;
+    cursor: pointer;
 }
 
 .modal-content-center {

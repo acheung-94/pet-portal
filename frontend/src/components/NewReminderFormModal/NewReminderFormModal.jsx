@@ -14,9 +14,6 @@ const NewReminderFormModal = ({modalState, setModalState}) => {
     const [location, setLocation] = useState('')
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        console.log("TYPE", type)   
-    },[type])
 
     const handleTypeChange = async (e) => {
         setType(e.target.value);

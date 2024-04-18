@@ -36,7 +36,6 @@ export const fetchPets = () => dispatch => (
 )
 
 export const fetchPet = petInfo => dispatch => {
-    console.log(petInfo)
     return getPet(petInfo)
         .then(res => {
             if (res.ok) {

@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react'
 import './NewPetFormModal.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { createPet } from '../../store/petReducer'
+import { createPet, updatePet } from '../../store/petReducer'
 import { useLocation } from 'react-router'
-const NewPetForm = ({modalState, setModalState, editModalState, setEditModalState}) => {
-    const [name, setName] = useState('')
-    const [dob, setDob] = useState('')
-    const [sex, setSex] = useState('')
-    const [species, setSpecies] = useState('')
-    const [color, setColor] = useState('')
-    const [breed, setBreed] = useState('')
-    const [microchipNum, setMicrochipNum] = useState()
-    const [insurancePolicyId, setInsurancePolicyId] = useState()
-    const [weight, setWeight] = useState()
+const NewPetForm = ({modalState, setModalState, editModalState, setEditModalState, initialPetData}) => {
+    const [name, setName] = useState(initialPetData ? initialPetData.name : '')
+    const initialDob = initialPetData ? new Date(initialPetData.dob).toISOString().split('T')[0] : '';
+    const [dob, setDob] = useState(initialDob)
+    const [sex, setSex] = useState(initialPetData ? initialPetData.sex : '')
+    const [species, setSpecies] = useState(initialPetData ? initialPetData.species : '')
+    const [color, setColor] = useState(initialPetData ? initialPetData.color : '')
+    const [breed, setBreed] = useState(initialPetData ? initialPetData.breed : '')
+    const [microchipNum, setMicrochipNum] = useState(initialPetData ? initialPetData.microchipNum : null )
+    const [insurancePolicyId, setInsurancePolicyId] = useState(initialPetData ? initialPetData.insurancePolicyId : null)
+    const [weight, setWeight] = useState(initialPetData ? initialPetData.weight : null)
     const dispatch = useDispatch();
     const currentPets = useSelector(state => state.pets) // placeholder
     const location = useLocation()
@@ -20,7 +21,6 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
 
 
     useEffect(() => {
-        console.log("Pets changed")
     }, [currentPets])
 
     const handleSubmit = (e) => {
@@ -36,10 +36,14 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
             insurancePolicyId: insurancePolicyId, 
             weight: weight
         }
+        if(pathname === '/dashboard') {
+            dispatch(createPet(petInfo))
+            setModalState(null)
+        } else {
+            dispatch(updatePet(petInfo))
+            setEditModalState(null)
+        }
 
-        dispatch(createPet(petInfo))
-        setModalState(null)
-        setEditModalState(null)
         setName('')
         setDob('')
         setSex('')

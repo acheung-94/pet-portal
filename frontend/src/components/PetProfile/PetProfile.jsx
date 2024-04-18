@@ -69,11 +69,12 @@ const PetProfile = () => {
 
     useEffect( () => {
         dispatch(fetchPets())
-
         dispatch(fetchPetReminders(petId))
     }, [petId, dispatch])
 
-    console.log("EDIT MODAL STATE", editModalState)
+    useEffect(() => {
+        console.log('Pet data changed', pet)
+    }, [pet])
     if (pet) {
 
         return(
@@ -128,7 +129,7 @@ const PetProfile = () => {
                     </div>
                 </div>
                 {modalState && <NewReminderFormModal modalState={modalState} setModalState={setModalState} pet={pet}/>}
-                {editModalState && <NewPetFormModal editModalState={editModalState} setEditModalState={setEditModalState}/>}
+                {editModalState && <NewPetFormModal editModalState={editModalState} setEditModalState={setEditModalState} initialPetData={pet}/>}
                 <Footer/>
             </div>
         )
