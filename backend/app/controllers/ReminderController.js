@@ -50,7 +50,7 @@ export default class ReminderController extends ApplicationController {
 		const updated = await reminder.save()
 
 		if (updated) {
-			return res.json(convertObjectToStateShape(updated))
+			return res.json(updated)
 		}
 		return res.status(400).end()
 	}

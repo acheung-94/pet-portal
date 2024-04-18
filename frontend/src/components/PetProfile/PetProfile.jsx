@@ -53,7 +53,6 @@ const PetProfile = () => {
 
     const renderAttributes = () => {
         const petAttributes = Object.entries(pet)
-        const petAttributes = Object.entries(pet)
         return petAttributes.map( ([key, val], idx) => {
             if ( key !== '_id' && key !== '__v' && key !== 'owner') {
                 return (
@@ -85,7 +84,7 @@ const PetProfile = () => {
                             <div className='pet-reminder-module'> 
                                 <div className='pet-reminder-header'>
                                     <h3>Reminders</h3>
-                                    <button className='pet-dash-buttons'> + </button>
+                                    <button className='pet-dash-buttons' onClick={() => setModalState('reminder')}> + </button>
                                 </div>
                                 <div> Module w/ overflow </div>
                             </div>
@@ -93,14 +92,14 @@ const PetProfile = () => {
                                 <div className="vaccines">
                                     <div className='pet-vaccines-header'>
                                         <h3>Vaccines</h3>
-                                        <button className='pet-dash-buttons'> + </button>
+                                        <button className='pet-dash-buttons' onClick={() => setModalState('vaccine')}> + </button>
                                     </div>
                                     <div>Module w/ overflow</div>
                                 </div>
                                 <div className="medications">
                                     <div className='medications-header'>
                                         <h3>Medications</h3>
-                                        <button className='pet-dash-buttons'> + </button>
+                                        <button className='pet-dash-buttons' onClick={() => setModalState('medication')}> + </button>
                                     </div>
                                     <div>Module w/ overflow</div>
         
@@ -121,6 +120,7 @@ const PetProfile = () => {
                         </div>
                     </div>
                 </div>
+                {modalState && <NewReminderFormModal modalState={modalState} setModalState={setModalState}/>}
                 <Footer/>
             </div>
         )
