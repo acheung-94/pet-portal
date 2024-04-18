@@ -23,7 +23,25 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
     useEffect(() => {
     }, [currentPets])
 
-    const handleSubmit = (e) => {
+    const handleEditSubmit = (e) => {
+        e.preventDefault();
+        const petInfo = {
+            _id: initialPetData._id,
+            name: name,
+            dob: dob,
+            sex: sex,
+            species: species, 
+            color: color,
+            breed: breed, 
+            microchipNum: microchipNum, 
+            insurancePolicyId: insurancePolicyId, 
+            weight: weight
+        }
+
+        dispatch(updatePet(petInfo))
+        setEditModalState(null)
+    }
+    const handleCreateSubmit = (e) => {
         e.preventDefault();
         const petInfo = {
             name: name,
@@ -36,24 +54,19 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
             insurancePolicyId: insurancePolicyId, 
             weight: weight
         }
-        if(pathname === '/dashboard') {
-            dispatch(createPet(petInfo))
-            setModalState(null)
-        } else {
-            dispatch(updatePet(petInfo))
-            setEditModalState(null)
-        }
 
+        dispatch(createPet(petInfo))
+        setModalState(null)
         setName('')
         setDob('')
         setSex('')
         setSpecies('')
         setColor('')
         setBreed('')
-        setMicrochipNum()
-        setInsurancePolicyId()
-        setWeight()
-    } 
+        setMicrochipNum(null)
+        setInsurancePolicyId(null)
+        setWeight(null)
+    }
 
     const formContent = () => (
          <>
@@ -172,7 +185,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
                             {editModalState && <h2>Edit Pet</h2>}
                         </div>
                         <div className='modal-content-center-form'>
-                            <form className={`${modalState ? `${modalState}` : ''}${editModalState ? `${editModalState}` : ''}-new-pet-form`} onSubmit={handleSubmit}>
+                            <form className={`${modalState ? `${modalState}` : ''}${editModalState ? `${editModalState}` : ''}-new-pet-form`} onSubmit={pathname === '/dashboard' ? handleCreateSubmit : handleEditSubmit}>
                                 {formContent()}
                                 <div className={`${modalState ? `${modalState}` : ''}${editModalState ? `${editModalState}` : ''}-new-pet-button`}>
                                     <button type="submit">
