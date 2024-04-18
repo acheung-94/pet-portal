@@ -3,6 +3,7 @@ import './NewPetFormModal.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { createPet, updatePet } from '../../store/petReducer'
 import { useLocation } from 'react-router'
+
 const NewPetForm = ({modalState, setModalState, editModalState, setEditModalState, initialPetData}) => {
     const [name, setName] = useState(initialPetData?.name ?? '')
     const initialDob = initialPetData ? new Date(initialPetData.dob).toISOString().split('T')[0] : '';
