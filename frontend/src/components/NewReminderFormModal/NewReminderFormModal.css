@@ -32,7 +32,6 @@
   font-weight: bold;
   font-size: 20px;
 }
-
 .reminder-modal-content-top {
     display: flex;
     padding: 8px;
@@ -42,7 +41,6 @@
     padding: 0;
     margin-bottom: 20px;
 }
-
 .reminder-modal-content-top button {
     cursor: pointer;
     background-color: transparent;
@@ -54,7 +52,6 @@
     outline: none;
     color: white;
 }
-
 .reminder-modal-content-top button:hover {
     /* background-color: var(--pale-purple); */
     background-color:  #f8d78986;
