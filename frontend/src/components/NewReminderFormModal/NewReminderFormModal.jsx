@@ -47,7 +47,7 @@ const NewReminderFormModal = ({modalState, setModalState, pet}) => {
                 break;
             case 'vaccination':
                 setTitleOptions(
-                    pet.species === 'Cat' ? 
+                    pet.species === 'cat' ? 
                     FEL_VAX :
                     K9_VAX
                 )
@@ -92,11 +92,11 @@ const NewReminderFormModal = ({modalState, setModalState, pet}) => {
                     placeholder='Type'
                     value={type}
                     onChange={handleTypeChange}>
-                    <optgroup>
-                        <option disabled value="">  </option>
-                        <option id="appt">appointment</option>
-                        <option id="vaccine">vaccination</option>
-                        <option id="medication">medication</option>
+                    <optgroup label='select type'>
+                        <option disabled value=""> Select Type </option>
+                        <option id="appt" >Appointment</option>
+                        <option id="vaccine">Vaccination</option>
+                        <option id="medication">Medication</option>
 
                     </optgroup>
                 </select>
