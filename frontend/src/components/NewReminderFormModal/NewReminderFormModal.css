@@ -61,7 +61,7 @@
     font-weight: bold;
     font-size: 20px;
 }
-.modal-content-top {
+.reminder-modal-content-top {
     display: flex;
     padding: 8px;
     justify-content: flex-end; /* Align the button to the right */
@@ -70,18 +70,18 @@
     padding: 0;
     margin-bottom: 20px;
 }
-.modal-content-top button {
+.reminder-modal-content-top button {
     cursor: pointer;
     background-color: transparent;
     background-repeat: no-repeat;
-    border-radius: 14spx;
+    border-radius: 14px;
     border: 1.5px solid; 
     border-color:var(--bright-gold);
     overflow: hidden;
     outline: none;
     color: white;
 }
-.modal-content-top button:hover {
+.reminder-modal-content-top button:hover {
     /* background-color: var(--pale-purple); */
     background-color:  #f8d78986;
 }
@@ -162,5 +162,11 @@ optgroup {
     color: #999;
     font-size: 12px;
     font-style: italic; 
-    padding-left: 10px;
+    padding-left: 15px;
+}
+textarea {
+    border-radius: 20px;
+}
+.description-input::placeholder {
+    padding-left: 15px;
 }

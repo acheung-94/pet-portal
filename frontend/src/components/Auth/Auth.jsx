@@ -67,7 +67,7 @@ const Auth = () =>{
                                         <div className="email-label">
                                             Email: 
                                         </div>
-                                        <input id="email-input" type="email" onChange={(e) => setEmail(e.target.value)} />
+                                        <input id="email-input" type="email" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)} />
                                     </label>
                                 </div>
                                 <div>
@@ -76,7 +76,7 @@ const Auth = () =>{
                                         <div className="password-label">
                                             Password: 
                                         </div>
-                                        <input id="password-input" type="password" onChange={(e) => setPw(e.target.value)}/>
+                                        <input id="password-input" type="password" placeholder="Password" onChange={(e) => setPw(e.target.value)}/>
                                     </label>
                                 </div>
                                 <div className="auth-button-container">
