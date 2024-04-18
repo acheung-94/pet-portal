@@ -1,4 +1,3 @@
-import { redirect } from "react-router-dom"
 import { postUser, postSession, refreshSession, updateValues } from "../utils/sessionApiUtils"
 
 //CONST TYPES
@@ -47,7 +46,6 @@ export const loginUser = sessionInfo => dispatch => (
         .then((blob) => {
             updateValues(blob)
             dispatch(setCurrentUser(blob.user))
-            redirect('dashboard')
         })
         .catch(err => console.error(err))
 )
