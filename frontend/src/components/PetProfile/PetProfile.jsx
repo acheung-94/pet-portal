@@ -123,7 +123,7 @@ const PetProfile = () => {
                         </div>
                     </div>
                 </div>
-                {modalState && <NewReminderFormModal modalState={modalState} setModalState={setModalState}/>}
+                {modalState && <NewReminderFormModal modalState={modalState} setModalState={setModalState} pet={pet}/>}
                 <Footer/>
             </div>
         )

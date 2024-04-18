@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createReminder } from '../../store/reminderReducer';
 
-const NewReminderFormModal = ({modalState, setModalState}) => {
+const NewReminderFormModal = ({modalState, setModalState, pet}) => {
     const [type, setType] = useState('')
     const [titleOptions, setTitleOptions] = useState([]);
 
@@ -13,7 +13,27 @@ const NewReminderFormModal = ({modalState, setModalState}) => {
     const [description, setDescription] = useState('')
     const [location, setLocation] = useState('')
     const dispatch = useDispatch()
-
+    const K9_VAX = ['Rabies', 
+            'Distemper/Parvo', 
+            'Leptospirosis', 
+            'Bordetella', 
+            'Influenza', 
+            'Lyme', 
+            'Rattlesnake']
+    const FEL_VAX = [
+        'Rabies',
+        'FVRCP',
+        'FELV'
+    ]
+    const APPT_TYPES = [
+        "Wellness",
+        "Illness",
+        "Procedure"
+    ]
+    const MEDS = [
+        "Flea/Tick Prevention",
+        "Heartworm Prevention"
+    ]
     useEffect(() => {
         console.log("TYPE", type)   
     },[type])
@@ -22,14 +42,18 @@ const NewReminderFormModal = ({modalState, setModalState}) => {
         setType(e.target.value);
     
         switch (e.target.value) {
-            case 'appointment':
-                setTitleOptions(['appt1', 'appt2', 'appt3']);
+            case 'appointment':   
+                setTitleOptions(APPT_TYPES);
                 break;
             case 'vaccination':
-                setTitleOptions(['vax1', 'vax2', 'vax3']);
+                setTitleOptions(
+                    pet.species === 'Cat' ? 
+                    FEL_VAX :
+                    K9_VAX
+                )
                 break;
             case 'medication':
-                setTitleOptions(['med1', 'med2', 'med3']);
+                setTitleOptions(MEDS);
                 break;
             default:
                 setTitleOptions([]);
