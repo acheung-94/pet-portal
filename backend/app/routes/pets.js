@@ -8,7 +8,7 @@ const petRouter = Router()
 petRouter.get('/', PetController.index)
 petRouter.get('/:id', PetController.show)
 petRouter.post('/', requireUser, singleMulterUpload('image'), PetController.create)
-petRouter.put('/:id', requireUser, PetController.update)
+petRouter.put('/:id', requireUser, singleMulterUpload('image'), PetController.update)
 petRouter.delete('/:id', requireUser, PetController.delete)
 
 export default petRouter
