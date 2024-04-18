@@ -17,7 +17,6 @@ const Auth = () =>{
     */
     const [modalState, setModalState] = useState(false)
 
-    /* */
     const location = useLocation()
     const {pathname} = location
     const dispatch = useDispatch();
@@ -30,19 +29,20 @@ const Auth = () =>{
 
     const handleSubmit = e => {
         e.preventDefault();
-        // console.log("THIS IS ", email, pw)
+
         if(isRegister) {
-            dispatch(createUser({email: email, password: pw})).then(()=> navigate('/dashboard'))
+            dispatch(createUser({email: email, password: pw}))
+                .then(()=> navigate('/dashboard'))
         } else if (isLogin) {
-            dispatch(loginUser({email: email, password: pw})).then(()=> navigate('/dashboard'))
+            dispatch(loginUser({email: email, password: pw}))
+                .then(()=> navigate('/dashboard'))
         }
         setEmail('');
         setPw('');
-        // window.location.href= "/"
+
     }
     useEffect(() => {
 
-        // console.log("Email or password changed:", email, pw);
     }, [email, pw]);
     useEffect(() => {
         setEmail('');
