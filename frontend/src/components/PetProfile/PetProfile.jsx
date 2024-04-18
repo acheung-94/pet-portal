@@ -14,7 +14,7 @@ const PetProfile = () => {
     const pet = useSelector(currentPet(petId))
     const dispatch = useDispatch()
     const [modalState, setModalState] = useState(null)
-    
+    const [editModalState, setEditModalState] = useState(null)
     const calculateAge = (dateString) => {
         const birthday = new Date(dateString)
         const today = new Date()
@@ -70,7 +70,7 @@ const PetProfile = () => {
         dispatch(fetchPets())
 
         dispatch(fetchPetReminders(petId))
-    }, [petId])
+    }, [petId, dispatch])
 
 
     if (pet) {
@@ -111,6 +111,9 @@ const PetProfile = () => {
                         </div>
                     </div>
                     <div className="pet-signalment">
+                        <div>
+                            <button className='edit-pet-dash-buttons' onClick={() => setEditModalState('edit')}> + </button>
+                        </div>
                         <div className='profile-pic-border'>
                             <img src={!pet.image && 
                             "https://pet-portal-assets.s3.us-west-1.amazonaws.com/pet-first-aid-svgrepo-com.svg"}
@@ -123,7 +126,7 @@ const PetProfile = () => {
                         </div>
                     </div>
                 </div>
-                {modalState && <NewReminderFormModal modalState={modalState} setModalState={setModalState}/>}
+                {modalState && <NewReminderFormModal modalState={modalState} setModalState={setModalState} pet={pet}/>}
                 <Footer/>
             </div>
         )

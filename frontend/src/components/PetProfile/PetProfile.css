@@ -160,3 +160,29 @@
 .pet-attribute h3{
     font-size: 24px;
 }
+.pet-signalment>div:first-child{
+    margin-left: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.edit-pet-dash-buttons{
+    border: 2px solid var(--green-dark);
+    background: none;
+    box-sizing: border-box;
+    width: 28px;
+    height: 28px;
+    border-radius: 14px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--green-dark);
+    transition: background-color 0.3s ease;
+}
+.edit-pet-dash-buttons:hover{
+    cursor: pointer;
+    background-color: #ffcb5382;
+}
