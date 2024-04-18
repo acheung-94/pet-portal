@@ -42,6 +42,14 @@ export default class PetController extends ApplicationController{
 		if (req.user._id.toString() != pet.owner.toString()) {
 			return res.status(403).json({'status': 'forbidden'})
 		}
+
+		let imageUrl
+		if (req.body.imageUpdated) {
+			imageUrl = req.file ? 
+				await singleFileUpload({file: req.file, isPublic: true}) :
+				DEFAULT_IMAGE_URI
+		}
+
 		const allowed = [
 			'name',
 			'dob',
@@ -59,12 +67,9 @@ export default class PetController extends ApplicationController{
 			pet[k] = v
 		})
 
+		// this updates the pet's image url only if it was changed
+		pet.imageUrl = imageUrl ?? pet.imageUrl
 
-		// const pet = await Pet.findByIdAndUpdate(
-		// 	{ _id: req.params.id, owner: req.user._id }, 
-		// 	updated, 
-		// 	{ returnDocument: 'after' }
-		// )
 		if (await pet.save()) {
 			return res.json(pet)
 		} else {
