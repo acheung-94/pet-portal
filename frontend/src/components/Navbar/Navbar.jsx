@@ -9,9 +9,7 @@ const Navbar = () => {
     const currentUser = useSelector(selectCurrentUser)
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     dispatch(fetchPets())
-    // }, [dispatch])
+
     useEffect( () => {
         if (currentUser && currentUser.sessionExpiration){
             const checkTime = setInterval(()=>{

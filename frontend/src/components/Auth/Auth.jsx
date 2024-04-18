@@ -9,6 +9,7 @@ import { createUser, loginUser } from "../../store/sessionReducer";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import NewPetFormModal from "../NewPetFormModal/NewPetFormModal";
+import { useNavigate } from "react-router-dom";
 
 const Auth = () =>{
     /* 
@@ -22,6 +23,7 @@ const Auth = () =>{
     const dispatch = useDispatch();
     const isRegister = pathname === '/register'
     const isLogin = pathname === '/login'
+    const navigate = useNavigate()
 
     const [email, setEmail] = useState('')
     const [pw, setPw] = useState('')
@@ -30,9 +32,9 @@ const Auth = () =>{
         e.preventDefault();
         // console.log("THIS IS ", email, pw)
         if(isRegister) {
-            dispatch(createUser({email: email, password: pw}))
+            dispatch(createUser({email: email, password: pw})).then(()=> navigate('/dashboard'))
         } else if (isLogin) {
-            dispatch(loginUser({email: email, password: pw}))
+            dispatch(loginUser({email: email, password: pw})).then(()=> navigate('/dashboard'))
         }
         setEmail('');
         setPw('');
