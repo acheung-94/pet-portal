@@ -62,7 +62,7 @@ const PetProfile = () => {
 
     useEffect( () => {
         dispatch(fetchPets())
-    }, [])
+    }, [dispatch])
 
     if (pet) {
 

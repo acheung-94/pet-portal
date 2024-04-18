@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {Link} from "react-router-dom"
 import { logoutUser, refreshUser, selectCurrentUser } from '../../store/sessionReducer';
 import { useEffect } from 'react';
-import { fetchPets } from '../../store/petReducer';
+
 
 const Navbar = () => {
     const currentUser = useSelector(selectCurrentUser)
@@ -28,7 +28,7 @@ const Navbar = () => {
                 clearInterval(checkTime)
             } )
         }
-    }, [currentUser])
+    }, [currentUser, dispatch])
 
     return(
         <div className='header-container'>
