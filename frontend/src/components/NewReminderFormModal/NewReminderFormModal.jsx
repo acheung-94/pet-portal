@@ -210,7 +210,7 @@ const NewReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => 
                                 <div className='reminder-button-container'>
                                     <button type="submit" className='add-new-reminder-button'>
                                         {modalState && (
-                                        <div className='reminder-button'> 
+                                        <div className={ modalState === 'edit'? 'reminder-button-edit' : 'reminder-button'}> 
                                             {modalState === 'edit' ? 
                                             "Confirm Changes" : 
                                             `Add ${(modalState.charAt(0).toUpperCase() + modalState.slice(1))} 

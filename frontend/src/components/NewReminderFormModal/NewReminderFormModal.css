@@ -39,7 +39,7 @@
     height: 520px;
     transform: translate(-50%, -50%);
     /* background-color: var(--main-bg-beige); */
-    background-color: var(--pale-purple);
+    background-color: var(--main-bg-beige);
     color: var(--green-dark);
     padding: 10px;
     border-radius: 30px;
@@ -156,4 +156,8 @@ textarea {
 }
 .description-input::placeholder {
     padding-left: 15px;
+}
+
+.reminder-button-edit{
+    color: var(--green-dark);
 }
