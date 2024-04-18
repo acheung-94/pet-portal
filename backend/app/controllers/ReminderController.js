@@ -8,7 +8,7 @@ export default class ReminderController extends ApplicationController {
 		if (reminder) {
 			return res.json({reminder})
 		}
-		return res.status(404)
+		return res.status(404).end()
 	}
 	static async indexByPet(req, res, _) {
 		const reminders = await Reminder.find(
@@ -17,7 +17,7 @@ export default class ReminderController extends ApplicationController {
 		if (reminders) {
 			return res.json(convertObjectToStateShape(reminders))
 		}
-		return res.status(404)
+		return res.status(404).end()
 	}
 	static async indexByUser(req, res, _) {
 		const reminders = await Reminder.find(
@@ -26,12 +26,12 @@ export default class ReminderController extends ApplicationController {
 		if (reminders) {
 			return res.json(convertObjectToStateShape(reminders))
 		}
-		return res.status(404)
+		return res.status(404).end()
 	}
 	static async update(req, res, _) {
 		const reminder = await Reminder.findById(req.params.id)
-		if (req.user._id !== reminder.user) {
-			return res.status(403)
+		if (req.user._id.toString() !== reminder.user.toString()) {
+			return res.status(403).end()
 		}
 		const allowed = [
 			'type',
@@ -52,21 +52,21 @@ export default class ReminderController extends ApplicationController {
 		if (updated) {
 			return res.json(convertObjectToStateShape(updated))
 		}
-		return res.status(400)
+		return res.status(400).end()
 	}
 	static async delete(req, res, _) {
 		const reminder = await Reminder.findById(req.params.id)
-		console.log("REMINDER IS", reminder)
-		if (req.user._id !== reminder.user) {
-			return res.status(403)
+		console.log('REMINDER IS', reminder)
+		if (req.user._id.toString() !== reminder.user.toString()) {
+			return res.status(403).end()
 		}
 		const result = await Reminder.deleteOne()
-		console.log("RESULT IS", result)
+		console.log('RESULT IS', result)
 
 		if (result) {
 			return res.json(result)
 		}
-		return res.status(404)
+		return res.status(404).end()
 	}
 	static async create(req, res, _) {
 		const newReminder = new Reminder({
@@ -83,6 +83,6 @@ export default class ReminderController extends ApplicationController {
 		if (reminder) {
 			return res.json( reminder )
 		}
-		return res.status(400)
+		return res.status(400).end()
 	}
 }
