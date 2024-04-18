@@ -1,6 +1,6 @@
-import {Router} from 'express'
 import PetController from '../controllers/PetController.js'
 import { requireUser } from '../../config/passport.js'
+import {Router} from 'express'
 
 const petRouter = Router()
 

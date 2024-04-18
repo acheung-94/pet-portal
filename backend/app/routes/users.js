@@ -1,6 +1,6 @@
+import { requireUser } from '../../config/passport.js'
 import {Router} from 'express'
 import UserController from '../controllers/UserController.js'
-import { requireUser } from '../../config/passport.js'
 
 const userRouter = Router()
 /* GET users listing. */
