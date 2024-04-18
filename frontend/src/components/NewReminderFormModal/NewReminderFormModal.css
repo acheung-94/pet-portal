@@ -12,7 +12,9 @@
     align-items: center;
 }
 
-.modal-content-appointment {
+.modal-content-appointment,
+.modal-content-vaccination,
+.modal-content-medication {
   position: absolute;
   left: 50%;
   top: 400px;
@@ -29,31 +31,16 @@
   font-weight: bold;
   font-size: 20px;
 }
-.modal-content-vaccination {
+.modal-content-edit{
     position: absolute;
     left: 50%;
     top: 400px;
     width: 350px;
     height: 520px;
     transform: translate(-50%, -50%);
-    background-color: var(--green-dark);
-    color: white;
-    padding: 10px;
-    border-radius: 30px;
-    position: absolute;
-    border: 1px solid #333;
-    font-weight: bold;
-    font-size: 20px;
-}
-.modal-content-medication {
-    position: absolute;
-    left: 50%;
-    top: 400px;
-    width: 350px;
-    height: 520px;
-    transform: translate(-50%, -50%);
-    background-color: var(--green-dark);
-    color: white;
+    /* background-color: var(--main-bg-beige); */
+    background-color: var(--pale-purple);
+    color: var(--green-dark);
     padding: 10px;
     border-radius: 30px;
     position: absolute;

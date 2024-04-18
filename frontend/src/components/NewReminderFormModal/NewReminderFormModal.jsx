@@ -3,40 +3,41 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createReminder } from '../../store/reminderReducer';
 import { K9_VAX, FEL_VAX, APPT_TYPES, MEDS } from '../../utils/constants';
-const NewReminderFormModal = ({modalState, setModalState, pet}) => {
-    const [type, setType] = useState('')
-    const [titleOptions, setTitleOptions] = useState([]);
 
-    const [title, setTitle] = useState('')
-    const [due, setDue] = useState('')
-    const [performDate, setPerformDate] = useState('')
-    const [description, setDescription] = useState('')
-    const [location, setLocation] = useState('')
+const NewReminderFormModal = ({modalState, setModalState, pet, reminder}) => {
+    const [type, setType] = useState(
+        modalState === 'edit' ? reminder.type : '')
+
+    const [title, setTitle] = useState(
+        modalState === 'edit' ? reminder.title : '')
+    const [due, setDue] = useState(
+        modalState === 'edit' ? reminder.dueDate.slice(0,10) : '')
+    const [performDate, setPerformDate] = useState(
+        modalState === 'edit' && reminder.performDate ? reminder.performDate.slice(0,10) : '')
+    const [description, setDescription] = useState(
+        modalState === 'edit' ? reminder.description : '')
+    const [location, setLocation] = useState(
+        modalState === 'edit' ? reminder.location : '')
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        console.log("TYPE", type)
-        console.log(modalState)
-        setType(modalState)
-        switch (modalState) {
+    const conditionalOptions = (type) =>{
+        switch (type) {
             case 'appointment':
-  
-                setTitleOptions(APPT_TYPES);
-                break;
+                return APPT_TYPES;
             case 'vaccination':
-                setTitleOptions(
-                    pet.species === 'cat' ? 
-                    FEL_VAX :
-                    K9_VAX
-                )
-                break;
+                    if (pet.species === 'cat'){
+                        return FEL_VAX
+                    }else{
+                        return K9_VAX
+                    }
             case 'medication':
-                setTitleOptions(MEDS);
-                break;
+                return MEDS
             default:
-                setTitleOptions([]);
-        }   
-    },[type, modalState, pet.species])
+                [];
+        }
+    }
+
+    const [titleOptions, setTitleOptions] = useState(modalState==='edit' ?  conditionalOptions(reminder.type) : []);
 
     const handleTypeChange = (e) => {
         setType(e.target.value);
@@ -113,7 +114,7 @@ const NewReminderFormModal = ({modalState, setModalState, pet}) => {
                     value={title}
                     onChange={e => setTitle(e.target.value)}>
                     <optgroup>
-                        <option disabled value=""> {`Select ${modalState}`} </option>
+                        <option disabled value=""> {`Select ${modalState !== 'edit' && modalState}`} </option>
                         {titleOptions&& titleOptions.map((ele, idx) => (
                             <option key={idx} value={ele}>{ele}</option>
                         ))}
@@ -182,18 +183,27 @@ const NewReminderFormModal = ({modalState, setModalState, pet}) => {
                     </div>
                     <div className='modal-content-bottom'>
                         <div className='modal-content-bottom-title'>
-                                {modalState === 'appointment' && <div className='reminder-title'>Add reminder</div>}
-                                {modalState === 'vaccination' && <div className='reminder-title'>Add Vaccination Reminder</div>}
-                                {modalState === 'medication' && <div className='reminder-title'>Add Medication Reminder</div>}
+
+                                {modalState && (
+                                    <div className='reminder-title'>
+                                        {modalState === 'edit' ? 'Edit' : `Add ${(modalState.charAt(0).toUpperCase() + modalState.slice(1))}`} Reminder
+                                    </div>
+                                )}
                         </div>
                         <div className='modal-content-bottom-form-container'>
                             <form className='modal-content-bottom-form' onSubmit={handleSubmit}>
                                 {reminderForm()}
                                 <div className='reminder-button-container'>
                                     <button type="submit" className='add-new-reminder-button'>
-                                        {modalState === 'appointment' && <div className='reminder-button'>Add reminder</div>}
-                                        {modalState === 'vaccination' && <div className='reminder-button'>Add Vaccination Reminder</div>}
-                                        {modalState === 'medication' && <div className='reminder-button'>Add Medication Reminder</div>}
+                                        {modalState && (
+                                        <div className='reminder-button'> 
+                                            {modalState === 'edit' ? 
+                                            "Confirm Changes" : 
+                                            `Add ${(modalState.charAt(0).toUpperCase() + modalState.slice(1))} 
+                                            Reminder`}
+                                         </div>
+                                        )}
+
                                     </button>
                                 </div>
                             </form>
