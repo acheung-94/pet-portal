@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import './NewPetFormModal.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { createPet } from '../../store/petReducer'
-
-const NewPetForm = ({setModalState}) => {
+import { useLocation } from 'react-router'
+const NewPetForm = ({modalState, setModalState, editModalState, setEditModalState}) => {
     const [name, setName] = useState('')
     const [dob, setDob] = useState('')
     const [sex, setSex] = useState('')
@@ -15,6 +15,8 @@ const NewPetForm = ({setModalState}) => {
     const [weight, setWeight] = useState()
     const dispatch = useDispatch();
     const currentPets = useSelector(state => state.pets) // placeholder
+    const location = useLocation()
+    const {pathname} = location
 
 
     useEffect(() => {
@@ -37,6 +39,7 @@ const NewPetForm = ({setModalState}) => {
 
         dispatch(createPet(petInfo))
         setModalState(null)
+        setEditModalState(null)
         setName('')
         setDob('')
         setSex('')
@@ -75,7 +78,7 @@ const NewPetForm = ({setModalState}) => {
                     placeholder='Sex'
                     value={sex}
                     onChange={e => setSex(e.target.value)}>
-                    <optgroup>
+                    <optgroup>  
                         <option disabled value="">  </option>
                         <option id="female">female</option>
                         <option id="male">male</option>
@@ -129,12 +132,19 @@ const NewPetForm = ({setModalState}) => {
          </>
 
     )
+    const handleBackgroundClick = () => {
+        if(pathname === '/dashboard') {
+            setModalState(null)
+        } else {
+            setEditModalState(null)
+        }
+    }
     return(
         <>
-            <div className="modal-background" onClick={_ => setModalState(null)}>
-                <div className="modal-content" onClick={e => e.stopPropagation()}>
-                    <div className='modal-content-top'>
-                        <button onClick={_ => setModalState(null)}>
+            <div className="modal-background" onClick={handleBackgroundClick}>
+                <div className={`modal-content-${modalState ? `${modalState}` : ''}${editModalState ? `${editModalState}` : ''}`} onClick={e => e.stopPropagation()}>
+                    <div className={`modal-content-top-${modalState ? `${modalState}` : ''}${editModalState ? `${editModalState}` : ''}`}>
+                        <button className='pet-form-button' onClick={handleBackgroundClick}>
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" 
                                     role="presentation" focusable="false" 
@@ -154,13 +164,17 @@ const NewPetForm = ({setModalState}) => {
                     </div>
                     <div className='modal-content-center'>
                         <div className='modal-content-center-title'>
-                            <h2>Add New Pet</h2>
+                            {modalState && <h2>Add New Pet</h2>}
+                            {editModalState && <h2>Edit Pet</h2>}
                         </div>
                         <div className='modal-content-center-form'>
-                            <form className='add-new-pet-form' onSubmit={handleSubmit}>
+                            <form className={`${modalState ? `${modalState}` : ''}${editModalState ? `${editModalState}` : ''}-new-pet-form`} onSubmit={handleSubmit}>
                                 {formContent()}
-                                <div className='add-new-pet-button'>
-                                    <button type="submit">Add New Pet</button>
+                                <div className={`${modalState ? `${modalState}` : ''}${editModalState ? `${editModalState}` : ''}-new-pet-button`}>
+                                    <button type="submit">
+                                        {modalState && <h2>Add New Pet</h2>}
+                                        {editModalState && <h2>Edit Pet</h2>}
+                                    </button>
                                 </div>
                             </form> 
                         </div>

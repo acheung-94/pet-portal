@@ -37,7 +37,7 @@
     height: 520px;
     transform: translate(-50%, -50%);
     background-color: var(--green-dark);
-    color: white;
+    color: var(--main-bg-beige);
     padding: 10px;
     border-radius: 30px;
     position: absolute;
@@ -53,7 +53,7 @@
     height: 520px;
     transform: translate(-50%, -50%);
     background-color: var(--green-dark);
-    color: white;
+    color: var(--main-bg-beige);
     padding: 10px;
     border-radius: 30px;
     position: absolute;

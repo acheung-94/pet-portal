@@ -5,6 +5,7 @@ import { currentPet, fetchPets } from '../../store/petReducer'
 import { useEffect } from 'react'
 import { fetchPetReminders } from '../../store/reminderReducer'
 import { useState } from 'react'
+import NewPetFormModal from '../NewPetFormModal/NewPetFormModal'
 import NewReminderFormModal from '../NewReminderFormModal/NewReminderFormModal'
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
@@ -72,7 +73,7 @@ const PetProfile = () => {
         dispatch(fetchPetReminders(petId))
     }, [petId, dispatch])
 
-
+    console.log("EDIT MODAL STATE", editModalState)
     if (pet) {
 
         return(
@@ -127,6 +128,7 @@ const PetProfile = () => {
                     </div>
                 </div>
                 {modalState && <NewReminderFormModal modalState={modalState} setModalState={setModalState} pet={pet}/>}
+                {editModalState && <NewPetFormModal editModalState={editModalState} setEditModalState={setEditModalState}/>}
                 <Footer/>
             </div>
         )
