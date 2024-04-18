@@ -4,9 +4,7 @@ import App from './App';
 import './index.css';
 import configureStore from './store/store';
 import { Provider } from 'react-redux';
-import { createUser, loginUser, logoutUser } from './store/sessionReducer';
 import { restoreSession } from './utils/jwt';
-import { createPet, destroyPet, fetchPet, fetchPets, updatePet } from './store/petReducer';
 const store = configureStore()
 const initializeApp = () =>{
   
