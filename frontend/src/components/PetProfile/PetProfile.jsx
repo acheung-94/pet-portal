@@ -8,6 +8,7 @@ import { useState } from 'react'
 import NewReminderFormModal from '../NewReminderFormModal/NewReminderFormModal'
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
+
 const PetProfile = () => {
     const { petId } = useParams()
     const pet = useSelector(currentPet(petId))
@@ -67,8 +68,10 @@ const PetProfile = () => {
 
     useEffect( () => {
         dispatch(fetchPets())
+
         dispatch(fetchPetReminders(petId))
     }, [petId])
+
 
     if (pet) {
 

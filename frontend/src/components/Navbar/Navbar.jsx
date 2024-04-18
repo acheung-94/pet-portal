@@ -9,28 +9,6 @@ const Navbar = () => {
     const currentUser = useSelector(selectCurrentUser)
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(fetchPets())
-    }, [dispatch])
-
-    useEffect( () => {
-        if (currentUser && currentUser.sessionExpiration){
-            const checkTime = setInterval(()=>{
-                let currentTime = Date.now() //ms
-                let expirationTime = new Date(currentUser.sessionExpiration).getTime() //ms
-
-                if (currentTime >= (expirationTime-2000) ){
-                    dispatch(refreshUser())
-                    clearInterval(checkTime)
-                }   
-            } , 500)
-
-            return(() => {
-                clearInterval(checkTime)
-            } )
-        }
-    }, [currentUser, dispatch])
-
 
     useEffect( () => {
         if (currentUser && currentUser.sessionExpiration){

@@ -48,18 +48,6 @@ const NewPetForm = ({setModalState}) => {
         setWeight()
     } 
 
-        dispatch(createPet(petInfo))
-        setModalState(null)
-        setName('')
-        setDob('')
-        setSex('')
-        setSpecies('')
-        setColor('')
-        setBreed('')
-        setMicrochipNum()
-        setInsurancePolicyId()
-        setWeight()
-    } 
     const formContent = () => (
          <>
             <label className="input-label">
