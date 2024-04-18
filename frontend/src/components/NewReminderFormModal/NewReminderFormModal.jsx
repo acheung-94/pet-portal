@@ -1,5 +1,5 @@
 import './NewReminderFormModal.css'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createReminder } from '../../store/reminderReducer';
 
@@ -130,10 +130,10 @@ const NewReminderFormModal = ({modalState, setModalState}) => {
 
     return (
         <>
-        <div className="modal-background" onClick={e => setModalState(null)}>
+        <div className="modal-background" onClick={_ => setModalState(null)}>
                 <div className={`modal-content-${modalState}`} onClick={e => e.stopPropagation()}>
                     <div className='reminder-modal-content-top'>
-                        <button onClick={e => setModalState(null)}>
+                        <button onClick={_ => setModalState(null)}>
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" 
                                     role="presentation" focusable="false" 
