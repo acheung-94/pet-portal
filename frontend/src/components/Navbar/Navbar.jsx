@@ -11,6 +11,7 @@ const Navbar = () => {
 
     useEffect(() => {
         dispatch(fetchPets())
+        
     }, [dispatch])
 
     return(

@@ -3,10 +3,12 @@ import { thunk } from "redux-thunk"
 import logger from "redux-logger"
 import sessionReducer from './sessionReducer'
 import petReducer from "./petReducer"
+import reminderReducer from "./reminderReducer"
 
 const rootReducer = combineReducers({
     session: sessionReducer,
-    pets: petReducer
+    pets: petReducer,
+    reminders: reminderReducer
 })
 
 const configureStore = (initialState) => {

@@ -97,7 +97,11 @@
     align-items: center;
     color: var(--bright-gold);
 }
+.pet-dash-buttons:hover {
+    cursor: pointer;
+    background-color:  #f8d78986;
 
+}
 .pet-signalment{
     width: 25%;
     display: flex;
