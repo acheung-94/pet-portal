@@ -1,10 +1,14 @@
 .main-footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
     background-color: var(--green-dark);
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     padding: 20px;
+    z-index: 1000;
 }
 
 .main-footer a{

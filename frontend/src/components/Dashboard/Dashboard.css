@@ -3,14 +3,17 @@
     padding: 5% 15%;  
     display: flex;
     flex-direction: column;
-    overflow: hidden;  
+    overflow: hidden;
 }
+
 .page-container{
     height: auto;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    flex: 1;
+    min-height: 0;
 }
 
 .dashboard-header{
