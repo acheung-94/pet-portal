@@ -1,10 +1,11 @@
 import './NewReminderFormModal.css'
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createReminder } from '../../store/reminderReducer';
+import { createReminder, updateReminder } from '../../store/reminderReducer';
 import { K9_VAX, FEL_VAX, APPT_TYPES, MEDS } from '../../utils/constants';
+import { useCallback } from 'react';
 
-const NewReminderFormModal = ({modalState, setModalState, pet, reminder}) => {
+const NewReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
     const [type, setType] = useState(
         modalState === 'edit' ? reminder.type : '')
 
@@ -20,25 +21,35 @@ const NewReminderFormModal = ({modalState, setModalState, pet, reminder}) => {
         modalState === 'edit' ? reminder.location : '')
     const dispatch = useDispatch()
 
-    const conditionalOptions = (type) =>{
+    const conditionalOptions = useCallback((type) => {
         switch (type) {
             case 'appointment':
                 return APPT_TYPES;
             case 'vaccination':
-                    if (pet.species === 'cat'){
-                        return FEL_VAX
-                    }else{
-                        return K9_VAX
-                    }
+                if (pet.species === 'cat') {
+                    return FEL_VAX;
+                } else {
+                    return K9_VAX;
+                }
             case 'medication':
-                return MEDS
+                return MEDS;
             default:
-                [];
+                return [];
         }
-    }
+    }, [pet.species]);
 
-    const [titleOptions, setTitleOptions] = useState(modalState==='edit' ?  conditionalOptions(reminder.type) : []);
+    const [titleOptions, setTitleOptions] = useState(
+        modalState==='edit' ?  
+        conditionalOptions(reminder.type) :
+        []);
 
+    useEffect(() => {
+        if (modalState !== 'edit'){
+            setType(modalState)
+            setTitleOptions(conditionalOptions(modalState))
+        }
+    },[type, modalState, conditionalOptions])
+    
     const handleTypeChange = (e) => {
         setType(e.target.value);
         
@@ -65,6 +76,7 @@ const NewReminderFormModal = ({modalState, setModalState, pet, reminder}) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const reminderInfo = {
+            ...reminder,
             type: type,
             title: title,
             dueDate: due,
@@ -73,13 +85,15 @@ const NewReminderFormModal = ({modalState, setModalState, pet, reminder}) => {
             location: location
         }
 
+        modalState === 'edit' ?
+        dispatch(updateReminder(reminderInfo)) :
         dispatch(createReminder(reminderInfo))
 
         setModalState(null)
         setType('')
         setTitle('')
-        setDue(null)
-        setPerformDate(null)
+        setDue('')
+        setPerformDate('')
         setDescription('')
         setLocation('')
     }
