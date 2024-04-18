@@ -87,7 +87,7 @@ const PetProfile = () => {
                             <div className='pet-reminder-module'> 
                                 <div className='pet-reminder-header'>
                                     <h3>Reminders</h3>
-                                    <button className='pet-dash-buttons' onClick={() => setModalState('reminder')}> + </button>
+                                    <button className='pet-dash-buttons' onClick={() => setModalState('appointment')}> + </button>
                                 </div>
                                 <div> Module w/ overflow </div>
                             </div>
@@ -95,7 +95,7 @@ const PetProfile = () => {
                                 <div className="vaccines">
                                     <div className='pet-vaccines-header'>
                                         <h3>Vaccines</h3>
-                                        <button className='pet-dash-buttons' onClick={() => setModalState('vaccine')}> + </button>
+                                        <button className='pet-dash-buttons' onClick={() => setModalState('vaccination')}> + </button>
                                     </div>
                                     <div>Module w/ overflow</div>
                                 </div>

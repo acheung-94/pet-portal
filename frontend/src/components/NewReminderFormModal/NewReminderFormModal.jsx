@@ -2,47 +2,49 @@ import './NewReminderFormModal.css'
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createReminder } from '../../store/reminderReducer';
-
+import { K9_VAX, FEL_VAX, APPT_TYPES, MEDS } from '../../utils/constants';
 const NewReminderFormModal = ({modalState, setModalState, pet}) => {
     const [type, setType] = useState('')
     const [titleOptions, setTitleOptions] = useState([]);
 
     const [title, setTitle] = useState('')
-    const [due, setDue] = useState(null)
-    const [performDate, setPerformDate] = useState(null)
+    const [due, setDue] = useState('')
+    const [performDate, setPerformDate] = useState('')
     const [description, setDescription] = useState('')
     const [location, setLocation] = useState('')
     const dispatch = useDispatch()
-    const K9_VAX = ['Rabies', 
-            'Distemper/Parvo', 
-            'Leptospirosis', 
-            'Bordetella', 
-            'Influenza', 
-            'Lyme', 
-            'Rattlesnake']
-    const FEL_VAX = [
-        'Rabies',
-        'FVRCP',
-        'FELV'
-    ]
-    const APPT_TYPES = [
-        "Wellness",
-        "Illness",
-        "Procedure"
-    ]
-    const MEDS = [
-        "Flea/Tick Prevention",
-        "Heartworm Prevention"
-    ]
-    useEffect(() => {
-        console.log("TYPE", type)   
-    },[type])
 
-    const handleTypeChange = async (e) => {
+    useEffect(() => {
+        console.log("TYPE", type)
+        console.log(modalState)
+        setType(modalState)
+        switch (modalState) {
+            case 'appointment':
+  
+                setTitleOptions(APPT_TYPES);
+                break;
+            case 'vaccination':
+                setTitleOptions(
+                    pet.species === 'cat' ? 
+                    FEL_VAX :
+                    K9_VAX
+                )
+                break;
+            case 'medication':
+                setTitleOptions(MEDS);
+                break;
+            default:
+                setTitleOptions([]);
+        }   
+    },[type, modalState, pet.species])
+
+    const handleTypeChange = (e) => {
         setType(e.target.value);
-    
-        switch (e.target.value) {
-            case 'appointment':   
+        
+        const selectedValue = e.target.value.toLowerCase()
+
+        switch (selectedValue) {
+            case 'appointment':
                 setTitleOptions(APPT_TYPES);
                 break;
             case 'vaccination':
@@ -92,11 +94,11 @@ const NewReminderFormModal = ({modalState, setModalState, pet}) => {
                     placeholder='Type'
                     value={type}
                     onChange={handleTypeChange}>
-                    <optgroup label='select type'>
+                    <optgroup >
                         <option disabled value=""> Select Type </option>
-                        <option id="appt" >Appointment</option>
-                        <option id="vaccine">Vaccination</option>
-                        <option id="medication">Medication</option>
+                        <option id="appt" value="appointment">Appointment</option>
+                        <option id="vaccine" value="vaccination">Vaccination</option>
+                        <option id="medication" value="medication">Medication</option>
 
                     </optgroup>
                 </select>
@@ -107,12 +109,12 @@ const NewReminderFormModal = ({modalState, setModalState, pet}) => {
                 </div>
                 <select
                     className="title-select"
-                    placeholder='Title'
+                    // placeholder='Title'
                     value={title}
                     onChange={e => setTitle(e.target.value)}>
                     <optgroup>
-                        <option disabled value="">  </option>
-                        {titleOptions.map((ele, idx) => (
+                        <option disabled value=""> {`Select ${modalState}`} </option>
+                        {titleOptions&& titleOptions.map((ele, idx) => (
                             <option key={idx} value={ele}>{ele}</option>
                         ))}
                     </optgroup>
@@ -180,8 +182,8 @@ const NewReminderFormModal = ({modalState, setModalState, pet}) => {
                     </div>
                     <div className='modal-content-bottom'>
                         <div className='modal-content-bottom-title'>
-                                {modalState === 'reminder' && <div className='reminder-title'>Add reminder</div>}
-                                {modalState === 'vaccine' && <div className='reminder-title'>Add Vaccination Reminder</div>}
+                                {modalState === 'appointment' && <div className='reminder-title'>Add reminder</div>}
+                                {modalState === 'vaccination' && <div className='reminder-title'>Add Vaccination Reminder</div>}
                                 {modalState === 'medication' && <div className='reminder-title'>Add Medication Reminder</div>}
                         </div>
                         <div className='modal-content-bottom-form-container'>
@@ -189,8 +191,8 @@ const NewReminderFormModal = ({modalState, setModalState, pet}) => {
                                 {reminderForm()}
                                 <div className='reminder-button-container'>
                                     <button type="submit" className='add-new-reminder-button'>
-                                        {modalState === 'reminder' && <div className='reminder-button'>Add reminder</div>}
-                                        {modalState === 'vaccine' && <div className='reminder-button'>Add Vaccination Reminder</div>}
+                                        {modalState === 'appointment' && <div className='reminder-button'>Add reminder</div>}
+                                        {modalState === 'vaccination' && <div className='reminder-button'>Add Vaccination Reminder</div>}
                                         {modalState === 'medication' && <div className='reminder-button'>Add Medication Reminder</div>}
                                     </button>
                                 </div>

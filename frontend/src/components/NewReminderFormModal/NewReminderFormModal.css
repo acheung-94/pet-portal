@@ -12,7 +12,7 @@
     align-items: center;
 }
 
-.modal-content-reminder {
+.modal-content-appointment {
   position: absolute;
   left: 50%;
   top: 400px;
@@ -29,7 +29,7 @@
   font-weight: bold;
   font-size: 20px;
 }
-.modal-content-vaccine {
+.modal-content-vaccination {
     position: absolute;
     left: 50%;
     top: 400px;
@@ -91,9 +91,9 @@
     justify-content: center;
     align-items: center;
 }
-optgroup {
+/* optgroup {
     font-size: 0.5px;
-}
+} */
 .input-label {
     padding-bottom: 5px;
 }
