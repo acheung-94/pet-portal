@@ -1,6 +1,6 @@
-import ApplicationController from "./ApplicationController.js";
+import ApplicationController from './ApplicationController.js'
+import { convertObjectToStateShape } from '../../util/jsonUtils.js'
 import Reminder from '../models/Reminder.js'
-import { convertObjectToStateShape } from "../../util/jsonUtils.js";
 
 export default class ReminderController extends ApplicationController {
 	static async show(req, res, _) {

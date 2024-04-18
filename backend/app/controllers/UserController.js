@@ -1,9 +1,9 @@
 import ApplicationController from './ApplicationController.js'
 import bcrypt from 'bcryptjs'
-import passport from 'passport'
-import User from '../models/User.js'
-import Pet from '../models/Pet.js'
 import { loginUser } from '../../config/passport.js'
+import passport from 'passport'
+import Pet from '../models/Pet.js'
+import User from '../models/User.js'
 export default class UserController extends ApplicationController{
 	constructor() {
 		super()

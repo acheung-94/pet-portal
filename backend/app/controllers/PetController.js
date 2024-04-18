@@ -1,5 +1,5 @@
-import { convertObjectToStateShape } from '../../util/jsonUtils.js'
 import ApplicationController from '../controllers/ApplicationController.js'
+import { convertObjectToStateShape } from '../../util/jsonUtils.js'
 import Pet from '../models/Pet.js'
 
 export default class PetController extends ApplicationController{
@@ -33,7 +33,7 @@ export default class PetController extends ApplicationController{
 		const pet = await Pet.findOne({_id: req.params.id})
 
 		if (req.user._id.toString() != pet.owner.toString()) {
-			return res.status(403).json({"status": "forbidden"})
+			return res.status(403).json({'status': 'forbidden'})
 		}
 		const allowed = [
 			'name',
@@ -78,13 +78,13 @@ export default class PetController extends ApplicationController{
 		const pet = await Pet.findOne({_id: req.params.id})
 
 		if (req.user._id.toString() != pet.owner.toString()) {
-			return res.status(403).json({"status": "forbidden"})
+			return res.status(403).json({'status': 'forbidden'})
 		}
 		const deleted = await Pet.deleteOne({ _id: req.params.id })
 		if (deleted) {
 			return res.json(deleted)
 		} else {
-			return res.status(404).json({"status": "not found"})
+			return res.status(404).json({'status': 'not found'})
 		}
 	}
 

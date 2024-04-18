@@ -1,6 +1,6 @@
-import { Router } from "express";
-import ReminderController from "../controllers/ReminderController.js";
-import { requireUser } from "../../config/passport.js";
+import ReminderController from '../controllers/ReminderController.js'
+import { requireUser } from '../../config/passport.js'
+import { Router } from 'express'
 
 const reminderRouter = Router()
 
