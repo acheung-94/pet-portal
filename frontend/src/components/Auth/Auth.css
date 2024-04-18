@@ -61,10 +61,19 @@
 }
 #email-input, 
 #password-input {
+    width: 250px;
     padding: 8px;
     border-radius: 50px;
     border: 1px solid #B6C6BC;
 }
+#email-input::placeholder, 
+#password-input::placeholder {
+    color: #999;
+    font-size: 12px;
+    font-style: italic; 
+    padding-left: 15px;
+}
+
 .auth-button-container {
     cursor: pointer;
     background-color: transparent;
