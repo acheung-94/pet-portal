@@ -39,6 +39,13 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
             insurancePolicyId: insurancePolicyId, 
             weight: weight
         }
+        if(pathname === '/dashboard') {
+            dispatch(createPet(petInfo))
+            setModalState(null)
+        } else {
+            dispatch(updatePet(petInfo))
+            setEditModalState(null)
+        }
 
         dispatch(updatePet(petInfo))
         setEditModalState(null)

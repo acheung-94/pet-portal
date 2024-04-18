@@ -82,6 +82,7 @@
 }
 .modal-content-top-edit button:hover {
     background-color:  #f8d78986;
+    cursor: pointer;
 }
 
 .modal-content-center {
