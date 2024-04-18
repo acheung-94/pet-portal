@@ -1,15 +1,19 @@
 import './NewReminderFormModal.css'
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { createReminder } from '../../store/reminderReducer';
 
 const NewReminderFormModal = ({modalState, setModalState}) => {
     const [type, setType] = useState('')
     const [titleOptions, setTitleOptions] = useState([]);
 
     const [title, setTitle] = useState('')
-    const [due, setDue] = useState()
-    const [performDate, setPerformDate] = useState()
+    const [due, setDue] = useState(null)
+    const [performDate, setPerformDate] = useState(null)
     const [description, setDescription] = useState('')
     const [location, setLocation] = useState('')
+    const dispatch = useDispatch()
+
     useEffect(() => {
         console.log("TYPE", type)   
     },[type])
@@ -30,6 +34,27 @@ const NewReminderFormModal = ({modalState, setModalState}) => {
             default:
                 setTitleOptions([]);
         }
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const reminderInfo = {
+            type: type,
+            title: title,
+            dueDate: due,
+            performDate: performDate, 
+            description: description, 
+            location: location
+        }
+
+        dispatch(createReminder(reminderInfo))
+
+        setModalState(null)
+        setType('')
+        setTitle('')
+        setDue(null)
+        setPerformDate(null)
+        setDescription('')
+        setLocation('')
     }
 
     const reminderForm = () => (
@@ -136,7 +161,7 @@ const NewReminderFormModal = ({modalState, setModalState}) => {
                                 {modalState === 'medication' && <div className='reminder-title'>Add Medication Reminder</div>}
                         </div>
                         <div className='modal-content-bottom-form-container'>
-                            <form className='modal-content-bottom-form'>
+                            <form className='modal-content-bottom-form' onSubmit={handleSubmit}>
                                 {reminderForm()}
                                 <div className='reminder-button-container'>
                                     <button type="submit" className='add-new-reminder-button'>
