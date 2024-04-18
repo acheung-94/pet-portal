@@ -4,16 +4,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { createPet, updatePet } from '../../store/petReducer'
 import { useLocation } from 'react-router'
 const NewPetForm = ({modalState, setModalState, editModalState, setEditModalState, initialPetData}) => {
-    const [name, setName] = useState(initialPetData ? initialPetData.name : '')
+    const [name, setName] = useState(initialPetData?.name ?? '')
     const initialDob = initialPetData ? new Date(initialPetData.dob).toISOString().split('T')[0] : '';
     const [dob, setDob] = useState(initialDob)
-    const [sex, setSex] = useState(initialPetData ? initialPetData.sex : '')
-    const [species, setSpecies] = useState(initialPetData ? initialPetData.species : '')
-    const [color, setColor] = useState(initialPetData ? initialPetData.color : '')
-    const [breed, setBreed] = useState(initialPetData ? initialPetData.breed : '')
-    const [microchipNum, setMicrochipNum] = useState(initialPetData ? initialPetData.microchipNum : null )
-    const [insurancePolicyId, setInsurancePolicyId] = useState(initialPetData ? initialPetData.insurancePolicyId : null)
-    const [weight, setWeight] = useState(initialPetData ? initialPetData.weight : null)
+    const [sex, setSex] = useState(initialPetData?.sex ?? '')
+    const [species, setSpecies] = useState(initialPetData?.species ?? '')
+    const [color, setColor] = useState(initialPetData?.color ?? '')
+    const [breed, setBreed] = useState(initialPetData?.breed ?? '')
+    const [microchipNum, setMicrochipNum] = useState(initialPetData?.microchipNum ?? '' )
+    const [insurancePolicyId, setInsurancePolicyId] = useState(initialPetData?.insurancePolicyId ?? '')
+    const [weight, setWeight] = useState(initialPetData?.weight ?? '')
     const dispatch = useDispatch();
     const currentPets = useSelector(state => state.pets) // placeholder
     const location = useLocation()
@@ -54,19 +54,25 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
             insurancePolicyId: insurancePolicyId, 
             weight: weight
         }
+        //   ↓ matches a string that ends with the literal text 'dashboard', optionally followed by a slash.
+        if( /dashboard\/?$/.test(pathname)) {
+            dispatch(createPet(petInfo))
+            setModalState(null)
+        } else {
+            dispatch(updatePet(petInfo))
+            setEditModalState(null)
+        }
 
-        dispatch(createPet(petInfo))
-        setModalState(null)
         setName('')
         setDob('')
         setSex('')
         setSpecies('')
         setColor('')
         setBreed('')
-        setMicrochipNum(null)
-        setInsurancePolicyId(null)
-        setWeight(null)
-    }
+        setMicrochipNum('')
+        setInsurancePolicyId('')
+        setWeight('')
+    } 
 
     const formContent = () => (
          <>
