@@ -14,14 +14,14 @@
 
 .modal-content-reminder {
   position: absolute;
-  left: 225px;
-  top: 500px;
+  left: 50%;
+  top: 400px;
   width: 350px;
   height: 520px;
   transform: translate(-50%, -50%);
   /* background-color: var(--main-bg-beige); */
   background-color: var(--green-dark);
-  color: white;
+  color: var(--main-bg-beige);
   padding: 10px;
   border-radius: 30px;
   position: absolute;
@@ -31,9 +31,9 @@
 }
 .modal-content-vaccine {
     position: absolute;
-    left: 770px;
-    top: 490px;
-    width: 570px;
+    left: 50%;
+    top: 400px;
+    width: 350px;
     height: 520px;
     transform: translate(-50%, -50%);
     background-color: var(--green-dark);
@@ -47,9 +47,9 @@
 }
 .modal-content-medication {
     position: absolute;
-    left: 770px;
-    top: 800px;
-    width: 570px;
+    left: 50%;
+    top: 400px;
+    width: 350px;
     height: 520px;
     transform: translate(-50%, -50%);
     background-color: var(--green-dark);
