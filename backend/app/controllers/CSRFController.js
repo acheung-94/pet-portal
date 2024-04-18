@@ -13,7 +13,7 @@ export default class CSRFController extends ApplicationController {
 				'CSRF-Token': csrfToken
 			})
 		} else {
-			res.status(404)
+			res.status(404).end()
 		}
 	}
 }

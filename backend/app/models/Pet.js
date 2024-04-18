@@ -42,6 +42,10 @@ const petSchema = Schema({
 	owner: {
 		type: Schema.Types.ObjectId,
 		ref: 'User'
+	},
+	imageUrl: {
+		type: String,
+		required: true
 	}
 })
 

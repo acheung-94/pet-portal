@@ -5,6 +5,7 @@ import { fetchPets } from '../../store/petReducer'
 import NewPetFormModal from '../NewPetFormModal/NewPetFormModal'
 import ImgPlaceholder from '../../assets/striped-cat.jpg'
 import './PetGrid.css'
+import { Link } from 'react-router-dom'
 
 const PetGrid = () => {
     const dispatch = useDispatch();
@@ -37,8 +38,9 @@ const PetGrid = () => {
                         Object.values(currentPets).map((pet, idx) => (
                             <div key={idx} className='pet-item'>
                               <div className='pet-img'>
-                                  {/* Link to Pet Show */}
-                                  <img src={ImgPlaceholder}/>
+                                  <Link to={`/dashboard/${pet._id}`}>
+                                    <img className={pet._id} src={ImgPlaceholder}/>
+                                  </Link>
                               </div>
                               <div className='pet-name'>
                                   <p>{pet.name}</p>
