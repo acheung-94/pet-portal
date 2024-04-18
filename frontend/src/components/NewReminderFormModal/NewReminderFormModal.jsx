@@ -133,10 +133,10 @@ const NewReminderFormModal = ({modalState, setModalState}) => {
 
     return (
         <>
-        <div className="modal-background" onClick={e => setModalState(null)}>
+        <div className="modal-background" onClick={() => setModalState(null)}>
                 <div className={`modal-content-${modalState}`} onClick={e => e.stopPropagation()}>
                     <div className='reminder-modal-content-top'>
-                        <button onClick={e => setModalState(null)}>
+                        <button onClick={() => setModalState(null)}>
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" 
                                     role="presentation" focusable="false" 

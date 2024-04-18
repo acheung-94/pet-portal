@@ -70,7 +70,7 @@ const PetProfile = () => {
         dispatch(fetchPets())
 
         dispatch(fetchPetReminders(petId))
-    }, [petId])
+    }, [petId, dispatch])
 
 
     if (pet) {
