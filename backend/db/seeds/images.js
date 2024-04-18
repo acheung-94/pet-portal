@@ -1,8 +1,9 @@
 import {mongoURI as db} from '../../config/keys.js'
+import { DEFAULT_IMAGE_URI } from '../../config/configConstants.js'
 import mongoose from 'mongoose'
 import Pet from '../../app/models/Pet.js'
 
-export const DEFAULT_IMAGE_URI = 'https://pet-portal-assets.s3.us-west-1.amazonaws.com/pet-first-aid-svgrepo-com.svg'
+
 
 mongoose.connect(db)
 	.then(() => {
