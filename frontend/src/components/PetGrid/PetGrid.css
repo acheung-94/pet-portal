@@ -6,6 +6,9 @@
     background-color: var(--green-dark);
 }
 
+.get-grid-header-form {
+    padding: 8px;
+}
 .pet-grid-header-form button{
     padding: 0 10px;
     cursor: pointer;
@@ -18,7 +21,8 @@
     font-family: borish;
     font-weight: bold;
     border-radius: 20px;
-    font-size: 20px; 
+    font-size: 32px;
+    color: white; 
 }
 
 .pet-grid-header-form button:hover {
@@ -96,6 +100,7 @@
 .pet-name {
     font-size: 16px;
     font-weight: bold;
+
     position: absolute;
     bottom: 0;
     width: 100%;

@@ -12,11 +12,11 @@
     align-items: center;
 }
 
-.modal-content {
+.modal-content-add {
   position: absolute;
   left: 50%;
   top: 400px;
-  width: 500px;
+  width: 350px;
   height: 730px;
   transform: translate(-50%, -50%);
   background-color: var(--main-bg-beige);
@@ -27,12 +27,29 @@
   font-weight: bold;
   font-size: 20px;
 }
-.modal-content-top {
+.modal-content-edit{
+    position: absolute;
+    left: 50%;
+    top: 450px;
+    width: 350px;
+    height: 730px;
+    transform: translate(-50%, -50%);
+    background-color: var(--green-dark);
+    color: var(--main-bg-beige);
+    padding: 10px;
+    border-radius: 30px;
+    position: absolute;
+    border: 1px solid #333;
+    font-weight: bold;
+    font-size: 20px;
+}
+.modal-content-top-add,
+.modal-content-top-edit {
     display: flex;
     padding: 8px;
     justify-content: flex-end; /* Align the button to the right */
 }
-.modal-content-top button {
+.modal-content-top-add button {
     cursor: pointer;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -41,8 +58,27 @@
     overflow: hidden;
     outline: none;
 }
-.modal-content-top button:hover {
+.modal-content-top-edit button {
+    cursor: pointer;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border-radius: 14px;
+    border: 1.5px solid; 
+    border-color:var(--bright-gold);
+    overflow: hidden;
+    outline: none;
+    color: white;
+}
+.modal-content-top-edit button {
+    color: var(--main-bg-beige);
+}
+.modal-content-top-add button:hover {
     background-color: var(--pale-purple);
+    cursor: pointer;
+}
+.modal-content-top-edit button:hover {
+    background-color:  #f8d78986;
+    cursor: pointer;
 }
 
 .modal-content-center {
@@ -60,13 +96,15 @@
 optgroup {
     font-size: 0.5px;
 }
-.add-new-pet-form {
+.add-new-pet-form,
+.edit-new-pet-form  {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.add-new-pet-form label:nth-child(9) {
+.add-new-pet-form label:nth-child(9),
+.edit-new-pet-form label:nth-child(9) {
     margin-bottom: 30px;
 }
 .name-input-label,
@@ -87,11 +125,13 @@ optgroup {
     font-weight: bold;
 }
 .add-new-pet-form input::placeholder,
-.add-new-pet-form select::placeholder {
+.add-new-pet-form select::placeholder,
+.edit-new-pet-form input::placeholder,
+.edit-new-pet-form select::placeholder{
     color: #999;
     font-size: 12px;
     font-style: italic; 
-    padding-left: 10px;
+    padding-left: 15px;
 }
 .sex-select {
     height: 30px;
@@ -113,11 +153,9 @@ optgroup {
     font-size: 16px;
 }
 
-.add-new-pet-button button{
-
-    padding: 10px;
-    /* padding-left: 10px;
-    padding-right: 10px; */
+.add-new-pet-button button,
+.edit-new-pet-button button{
+    padding: 5px;
     cursor: pointer;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -128,23 +166,18 @@ optgroup {
     font-family: borish;
     font-size: 17px;
     font-weight: bold;
-
     border-radius: 20px;
 }
-
+.edit-new-pet-button button{
+    color: var(--main-bg-beige);
+}
+.edit-new-pet-button button:hover {
+    background-color:  #f8d78986;
+}
 .add-new-pet-button button:hover {
     background-color: var(--pale-purple);
 }
-.add-new-pet-button::after {
-    /* content: "";
-    display: block;
-    width: 100px;
-    height: 1px;
-    background-color: rgb(255,163,128); 
-    position: absolute;
-    bottom: 25px; 
-    left: 209px;  */
-}
+
 .optional {
     font-size: 10px;
     font-style: italic;

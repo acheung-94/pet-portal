@@ -11,7 +11,7 @@ const PetGrid = () => {
     const dispatch = useDispatch();
     const currentUser = useSelector(selectCurrentUser)
     const currentPets = useSelector(state => state.pets)
-    const [modalState, setModalState] = useState(false)
+    const [modalState, setModalState] = useState(null)
 
     useEffect(() => {
         if (currentUser) {
@@ -26,8 +26,8 @@ const PetGrid = () => {
                     <div className='pet-grid-header-text'>
                         <h1>Your Pets</h1>
                     </div>
-                    <div className='pet-grid-header-form'>
-                        <button className='grid-add-pet-button' onClick={() => setModalState(true)}>Add pet</button>
+                    <div className='get-grid-header-form'>
+                        <button className='grid-add-pet-button' onClick={() => setModalState('add')}>Add pet</button>
                     </div>
                 </div>
                 <div className='pet-grid-divider'>

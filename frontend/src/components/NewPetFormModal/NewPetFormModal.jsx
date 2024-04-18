@@ -1,29 +1,34 @@
 import { useEffect, useState } from 'react'
 import './NewPetFormModal.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { createPet } from '../../store/petReducer'
+import { createPet, updatePet } from '../../store/petReducer'
+import { useLocation } from 'react-router'
 
-const NewPetForm = ({setModalState}) => {
-    const [name, setName] = useState('')
-    const [dob, setDob] = useState('')
-    const [sex, setSex] = useState('')
-    const [species, setSpecies] = useState('')
-    const [color, setColor] = useState('')
-    const [breed, setBreed] = useState('')
-    const [microchipNum, setMicrochipNum] = useState()
-    const [insurancePolicyId, setInsurancePolicyId] = useState()
-    const [weight, setWeight] = useState()
+const NewPetForm = ({modalState, setModalState, editModalState, setEditModalState, initialPetData}) => {
+    const [name, setName] = useState(initialPetData?.name ?? '')
+    const initialDob = initialPetData ? new Date(initialPetData.dob).toISOString().split('T')[0] : '';
+    const [dob, setDob] = useState(initialDob)
+    const [sex, setSex] = useState(initialPetData?.sex ?? '')
+    const [species, setSpecies] = useState(initialPetData?.species ?? '')
+    const [color, setColor] = useState(initialPetData?.color ?? '')
+    const [breed, setBreed] = useState(initialPetData?.breed ?? '')
+    const [microchipNum, setMicrochipNum] = useState(initialPetData?.microchipNum ?? '' )
+    const [insurancePolicyId, setInsurancePolicyId] = useState(initialPetData?.insurancePolicyId ?? '')
+    const [weight, setWeight] = useState(initialPetData?.weight ?? '')
     const dispatch = useDispatch();
     const currentPets = useSelector(state => state.pets) // placeholder
+    const location = useLocation()
+    const {pathname} = location
 
+    console.log(pathname)
 
     useEffect(() => {
-        console.log("Pets changed")
     }, [currentPets])
 
-    const handleSubmit = (e) => {
+    const handleEditSubmit = (e) => {
         e.preventDefault();
         const petInfo = {
+            _id: initialPetData._id,
             name: name,
             dob: dob,
             sex: sex,
@@ -35,17 +40,42 @@ const NewPetForm = ({setModalState}) => {
             weight: weight
         }
 
-        dispatch(createPet(petInfo))
-        setModalState(null)
+        dispatch(updatePet(petInfo))
+        setEditModalState(null)
+    }
+    const handleCreateSubmit = (e) => {
+        e.preventDefault();
+        const petInfo = {
+            //! this is important, it crashes the server if you don't do it.
+            _id: initialPetData._id,
+            name: name,
+            dob: dob,
+            sex: sex,
+            species: species, 
+            color: color,
+            breed: breed, 
+            microchipNum: microchipNum, 
+            insurancePolicyId: insurancePolicyId, 
+            weight: weight
+        }
+        //   ↓ matches a string that ends with the literal text 'dashboard', optionally followed by a slash.
+        if( /dashboard\/?$/.test(pathname)) {
+            dispatch(createPet(petInfo))
+            setModalState(null)
+        } else {
+            dispatch(updatePet(petInfo))
+            setEditModalState(null)
+        }
+
         setName('')
         setDob('')
         setSex('')
         setSpecies('')
         setColor('')
         setBreed('')
-        setMicrochipNum()
-        setInsurancePolicyId()
-        setWeight()
+        setMicrochipNum('')
+        setInsurancePolicyId('')
+        setWeight('')
     } 
 
     const formContent = () => (
@@ -75,7 +105,7 @@ const NewPetForm = ({setModalState}) => {
                     placeholder='Sex'
                     value={sex}
                     onChange={e => setSex(e.target.value)}>
-                    <optgroup>
+                    <optgroup>  
                         <option disabled value="">  </option>
                         <option id="female">female</option>
                         <option id="male">male</option>
@@ -129,12 +159,19 @@ const NewPetForm = ({setModalState}) => {
          </>
 
     )
+    const handleBackgroundClick = () => {
+        if(pathname === '/dashboard') {
+            setModalState(null)
+        } else {
+            setEditModalState(null)
+        }
+    }
     return(
         <>
-            <div className="modal-background" onClick={_ => setModalState(null)}>
-                <div className="modal-content" onClick={e => e.stopPropagation()}>
-                    <div className='modal-content-top'>
-                        <button onClick={_ => setModalState(null)}>
+            <div className="modal-background" onClick={handleBackgroundClick}>
+                <div className={`modal-content-${modalState ? `${modalState}` : ''}${editModalState ? `${editModalState}` : ''}`} onClick={e => e.stopPropagation()}>
+                    <div className={`modal-content-top-${modalState ? `${modalState}` : ''}${editModalState ? `${editModalState}` : ''}`}>
+                        <button className='pet-form-button' onClick={handleBackgroundClick}>
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" 
                                     role="presentation" focusable="false" 
@@ -154,13 +191,17 @@ const NewPetForm = ({setModalState}) => {
                     </div>
                     <div className='modal-content-center'>
                         <div className='modal-content-center-title'>
-                            <h2>Add New Pet</h2>
+                            {modalState && <h2>Add New Pet</h2>}
+                            {editModalState && <h2>Edit Pet</h2>}
                         </div>
                         <div className='modal-content-center-form'>
-                            <form className='add-new-pet-form' onSubmit={handleSubmit}>
+                            <form className={`${modalState ? `${modalState}` : ''}${editModalState ? `${editModalState}` : ''}-new-pet-form`} onSubmit={pathname === '/dashboard' ? handleCreateSubmit : handleEditSubmit}>
                                 {formContent()}
-                                <div className='add-new-pet-button'>
-                                    <button type="submit">Add New Pet</button>
+                                <div className={`${modalState ? `${modalState}` : ''}${editModalState ? `${editModalState}` : ''}-new-pet-button`}>
+                                    <button type="submit">
+                                        {modalState && <h2>Add New Pet</h2>}
+                                        {editModalState && <h2>Edit Pet</h2>}
+                                    </button>
                                 </div>
                             </form> 
                         </div>

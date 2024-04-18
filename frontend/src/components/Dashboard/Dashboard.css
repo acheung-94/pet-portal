@@ -6,6 +6,7 @@
     overflow: hidden;
 }
 
+
 .page-container{
     height: auto;
     box-sizing: border-box;
@@ -15,6 +16,7 @@
     flex: 1;
     min-height: 0;
 }
+
 
 .dashboard-header{
     font-size: 36px;
@@ -39,3 +41,4 @@
     display: flex;
     overflow: hidden;
 }
+
