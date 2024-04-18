@@ -1,0 +1,1 @@
+export const DEFAULT_IMAGE_URI = 'https://pet-portal-assets.s3.us-west-1.amazonaws.com/pet-first-aid-svgrepo-com.svg'
