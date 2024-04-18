@@ -1,4 +1,4 @@
-import { createSelector } from "@reduxjs/toolkit";
+import { createSelector } from "reselect";
 import { getUserReminders, getPetReminders, getReminder, postReminder, editReminder, deleteReminder } from "../utils/reminderApiUtils";
 
 //CONST TYPES

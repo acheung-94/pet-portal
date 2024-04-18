@@ -14,7 +14,7 @@ const PetProfile = () => {
     const pet = useSelector(currentPet(petId))
     const dispatch = useDispatch()
     const [modalState, setModalState] = useState(null)
-    
+
     const calculateAge = (dateString) => {
         const birthday = new Date(dateString)
         const today = new Date()
@@ -87,7 +87,7 @@ const PetProfile = () => {
                             <div className='pet-reminder-module'> 
                                 <div className='pet-reminder-header'>
                                     <h3>Reminders</h3>
-                                    <button className='pet-dash-buttons' onClick={() => setModalState('reminder')}> + </button>
+                                    <button className='pet-dash-buttons' onClick={() => setModalState('appointment')}> + </button>
                                 </div>
                                 <div> Module w/ overflow </div>
                             </div>
@@ -95,7 +95,7 @@ const PetProfile = () => {
                                 <div className="vaccines">
                                     <div className='pet-vaccines-header'>
                                         <h3>Vaccines</h3>
-                                        <button className='pet-dash-buttons' onClick={() => setModalState('vaccine')}> + </button>
+                                        <button className='pet-dash-buttons' onClick={() => setModalState('vaccination')}> + </button>
                                     </div>
                                     <div>Module w/ overflow</div>
                                 </div>
@@ -123,7 +123,12 @@ const PetProfile = () => {
                         </div>
                     </div>
                 </div>
-                {modalState && <NewReminderFormModal modalState={modalState} setModalState={setModalState}/>}
+                {modalState && <NewReminderFormModal 
+                                modalState={modalState} 
+                                setModalState={setModalState} 
+                                pet={pet}
+                                reminder={null}/>}
+                                {/* replace with actual reminder when integrating */}
                 <Footer/>
             </div>
         )
