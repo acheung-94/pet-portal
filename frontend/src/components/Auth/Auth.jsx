@@ -5,7 +5,7 @@ import '../Home/Home.css'
 import './Auth.css'
 import { useLocation } from "react-router"
 import { useDispatch } from "react-redux";
-import { createUser, loginUser, selectCurrentUser } from "../../store/sessionReducer";
+import { createUser, loginUser } from "../../store/sessionReducer";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import NewPetFormModal from "../NewPetFormModal/NewPetFormModal";
