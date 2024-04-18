@@ -1,5 +1,6 @@
 .main-footer{
     width: 100%;
+    height: 96px;
     background-color: var(--green-dark);
     display: flex;
     flex-direction: column;

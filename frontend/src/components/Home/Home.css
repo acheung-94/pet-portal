@@ -6,14 +6,20 @@
     flex-direction: column;
     overflow: auto;
 }
-
+.home-page-container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
 .section-1{
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
-    padding: 10%;
+    /* padding: 10%; */
+    padding-left: 5%;
+    padding-right: 10%;
 }
 
 .display-border{
@@ -29,6 +35,13 @@
 .display-dog{
     border-top-left-radius: 75%;
     border-top-right-radius: 75%;
+    height: 100%;
+}
+.section-1-text{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding-top: 5%;
 }
 .welcome-heading{
     border-bottom: 1px solid gray;
@@ -41,16 +54,20 @@
     letter-spacing: 0.1rem;
 }
 .welcome-message{
-    height: 40%;
+    height: 50%;
     padding: 20px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-evenly;
 }
 .welcome-message p{
     line-height: 1.5rem;
 }
 .h2-splash{
     width: 45%;
-    height: 20px;
+    height: 40px;
     position: relative;
     background-color: var(--pale-purple);
     border-radius: 10px;
