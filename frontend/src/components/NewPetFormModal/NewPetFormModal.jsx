@@ -28,6 +28,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
     const handleEditSubmit = (e) => {
         e.preventDefault();
         const petInfo = {
+            //! this is important, it crashes the server if you don't do it.
             _id: initialPetData._id,
             name: name,
             dob: dob,
@@ -39,21 +40,14 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
             insurancePolicyId: insurancePolicyId, 
             weight: weight
         }
-        if(pathname === '/dashboard') {
-            dispatch(createPet(petInfo))
-            setModalState(null)
-        } else {
-            dispatch(updatePet(petInfo))
-            setEditModalState(null)
-        }
 
         dispatch(updatePet(petInfo))
         setEditModalState(null)
     }
+
     const handleCreateSubmit = (e) => {
         e.preventDefault();
         const petInfo = {
-            //! this is important, it crashes the server if you don't do it.
             _id: initialPetData._id,
             name: name,
             dob: dob,
@@ -69,9 +63,6 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
         if( /dashboard\/?$/.test(pathname)) {
             dispatch(createPet(petInfo))
             setModalState(null)
-        } else {
-            dispatch(updatePet(petInfo))
-            setEditModalState(null)
         }
 
         setName('')
