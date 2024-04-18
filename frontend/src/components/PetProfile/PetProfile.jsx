@@ -14,16 +14,7 @@ const PetProfile = () => {
     const pet = useSelector(currentPet(petId))
     const dispatch = useDispatch()
     const [modalState, setModalState] = useState(null)
-    const testReminder = {
-        description: "",
-        dueDate : "2024-04-26T00:00:00.000Z",
-        location : "",
-        performDate : null,
-        title : "FVRCP",
-        type : "vaccination",
-        user : "661dd71a277cba3763f59378",
-        _id:"6621877cc0b78be0fc7fb69e"
-    }
+
     const calculateAge = (dateString) => {
         const birthday = new Date(dateString)
         const today = new Date()
@@ -105,7 +96,6 @@ const PetProfile = () => {
                                     <div className='pet-vaccines-header'>
                                         <h3>Vaccines</h3>
                                         <button className='pet-dash-buttons' onClick={() => setModalState('vaccination')}> + </button>
-                                        <button className='pet-dash-buttons' onClick={() => setModalState('edit')}> ! </button>
                                     </div>
                                     <div>Module w/ overflow</div>
                                 </div>
@@ -137,7 +127,8 @@ const PetProfile = () => {
                                 modalState={modalState} 
                                 setModalState={setModalState} 
                                 pet={pet}
-                                reminder={modalState==='edit' ? testReminder : null}/>}
+                                reminder={null}/>}
+                                {/* replace with actual reminder when integrating */}
                 <Footer/>
             </div>
         )
