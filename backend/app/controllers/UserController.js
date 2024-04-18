@@ -62,7 +62,7 @@ export default class UserController extends ApplicationController{
 		if (petsForUser) {
 			return res.json(petsForUser)
 		}
-		return res.status(404)
+		return res.status(404).end()
 	}
 	static async sessionRestore(req, res, _) {
 		const newToken = await loginUser(req.user)

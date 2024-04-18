@@ -3,6 +3,9 @@ import './PetProfile.css'
 import { Link, useParams } from 'react-router-dom'
 import { currentPet, fetchPets } from '../../store/petReducer'
 import { useEffect } from 'react'
+import { fetchPetReminders } from '../../store/reminderReducer'
+import { useState } from 'react'
+import NewReminderFormModal from '../NewReminderFormModal/NewReminderFormModal'
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
 
@@ -10,7 +13,7 @@ const PetProfile = () => {
     const { petId } = useParams()
     const pet = useSelector(currentPet(petId))
     const dispatch = useDispatch()
-    
+    const [modalState, setModalState] = useState(null)
     
     const calculateAge = (dateString) => {
         const birthday = new Date(dateString)
@@ -65,11 +68,10 @@ const PetProfile = () => {
 
     useEffect( () => {
         dispatch(fetchPets())
-<<<<<<< HEAD
-    }, [dispatch])
-=======
-    }, [])
->>>>>>> 4db2c6b (move petAttributes inside renderAttributes)
+
+        dispatch(fetchPetReminders(petId))
+    }, [petId])
+
 
     if (pet) {
 
@@ -85,7 +87,7 @@ const PetProfile = () => {
                             <div className='pet-reminder-module'> 
                                 <div className='pet-reminder-header'>
                                     <h3>Reminders</h3>
-                                    <button className='pet-dash-buttons'> + </button>
+                                    <button className='pet-dash-buttons' onClick={() => setModalState('reminder')}> + </button>
                                 </div>
                                 <div> Module w/ overflow </div>
                             </div>
@@ -93,14 +95,14 @@ const PetProfile = () => {
                                 <div className="vaccines">
                                     <div className='pet-vaccines-header'>
                                         <h3>Vaccines</h3>
-                                        <button className='pet-dash-buttons'> + </button>
+                                        <button className='pet-dash-buttons' onClick={() => setModalState('vaccine')}> + </button>
                                     </div>
                                     <div>Module w/ overflow</div>
                                 </div>
                                 <div className="medications">
                                     <div className='medications-header'>
                                         <h3>Medications</h3>
-                                        <button className='pet-dash-buttons'> + </button>
+                                        <button className='pet-dash-buttons' onClick={() => setModalState('medication')}> + </button>
                                     </div>
                                     <div>Module w/ overflow</div>
         
@@ -121,6 +123,7 @@ const PetProfile = () => {
                         </div>
                     </div>
                 </div>
+                {modalState && <NewReminderFormModal modalState={modalState} setModalState={setModalState}/>}
                 <Footer/>
             </div>
         )

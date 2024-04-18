@@ -1,7 +1,6 @@
 const jwtFetch = async (url, options = {}) => {
     options.method = options.method || "GET";
     options.headers = options.headers || {};
-
     const jwtToken = localStorage.getItem("jwtToken");
     if (jwtToken) options.headers["Authorization"] = 'Bearer ' + jwtToken;
 
@@ -10,10 +9,8 @@ const jwtFetch = async (url, options = {}) => {
             options.headers["Content-Type"] || "application/json";
         options.headers['CSRF-Token'] = getCookie("CSRF-TOKEN")
     }   
-
-    const res = await fetch(url, options);
+    const res = await fetch(url, options)
     if (res.status >= 400) throw res;
-  
     return res;
 }
 
