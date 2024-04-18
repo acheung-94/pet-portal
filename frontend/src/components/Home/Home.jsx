@@ -4,7 +4,7 @@ import Navbar from "../Navbar/Navbar"
 import './Home.css'
 const Home = () => {
     return(
-        <>
+        <div className="home-page-container">
             <Navbar/>
             <div className="welcome-container-1">
                 <div className="section-1">
@@ -34,7 +34,7 @@ const Home = () => {
                 </div>
             </div>
             <Footer></Footer>
-        </>
+        </div>
     )
 }
 export default Home

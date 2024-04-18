@@ -1,17 +1,32 @@
 import './Navbar.css'
 import { useDispatch, useSelector } from 'react-redux';
 import {Link} from "react-router-dom"
-import { logoutUser, selectCurrentUser } from '../../store/sessionReducer';
+import { logoutUser, refreshUser, selectCurrentUser } from '../../store/sessionReducer';
 import { useEffect } from 'react';
-import { fetchPets } from '../../store/petReducer';
+
 
 const Navbar = () => {
     const currentUser = useSelector(selectCurrentUser)
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(fetchPets())
-    }, [dispatch])
+
+    useEffect( () => {
+        if (currentUser && currentUser.sessionExpiration){
+            const checkTime = setInterval(()=>{
+                let currentTime = Date.now() //ms
+                let expirationTime = new Date(currentUser.sessionExpiration).getTime() //ms
+
+                if (currentTime >= (expirationTime-2000) ){
+                    dispatch(refreshUser())
+                    clearInterval(checkTime)
+                }   
+            } , 500)
+
+            return(() => {
+                clearInterval(checkTime)
+            } )
+        }
+    }, [currentUser, dispatch])
 
     return(
         <div className='header-container'>

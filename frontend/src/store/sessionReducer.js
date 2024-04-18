@@ -1,10 +1,9 @@
-import { redirect } from "react-router-dom"
-import { postUser, postSession } from "../utils/sessionApiUtils"
+import { postUser, postSession, refreshSession, updateValues } from "../utils/sessionApiUtils"
 
 //CONST TYPES
 export const SET_CURRENT_USER = 'session/SET_CURRENT_USER'
 export const REMOVE_CURRENT_USER = 'sesison/REMOVE_CURRENT_USER'
-
+export const SET_EXPIRATION = 'session/SET_EXPIRATION'
 //ACTION CREATOR
 export const setCurrentUser = sessionInfo => ({
     type: SET_CURRENT_USER, 
@@ -12,6 +11,10 @@ export const setCurrentUser = sessionInfo => ({
 })
 export const removeCurrentUser = () => ({
     type: REMOVE_CURRENT_USER
+})
+export const setExpiration = (expiresAt) => ({
+    type: SET_EXPIRATION,
+    expiresAt
 })
 
 //THUNK CREATOR
@@ -24,11 +27,9 @@ export const createUser = userInfo => dispatch => (
                 throw res
             }
         })
-        .then(({user, token}) => {
-            console.log(token)
-            localStorage.setItem('jwtToken', token)
-            localStorage.setItem('currentUser', JSON.stringify(user))
-            dispatch(setCurrentUser(user))
+        .then((blob) => {
+            updateValues(blob)
+            dispatch(setCurrentUser(blob.user))
         })
         .catch(err => console.error(err))
 )
@@ -42,12 +43,9 @@ export const loginUser = sessionInfo => dispatch => (
                 throw res
             }
         })
-        .then(({user, token}) => {
-            
-            localStorage.setItem('jwtToken', token)
-            localStorage.setItem('currentUser', JSON.stringify(user))
-            dispatch(setCurrentUser(user))
-            redirect('/dashboard')
+        .then((blob) => {
+            updateValues(blob)
+            dispatch(setCurrentUser(blob.user))
         })
         .catch(err => console.error(err))
 )
@@ -56,6 +54,21 @@ export const logoutUser = () => dispatch => {
     localStorage.removeItem('jwtToken')
     localStorage.removeItem('currentUser')
     dispatch(removeCurrentUser());
+}
+
+export const refreshUser = () => dispatch => {
+    refreshSession()
+    .then(res => {
+        if (res.ok){
+            return res.json()
+        }else{
+            throw res
+        }
+    })
+    .then((blob) => {
+        updateValues(blob)
+        dispatch(setCurrentUser(blob.user))
+    })
 }
 
 //SELECTOR
@@ -70,6 +83,8 @@ const sessionReducer = (state=initialState, action) => {
             return action.sessionInfo
         case REMOVE_CURRENT_USER:
             return null
+        case SET_EXPIRATION:
+            return action.expiresAt
         default:
             return state
     }

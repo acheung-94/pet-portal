@@ -14,3 +14,15 @@ export const postSession = sessionInfo => (
         body: JSON.stringify(sessionInfo)
     })
 )
+
+export const refreshSession = () => (
+    jwtFetch('/api/users/sessionRestore')
+)
+
+export const updateValues = ({user, token, issued, expiresSeconds}) =>{
+    const issuedAt = new Date(issued)
+    const expiresAt = new Date(issuedAt.getTime() + (expiresSeconds * 1000))
+    user["sessionExpiration"] = expiresAt.toISOString()
+    localStorage.setItem('jwtToken', token)
+    localStorage.setItem('currentUser', JSON.stringify(user))
+}

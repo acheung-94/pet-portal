@@ -6,6 +6,7 @@ import petReducer from "./petReducer"
 
 const rootReducer = combineReducers({
     session: sessionReducer,
+    // sessionExpiration: sessionReducer,
     pets: petReducer
 })
 
