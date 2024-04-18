@@ -69,12 +69,10 @@ const PetProfile = () => {
 
     useEffect( () => {
         dispatch(fetchPets())
+
         dispatch(fetchPetReminders(petId))
     }, [petId, dispatch])
 
-    useEffect(() => {
-        console.log('Pet data changed', pet)
-    }, [pet])
     if (pet) {
 
         return(

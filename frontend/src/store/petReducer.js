@@ -14,7 +14,7 @@ export const receivePets = pets => ({
 
 export const receivePet = pet => ({
     type: RECEIVE_PET,
-    pet: pet.pet
+    pet
 })
 
 export const removePet = petId => ({
