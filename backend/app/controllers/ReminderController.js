@@ -56,12 +56,10 @@ export default class ReminderController extends ApplicationController {
 	}
 	static async delete(req, res, _) {
 		const reminder = await Reminder.findById(req.params.id)
-		console.log('REMINDER IS', reminder)
 		if (req.user._id.toString() !== reminder.user.toString()) {
 			return res.status(403).end()
 		}
 		const result = await Reminder.deleteOne()
-		console.log('RESULT IS', result)
 
 		if (result) {
 			return res.json(result)
@@ -75,7 +73,7 @@ export default class ReminderController extends ApplicationController {
 			dueDate: req.body.dueDate,
 			performDate: req.body.performDate,
 			description: req.body.description,
-			location: req.body.description,
+			location: req.body.location,
 			pet: req.body.pet,
 			user: req.user._id
 		})
