@@ -54,7 +54,7 @@ table {
     width: 100vw;
     border-bottom: none;
     z-index: 99;
-    background-color: var(--main-bg-beige);
+    background-color: transparent;
     font-family: borish;
 }
 .navbar {
@@ -73,15 +73,16 @@ table {
     position: relative;
     text-size-adjust :100%;
     align-items: center;
-    cursor: pointer;
     box-sizing:  border-box;
 }
 .navbar-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-top: 10px;
+    /* padding-top: 10px; */
     font-size: 20px;
+    height: 60px;
+
 }
 .petportal-icon {
     padding:0;
@@ -121,7 +122,7 @@ a {
     outline: none;
     height: 30px;
     padding-left: 10px;
-    
+
 }
 .login-button-container:hover,
 .signup-button-container:hover,

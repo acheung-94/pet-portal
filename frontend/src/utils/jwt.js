@@ -14,8 +14,7 @@ const jwtFetch = async (url, options = {}) => {
     return res;
 }
 
-
-const getCookie = (cookieName) => {
+export const getCookie = (cookieName) => {
     const cookies = document.cookie.split(';');
     for (let cookie of cookies) {
         const [name, value] = cookie.split('=');

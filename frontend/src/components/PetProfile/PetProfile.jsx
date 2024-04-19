@@ -3,12 +3,15 @@ import './PetProfile.css'
 import { Link, useParams } from 'react-router-dom'
 import { currentPet, fetchPets } from '../../store/petReducer'
 import { useEffect } from 'react'
+import Appointments from '../Appointments/Appointments'
+import Vaccines from '../Vaccines/Vaccines'
+import Medications from '../Medications/Medications'
 import { fetchPetReminders } from '../../store/reminderReducer'
 import { useState } from 'react'
 import NewPetFormModal from '../NewPetFormModal/NewPetFormModal'
-import NewReminderFormModal from '../NewReminderFormModal/NewReminderFormModal'
-import Navbar from '../Navbar/Navbar'
-import Footer from '../Footer/Footer'
+
+import ReminderFormModal from '../ReminderFormModal/ReminderFormModal'
+
 
 const PetProfile = () => {
     const { petId } = useParams()
@@ -53,61 +56,48 @@ const PetProfile = () => {
         }
     }
 
-    const renderAttributes = () => {
-        const petAttributes = Object.entries(pet)
-        return petAttributes.map( ([key, val], idx) => {
-            if ( key !== '_id' && key !== '__v' && key !== 'owner') {
-                return (
-                    <div key={idx} className="pet-attribute">
-                        <h3>{ (key === 'dob') ? "Age" : key.charAt(0).toUpperCase() + key.slice(1).toLowerCase()}</h3>
-                        <p>{ (key === 'dob') ? calculateAge(val): val}</p>
-                    </div>
-                )
-            }
-        })
-    }
-
     useEffect( () => {
         dispatch(fetchPets())
         dispatch(fetchPetReminders(petId))
     }, [petId, dispatch])
 
-    useEffect(() => {
-        console.log('Pet data changed', pet)
-    }, [pet])
     if (pet) {
 
         return(
             <div className='dash-page-container'>
-                <Navbar/>
-                <div className='pet-dashboard-container'>
-                    <div className="pet-dashboard">
-                        <Link to={'/dashboard'} className='back-link'> ← Back to your dashboard </Link>
-                        
-                        <div className='pet-dash-highlight'><h1 className='pet-dash-header'> Pet Dashboard </h1></div>
-                        <div className="pet-metrics-container">
-                            <div className='pet-reminder-module'> 
-                                <div className='pet-reminder-header'>
-                                    <h3>Reminders</h3>
-                                    <button className='pet-dash-buttons' onClick={() => setModalState('reminder')}> + </button>
-                                </div>
-                                <div> Module w/ overflow </div>
+            <div className='pet-dashboard-container'>
+                <div className="pet-dashboard">
+                    <Link to={'/dashboard'} className='back-link'> ← Back to your dashboard </Link>
+                    
+                    <div className='pet-dash-highlight'><h1 className='pet-dash-header'> Pet Dashboard </h1></div>
+                    <div className="pet-metrics-container">
+                        <div className='pet-reminder-module'> 
+                            <div className='pet-reminder-header'>
+                                <h3>Reminders</h3>
+                                <button className='pet-dash-buttons' onClick={() => setModalState('appointment')}> + </button>
                             </div>
+                            <div className='appointment-index-container'>
+                                <Appointments/>
+                            </div>
+                        </div>
                             <div className="preventatives-module">
                                 <div className="vaccines">
                                     <div className='pet-vaccines-header'>
                                         <h3>Vaccines</h3>
-                                        <button className='pet-dash-buttons' onClick={() => setModalState('vaccine')}> + </button>
+                                        <button className='pet-dash-buttons' onClick={() => setModalState('vaccination')}> + </button>
                                     </div>
-                                    <div>Module w/ overflow</div>
+                                    <div className='vaccinations-index-container'>
+                                        <Vaccines/>
+                                     </div>
                                 </div>
                                 <div className="medications">
                                     <div className='medications-header'>
                                         <h3>Medications</h3>
                                         <button className='pet-dash-buttons' onClick={() => setModalState('medication')}> + </button>
                                     </div>
-                                    <div>Module w/ overflow</div>
-        
+                                    <div className='medications-index-container'>
+                                        <Medications/>
+                                    </div>        
                                 </div>
                             </div>
                         </div>
@@ -117,20 +107,64 @@ const PetProfile = () => {
                             <button className='edit-pet-dash-buttons' onClick={() => setEditModalState('edit')}> + </button>
                         </div>
                         <div className='profile-pic-border'>
-                            <img src={!pet.image && 
-                            "https://pet-portal-assets.s3.us-west-1.amazonaws.com/pet-first-aid-svgrepo-com.svg"}
+                            <img src={pet.imageUrl}
                             className='profile-pic'/>
                         </div>
                         <div className='pet-summary'>
-                            {
-                                renderAttributes()
-                            }
+                            <div className='name-splash-container'>
+                                <div className="name-border">
+                                    <h3>{(pet.name.charAt(0).toUpperCase() + pet.name.slice(1).toLowerCase())}</h3>
+                                </div>
+                            </div>
+                            <div className="pet-attribute">
+                                <h3>Age: </h3>
+                                <p>{calculateAge(pet.dob)}</p>
+                                <span className='decoration'></span>
+                            </div>
+                            <div className="pet-attribute">
+                                <h3>Sex: </h3>
+                                <p>{pet.sex}</p>
+                                <span className='decoration'></span>
+                            </div>
+                            <div className="pet-attribute">
+                                <h3>Species: </h3>
+                                <p>{pet.species}</p>
+                                <span className='decoration'></span>
+                            </div>
+                            <div className="pet-attribute">
+                                <h3>Breed: </h3>
+                                <p>{pet.breed}</p>
+                                <span className='decoration'></span>
+                            </div>
+                            <div className="pet-attribute">
+                                <h3>Color: </h3>
+                                <p>{pet.color}</p>
+                                <span className='decoration'></span>
+                            </div>
+                            {pet.insurancePolicyId && (
+                                <div className="pet-attribute">
+                                    <h3>Insurance ID: </h3>
+                                    <p>{pet.insurancePolicyId}</p>
+                                    <span className='decoration'></span>
+                                </div>
+                            )}
+                            {pet.weight && (
+                                <div className="pet-attribute">
+                                    <h3>Weight: </h3>
+                                    <p>{pet.weight}</p>
+                                    <span className='decoration'></span>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
-                {modalState && <NewReminderFormModal modalState={modalState} setModalState={setModalState} pet={pet}/>}
-                {editModalState && <NewPetFormModal editModalState={editModalState} setEditModalState={setEditModalState} initialPetData={pet}/>}
-                <Footer/>
+                
+                {editModalState && <NewPetFormModal editModalState={editModalState} setEditModalState={setEditModalState} initialPetData={pet} petId={petId}/>}
+                {modalState && <ReminderFormModal 
+                                modalState={modalState} 
+                                setModalState={setModalState} 
+                                pet={pet}
+                                reminder={null}/>}
             </div>
         )
     }
