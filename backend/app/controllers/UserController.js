@@ -9,7 +9,7 @@ export default class UserController extends ApplicationController{
 		super()
 	}
 
-	static async register(req, res, next) {
+	static async register(req, res, _) {
 		const user = await User.findOne({
 			email: req.body.email
 		})
