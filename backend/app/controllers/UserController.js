@@ -24,7 +24,7 @@ export default class UserController extends ApplicationController{
 
 			err.errors = errors
 			console.log(err, err.errors)
-			return res.status(422).end()
+			return res.status(422).json({'errors': ['duplicate email']})
 		}
 
 		const newUser = new User({
@@ -39,7 +39,7 @@ export default class UserController extends ApplicationController{
 					const user = await newUser.save()
 					return res.json(await loginUser(user))
 				} catch (err) {
-					return res.status(422).end()
+					return res.status(422).json({'errors': ['unknown error']})
 				}
 			})
 		})
