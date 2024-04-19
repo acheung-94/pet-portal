@@ -75,7 +75,7 @@ export default class ReminderController extends ApplicationController {
 			dueDate: req.body.dueDate,
 			performDate: req.body.performDate,
 			description: req.body.description,
-			location: req.body.description,
+			location: req.body.location,
 			pet: req.body.pet,
 			user: req.user._id
 		})

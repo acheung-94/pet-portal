@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 import { restoreSession } from './utils/jwt';
 import { createReminder, fetchPetReminders, updateReminder } from './store/reminderReducer';
 import { destroyReminder } from './store/reminderReducer';
-import { destroyPet, updatePet } from './store/petReducer';
 const store = configureStore()
 window.store = store
 window.fetchPetReminders = fetchPetReminders
@@ -15,7 +14,7 @@ window.createReminder = createReminder
 window.destroyReminder = destroyReminder
 window.updateReminder = updateReminder
 window.fetchPetReminders = fetchPetReminders
-window.updatePet = updatePet
+
 
 const initializeApp = () =>{
   ReactDOM.createRoot(document.getElementById('root')).render(

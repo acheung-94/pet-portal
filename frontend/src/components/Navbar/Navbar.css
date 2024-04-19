@@ -73,7 +73,6 @@ table {
     position: relative;
     text-size-adjust :100%;
     align-items: center;
-    /* cursor: pointer; */
     box-sizing:  border-box;
 }
 .navbar-container {
@@ -83,7 +82,6 @@ table {
     /* padding-top: 10px; */
     font-size: 20px;
     height: 60px;
-
 }
 .petportal-icon {
     padding:0;
@@ -123,7 +121,7 @@ a {
     outline: none;
     height: 30px;
     padding-left: 10px;
-    
+
 }
 .login-button-container:hover,
 .signup-button-container:hover,
