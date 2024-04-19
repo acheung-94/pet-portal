@@ -133,3 +133,10 @@
     box-sizing: border-box;
     border-radius: 20px;
 }
+
+.auth-errors{
+    color: rgb(250, 94, 76);
+    font-style: italic;
+    font-family: domine;
+    font-size: 18px;
+}
