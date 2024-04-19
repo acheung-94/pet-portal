@@ -128,7 +128,7 @@ const PetProfile = () => {
                                 pet={pet}
                                 reminder={null}/>}
                                 {/* replace with actual reminder when integrating */}
-                <Footer/>
+                {/* <Footer/> */}
             </div>
         )
     }

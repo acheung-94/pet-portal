@@ -2,7 +2,6 @@
     width: 100vw;
     height: 100%;
     box-sizing: border-box;
-    border: 1px solid green;
     /* padding-top: 5%; */
     display: flex;
 }
@@ -10,16 +9,15 @@
     width: 100vw;
     height: 100vh;
     box-sizing: border-box;
-    border: 2px solid orange;
     display: flex;
     flex-direction: column;
 }
 
 .pet-dashboard{
     width: 75%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    border: 1px solid purple;
     box-sizing: border-box;
     padding: 20px;
 }
@@ -28,6 +26,7 @@
     font-size: 20px;
     box-sizing: border-box;
     margin: 12px;
+    width: fit-content;
 }
 .pet-dash-header{
     font-size: 48px;
@@ -114,6 +113,7 @@
 }
 .pet-signalment{
     width: 25%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
