@@ -1,7 +1,7 @@
 .main-footer{
-    position: fixed;
+    /* position: fixed;
     bottom: 0;
-    left: 0;
+    left: 0; */
     width: 100%;
     height: 96px;
     background-color: var(--green-dark);
@@ -13,20 +13,23 @@
 }
 
 .main-footer a{
-    color: var(--main-bg-beige);
+    color: var(--gold);
     font-family: domine;
     text-decoration: none;
     padding: 8px;
- 
+    transition: all 1s linear;
+    position: relative;
+    box-sizing: border-box;
 }
 
 .main-footer a:hover{
-    border-bottom: 1px solid var(--gold);
+    color: var(--main-bg-beige);
 }
 
 .main-footer h1{
     color: var(--gold);
     align-self: center;
+    font-size: 24px;
 }
 
 .footer-links{
@@ -40,3 +43,32 @@
 .footer-sep{
     border: 1px solid var(--gold);
 }
+
+.deco-1{
+    width: 8px;
+    height: 8px;
+    box-sizing: border-box;
+    position: absolute;
+    background-color: var(--gold);
+    transform: rotate(45deg);
+    bottom: -10px;
+    left: 48%;
+}
+
+.deco-2{
+    width: 0%;
+    transition: width 1s ease;
+    transform: translateX(-50%);
+    bottom: -7px;
+    left: 50%;
+}
+
+.main-footer a:hover .deco-2{
+    width: 90%;
+    height: 1px;
+    background-color: var(--gold);
+    position: absolute;
+
+    box-sizing: border-box;
+}
+

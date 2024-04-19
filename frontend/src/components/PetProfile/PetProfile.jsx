@@ -6,7 +6,6 @@ import { useEffect } from 'react'
 import { fetchPetReminders } from '../../store/reminderReducer'
 import { useState } from 'react'
 import NewReminderFormModal from '../NewReminderFormModal/NewReminderFormModal'
-import Navbar from '../Navbar/Navbar'
 
 
 const PetProfile = () => {
@@ -50,20 +49,6 @@ const PetProfile = () => {
         }else{
             return (`${years} ${years === 1 ? "year" : "years"} & ${months} months`)
         }
-    }
-
-    const renderAttributes = () => {
-        const petAttributes = Object.entries(pet)
-        return petAttributes.map( ([key, val], idx) => {
-            if ( key !== '_id' && key !== '__v' && key !== 'owner') {
-                return (
-                    <div key={idx} className="pet-attribute">
-                        <h3>{ (key === 'dob') ? "Age" : key.charAt(0).toUpperCase() + key.slice(1).toLowerCase()}</h3>
-                        <p>{ (key === 'dob') ? calculateAge(val): val}</p>
-                    </div>
-                )
-            }
-        })
     }
 
     useEffect( () => {
