@@ -41,9 +41,9 @@ const PetProfile = () => {
         if (years < 1) {
             if(months < 4){
                 let weeks = Math.floor(days / 7)
-                //let daysDiff = days % 7
+                let daysDiff = days % 7
                 if (weeks > 1) {
-                    return (`${weeks} weeks & ${days} days`)
+                    return (`${weeks} weeks & ${daysDiff} days`)
                 }else{
                     return (`${days} ${days === 1 ? "day" : "days"}`)
                 }

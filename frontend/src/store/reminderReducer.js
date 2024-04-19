@@ -110,7 +110,7 @@ const reminderReducer = (state={}, action) => {
         case RECEIVE_REMINDER:
             return {...state, [action.reminder._id]: action.reminder}
         case RECEIVE_REMINDERS:
-            return {...state, ...action.reminders}
+            return action.reminders
         case REMOVE_REMINDER:
             delete newState[action.reminderId]
             return newState
