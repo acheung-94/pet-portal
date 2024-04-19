@@ -30,7 +30,7 @@ export const createUser = userInfo => dispatch => (
             updateValues(blob)
             dispatch(setCurrentUser(blob.user))
         })
-        .catch(err => console.error(err))
+        
 )
 
 export const loginUser = sessionInfo => dispatch => (
