@@ -1,5 +1,3 @@
-import Footer from '../Footer/Footer'
-import Navbar from '../Navbar/Navbar'
 import PetGrid from '../PetGrid/PetGrid'
 import './Dashboard.css'
 
@@ -7,7 +5,6 @@ const Dashboard = () => {
 
     return(
         <div className='page-container'>
-            <Navbar />
             <div className='dashboard-container'>
                 <h1 className='dashboard-header'>Your Dashboard</h1>
                 <span className='dashboard-sep'></span>
@@ -20,7 +17,6 @@ const Dashboard = () => {
                     <PetGrid/>
                 </div>
             </div>
-            <Footer/>
         </div>
     )
 }
