@@ -2,7 +2,11 @@ import { Link } from "react-router-dom"
 import Footer from "../Footer/Footer"
 import Navbar from "../Navbar/Navbar"
 import './Home.css'
+import { useSelector } from "react-redux"
+import { selectCurrentUser } from "../../store/sessionReducer"
 const Home = () => {
+    const currentUser = useSelector(selectCurrentUser)
+
     return(
         <div className="home-page-container">
             <Navbar/>
@@ -27,7 +31,7 @@ const Home = () => {
                             <div className="h2-splash"> <h3> ✨New here? Get started below. </h3> </div>
                             <div className="welcome-links">
                                 <Link>Thinking about getting a pet</Link>
-                                <Link to={'/login'}>Pet Parent</Link>
+                                <Link to={currentUser ? '/dashboard' : '/login'}>Pet Parent</Link>
                             </div>
                         </div>
                     </div>

@@ -1,11 +1,17 @@
+<<<<<<< HEAD:frontend/src/components/NewReminderFormModal/NewReminderFormModal.jsx
 import './NewReminderFormModal.css'
 import { useState } from 'react';
+=======
+import './ReminderFormModal.css'
+
+import { useEffect, useState } from 'react';
+>>>>>>> 6df14a8 (rename files, add pet image to grid and profile):frontend/src/components/ReminderFormModal/ReminderFormModal.jsx
 import { useDispatch } from 'react-redux';
 import { createReminder, updateReminder } from '../../store/reminderReducer';
 import { K9_VAX, FEL_VAX, APPT_TYPES, MEDS } from '../../utils/constants';
 import { useCallback } from 'react';
 
-const NewReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
+const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
     const [type, setType] = useState(
         modalState === 'edit' ? reminder.type : '')
 
@@ -233,4 +239,4 @@ const NewReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => 
 
 }
 
-export default NewReminderFormModal
+export default ReminderFormModal

@@ -31,7 +31,7 @@
     position: absolute;
     left: 50%;
     top: 450px;
-    width: 350px;
+    width: 40vw;
     height: 780px;
     transform: translate(-50%, -50%);
     background-color: var(--green-dark);

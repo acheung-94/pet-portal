@@ -42,7 +42,7 @@ const PetGrid = () => {
                             <div key={idx} className='pet-item'>
                               <div className='pet-img'>
                                   <Link to={`/dashboard/${pet._id}`}>
-                                    <img className={pet._id} src={ImgPlaceholder}/>
+                                    <img className={pet._id} src={pet.imageUrl}/>
                                   </Link>
                               </div>
                               <div className='pet-name'>

@@ -9,7 +9,6 @@ const Medications = () => {
     const dispatch = useDispatch()
     const { petId } = useParams()
     const reminders = useSelector(state => state.reminders)
-
     useEffect( () => {
         dispatch(fetchPets())
         dispatch(fetchPetReminders(petId))

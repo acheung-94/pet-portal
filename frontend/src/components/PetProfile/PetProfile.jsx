@@ -9,7 +9,9 @@ import Medications from '../Medications/Medications'
 import { fetchPetReminders } from '../../store/reminderReducer'
 import { useState } from 'react'
 import NewPetFormModal from '../NewPetFormModal/NewPetFormModal'
-import NewReminderFormModal from '../NewReminderFormModal/NewReminderFormModal'
+
+import ReminderFormModal from '../ReminderFormModal/ReminderFormModal'
+
 
 const PetProfile = () => {
     const { petId } = useParams()
@@ -105,8 +107,7 @@ const PetProfile = () => {
                             <button className='edit-pet-dash-buttons' onClick={() => setEditModalState('edit')}> + </button>
                         </div>
                         <div className='profile-pic-border'>
-                            <img src={!pet.image && 
-                            "https://pet-portal-assets.s3.us-west-1.amazonaws.com/pet-first-aid-svgrepo-com.svg"}
+                            <img src={pet.imageUrl}
                             className='profile-pic'/>
                         </div>
                         <div className='pet-summary'>
@@ -159,8 +160,7 @@ const PetProfile = () => {
                 </div>
                 
                 {editModalState && <NewPetFormModal editModalState={editModalState} setEditModalState={setEditModalState} initialPetData={pet} petId={petId}/>}
-
-                {modalState && <NewReminderFormModal 
+                {modalState && <ReminderFormModal 
                                 modalState={modalState} 
                                 setModalState={setModalState} 
                                 pet={pet}

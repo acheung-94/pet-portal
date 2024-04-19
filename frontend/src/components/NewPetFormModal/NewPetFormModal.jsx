@@ -98,6 +98,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
         setInsurancePolicyId('')
         setWeight('')
         setPhoto(null)
+        setFilePreview('')
     } 
 
 
