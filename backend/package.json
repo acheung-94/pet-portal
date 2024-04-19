@@ -8,6 +8,9 @@
     "dev": "dotenv -- node ./bin/www",
     "lint": "eslint ."
   },
+  "engines": {
+    "node": "21.x"
+  },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.556.0",
     "@aws-sdk/lib-storage": "^3.556.0",
