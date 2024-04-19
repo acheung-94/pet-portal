@@ -7,8 +7,7 @@ import { fetchPetReminders } from '../../store/reminderReducer'
 import { useState } from 'react'
 import NewPetFormModal from '../NewPetFormModal/NewPetFormModal'
 import NewReminderFormModal from '../NewReminderFormModal/NewReminderFormModal'
-import Navbar from '../Navbar/Navbar'
-import Footer from '../Footer/Footer'
+
 
 const PetProfile = () => {
     const { petId } = useParams()
@@ -53,20 +52,6 @@ const PetProfile = () => {
         }
     }
 
-    const renderAttributes = () => {
-        const petAttributes = Object.entries(pet)
-        return petAttributes.map( ([key, val], idx) => {
-            if ( key !== '_id' && key !== '__v' && key !== 'owner') {
-                return (
-                    <div key={idx} className="pet-attribute">
-                        <h3>{ (key === 'dob') ? "Age" : key.charAt(0).toUpperCase() + key.slice(1).toLowerCase()}</h3>
-                        <p>{ (key === 'dob') ? calculateAge(val): val}</p>
-                    </div>
-                )
-            }
-        })
-    }
-
     useEffect( () => {
         dispatch(fetchPets())
         dispatch(fetchPetReminders(petId))
@@ -76,7 +61,6 @@ const PetProfile = () => {
 
         return(
             <div className='dash-page-container'>
-                <Navbar/>
                 <div className='pet-dashboard-container'>
                     <div className="pet-dashboard">
                         <Link to={'/dashboard'} className='back-link'> ← Back to your dashboard </Link>
@@ -119,9 +103,50 @@ const PetProfile = () => {
                             className='profile-pic'/>
                         </div>
                         <div className='pet-summary'>
-                            {
-                                renderAttributes()
-                            }
+                            <div className='name-splash-container'>
+                                <div className="name-border">
+                                    <h3>{(pet.name.charAt(0).toUpperCase() + pet.name.slice(1).toLowerCase())}</h3>
+                                </div>
+                            </div>
+                            <div className="pet-attribute">
+                                <h3>Age: </h3>
+                                <p>{calculateAge(pet.dob)}</p>
+                                <span className='decoration'></span>
+                            </div>
+                            <div className="pet-attribute">
+                                <h3>Sex: </h3>
+                                <p>{pet.sex}</p>
+                                <span className='decoration'></span>
+                            </div>
+                            <div className="pet-attribute">
+                                <h3>Species: </h3>
+                                <p>{pet.species}</p>
+                                <span className='decoration'></span>
+                            </div>
+                            <div className="pet-attribute">
+                                <h3>Breed: </h3>
+                                <p>{pet.breed}</p>
+                                <span className='decoration'></span>
+                            </div>
+                            <div className="pet-attribute">
+                                <h3>Color: </h3>
+                                <p>{pet.color}</p>
+                                <span className='decoration'></span>
+                            </div>
+                            {pet.insurancePolicyId && (
+                                <div className="pet-attribute">
+                                    <h3>Insurance ID: </h3>
+                                    <p>{pet.insurancePolicyId}</p>
+                                    <span className='decoration'></span>
+                                </div>
+                            )}
+                            {pet.weight && (
+                                <div className="pet-attribute">
+                                    <h3>Weight: </h3>
+                                    <p>{pet.weight}</p>
+                                    <span className='decoration'></span>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -134,7 +159,7 @@ const PetProfile = () => {
                                 pet={pet}
                                 reminder={null}/>}
                                 {/* replace with actual reminder when integrating */}
-                <Footer/>
+
             </div>
         )
     }

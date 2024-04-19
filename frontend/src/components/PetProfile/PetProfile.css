@@ -2,24 +2,22 @@
     width: 100vw;
     height: 100%;
     box-sizing: border-box;
-    border: 1px solid green;
     /* padding-top: 5%; */
     display: flex;
 }
 .dash-page-container{
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 60px);
     box-sizing: border-box;
-    border: 2px solid orange;
     display: flex;
     flex-direction: column;
 }
 
 .pet-dashboard{
     width: 75%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    border: 1px solid purple;
     box-sizing: border-box;
     padding: 20px;
 }
@@ -28,6 +26,7 @@
     font-size: 20px;
     box-sizing: border-box;
     margin: 12px;
+    width: fit-content;
 }
 .pet-dash-header{
     font-size: 48px;
@@ -114,10 +113,11 @@
 }
 .pet-signalment{
     width: 25%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 40px;
     padding: 20px;
     box-sizing: border-box;
 }
@@ -144,8 +144,10 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
+    padding-top: 50px;
     gap: 20px;
     box-sizing: border-box;
+    background-color: white;
 }
 
 .pet-attribute{
@@ -155,6 +157,8 @@
     box-sizing: border-box;
     padding: 8px;
     align-items: center;
+    position: relative;
+    padding-left: 5%;
 }
 
 .pet-attribute h3{
@@ -185,4 +189,37 @@
 .edit-pet-dash-buttons:hover{
     cursor: pointer;
     background-color: #ffcb5382;
+    font-style: bold;
+}
+
+.decoration {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    border: 2px solid var(--gold);
+    bottom: -5px;
+    left: 0;
+    box-sizing: border-box;
+    background-color: var(--gold);
+}
+
+.name-splash-container{
+    position: absolute;
+    top: -28px;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.name-border{
+    border: 1px solid var(--green-dark);
+    box-sizing: border-box;
+    position: relative;
+    background-color: white;
+    padding: 10px;
+}
+.name-splash-container h3{
+    font-size: 36px;
 }

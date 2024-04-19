@@ -1,5 +1,3 @@
-import Footer from '../Footer/Footer'
-import Navbar from '../Navbar/Navbar'
 import PetGrid from '../PetGrid/PetGrid'
 import './Dashboard.css'
 
@@ -7,20 +5,24 @@ const Dashboard = () => {
 
     return(
         <div className='page-container'>
-            <Navbar />
-            <div className='dashboard-container'>
                 <h1 className='dashboard-header'>Your Dashboard</h1>
                 <span className='dashboard-sep'></span>
-                <div className="reminder-container">
-                    <h2>Upcoming Reminders</h2>
-                    <p> Reminders go here! </p>
-                </div>
-                <span className='dashboard-sep'></span>
+            <div className='dashboard-container'>
+                
                 <div className='index-container'>
                     <PetGrid/>
                 </div>
+                <span className='dashboard-sep'></span>
+                <div className="right-container">
+                    <div className="all-reminders">
+                        <h3>Reminder container</h3>
+                    </div>
+                    <div className="find-vet-container">
+                        <h3>Find yoself a vet</h3>
+                    </div>
+                </div>
+                
             </div>
-            <Footer/>
         </div>
     )
 }
