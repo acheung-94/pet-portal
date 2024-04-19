@@ -9,7 +9,8 @@
 .get-grid-header-form {
     padding: 8px;
 }
-.pet-grid-header-form button{
+
+.get-grid-header-form button{
     padding: 0 10px;
     cursor: pointer;
     background-color: transparent;
@@ -25,7 +26,7 @@
     color: white; 
 }
 
-.pet-grid-header-form button:hover {
+.get-grid-header-form button:hover {
     background-color: var(--pale-purple);
 }
 

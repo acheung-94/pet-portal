@@ -73,15 +73,17 @@ table {
     position: relative;
     text-size-adjust :100%;
     align-items: center;
-    cursor: pointer;
+    /* cursor: pointer; */
     box-sizing:  border-box;
 }
 .navbar-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-top: 10px;
+    /* padding-top: 10px; */
     font-size: 20px;
+    height: 60px;
+
 }
 .petportal-icon {
     padding:0;
