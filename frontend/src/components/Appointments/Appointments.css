@@ -12,16 +12,19 @@
     color: #333;
     font-weight: bold;
     margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.appointment-divider {
+.reminder-divider {
     position: relative; 
     height: 2px;
     background-color: #e1e1e1;
     margin: 10px 0;
 }
 
-.appointment-divider::after {
+.reminder-divider::after {
     content: ''; 
     position: absolute;
     top: -4px;
