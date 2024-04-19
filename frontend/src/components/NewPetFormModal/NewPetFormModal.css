@@ -12,11 +12,11 @@
     align-items: center;
 }
 
-.modal-content-add {
+.add-modal-content {
   position: absolute;
   left: 50%;
   top: 480px;
-  width: 380px;
+  width: 33vw;
   height: 800px;
   transform: translate(-50%, -50%);
   background-color: var(--main-bg-beige);
@@ -27,11 +27,11 @@
   font-weight: bold;
   font-size: 20px;
 }
-.modal-content-edit{
+.edit-modal-content{
     position: absolute;
     left: 50%;
     top: 450px;
-    width: 40vw;
+    width: 33vw;
     height: 780px;
     transform: translate(-50%, -50%);
     background-color: var(--green-dark);

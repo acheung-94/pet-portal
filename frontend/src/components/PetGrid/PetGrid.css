@@ -33,6 +33,9 @@
 }
 
 .pet-grid-header-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--green-dark);
     text-align: center;
 }
 

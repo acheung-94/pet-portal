@@ -207,7 +207,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
     return(
         <>
             <div className="modal-background" onClick={handleBackgroundClick}>
-                <div className={`modal-content-${modalState ? `${modalState}` : ''}${editModalState ? `${editModalState}` : ''}`} onClick={e => e.stopPropagation()}>
+                <div className={`${modalState ? `${modalState}` : ''}${editModalState ? `${editModalState}` : ''}-modal-content`} onClick={e => e.stopPropagation()}>
                     <div className={`modal-content-top-${modalState ? `${modalState}` : ''}${editModalState ? `${editModalState}` : ''}`}>
                         <button className='pet-form-button' onClick={handleBackgroundClick}>
                             <span>
