@@ -16,6 +16,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
     const [weight, setWeight] = useState(initialPetData?.weight ?? '')
     const [photo, setPhoto] = useState(initialPetData ? initialPetData.photo : null)
     const [imageUpdated, setImageUpdated] = useState(false)
+    const [filePreview, setFilePreview] = useState('')
     const dispatch = useDispatch();
     const currentPets = useSelector(state => state.pets) // placeholder
     const location = useLocation()
@@ -99,35 +100,11 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
         setPhoto(null)
     } 
 
-    // const handleCreateSubmit = (e) => {
-    //     e.preventDefault();
-    //     const petInfo = {
-    //         name: name,
-    //         dob: dob,
-    //         sex: sex,
-    //         species: species, 
-    //         color: color,
-    //         breed: breed, 
-    //         microchipNum: microchipNum, 
-    //         insurancePolicyId: insurancePolicyId, 
-    //         weight: weight
-    //     }
 
-    //     dispatch(createPet(petInfo))
-    //     setModalState(null)
-    //     setName('')
-    //     setDob('')
-    //     setSex('')
-    //     setSpecies('')
-    //     setColor('')
-    //     setBreed('')
-    //     setMicrochipNum(null)
-    //     setInsurancePolicyId(null)
-    //     setWeight(null)
-    // }
     const handleFile = (e) => {
         const file = e.currentTarget.files[0]
         setPhoto(file);
+        setFilePreview(URL.createObjectURL(file))
     }
 
     const formContent = () => (
@@ -254,6 +231,9 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
                             {modalState && <h2>Add New Pet</h2>}
                             {editModalState && <h2>Edit Pet</h2>}
                         </div>
+                        {filePreview && (<div className='file-preview'>
+                            <img src={filePreview} />
+                        </div>)}
                         <div className='modal-content-center-form'>
                             <form className={`${modalState ? `${modalState}` : ''}${editModalState ? `${editModalState}` : ''}-new-pet-form`} onSubmit={pathname === '/dashboard' ? handleCreateSubmit : handleEditSubmit}>
                                 {formContent()}

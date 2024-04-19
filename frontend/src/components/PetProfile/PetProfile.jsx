@@ -10,7 +10,6 @@ import { fetchPetReminders } from '../../store/reminderReducer'
 import { useState } from 'react'
 import NewPetFormModal from '../NewPetFormModal/NewPetFormModal'
 import NewReminderFormModal from '../NewReminderFormModal/NewReminderFormModal'
-import Navbar from '../Navbar/Navbar'
 
 const PetProfile = () => {
     const { petId } = useParams()
@@ -64,7 +63,6 @@ const PetProfile = () => {
 
         return(
             <div className='dash-page-container'>
-                <Navbar/>
             <div className='pet-dashboard-container'>
                 <div className="pet-dashboard">
                     <Link to={'/dashboard'} className='back-link'> ← Back to your dashboard </Link>
