@@ -16,7 +16,7 @@ const Navbar = () => {
                 let currentTime = Date.now() //ms
                 let expirationTime = new Date(currentUser.sessionExpiration).getTime() //ms
 
-                if (currentTime >= (expirationTime-2000) ){
+                if (currentTime >= (expirationTime-5000) ){
                     dispatch(refreshUser())
                     clearInterval(checkTime)
                 }   

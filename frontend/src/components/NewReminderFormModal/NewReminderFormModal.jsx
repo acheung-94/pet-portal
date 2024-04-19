@@ -82,7 +82,8 @@ const NewReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => 
             dueDate: due,
             performDate: performDate, 
             description: description, 
-            location: location
+            location: location,
+            pet: pet._id
         }
 
         modalState === 'edit' ?
