@@ -9,7 +9,7 @@ const NAME_OF_BUCKET = 'mern-pet-portal'
 export const singleFileUpload = async ({file, isPublic = false}) => {
 	const {originalName, buffer} =  file
 	
-	const Key = new Date.getTime().toString() + path.extname(originalName)
+	const Key = new Date().getTime().toString() + path.extname(originalName)
 
 	const params = {
 		Bucket: NAME_OF_BUCKET,

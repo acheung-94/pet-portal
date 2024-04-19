@@ -15,9 +15,9 @@
 .modal-content-add {
   position: absolute;
   left: 50%;
-  top: 400px;
-  width: 350px;
-  height: 730px;
+  top: 480px;
+  width: 380px;
+  height: 800px;
   transform: translate(-50%, -50%);
   background-color: var(--main-bg-beige);
   padding: 10px;
@@ -105,7 +105,14 @@ optgroup {
 }
 .add-new-pet-form label:nth-child(9),
 .edit-new-pet-form label:nth-child(9) {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+}
+
+.add-new-pet-form label:nth-child(10),
+.edit-new-pet-form label:nth-child(10) {
+    margin-bottom: 20px;
+    margin-right: auto;
+    width: 100%;
 }
 .name-input-label,
 .dob-input-label,
@@ -115,7 +122,8 @@ optgroup {
 .breed-input-label,
 .microchipNum-input-label,
 .insurance-policy-input-label,
-.weight-input-label {
+.weight-input-label,
+.photo-input-label {
     padding-top: 5px;
     padding-bottom: 10px;
     display: block;
@@ -159,7 +167,7 @@ optgroup {
     cursor: pointer;
     background-color: transparent;
     background-repeat: no-repeat;
-    border: 1px solid rgb(255,163,128);
+    border: 1.5px solid rgb(255,163,128);
     overflow: hidden;
     outline: none;
     vertical-align: middle ;
@@ -188,4 +196,18 @@ optgroup {
     font-style: italic;
     color: #f34607;
     padding-left: 10px;
+}
+input[type="file"] {
+    display: none;
+}
+.photo-input-label {
+    border: 1.5px solid rgb(255,163,128);
+    border-radius: 20px;
+    display: flex;
+    justify-content: start;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.photo-input-label:hover {
+    background-color: var(--pale-purple);
 }
