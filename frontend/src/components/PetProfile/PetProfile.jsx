@@ -3,16 +3,20 @@ import './PetProfile.css'
 import { Link, useParams } from 'react-router-dom'
 import { currentPet, fetchPets } from '../../store/petReducer'
 import { useEffect } from 'react'
+import Appointments from '../Appointments/Appointments'
+import Vaccines from '../Vaccines/Vaccines'
+import Medications from '../Medications/Medications'
 import { fetchPetReminders } from '../../store/reminderReducer'
 import { useState } from 'react'
 import NewReminderFormModal from '../NewReminderFormModal/NewReminderFormModal'
-
+import Navbar from '../Navbar/Navbar'
 
 const PetProfile = () => {
     const { petId } = useParams()
     const pet = useSelector(currentPet(petId))
     const dispatch = useDispatch()
     const [modalState, setModalState] = useState(null)
+    
 
     const calculateAge = (dateString) => {
         const birthday = new Date(dateString)
@@ -61,34 +65,40 @@ const PetProfile = () => {
 
         return(
             <div className='dash-page-container'>
-                <div className='pet-dashboard-container'>
-                    <div className="pet-dashboard">
-                        <Link to={'/dashboard'} className='back-link'> ← Back to your dashboard </Link>
-                        
-                        <div className='pet-dash-highlight'><h1 className='pet-dash-header'> Pet Dashboard </h1></div>
-                        <div className="pet-metrics-container">
-                            <div className='pet-reminder-module'> 
-                                <div className='pet-reminder-header'>
-                                    <h3>Reminders</h3>
-                                    <button className='pet-dash-buttons' onClick={() => setModalState('appointment')}> + </button>
-                                </div>
-                                <div> Module w/ overflow </div>
+                <Navbar/>
+            <div className='pet-dashboard-container'>
+                <div className="pet-dashboard">
+                    <Link to={'/dashboard'} className='back-link'> ← Back to your dashboard </Link>
+                    
+                    <div className='pet-dash-highlight'><h1 className='pet-dash-header'> Pet Dashboard </h1></div>
+                    <div className="pet-metrics-container">
+                        <div className='pet-reminder-module'> 
+                            <div className='pet-reminder-header'>
+                                <h3>Reminders</h3>
+                                <button className='pet-dash-buttons' onClick={() => setModalState('appointment')}> + </button>
                             </div>
+                            <div className='appointment-index-container'>
+                                <Appointments/>
+                            </div>
+                        </div>
                             <div className="preventatives-module">
                                 <div className="vaccines">
                                     <div className='pet-vaccines-header'>
                                         <h3>Vaccines</h3>
                                         <button className='pet-dash-buttons' onClick={() => setModalState('vaccination')}> + </button>
                                     </div>
-                                    <div>Module w/ overflow</div>
+                                    <div className='vaccinations-index-container'>
+                                        <Vaccines/>
+                                     </div>
                                 </div>
                                 <div className="medications">
                                     <div className='medications-header'>
                                         <h3>Medications</h3>
                                         <button className='pet-dash-buttons' onClick={() => setModalState('medication')}> + </button>
                                     </div>
-                                    <div>Module w/ overflow</div>
-        
+                                    <div className='medications-index-container'>
+                                        <Medications/>
+                                    </div>        
                                 </div>
                             </div>
                         </div>
@@ -152,8 +162,6 @@ const PetProfile = () => {
                                 setModalState={setModalState} 
                                 pet={pet}
                                 reminder={null}/>}
-                                {/* replace with actual reminder when integrating */}
-
             </div>
         )
     }
