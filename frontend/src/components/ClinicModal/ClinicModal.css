@@ -1,0 +1,108 @@
+.modal-background {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content-clinic {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 85%;
+  height: 75%;
+  overflow: auto;
+  background-color: #b9d3e0;
+  margin-left: 20px;
+  padding: 10px;
+  border-radius: 30px;
+  position: absolute;
+  border: 1px solid #333;
+  font-weight: bold;
+  font-size: 20px;
+}
+.clinic-modal-content-top {
+    display: flex;
+    padding: 8px;
+    justify-content: flex-end; /* Align the button to the right */
+}
+.clinic-modal-content-top button {
+    cursor: pointer;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border-radius: 14px;
+    border: 1.5px solid; 
+    border-color:gray;
+    overflow: hidden;
+    outline: none;
+    color: black;
+}
+.clinic-modal-content-top button:hover {
+    background-color: rgba(128, 128, 128, 0.202);
+}
+.clinic-modal-content-bottom {
+    display: flex;
+}
+.clinic-content-container {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100%;
+    box-sizing: border-box;
+}
+.clinic-left {
+    flex-grow: 1;
+    border: 1px solid red;
+    width: 25%;
+    height: 100%;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 30px;
+    height: 74vh;
+
+}
+.clinic-right {
+    flex-grow: 2;
+    border: 1px solid purple;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 75%;
+    height: 100%;
+    padding: 30px;
+    height: 74vh;
+}
+.clinic-search {
+    display: flex;
+    align-items: center;
+}
+
+.clinic-search input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #cccccc61;
+    border-radius: 20px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.clinic-search button {
+    padding: 10px;
+    background-color: #838282;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 10px;
+}
+
+.clinic-search button:hover {
+    background-color: #3a0f057c;
+}

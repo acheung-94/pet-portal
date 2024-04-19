@@ -54,7 +54,7 @@ table {
     width: 100vw;
     border-bottom: none;
     z-index: 99;
-    background-color: var(--main-bg-beige);
+    background-color: transparent;
     font-family: borish;
 }
 .navbar {

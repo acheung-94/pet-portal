@@ -6,12 +6,15 @@ import NewPetFormModal from '../NewPetFormModal/NewPetFormModal'
 import ImgPlaceholder from '../../assets/striped-cat.jpg'
 import './PetGrid.css'
 import { Link } from 'react-router-dom'
+import ClinicModal from '../ClinicModal/ClinicModal'
 
 const PetGrid = () => {
     const dispatch = useDispatch();
     const currentUser = useSelector(selectCurrentUser)
     const currentPets = useSelector(state => state.pets)
     const [modalState, setModalState] = useState(null)
+    const [clinicModalState, setClinicModalState] = useState(null)
+
 
     useEffect(() => {
         if (currentUser) {
@@ -50,8 +53,10 @@ const PetGrid = () => {
                     }
                     {!currentPets && <div>Loading...</div>}
                 </div>
+                <div><button onClick={() => setClinicModalState('clinic')}>Test Button</button></div>
             </div>
             {modalState && <NewPetFormModal modalState={modalState} setModalState={setModalState}/>}
+            {clinicModalState && <ClinicModal clinicModalState={clinicModalState} setClinicModalState={setClinicModalState}/>}
         </>
     )
 }
