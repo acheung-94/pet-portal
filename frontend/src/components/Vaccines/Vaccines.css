@@ -1,0 +1,20 @@
+.vaccine-info-container {
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    background-color: #fff; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+}
+
+.vaccine-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vaccine-header p {
+    font-size: 16px;
+    color: #333; 
+    font-weight: bold;
+}
