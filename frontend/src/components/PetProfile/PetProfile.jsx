@@ -6,12 +6,18 @@ import { useEffect } from 'react'
 import Appointments from '../Appointments/Appointments'
 import Vaccines from '../Vaccines/Vaccines'
 import Medications from '../Medications/Medications'
+import { fetchPetReminders } from '../../store/reminderReducer'
+import { useState } from 'react'
+import NewReminderFormModal from '../NewReminderFormModal/NewReminderFormModal'
+import Navbar from '../Navbar/Navbar'
+import Footer from '../Footer/Footer'
+
 const PetProfile = () => {
     const { petId } = useParams()
     const pet = useSelector(currentPet(petId))
     const dispatch = useDispatch()
-    
-    
+    const [modalState, setModalState] = useState(null)
+
     const calculateAge = (dateString) => {
         const birthday = new Date(dateString)
         const today = new Date()
@@ -34,7 +40,7 @@ const PetProfile = () => {
         if (years < 1) {
             if(months < 4){
                 let weeks = Math.floor(days / 7)
-                let daysDiff = days % 7
+                //let daysDiff = days % 7
                 if (weeks > 1) {
                     return (`${weeks} weeks & ${days} days`)
                 }else{
@@ -65,7 +71,10 @@ const PetProfile = () => {
 
     useEffect( () => {
         dispatch(fetchPets())
-    }, [])
+
+        dispatch(fetchPetReminders(petId))
+    }, [petId, dispatch])
+
 
     if (pet) {
 
@@ -79,7 +88,7 @@ const PetProfile = () => {
                         <div className='pet-reminder-module'> 
                             <div className='pet-reminder-header'>
                                 <h3>Reminders</h3>
-                                <button className='pet-dash-buttons'> + </button>
+                                <button className='pet-dash-buttons' onClick={() => setModalState('appointment')}> + </button>
                             </div>
                             <div className='appointment-index-container'>
                                 <Appointments/>
@@ -95,10 +104,21 @@ const PetProfile = () => {
                                     <Vaccines/>
                                 </div>
                             </div>
-                            <div className="medications">
-                                <div className='medications-header'>
-                                    <h3>Medications</h3>
-                                    <button className='pet-dash-buttons'> + </button>
+                            <div className="preventatives-module">
+                                <div className="vaccines">
+                                    <div className='pet-vaccines-header'>
+                                        <h3>Vaccines</h3>
+                                        <button className='pet-dash-buttons' onClick={() => setModalState('vaccination')}> + </button>
+                                    </div>
+                                    <div>Module w/ overflow</div>
+                                </div>
+                                <div className="medications">
+                                    <div className='medications-header'>
+                                        <h3>Medications</h3>
+                                        <button className='pet-dash-buttons' onClick={() => setModalState('medication')}> + </button>
+                                    </div>
+                                    <div>Module w/ overflow</div>
+        
                                 </div>
                                 <div className='medications-index-container'>
                                     <Medications/>
@@ -106,19 +126,26 @@ const PetProfile = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="pet-signalment">
-                    <div className='profile-pic-border'>
-                        <img src={!pet.image && 
-                        "https://pet-portal-assets.s3.us-west-1.amazonaws.com/pet-first-aid-svgrepo-com.svg"}
-                        className='profile-pic'/>
+                    <div className="pet-signalment">
+                        <div className='profile-pic-border'>
+                            <img src={!pet.image && 
+                            "https://pet-portal-assets.s3.us-west-1.amazonaws.com/pet-first-aid-svgrepo-com.svg"}
+                            className='profile-pic'/>
+                        </div>
+                        <div className='pet-summary'>
+                            {
+                                renderAttributes()
+                            }
+                        </div>
                     </div>
-                    <div className='pet-summary'>
-                        {
-                            renderAttributes()
-                        }
-                    </div>
                 </div>
+                {modalState && <NewReminderFormModal 
+                                modalState={modalState} 
+                                setModalState={setModalState} 
+                                pet={pet}
+                                reminder={null}/>}
+                                {/* replace with actual reminder when integrating */}
+                <Footer/>
             </div>
         )
     }

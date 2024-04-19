@@ -1,6 +1,8 @@
-import { convertObjectToStateShape } from '../../util/jsonUtils.js'
 import ApplicationController from '../controllers/ApplicationController.js'
+import { convertObjectToStateShape } from '../../util/jsonUtils.js'
+import { DEFAULT_IMAGE_URI } from '../../config/configConstants.js'
 import Pet from '../models/Pet.js'
+import { singleFileUpload } from '../../util/s3Utils.js'
 
 export default class PetController extends ApplicationController{
 	constructor() {
@@ -8,6 +10,10 @@ export default class PetController extends ApplicationController{
 	}
 
 	static async create(req, res, _) {
+
+		const imageUrl = req.file ? 
+			await singleFileUpload({file: req.file, isPublic: true}) :
+			DEFAULT_IMAGE_URI
 		const newPet = new Pet({
 			name: req.body.name,
 			dob: req.body.dob,
@@ -18,14 +24,15 @@ export default class PetController extends ApplicationController{
 			microchipNumber: req.body.microchipNumber,
 			insurancePolicyId: req.body.insurancePolicyId,
 			weight: req.body.weight,
-			owner: req.user._id
+			owner: req.user._id,
+			imageUrl: imageUrl
 		})
 
 		const pet = await newPet.save()
 		if (pet) {
 			return res.json(pet)
 		} else {
-			res.status(400)
+			res.status(400).end()
 		}
 	}
 
@@ -33,8 +40,16 @@ export default class PetController extends ApplicationController{
 		const pet = await Pet.findOne({_id: req.params.id})
 
 		if (req.user._id.toString() != pet.owner.toString()) {
-			return res.status(403).json({"status": "forbidden"})
+			return res.status(403).end()
 		}
+
+		let imageUrl
+		if (req.body.imageUpdated) {
+			imageUrl = req.file ? 
+				await singleFileUpload({file: req.file, isPublic: true}) :
+				DEFAULT_IMAGE_URI
+		}
+
 		const allowed = [
 			'name',
 			'dob',
@@ -52,16 +67,13 @@ export default class PetController extends ApplicationController{
 			pet[k] = v
 		})
 
+		// this updates the pet's image url only if it was changed
+		pet.imageUrl = imageUrl ?? pet.imageUrl
 
-		// const pet = await Pet.findByIdAndUpdate(
-		// 	{ _id: req.params.id, owner: req.user._id }, 
-		// 	updated, 
-		// 	{ returnDocument: 'after' }
-		// )
 		if (await pet.save()) {
 			return res.json(pet)
 		} else {
-			res.status(400)
+			res.status(400).end()
 		}
 	}
 
@@ -70,7 +82,7 @@ export default class PetController extends ApplicationController{
 		if (pet) {
 			return res.json(pet)
 		} else {
-			res.status(404)
+			res.status(404).end()
 		}
 	}
 
@@ -78,22 +90,22 @@ export default class PetController extends ApplicationController{
 		const pet = await Pet.findOne({_id: req.params.id})
 
 		if (req.user._id.toString() != pet.owner.toString()) {
-			return res.status(403).json({"status": "forbidden"})
+			return res.status(403).end()
 		}
 		const deleted = await Pet.deleteOne({ _id: req.params.id })
 		if (deleted) {
 			return res.json(deleted)
 		} else {
-			return res.status(404).json({"status": "not found"})
+			return res.status(404).end()
 		}
 	}
 
-	static async index(req, res, _) {
+	static async index(_, res) {
 		const pets = await Pet.find({})
 		if (pets) {
 			return res.json(convertObjectToStateShape(pets))
 		} else {
-			res.status(404)
+			res.status(404).end()
 		}
 	}
 }

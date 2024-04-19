@@ -57,9 +57,9 @@
     margin-bottom: 10px; 
 }
 
-optgroup {
+/* optgroup {
     font-size: 0.5px;
-}
+} */
 .add-new-pet-form {
     display: flex;
     flex-direction: column;
@@ -91,7 +91,7 @@ optgroup {
     color: #999;
     font-size: 12px;
     font-style: italic; 
-    padding-left: 10px;
+    padding-left: 15px;
 }
 .sex-select {
     height: 30px;
@@ -114,10 +114,7 @@ optgroup {
 }
 
 .add-new-pet-button button{
-
-    padding: 10px;
-    /* padding-left: 10px;
-    padding-right: 10px; */
+    padding: 5px;
     cursor: pointer;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -128,23 +125,13 @@ optgroup {
     font-family: borish;
     font-size: 17px;
     font-weight: bold;
-
     border-radius: 20px;
 }
 
 .add-new-pet-button button:hover {
     background-color: var(--pale-purple);
 }
-.add-new-pet-button::after {
-    /* content: "";
-    display: block;
-    width: 100px;
-    height: 1px;
-    background-color: rgb(255,163,128); 
-    position: absolute;
-    bottom: 25px; 
-    left: 209px;  */
-}
+
 .optional {
     font-size: 10px;
     font-style: italic;

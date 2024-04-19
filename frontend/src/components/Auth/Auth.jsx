@@ -5,10 +5,11 @@ import '../Home/Home.css'
 import './Auth.css'
 import { useLocation } from "react-router"
 import { useDispatch } from "react-redux";
-import { createUser, loginUser, selectCurrentUser } from "../../store/sessionReducer";
+import { createUser, loginUser } from "../../store/sessionReducer";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import NewPetFormModal from "../NewPetFormModal/NewPetFormModal";
+import { useNavigate } from "react-router-dom";
 
 const Auth = () =>{
     /* 
@@ -16,31 +17,32 @@ const Auth = () =>{
     */
     const [modalState, setModalState] = useState(false)
 
-    /* */
     const location = useLocation()
     const {pathname} = location
     const dispatch = useDispatch();
     const isRegister = pathname === '/register'
     const isLogin = pathname === '/login'
+    const navigate = useNavigate()
 
     const [email, setEmail] = useState('')
     const [pw, setPw] = useState('')
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log("THIS IS ", email, pw)
+
         if(isRegister) {
             dispatch(createUser({email: email, password: pw}))
+                .then(()=> navigate('/dashboard'))
         } else if (isLogin) {
             dispatch(loginUser({email: email, password: pw}))
+                .then(()=> navigate('/dashboard'))
         }
         setEmail('');
         setPw('');
-        // window.location.href= "/"
+
     }
     useEffect(() => {
 
-        console.log("Email or password changed:", email, pw);
     }, [email, pw]);
     useEffect(() => {
         setEmail('');
@@ -67,7 +69,7 @@ const Auth = () =>{
                                         <div className="email-label">
                                             Email: 
                                         </div>
-                                        <input id="email-input" type="email" onChange={(e) => setEmail(e.target.value)} />
+                                        <input id="email-input" type="email" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)} />
                                     </label>
                                 </div>
                                 <div>
@@ -76,7 +78,7 @@ const Auth = () =>{
                                         <div className="password-label">
                                             Password: 
                                         </div>
-                                        <input id="password-input" type="password" onChange={(e) => setPw(e.target.value)}/>
+                                        <input id="password-input" type="password" placeholder="Password" onChange={(e) => setPw(e.target.value)}/>
                                     </label>
                                 </div>
                                 <div className="auth-button-container">

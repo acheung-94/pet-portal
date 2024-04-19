@@ -1,0 +1,23 @@
+name: Backend (Lint)
+
+on: 
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build: 
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 'backend'
+    steps:
+    - uses: actions/checkout@v3
+    - name: Lint Backend
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20.0'
+        cache: 'npm'
+        cache-dependency-path: '**/package-lock.json'
+    - run: npm ci
+    - run: npm run lint

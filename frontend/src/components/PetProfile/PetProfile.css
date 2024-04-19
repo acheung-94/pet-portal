@@ -1,10 +1,18 @@
 .pet-dashboard-container{
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     box-sizing: border-box;
     border: 1px solid green;
-    padding-top: 5%;
+    /* padding-top: 5%; */
     display: flex;
+}
+.dash-page-container{
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    border: 2px solid orange;
+    display: flex;
+    flex-direction: column;
 }
 
 .pet-dashboard{
@@ -76,12 +84,14 @@
 
 .vaccines{
     height: 50%;
-    border: 1px solid var(--green-dark)
+    border: 1px solid var(--green-dark);
+    box-sizing: border-box;
 }
 
 .medications{
     height: 50%;
-    border: 1px solid var(--green-dark)
+    border: 1px solid var(--green-dark);
+    box-sizing: border-box;
 }
 
 .pet-dash-buttons{
@@ -97,7 +107,11 @@
     align-items: center;
     color: var(--bright-gold);
 }
+.pet-dash-buttons:hover {
+    cursor: pointer;
+    background-color:  #f8d78986;
 
+}
 .pet-signalment{
     width: 25%;
     display: flex;
@@ -105,6 +119,7 @@
     align-items: center;
     gap: 20px;
     padding: 20px;
+    box-sizing: border-box;
 }
 
 .profile-pic-border{
