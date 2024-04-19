@@ -24,7 +24,7 @@ export default class UserController extends ApplicationController{
 
 			err.errors = errors
 			console.log(err, err.errors)
-			return res.status(422).json({'errors': ['duplicate email']})
+			return res.status(422).json(err.errors)
 		}
 
 		const newUser = new User({
