@@ -26,24 +26,31 @@ const Auth = () =>{
 
     const [email, setEmail] = useState('')
     const [pw, setPw] = useState('')
-
+    const [errors, setErrors] = useState('')
     const handleSubmit = e => {
         e.preventDefault();
 
         if(isRegister) {
             dispatch(createUser({email: email, password: pw}))
                 .then(()=> navigate('/dashboard'))
+                
         } else if (isLogin) {
             dispatch(loginUser({email: email, password: pw}))
                 .then(()=> navigate('/dashboard'))
+                .catch(res => {
+                    if (!res.ok){
+                        setErrors('Invalid credentials')
+                    }
+                })
+                
         }
         setEmail('');
         setPw('');
 
     }
     useEffect(() => {
-
-    }, [email, pw]);
+        console.log(errors)
+    }, [errors]);
     useEffect(() => {
         setEmail('');
         setPw('');
@@ -80,7 +87,11 @@ const Auth = () =>{
                                         </div>
                                         <input id="password-input" type="password" placeholder="Password" onChange={(e) => setPw(e.target.value)}/>
                                     </label>
+                                    
                                 </div>
+                                <span className="auth-errors">
+                                    { errors && errors}
+                                </span>
                                 <div className="auth-button-container">
                                     <div className="auth-button-submit">
                                         <button type="submit">Submit</button>

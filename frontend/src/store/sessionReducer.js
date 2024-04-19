@@ -1,5 +1,4 @@
 import { postUser, postSession, refreshSession, updateValues } from "../utils/sessionApiUtils"
-
 //CONST TYPES
 export const SET_CURRENT_USER = 'session/SET_CURRENT_USER'
 export const REMOVE_CURRENT_USER = 'sesison/REMOVE_CURRENT_USER'
@@ -47,7 +46,7 @@ export const loginUser = sessionInfo => dispatch => (
             updateValues(blob)
             dispatch(setCurrentUser(blob.user))
         })
-        .catch(err => console.error(err))
+        // .catch(err => console.error(err))
 )
 
 export const logoutUser = () => dispatch => {
