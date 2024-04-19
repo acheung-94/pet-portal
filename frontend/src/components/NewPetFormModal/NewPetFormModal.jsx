@@ -47,7 +47,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
             setImageUpdated(true)
         }
         for(const key in petInfo) {
-            if(petInfo.hasOwnProperty(key)) {
+            if(Object.hasOwn(petInfo, key)) {
                 data.append(`${key}`, petInfo[key])
             }
         }
