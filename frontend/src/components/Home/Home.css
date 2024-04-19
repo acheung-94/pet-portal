@@ -16,6 +16,8 @@
     height: 100%;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    gap: 5%;
     box-sizing: border-box;
     /* padding: 10%; */
     padding-left: 5%;
@@ -23,19 +25,21 @@
 }
 
 .display-border{
-    width: 800px;
+    width: 100%;
+    height: 75%;
     border: 4px solid var(--gold);
     box-sizing: border-box;
     padding: 20px;
     border-top-left-radius: 75%;
     border-top-right-radius: 75%;
-    margin: 5%;
+
 }
 
 .display-dog{
     border-top-left-radius: 75%;
     border-top-right-radius: 75%;
     height: 100%;
+    width: 100%;
 }
 .section-1-text{
     display: flex;
