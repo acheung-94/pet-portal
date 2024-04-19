@@ -22,6 +22,7 @@ module.exports = {
 				'argsIgnorePattern': '^_'
 			}
 		],
-    'react/prop-types': 'off'
+    'react/prop-types': 'off',
+    'no-extend-native': ['error']
   },
 }
