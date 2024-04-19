@@ -15,6 +15,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
     const [insurancePolicyId, setInsurancePolicyId] = useState(initialPetData?.insurancePolicyId ?? '')
     const [weight, setWeight] = useState(initialPetData?.weight ?? '')
     const [photo, setPhoto] = useState(initialPetData ? initialPetData.photo : null)
+    const [imageUpdated, setImageUpdated] = useState(false)
     const dispatch = useDispatch();
     const currentPets = useSelector(state => state.pets) // placeholder
     const location = useLocation()
@@ -36,20 +37,22 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
             breed: breed, 
             microchipNum: microchipNum, 
             insurancePolicyId: insurancePolicyId, 
-            weight: weight
+            weight: weight,
+            imageUpdated: imageUpdated
+        }
+        
+        if(photo) {
+            data.append('image',photo)
+            setImageUpdated(true)
         }
         for(const key in petInfo) {
             if(petInfo.hasOwnProperty(key)) {
                 data.append(`${key}`, petInfo[key])
             }
         }
-        if(photo) {
-            data.append('image',photo)
-        }
-        console.log(data)
-
         dispatch(updatePet(data, petId))
         setEditModalState(null)
+        setImageUpdated(false)
     }
     
     const handleCreateSubmit = (e) => {
@@ -79,8 +82,6 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
             data.append('image', photo);
         }
 
-        console.log(data)
-
         // if( /dashboard\/?$/.test(pathname)) {
         dispatch(createPet(data))
         setModalState(null)
@@ -95,6 +96,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
         setMicrochipNum('')
         setInsurancePolicyId('')
         setWeight('')
+        setPhoto(null)
     } 
 
     // const handleCreateSubmit = (e) => {

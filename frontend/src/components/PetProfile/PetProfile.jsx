@@ -12,9 +12,7 @@ import Footer from '../Footer/Footer'
 
 const PetProfile = () => {
     const { petId } = useParams()
-    console.log('Pet ID:', petId)
     const pet = useSelector(currentPet(petId))
-    console.log(pet)
     const dispatch = useDispatch()
     const [modalState, setModalState] = useState(null)
     const [editModalState, setEditModalState] = useState(null)
@@ -75,7 +73,6 @@ const PetProfile = () => {
     }, [petId, dispatch])
 
     useEffect(() => {
-        console.log('Pet data changed', pet)
     }, [pet])
     if (pet) {
 
