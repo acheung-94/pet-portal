@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "dotenv -- node ./bin/www",
+    "start": "NODE_ENV=production dotenv -- node ./bin/www",
     "dev": "dotenv -- node ./bin/www",
     "lint": "eslint ."
   },
