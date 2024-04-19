@@ -3,7 +3,7 @@ import './NewPetFormModal.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { createPet, updatePet } from '../../store/petReducer'
 import { useLocation } from 'react-router'
-const NewPetForm = ({modalState, setModalState, editModalState, setEditModalState, initialPetData}) => {
+const NewPetForm = ({modalState, setModalState, editModalState, setEditModalState, initialPetData, petId}) => {
     const [name, setName] = useState(initialPetData?.name ?? '')
     const initialDob = initialPetData ? new Date(initialPetData.dob).toISOString().split('T')[0] : '';
     const [dob, setDob] = useState(initialDob)
@@ -25,9 +25,9 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
 
     const handleEditSubmit = (e) => {
         e.preventDefault();
-        // const data = new FormData();
+        const data = new FormData();
         const petInfo = {
-            _id: initialPetData._id,
+            _id: petId,
             name: name,
             dob: dob,
             sex: sex,
@@ -38,18 +38,17 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
             insurancePolicyId: insurancePolicyId, 
             weight: weight
         }
-        // for(const key in petInfo) {
-        //     if(petInfo.hasOwnProperty(key)) {
-        //         data.append(`pet[${key}]`, petInfo[key])
-        //     }
-        // }
-        // if(photo) {
-        //     data.append('pet[photo]',photo)
-        // }
-        // console.log(data)
+        for(const key in petInfo) {
+            if(petInfo.hasOwnProperty(key)) {
+                data.append(`${key}`, petInfo[key])
+            }
+        }
+        if(photo) {
+            data.append('photo',photo)
+        }
+        console.log(data)
 
-        // dispatch(updatePet(data, initialPetData._id))
-        dispatch(updatePet(petInfo))
+        dispatch(updatePet(data, petId))
         setEditModalState(null)
     }
     

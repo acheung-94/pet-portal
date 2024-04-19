@@ -12,7 +12,9 @@ import Footer from '../Footer/Footer'
 
 const PetProfile = () => {
     const { petId } = useParams()
+    console.log('Pet ID:', petId)
     const pet = useSelector(currentPet(petId))
+    console.log(pet)
     const dispatch = useDispatch()
     const [modalState, setModalState] = useState(null)
     const [editModalState, setEditModalState] = useState(null)
@@ -129,7 +131,7 @@ const PetProfile = () => {
                     </div>
                 </div>
                 {modalState && <NewReminderFormModal modalState={modalState} setModalState={setModalState} pet={pet}/>}
-                {editModalState && <NewPetFormModal editModalState={editModalState} setEditModalState={setEditModalState} initialPetData={pet}/>}
+                {editModalState && <NewPetFormModal editModalState={editModalState} setEditModalState={setEditModalState} initialPetData={pet} petId={petId}/>}
                 <Footer/>
             </div>
         )

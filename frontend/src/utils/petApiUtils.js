@@ -27,8 +27,8 @@ export const postPet = petInfo => (
     })
 )
 
-export const putPet = (petInfo, id) => (
-    fetch(`/api/pets/${id}`, {
+export const putPet = (petInfo, petId) => (
+    fetch(`/api/pets/${petId}`, {
         method: 'PUT',
         body: petInfo,
         headers: {
