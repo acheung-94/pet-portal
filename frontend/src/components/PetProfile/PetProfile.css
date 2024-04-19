@@ -117,7 +117,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 40px;
     padding: 20px;
     box-sizing: border-box;
 }
@@ -144,8 +144,10 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
+    padding-top: 50px;
     gap: 20px;
     box-sizing: border-box;
+    background-color: white;
 }
 
 .pet-attribute{
@@ -155,8 +157,43 @@
     box-sizing: border-box;
     padding: 8px;
     align-items: center;
+    position: relative;
+    padding-left: 5%;
 }
 
 .pet-attribute h3{
     font-size: 24px;
+    font-style: bold;
+}
+
+.decoration {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    border: 2px solid var(--gold);
+    bottom: -5px;
+    left: 0;
+    box-sizing: border-box;
+    background-color: var(--gold);
+}
+
+.name-splash-container{
+    position: absolute;
+    top: -28px;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.name-border{
+    border: 1px solid var(--green-dark);
+    box-sizing: border-box;
+    position: relative;
+    background-color: white;
+    padding: 10px;
+}
+.name-splash-container h3{
+    font-size: 36px;
 }
