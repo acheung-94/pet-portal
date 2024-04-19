@@ -33,7 +33,12 @@ const Auth = () =>{
         if(isRegister) {
             dispatch(createUser({email: email, password: pw}))
                 .then(()=> navigate('/dashboard'))
-                
+                .catch( res => {
+                    if (!res.ok){
+                        console.log(res, res.errors)
+                        res.json().then(err => console.log(err))
+                    }
+                } )
         } else if (isLogin) {
             dispatch(loginUser({email: email, password: pw}))
                 .then(()=> navigate('/dashboard'))
@@ -46,14 +51,14 @@ const Auth = () =>{
         }
         setEmail('');
         setPw('');
-
     }
     useEffect(() => {
-        console.log(errors)
+
     }, [errors]);
     useEffect(() => {
         setEmail('');
         setPw('');
+        setErrors('')
     }, [location.pathname]);
     return(
         <>

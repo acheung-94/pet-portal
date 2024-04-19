@@ -23,6 +23,7 @@ export default class UserController extends ApplicationController{
 			}
 
 			err.errors = errors
+			console.log(err, err.errors)
 			return next(err)
 		}
 
