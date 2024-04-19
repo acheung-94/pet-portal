@@ -44,4 +44,24 @@ app.use(csurf({
 
 setupRouter(app)
 
+if (isProduction) {
+	const path = await import('path')
+
+	app.get('/', (req, res) => {
+		res.cookie('CSRF-TOKEN', req.csrfToken())
+		res.sendFile(
+			path.resolve(__dirname, '../frontend', 'dist', 'index.html')
+		)
+	})
+
+	app.use(express.static(path.resolve('../frontend/dist')))
+
+	app.get(/^(?!\/?api).*/, (req, res) => {
+		res.cookie('CSRF-TOKEN', req.csrfToken())
+		res.sendFile(
+			path.resolve(__dirname, '../frontend', 'dist', 'index.html')
+		)
+	})
+}
+
 export default app
