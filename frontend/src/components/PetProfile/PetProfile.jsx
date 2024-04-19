@@ -76,7 +76,6 @@ const PetProfile = () => {
 
         return(
             <div className='dash-page-container'>
-                <Navbar/>
                 <div className='pet-dashboard-container'>
                     <div className="pet-dashboard">
                         <Link to={'/dashboard'} className='back-link'> ← Back to your dashboard </Link>
