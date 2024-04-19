@@ -44,7 +44,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
             }
         }
         if(photo) {
-            data.append('photo',photo)
+            data.append('image',photo)
         }
         console.log(data)
 
@@ -76,7 +76,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
 
         // Append photo if it exists
         if (photo) {
-            data.append('photo', photo);
+            data.append('image', photo);
         }
 
         console.log(data)
