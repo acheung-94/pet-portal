@@ -20,7 +20,7 @@ const Auth = () =>{
 
     const [email, setEmail] = useState('')
     const [pw, setPw] = useState('')
-    const [pw2, setPw2] = useState('')
+    const [PwConfirm, setPwConfirm] = useState('')
     const [loginErrors, setLoginErrors] = useState('')
     const [registrationErrors, setRegistrationErrors] = useState('')
     const [pwError, setPwError] = useState(false)
@@ -47,13 +47,13 @@ const Auth = () =>{
         }
         setEmail('');
         setPw('');
-        setPw2('')
+        setPwConfirm('')
     }
 
     useEffect(() => {
         setEmail('');
         setPw('');
-        setPw2('')
+        setPwConfirm('')
         setLoginErrors('')
         setRegistrationErrors('')
         setPwError(false)
@@ -61,12 +61,12 @@ const Auth = () =>{
 
     useEffect(() => {
         
-        if ((pw !== pw2 && isRegister)) {
+        if ((pw !== PwConfirm && isRegister)) {
             setPwError(true)
         }else{
             setPwError(false)
         }
-    }, [pw, pw2, isRegister])
+    }, [pw, PwConfirm, isRegister])
 
     return(
         <>
@@ -109,7 +109,7 @@ const Auth = () =>{
                                         <div className="password-label">
                                             Confirm Password: 
                                         </div>
-                                        <input id="password-input" type="password" placeholder="Password" onChange={(e) => setPw2(e.target.value)}/>
+                                        <input id="password-input" type="password" placeholder="Password" onChange={(e) => setPwConfirm(e.target.value)}/>
                                         </label>
 
                                     )}
