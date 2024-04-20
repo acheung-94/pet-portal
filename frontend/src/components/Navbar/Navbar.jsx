@@ -1,16 +1,16 @@
 import './Navbar.css'
 import { useDispatch, useSelector } from 'react-redux';
-import {Link} from "react-router-dom"
+import {Link, useLocation} from "react-router-dom"
 import { logoutUser, refreshUser, selectCurrentUser } from '../../store/sessionReducer';
 import { useEffect } from 'react';
 import { selectSessionStatus, setSessionAlert } from '../../store/errorsReducer';
-
+import SessionAlert from '../SessionAlert/SessionAlert';
 
 const Navbar = () => {
     const currentUser = useSelector(selectCurrentUser)
     const sessionStatus = useSelector(selectSessionStatus)
     const dispatch = useDispatch();
-
+    const location = useLocation()
     useEffect( () => {
         if (currentUser && currentUser.sessionExpiration){
             const checkTime = setInterval(()=>{
@@ -28,15 +28,19 @@ const Navbar = () => {
             } )
         }
     }, [currentUser, dispatch])
+
     useEffect( () => {
-        if (currentUser && currentUser.sessionExpiration){
+        if (currentUser && currentUser.sessionExpiration){ 
+            const login = location.pathname === '/login'
+            console.log(login)
             const currentTime = Date.now()
             const expirationTime = new Date(currentUser.sessionExpiration).getTime()
-            if (currentTime >= expirationTime){
+            if (currentTime >= expirationTime && !login){
                 dispatch(setSessionAlert(true))
             }
         }
-    })
+    }, [location, currentUser, dispatch])
+    
     return(
         <div>
             <div className='navbar-container'>
@@ -82,7 +86,7 @@ const Navbar = () => {
                     )}
                 </div>
             </div>
-            {/* {sessionStatus && <SessionAlert/>>} */}
+            {sessionStatus && <SessionAlert/>}
         </div>
     )
 
