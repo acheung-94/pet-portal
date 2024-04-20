@@ -113,9 +113,7 @@ const PetProfile = () => {
                         </div>
                     </div>
                     <div className="pet-signalment">
-                        <div>
-                            <button className='edit-pet-dash-buttons' onClick={() => setEditPetState('edit')}> + </button>
-                        </div>
+                        
                         <div className='profile-pic-border'>
                             <img src={pet.imageUrl}
                             className='profile-pic'/>
@@ -158,6 +156,13 @@ const PetProfile = () => {
                                     <span className='decoration'></span>
                                 </div>
                             )}
+                            {pet.microchipNumber && (
+                                <div className="pet-attribute">
+                                    <h3>Microchip: </h3>
+                                    <p>{pet.microchipNumber}</p>
+                                    <span className='decoration'></span>
+                                </div>
+                            )}
                             {pet.weight && (
                                 <div className="pet-attribute">
                                     <h3>Weight: </h3>
@@ -165,6 +170,9 @@ const PetProfile = () => {
                                     <span className='decoration'></span>
                                 </div>
                             )}
+                            <div>
+                            <button className='edit-pet-dash-buttons' onClick={() => setEditPetState('edit')}> Edit </button>
+                            </div>
                         </div>
                     </div>
                 </div>

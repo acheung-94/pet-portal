@@ -32,7 +32,6 @@ const Navbar = () => {
     useEffect( () => {
         if (currentUser && currentUser.sessionExpiration){ 
             const login = location.pathname === '/login'
-            console.log(login)
             const currentTime = Date.now()
             const expirationTime = new Date(currentUser.sessionExpiration).getTime()
             if (currentTime >= expirationTime && !login){
@@ -40,7 +39,7 @@ const Navbar = () => {
             }
         }
     }, [location, currentUser, dispatch])
-    
+
     return(
         <div>
             <div className='navbar-container'>
