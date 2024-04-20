@@ -25,7 +25,6 @@
 }
 
 .right-container{
-    height: 50%;
     width: 30%;
     display: flex;
     flex-direction: column;
@@ -47,15 +46,17 @@
 
 .all-reminders{
     height: 100%;
+    box-sizing: border-box;
 }
 .all-reminders-title {
     padding: 8px;
     font-size: 28px;
 }
 .find-vet-container{
-    height: 100%;
     display: flex;
+    box-sizing: border-box;
     flex-direction: column;
+
 }
 .find-vet-container div {
     padding: 8px;
