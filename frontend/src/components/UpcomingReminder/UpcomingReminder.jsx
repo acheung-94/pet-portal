@@ -45,8 +45,6 @@ const UpcomingReminder = () => {
             }
         }
     }
-    // console.log("PET NAMES", petNames)
-    // console.log("PET IMAGES",petImages)
 
     useEffect(() => {
         dispatch(fetchUserReminders(currentUser._id))
@@ -72,7 +70,7 @@ const UpcomingReminder = () => {
  
                     <div className='upcoming-reminder-content'>
                         <div>{ele.title}</div>
-                        <div>
+                        <div className='upcoming-reminder-pet-name'>
                             {petNames[idx] && <p>{petNames[idx]}</p>}
                         </div>
                         <div className='upcoming-pet-image'>
