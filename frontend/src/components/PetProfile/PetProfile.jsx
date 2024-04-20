@@ -20,7 +20,8 @@ const PetProfile = () => {
     const currentUser = useSelector(selectCurrentUser)
     const dispatch = useDispatch()
     const [modalState, setModalState] = useState(null)
-    const [editModalState, setEditModalState] = useState(null)
+    const [editPetState, setEditPetState] = useState(null)
+    const [currentReminder, setCurrentReminder] = useState(null)
     const reminders = useSelector(selectReminders)
     const calculateAge = (dateString) => {
         const birthday = new Date(dateString)
@@ -70,7 +71,7 @@ const PetProfile = () => {
             <div className='dash-page-container'>
             <div className='pet-dashboard-container'>
                 <div className="pet-dashboard">
-                    <Link to={'/dashboard'} className='back-link'> ← Back to your dashboard </Link>
+                    <Link to={'/dashboard'} className='back-link'> ← Back to your pets </Link>
                     
                     <div className='pet-dash-highlight'><h1 className='pet-dash-header'> Pet Dashboard </h1></div>
                     <div className="pet-metrics-container">
@@ -80,7 +81,9 @@ const PetProfile = () => {
                                 <button className='pet-dash-buttons' onClick={() => setModalState('appointment')}> + </button>
                             </div>
                             <div className='appointment-index-container'>
-                                <Appointments reminders={reminders}/>
+                                <Appointments reminders={reminders}
+                                setModalState={setModalState}
+                                setCurrentReminder={setCurrentReminder}/>
                             </div>
                         </div>
                             <div className="preventatives-module">
@@ -90,7 +93,9 @@ const PetProfile = () => {
                                         <button className='pet-dash-buttons' onClick={() => setModalState('vaccination')}> + </button>
                                     </div>
                                     <div className='vaccinations-index-container'>
-                                        <Vaccines reminders={reminders}/>
+                                        <Vaccines reminders={reminders}
+                                        setModalState={setModalState}
+                                        setCurrentReminder={setCurrentReminder}/>
                                      </div>
                                 </div>
                                 <div className="medications">
@@ -99,7 +104,9 @@ const PetProfile = () => {
                                         <button className='pet-dash-buttons' onClick={() => setModalState('medication')}> + </button>
                                     </div>
                                     <div className='medications-index-container'>
-                                        <Medications reminders={reminders}/>
+                                        <Medications reminders={reminders} 
+                                        setModalState={setModalState}
+                                        setCurrentReminder={setCurrentReminder}/>
                                     </div>        
                                 </div>
                             </div>
@@ -107,7 +114,7 @@ const PetProfile = () => {
                     </div>
                     <div className="pet-signalment">
                         <div>
-                            <button className='edit-pet-dash-buttons' onClick={() => setEditModalState('edit')}> + </button>
+                            <button className='edit-pet-dash-buttons' onClick={() => setEditPetState('edit')}> + </button>
                         </div>
                         <div className='profile-pic-border'>
                             <img src={pet.imageUrl}
@@ -162,12 +169,12 @@ const PetProfile = () => {
                     </div>
                 </div>
                 
-                {editModalState && <NewPetFormModal editModalState={editModalState} setEditModalState={setEditModalState} initialPetData={pet} petId={petId}/>}
+                {editPetState && <NewPetFormModal editModalState={editPetState} setEditModalState={setEditPetState} initialPetData={pet} petId={petId}/>}
                 {modalState && <ReminderFormModal 
-                                modalState={modalState} 
-                                setModalState={setModalState} 
-                                pet={pet}
-                                reminder={null}/>}
+                    modalState={modalState} 
+                    setModalState={setModalState} 
+                    pet={pet}
+                    reminder={currentReminder}/>}
             </div>
         )
     }

@@ -1,8 +1,6 @@
-import { useDispatch } from 'react-redux'
 import '../Medications/Medications.css'
 
-const Medications = ({reminders}) => {
-    const dispatch = useDispatch()
+const Medications = ({reminders, setModalState, setCurrentReminder}) => {
 
     const medicationsList = reminders.filter(reminder => reminder.type === 'medication');
 
@@ -10,13 +8,17 @@ const Medications = ({reminders}) => {
         <>
             {medicationsList &&
                 Object.values(medicationsList).map((med, idx) => (
-                    <div key={idx} className='medication-info-container'>
+                    <div key={idx} className='medication-info-container'
+                            onClick={()=> {
+                                setCurrentReminder(med)
+                                setModalState('edit')
+                                }}>
                         <div className='medication-header'>
                             <div className='medication-title'>
                                 <p>{med.title}</p>
                             </div>
                             <div className='medication-date'>
-                                <p>{new Date(med.dueDate).toLocaleDateString('en-US')}</p>
+                                <p>Due: {new Date(med.dueDate).toLocaleDateString('en-US')}</p>
                             </div>
                         </div>
                         <div className='reminder-divider'></div>
@@ -26,6 +28,7 @@ const Medications = ({reminders}) => {
                     </div>
                 ))
             }
+            
         </>
     )
 }

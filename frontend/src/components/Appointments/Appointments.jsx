@@ -1,17 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux'
 import '../Appointments/Appointments.css'
-import { fetchPetReminders, selectReminders } from '../../store/reminderReducer';
-import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
 
-const Appointments = ({reminders}) => {
-    const dispatch = useDispatch()
-    const { petId } = useParams()
-    // const reminders = useSelector(selectReminders)
-
-    // useEffect( () => {
-    //     dispatch(fetchPetReminders(petId))
-    // }, [petId, dispatch])
+const Appointments = ({reminders, setModalState, setCurrentReminder}) => {
 
     const appointmentsList = reminders.filter(reminder => reminder.type === 'appointment');
 
@@ -19,7 +8,11 @@ const Appointments = ({reminders}) => {
         <>
             {appointmentsList &&
                appointmentsList.map((apt, idx) => (
-                    <div key={idx} className='appointment-info-container'>
+                    <div key={idx} className='appointment-info-container' 
+                            onClick={()=> {
+                                setCurrentReminder(apt)
+                                setModalState('edit')
+                                }}>
                         <div className='appointment-header'>
                             <div className='appointment-title'>
                                 <p>{apt.title}</p>

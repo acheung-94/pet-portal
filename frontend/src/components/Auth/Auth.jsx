@@ -8,7 +8,6 @@ import { useDispatch } from "react-redux";
 import { createUser, loginUser } from "../../store/sessionReducer";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import NewPetFormModal from "../NewPetFormModal/NewPetFormModal";
 import { useNavigate } from "react-router-dom";
 
 const Auth = () =>{
