@@ -48,7 +48,7 @@ const UpcomingReminder = () => {
 
     useEffect(() => {
         dispatch(fetchUserReminders(currentUser._id))
-    }, [dispatch])
+    }, [dispatch, currenUser._id])
     
     return(
         <>
