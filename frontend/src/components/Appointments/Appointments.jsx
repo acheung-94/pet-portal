@@ -45,6 +45,11 @@ const Appointments = ({reminders, setModalState, setCurrentReminder}) => {
                     </div>
                 ))
             }
+            { !appointmentsList.length && (
+                <div className="empty-reminders">
+                    Click the <span>+</span> icon to add a reminder!
+                </div>
+            )}
         </>
     )
 }

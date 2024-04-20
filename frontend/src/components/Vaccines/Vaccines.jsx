@@ -27,6 +27,11 @@ const Vaccines = ({reminders, setModalState, setCurrentReminder}) => {
 
                 ))
             }
+            { !vaccinesList.length && (
+                    <div className="empty-reminders">
+                        Click the <span>+</span> icon to add a reminder!
+                    </div>
+            )}
         </>
     )
 }

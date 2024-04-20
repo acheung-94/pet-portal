@@ -49,7 +49,6 @@ export const dateProximityIcon = (dueDateString) => {
     }
     const dueProximity = new Date(year, adjMonth, day)
 
-    console.log(dueProximity, year, adjMonth, day)
     if (today >= dueProximity && today <= dueDate){
         return ICONS.upcoming
     }
