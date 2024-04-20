@@ -4,10 +4,11 @@ import logger from "redux-logger"
 import sessionReducer from './sessionReducer'
 import petReducer from "./petReducer"
 import reminderReducer from "./reminderReducer"
+import errorsReducer from "./errorsReducer"
 
 const rootReducer = combineReducers({
     session: sessionReducer,
-    // sessionExpiration: sessionReducer,
+    errors: errorsReducer,
     pets: petReducer,
     reminders: reminderReducer
 })

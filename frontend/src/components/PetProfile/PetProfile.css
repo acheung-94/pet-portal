@@ -119,6 +119,7 @@
     gap: 40px;
     padding: 20px;
     box-sizing: border-box;
+    position: relative;
 }
 
 .profile-pic-border{
@@ -165,7 +166,6 @@
     font-size: 24px;
 }
 .pet-signalment>div:first-child{
-    margin-left: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -176,15 +176,19 @@
     border: 2px solid var(--green-dark);
     background: none;
     box-sizing: border-box;
-    width: 28px;
-    height: 28px;
     border-radius: 14px;
-    font-size: 20px;
+    font-size: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: var(--green-dark);
     transition: background-color 0.3s ease;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 10px;
+    font-style: italic;
+    font-family: domine;
 }
 .edit-pet-dash-buttons:hover{
     cursor: pointer;
