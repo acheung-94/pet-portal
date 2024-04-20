@@ -77,7 +77,7 @@ const PetProfile = () => {
                     <div className="pet-metrics-container">
                         <div className='pet-reminder-module'> 
                             <div className='pet-reminder-header'>
-                                <h3>Reminders</h3>
+                                <h3>Appointments</h3>
                                 <button className='pet-dash-buttons' onClick={() => setModalState('appointment')}> + </button>
                             </div>
                             <div className='appointment-index-container'>

@@ -21,7 +21,6 @@
     line-height: 1.4; 
 }
 
-
 .medication-header p {
     font-size: 16px;
     color: #333; 
@@ -41,4 +40,10 @@
     font-family: domine;
     font-style: italic;
     color: #666;
+}
+
+.medication-date{
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }

@@ -3,7 +3,18 @@ import '../Appointments/Appointments.css'
 const Appointments = ({reminders, setModalState, setCurrentReminder}) => {
 
     const appointmentsList = reminders.filter(reminder => reminder.type === 'appointment');
+    
+    const formatDateTime = (dateString) => {
+        const aptDate = new Date(dateString)
+        const date = aptDate.toLocaleDateString('en-US')
+        const time = aptDate.toLocaleTimeString('en-US', { 
+            hour: '2-digit', 
+            minute: '2-digit' 
+        })
 
+        return `${date} - ${time}`
+    }
+    
     return (
         <>
             {appointmentsList &&
@@ -18,7 +29,8 @@ const Appointments = ({reminders, setModalState, setCurrentReminder}) => {
                                 <p>{apt.title}</p>
                             </div>
                             <div className='appointment-date'>
-                                <p>{new Date(apt.dueDate).toLocaleDateString('en-US')}</p>
+                                <p>{formatDateTime(apt.dueDate)}
+                                </p>
                             </div>
                         </div>
                         <div className='reminder-divider'></div>

@@ -1,5 +1,5 @@
 import '../Medications/Medications.css'
-
+import { dateProximityIcon } from '../../utils/constants';
 const Medications = ({reminders, setModalState, setCurrentReminder}) => {
 
     const medicationsList = reminders.filter(reminder => reminder.type === 'medication');
@@ -19,6 +19,8 @@ const Medications = ({reminders, setModalState, setCurrentReminder}) => {
                             </div>
                             <div className='medication-date'>
                                 <p>Due: {new Date(med.dueDate).toLocaleDateString('en-US')}</p>
+                                <img src={dateProximityIcon(med.dueDate)}
+                                    className='proximity-icon'/>
                             </div>
                         </div>
                         <div className='reminder-divider'></div>
