@@ -25,9 +25,9 @@
 }
 
 .right-container{
-    height: 50%;
     width: 30%;
-
+    display: flex;
+    flex-direction: column;
 }
 
 .dashboard-sep{
@@ -45,9 +45,37 @@
 }
 
 .all-reminders{
-    height: 50%;
+    height: 100%;
+    box-sizing: border-box;
 }
-
+.all-reminders-title {
+    padding: 8px;
+    font-size: 28px;
+}
 .find-vet-container{
-    height: 50%;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+
+}
+.find-vet-container div {
+    padding: 8px;
+    font-size: 28px;
+}
+.find-vet-container div:nth-child(2) button {
+    padding: 5px;
+    cursor: pointer;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: 1.5px solid rgb(255,163,128);
+    overflow: hidden;
+    outline: none;
+    vertical-align: middle ;
+    font-family: borish;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 20px;
+}
+.find-vet-container div:nth-child(2) button:hover {
+    background-color: var(--pale-purple);
 }
