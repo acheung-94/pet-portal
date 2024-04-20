@@ -27,21 +27,11 @@ const UpcomingReminder = () => {
             return ele
         }
     })
-    console.log(petIds)
     
+    console.log(upcomingReminders)
     const petNames = []
     const petImages = []
-    // for(let i = 0; i< petIds.length; i++) {
-    //     for(let j = 0; j < pets.length; j++) {
-    //         if(petIds[i] && petIds[i] === pets[j]._id) {
-    //             petNames.push(pets[j].name)
-    //             break
-    //         } else if(petIds[i] === undefined){
-    //             petNames.push(undefined)
-    //             break
-    //         }
-    //     }
-    // }
+
     for(let i = 0; i< petIds.length; i++) {
         for(let j = 0; j < pets.length; j++) {
             if(petIds[i] && petIds[i] === pets[j]._id) {
@@ -55,7 +45,9 @@ const UpcomingReminder = () => {
             }
         }
     }
-    console.log(petImages)
+    // console.log("PET NAMES", petNames)
+    // console.log("PET IMAGES",petImages)
+
     useEffect(() => {
         dispatch(fetchUserReminders(currentUser._id))
     }, [dispatch])
@@ -67,9 +59,9 @@ const UpcomingReminder = () => {
                 <div key={idx} className='upcoming-reminder-container'>
                     <div className='upcoming-reminder-icon-container'>
                         <div className={`upcoming-reminder--icon`}>
-                            {ele.type === 'appointment' && <FontAwesomeIcon className="appointment-icon" icon={faCalendarCheck} size="large"/>}
-                            {ele.type === 'vaccination' && <FontAwesomeIcon className="vaccination-icon" icon={faSyringe} size="large"/>}
-                            {ele.type === 'medication' && <FontAwesomeIcon className="medication-icon" icon={faPills} size="large" />}       
+                            {ele.type === 'appointment' && <FontAwesomeIcon className="appointment-icon" icon={faCalendarCheck} size="xl"/>}
+                            {ele.type === 'vaccination' && <FontAwesomeIcon className="vaccination-icon" icon={faSyringe} size="xl"/>}
+                            {ele.type === 'medication' && <FontAwesomeIcon className="medication-icon" icon={faPills} size="xl" />}       
                         </div>
                         <div className='upcoming-reminder-type'>
                             {ele.type === 'appointment' && 'appointment'}
@@ -89,12 +81,10 @@ const UpcomingReminder = () => {
                     </div>
                     <div className='upcoming-reminder-pet'>
                         <div className='upcoming-days'>
-                            <p>in {diffDays[idx]} days</p>
+                            {(diffDays[idx] === 1) && <p>due date</p> }
+                            {(diffDays[idx] > 1) &&  <p>in {diffDays[idx]} days</p> }
                         </div>
-                        <div className='upcoming-reminder-petnames'>
-                            
-                            
-                        </div>
+
                     </div>
                 </div>
             ))}
