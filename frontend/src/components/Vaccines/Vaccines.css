@@ -5,6 +5,7 @@
     border-radius: 8px; 
     background-color: #fff; 
     box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    position: relative;
 }
 
 .vaccine-header {
@@ -18,3 +19,25 @@
     color: #333; 
     font-weight: bold;
 }
+
+.vaccine-info-container:hover{
+    cursor: pointer;
+}
+.vaccine-info-container:hover::after{
+    content: 'Edit';
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    font-family: domine;
+    font-style: italic;
+    color: #666;
+}
+
+.vaccine-date{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+

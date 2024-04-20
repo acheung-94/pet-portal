@@ -1,33 +1,36 @@
-import { useDispatch, useSelector } from 'react-redux'
 import '../Appointments/Appointments.css'
-import { fetchPets } from '../../store/petReducer';
-import { fetchPetReminders } from '../../store/reminderReducer';
-import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
 
-const Appointments = () => {
-    const dispatch = useDispatch()
-    const { petId } = useParams()
-    const reminders = useSelector(state => state.reminders)
+const Appointments = ({reminders, setModalState, setCurrentReminder}) => {
 
-    useEffect( () => {
-        dispatch(fetchPets())
-        dispatch(fetchPetReminders(petId))
-    }, [petId, dispatch])
+    const appointmentsList = reminders.filter(reminder => reminder.type === 'appointment');
+    
+    const formatDateTime = (dateString) => {
+        const aptDate = new Date(dateString)
+        const date = aptDate.toLocaleDateString('en-US')
+        const time = aptDate.toLocaleTimeString('en-US', { 
+            hour: '2-digit', 
+            minute: '2-digit' 
+        })
 
-    const appointmentsList = Object.values(reminders).filter(reminder => reminder.type === 'appointment');
-
+        return `${date} - ${time}`
+    }
+    
     return (
         <>
             {appointmentsList &&
                appointmentsList.map((apt, idx) => (
-                    <div key={idx} className='appointment-info-container'>
+                    <div key={idx} className='appointment-info-container' 
+                            onClick={()=> {
+                                setCurrentReminder(apt)
+                                setModalState('edit')
+                                }}>
                         <div className='appointment-header'>
                             <div className='appointment-title'>
                                 <p>{apt.title}</p>
                             </div>
                             <div className='appointment-date'>
-                                <p>{new Date(apt.dueDate).toLocaleDateString('en-US')}</p>
+                                <p>{formatDateTime(apt.dueDate)}
+                                </p>
                             </div>
                         </div>
                         <div className='reminder-divider'></div>
@@ -42,6 +45,11 @@ const Appointments = () => {
                     </div>
                 ))
             }
+            { !appointmentsList.length && (
+                <div className="empty-reminders">
+                    Click the <span>+</span> icon to add a reminder!
+                </div>
+            )}
         </>
     )
 }

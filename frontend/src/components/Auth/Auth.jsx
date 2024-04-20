@@ -8,15 +8,9 @@ import { useDispatch } from "react-redux";
 import { createUser, loginUser } from "../../store/sessionReducer";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import NewPetFormModal from "../NewPetFormModal/NewPetFormModal";
 import { useNavigate } from "react-router-dom";
 
 const Auth = () =>{
-    /* 
-        FROM HERE THIS IS TEMP FOR CHECKING MODAL
-    */
-    const [modalState, setModalState] = useState(false)
-
     const location = useLocation()
     const {pathname} = location
     const dispatch = useDispatch();
@@ -26,28 +20,54 @@ const Auth = () =>{
 
     const [email, setEmail] = useState('')
     const [pw, setPw] = useState('')
-
+    const [PwConfirm, setPwConfirm] = useState('')
+    const [loginErrors, setLoginErrors] = useState('')
+    const [registrationErrors, setRegistrationErrors] = useState('')
+    const [pwError, setPwError] = useState(false)
     const handleSubmit = e => {
         e.preventDefault();
 
         if(isRegister) {
             dispatch(createUser({email: email, password: pw}))
                 .then(()=> navigate('/dashboard'))
+                .catch( res => {
+                    if (!res.ok){
+                        res.json().then(err => setRegistrationErrors(err.email))
+                    }
+                } )
         } else if (isLogin) {
             dispatch(loginUser({email: email, password: pw}))
                 .then(()=> navigate('/dashboard'))
+                .catch(res => {
+                    if (!res.ok){
+                        setLoginErrors('Invalid credentials')
+                    }
+                })
+                
         }
         setEmail('');
         setPw('');
-
+        setPwConfirm('')
     }
-    useEffect(() => {
 
-    }, [email, pw]);
     useEffect(() => {
         setEmail('');
         setPw('');
+        setPwConfirm('')
+        setLoginErrors('')
+        setRegistrationErrors('')
+        setPwError(false)
     }, [location.pathname]);
+
+    useEffect(() => {
+        
+        if ((pw !== PwConfirm && isRegister)) {
+            setPwError(true)
+        }else{
+            setPwError(false)
+        }
+    }, [pw, PwConfirm, isRegister])
+
     return(
         <>
             <Navbar/>
@@ -72,6 +92,9 @@ const Auth = () =>{
                                         <input id="email-input" type="email" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)} />
                                     </label>
                                 </div>
+                                <span className="auth-errors">
+                                    {registrationErrors && registrationErrors}
+                                </span>
                                 <div>
                                     <label className="password-label-container">
                                         
@@ -80,27 +103,40 @@ const Auth = () =>{
                                         </div>
                                         <input id="password-input" type="password" placeholder="Password" onChange={(e) => setPw(e.target.value)}/>
                                     </label>
+                                    {isRegister && (
+                                        <label className="password-label-container">
+                                        
+                                        <div className="password-label">
+                                            Confirm Password: 
+                                        </div>
+                                        <input id="password-input" type="password" placeholder="Password" onChange={(e) => setPwConfirm(e.target.value)}/>
+                                        </label>
+
+                                    )}
                                 </div>
+                                <span className="auth-errors">
+                                    { loginErrors && loginErrors}
+                                    { (pwError && isRegister) && "Passwords must match!"}
+                                </span>
                                 <div className="auth-button-container">
                                     <div className="auth-button-submit">
-                                        <button type="submit">Submit</button>
+                                        <button type="submit" disabled={!email.length || !pw.length || pwError}>Submit</button>
+                                        <span className='deco-1'></span>
+                                        { (email.length && pw.length && !pwError) ?
+                                            (<span className='deco-2'></span>) :
+                                            (<span></span>)
+                                         }
                                     </div>
-                                {pathname === '/login' ? (
+                                </div>
+                                {isLogin && (
                                     <div className="auth-button-new-to-portal">
                                         <Link to={'/register'}>
                                             <button>New to Pet Portal</button>
                                         </Link>
                                     </div>
-                                ): (
-                                    <div></div>
                                 )}
-                                </div>
                             </form>
                         </div>
-                        <div>
-                            <button onClick={() => setModalState(true)}>THIS IS JUST A TEMP BUTTON</button>
-                        </div>
-                        {modalState && <NewPetFormModal modalState={modalState} setModalState={setModalState}/>}
                     </div>
                 </div>
                 <Footer></Footer>

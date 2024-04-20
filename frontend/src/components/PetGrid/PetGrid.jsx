@@ -17,7 +17,7 @@ const PetGrid = () => {
 
     useEffect(() => {
         if (currentUser) {
-            dispatch(fetchPets())
+            dispatch(fetchPets(currentUser._id))
         }
     }, [currentUser, currentPets.length, dispatch])
 

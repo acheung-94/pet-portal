@@ -9,7 +9,7 @@ export default class UserController extends ApplicationController{
 		super()
 	}
 
-	static async register(req, res, next) {
+	static async register(req, res, _) {
 		const user = await User.findOne({
 			email: req.body.email
 		})
@@ -23,7 +23,8 @@ export default class UserController extends ApplicationController{
 			}
 
 			err.errors = errors
-			return next(err)
+
+			return res.status(422).json(err.errors)
 		}
 
 		const newUser = new User({
@@ -38,7 +39,7 @@ export default class UserController extends ApplicationController{
 					const user = await newUser.save()
 					return res.json(await loginUser(user))
 				} catch (err) {
-					next(err)
+					return res.status(422).json({'errors': ['unknown error']})
 				}
 			})
 		})

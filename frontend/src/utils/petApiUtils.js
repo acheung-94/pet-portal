@@ -9,6 +9,10 @@ export const getPets = () => (
     })
 )
 
+export const getUserPets = userId => (
+    jwtFetch(`/api/users/${userId}/pets`)
+)
+
 export const getPet = petInfo => (
     jwtFetch(`/api/pets/${petInfo._id}`, {
         method: 'GET'

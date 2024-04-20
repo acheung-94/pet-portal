@@ -6,19 +6,23 @@ import { useEffect } from 'react'
 import Appointments from '../Appointments/Appointments'
 import Vaccines from '../Vaccines/Vaccines'
 import Medications from '../Medications/Medications'
-import { fetchPetReminders } from '../../store/reminderReducer'
+import { fetchPetReminders, selectReminders } from '../../store/reminderReducer'
 import { useState } from 'react'
 import NewPetFormModal from '../NewPetFormModal/NewPetFormModal'
 
 import ReminderFormModal from '../ReminderFormModal/ReminderFormModal'
+import { selectCurrentUser } from '../../store/sessionReducer'
 
 
 const PetProfile = () => {
     const { petId } = useParams()
     const pet = useSelector(currentPet(petId))
+    const currentUser = useSelector(selectCurrentUser)
     const dispatch = useDispatch()
     const [modalState, setModalState] = useState(null)
-    const [editModalState, setEditModalState] = useState(null)
+    const [editPetState, setEditPetState] = useState(null)
+    const [currentReminder, setCurrentReminder] = useState(null)
+    const reminders = useSelector(selectReminders)
     const calculateAge = (dateString) => {
         const birthday = new Date(dateString)
         const today = new Date()
@@ -41,9 +45,9 @@ const PetProfile = () => {
         if (years < 1) {
             if(months < 4){
                 let weeks = Math.floor(days / 7)
-                //let daysDiff = days % 7
+                let daysDiff = days % 7
                 if (weeks > 1) {
-                    return (`${weeks} weeks & ${days} days`)
+                    return (`${weeks} weeks & ${daysDiff} days`)
                 }else{
                     return (`${days} ${days === 1 ? "day" : "days"}`)
                 }
@@ -57,9 +61,9 @@ const PetProfile = () => {
     }
 
     useEffect( () => {
-        dispatch(fetchPets())
+        dispatch(fetchPets(currentUser._id))
         dispatch(fetchPetReminders(petId))
-    }, [petId, dispatch])
+    }, [dispatch, currentUser, petId])
 
     if (pet) {
 
@@ -67,17 +71,19 @@ const PetProfile = () => {
             <div className='dash-page-container'>
             <div className='pet-dashboard-container'>
                 <div className="pet-dashboard">
-                    <Link to={'/dashboard'} className='back-link'> ← Back to your dashboard </Link>
+                    <Link to={'/dashboard'} className='back-link'> ← Back to your pets </Link>
                     
                     <div className='pet-dash-highlight'><h1 className='pet-dash-header'> Pet Dashboard </h1></div>
                     <div className="pet-metrics-container">
                         <div className='pet-reminder-module'> 
                             <div className='pet-reminder-header'>
-                                <h3>Reminders</h3>
+                                <h3>Appointments</h3>
                                 <button className='pet-dash-buttons' onClick={() => setModalState('appointment')}> + </button>
                             </div>
                             <div className='appointment-index-container'>
-                                <Appointments/>
+                                <Appointments reminders={reminders}
+                                setModalState={setModalState}
+                                setCurrentReminder={setCurrentReminder}/>
                             </div>
                         </div>
                             <div className="preventatives-module">
@@ -87,7 +93,9 @@ const PetProfile = () => {
                                         <button className='pet-dash-buttons' onClick={() => setModalState('vaccination')}> + </button>
                                     </div>
                                     <div className='vaccinations-index-container'>
-                                        <Vaccines/>
+                                        <Vaccines reminders={reminders}
+                                        setModalState={setModalState}
+                                        setCurrentReminder={setCurrentReminder}/>
                                      </div>
                                 </div>
                                 <div className="medications">
@@ -96,7 +104,9 @@ const PetProfile = () => {
                                         <button className='pet-dash-buttons' onClick={() => setModalState('medication')}> + </button>
                                     </div>
                                     <div className='medications-index-container'>
-                                        <Medications/>
+                                        <Medications reminders={reminders} 
+                                        setModalState={setModalState}
+                                        setCurrentReminder={setCurrentReminder}/>
                                     </div>        
                                 </div>
                             </div>
@@ -104,7 +114,7 @@ const PetProfile = () => {
                     </div>
                     <div className="pet-signalment">
                         <div>
-                            <button className='edit-pet-dash-buttons' onClick={() => setEditModalState('edit')}> + </button>
+                            <button className='edit-pet-dash-buttons' onClick={() => setEditPetState('edit')}> + </button>
                         </div>
                         <div className='profile-pic-border'>
                             <img src={pet.imageUrl}
@@ -159,12 +169,12 @@ const PetProfile = () => {
                     </div>
                 </div>
                 
-                {editModalState && <NewPetFormModal editModalState={editModalState} setEditModalState={setEditModalState} initialPetData={pet} petId={petId}/>}
+                {editPetState && <NewPetFormModal editModalState={editPetState} setEditModalState={setEditPetState} initialPetData={pet} petId={petId}/>}
                 {modalState && <ReminderFormModal 
-                                modalState={modalState} 
-                                setModalState={setModalState} 
-                                pet={pet}
-                                reminder={null}/>}
+                    modalState={modalState} 
+                    setModalState={setModalState} 
+                    pet={pet}
+                    reminder={currentReminder}/>}
             </div>
         )
     }
