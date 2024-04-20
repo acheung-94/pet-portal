@@ -57,5 +57,3 @@ export const dateProximityIcon = (dueDateString) => {
     return ICONS.green
 
 }
-
-window.dateProximityIcon = dateProximityIcon
