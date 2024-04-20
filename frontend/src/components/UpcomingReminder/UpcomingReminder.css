@@ -1,0 +1,33 @@
+.upcoming-reminder-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    border: 1px solid black;
+}
+.upcoming-reminder-appointment-icon{
+    background-color: #FDBE9B;
+    border-radius: 120px;
+    padding: 8px;
+    margin-right: 20px;
+}
+.upcoming-reminder-vaccination-icon {
+    background-color:#BED8E5;
+
+}
+
+.upcoming-reminder-medication-icon{
+    background-color: var(--pale-purple);
+}
+
+.upcoming-reminder-content {
+    flex:2;
+    text-align: center;
+    padding-top: 12px;
+}
+
+.upcoming-reminder-pet {
+    flex:1;
+
+}
