@@ -1,21 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux'
 import '../Appointments/Appointments.css'
-import { fetchPets } from '../../store/petReducer';
-import { fetchPetReminders } from '../../store/reminderReducer';
+import { fetchPetReminders, selectReminders } from '../../store/reminderReducer';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
-const Appointments = () => {
+const Appointments = ({reminders}) => {
     const dispatch = useDispatch()
     const { petId } = useParams()
-    const reminders = useSelector(state => state.reminders)
+    // const reminders = useSelector(selectReminders)
 
-    useEffect( () => {
-        dispatch(fetchPets())
-        dispatch(fetchPetReminders(petId))
-    }, [petId, dispatch])
+    // useEffect( () => {
+    //     dispatch(fetchPetReminders(petId))
+    // }, [petId, dispatch])
 
-    const appointmentsList = Object.values(reminders).filter(reminder => reminder.type === 'appointment');
+    const appointmentsList = reminders.filter(reminder => reminder.type === 'appointment');
 
     return (
         <>

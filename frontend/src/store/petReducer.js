@@ -1,4 +1,4 @@
-import { getPet, getPets, postPet, putPet, deletePet } from "../utils/petApiUtils"
+import { getPet, getUserPets, postPet, putPet, deletePet } from "../utils/petApiUtils"
 import { createSelector } from 'reselect'
 
 //CONST TYPES
@@ -23,8 +23,8 @@ export const removePet = petId => ({
 })
 
 //THUNK CREATOR
-export const fetchPets = () => dispatch => (
-    getPets()
+export const fetchPets = (userId) => dispatch => (
+    getUserPets(userId)
         .then(res => {
             if (res.ok) {
                 return res.json()
@@ -95,7 +95,11 @@ const petReducer = (state = {}, action) => {
 
     switch(action.type) {
         case RECEIVE_PETS:
-            return ({...state, ...action.pets})
+            
+            return (action.pets.reduce((a, e)=> {
+                a[e._id] = e
+                return a
+            }, {}))
         case RECEIVE_PET:
             return {...state, [action.pet._id]: action.pet}
         case REMOVE_PET:

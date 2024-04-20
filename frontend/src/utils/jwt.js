@@ -9,7 +9,6 @@ const jwtFetch = async (url, options = {}) => {
             options.headers["Content-Type"] || "application/json";
         options.headers['CSRF-Token'] = getCookie("CSRF-TOKEN")
     }
-    console.log(options.headers)   
     const res = await fetch(url, options)
     if (res.status >= 400) throw res;
     return res;

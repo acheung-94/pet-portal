@@ -6,19 +6,22 @@ import { useEffect } from 'react'
 import Appointments from '../Appointments/Appointments'
 import Vaccines from '../Vaccines/Vaccines'
 import Medications from '../Medications/Medications'
-import { fetchPetReminders } from '../../store/reminderReducer'
+import { fetchPetReminders, selectReminders } from '../../store/reminderReducer'
 import { useState } from 'react'
 import NewPetFormModal from '../NewPetFormModal/NewPetFormModal'
 
 import ReminderFormModal from '../ReminderFormModal/ReminderFormModal'
+import { selectCurrentUser } from '../../store/sessionReducer'
 
 
 const PetProfile = () => {
     const { petId } = useParams()
     const pet = useSelector(currentPet(petId))
+    const currentUser = useSelector(selectCurrentUser)
     const dispatch = useDispatch()
     const [modalState, setModalState] = useState(null)
     const [editModalState, setEditModalState] = useState(null)
+    const reminders = useSelector(selectReminders)
     const calculateAge = (dateString) => {
         const birthday = new Date(dateString)
         const today = new Date()
@@ -57,9 +60,9 @@ const PetProfile = () => {
     }
 
     useEffect( () => {
-        dispatch(fetchPets())
+        dispatch(fetchPets(currentUser._id))
         dispatch(fetchPetReminders(petId))
-    }, [petId, dispatch])
+    }, [dispatch, currentUser, petId])
 
     if (pet) {
 
@@ -77,7 +80,7 @@ const PetProfile = () => {
                                 <button className='pet-dash-buttons' onClick={() => setModalState('appointment')}> + </button>
                             </div>
                             <div className='appointment-index-container'>
-                                <Appointments/>
+                                <Appointments reminders={reminders}/>
                             </div>
                         </div>
                             <div className="preventatives-module">
@@ -87,7 +90,7 @@ const PetProfile = () => {
                                         <button className='pet-dash-buttons' onClick={() => setModalState('vaccination')}> + </button>
                                     </div>
                                     <div className='vaccinations-index-container'>
-                                        <Vaccines/>
+                                        <Vaccines reminders={reminders}/>
                                      </div>
                                 </div>
                                 <div className="medications">
@@ -96,7 +99,7 @@ const PetProfile = () => {
                                         <button className='pet-dash-buttons' onClick={() => setModalState('medication')}> + </button>
                                     </div>
                                     <div className='medications-index-container'>
-                                        <Medications/>
+                                        <Medications reminders={reminders}/>
                                     </div>        
                                 </div>
                             </div>

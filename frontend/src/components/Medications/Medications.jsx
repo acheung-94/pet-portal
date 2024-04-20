@@ -1,20 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import '../Medications/Medications.css'
-import { useParams } from 'react-router-dom'
-import { useEffect } from 'react'
-import { fetchPets } from '../../store/petReducer'
-import { fetchPetReminders } from '../../store/reminderReducer'
 
-const Medications = () => {
+const Medications = ({reminders}) => {
     const dispatch = useDispatch()
-    const { petId } = useParams()
-    const reminders = useSelector(state => state.reminders)
-    useEffect( () => {
-        dispatch(fetchPets())
-        dispatch(fetchPetReminders(petId))
-    }, [petId, dispatch])
 
-    const medicationsList = Object.values(reminders).filter(reminder => reminder.type === 'medication');
+    const medicationsList = reminders.filter(reminder => reminder.type === 'medication');
 
     return (
         <>
