@@ -17,15 +17,22 @@
     font-family: domine;
     text-decoration: none;
     padding: 8px;
-    transition: all 1s linear;
+    transition: all 0.5s linear;
     position: relative;
     box-sizing: border-box;
+    font-size: 24px;
 }
 
 .main-footer a:hover{
     color: var(--main-bg-beige);
 }
-
+.developer{
+    font-size: 20px;
+    color: var(--main-bg-beige);
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
 .main-footer h1{
     color: var(--gold);
     align-self: center;
@@ -38,10 +45,17 @@
     justify-content: center;
     gap: 20px;
     box-sizing: border-box;
+    align-items: center;
 }
 
 .footer-sep{
     border: 1px solid var(--gold);
+    box-sizing: border-box;
+    width: 8px;
+    height: 8px;
+    transform: rotate(45deg);
+    position: relative;
+
 }
 
 .deco-1{
@@ -63,11 +77,11 @@
     left: 50%;
 }
 
-.main-footer a:hover .deco-2{
+/* .main-footer a:hover .deco-2{
     width: 90%;
     height: 1px;
     background-color: var(--gold);
     position: absolute;
     box-sizing: border-box;
-}
+} */
 
