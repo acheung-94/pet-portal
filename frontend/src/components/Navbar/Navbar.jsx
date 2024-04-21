@@ -32,10 +32,14 @@ const Navbar = () => {
     useEffect( () => {
         if (currentUser && currentUser.sessionExpiration){ 
             const login = location.pathname === '/login'
+            const home = location.pathname === '/'
             const currentTime = Date.now()
             const expirationTime = new Date(currentUser.sessionExpiration).getTime()
             if (currentTime >= expirationTime && !login){
                 dispatch(setSessionAlert(true))
+            }
+            if (currentTime >= expirationTime && home){
+                dispatch(logoutUser())
             }
         }
     }, [location, currentUser, dispatch])
