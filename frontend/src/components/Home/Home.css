@@ -48,10 +48,11 @@
     padding-top: 5%;
 }
 .welcome-heading{
-    border-bottom: 1px solid gray;
+    /* border-bottom: 1px solid gray; */
     padding: 20px;
     box-sizing: border-box;
     color: var(--green-dark);
+    position: relative;
 }
 .welcome-heading h1{
     font-size: 64px;
@@ -125,4 +126,30 @@
     background-color: var(--gold);
     position: absolute;
     box-sizing: border-box;
+}
+
+.welcome-heading .deco-1{
+    left: 0;
+    bottom: -4px;
+}
+
+.deco-3{
+    width: 0%;
+    height: 1px;
+    background-color: var(--gold);
+    position: absolute;
+    box-sizing: border-box;
+    transition: width 2s ease;
+    bottom: 0;
+    left: 0;
+}
+
+.welcome-heading.loaded .deco-3{
+    width: 100%;
+    height: 1px;
+    background-color: var(--gold);
+    position: absolute;
+    box-sizing: border-box;
+    bottom: 0;
+    left: 0;
 }

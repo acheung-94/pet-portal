@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom"
 import Footer from "../Footer/Footer"
 import Navbar from "../Navbar/Navbar"
 import './Home.css'
-import { useDispatch, useSelector } from "react-redux"
-import { loginUser, selectCurrentUser } from "../../store/sessionReducer"
+import { useDispatch} from "react-redux"
+import { loginUser} from "../../store/sessionReducer"
+import { useEffect, useState } from "react"
 const Home = () => {
     const dispatch = useDispatch()
+    const [loaded, setLoaded] = useState()
     const handleDemoLogin = ()=>{
         const demo = {
             email: "demo@demo.com",
@@ -13,6 +14,10 @@ const Home = () => {
         }
         dispatch(loginUser(demo))
     }
+
+    useEffect( () => {
+        setLoaded(true)
+    }, [])
 
     return(
         <div className="home-page-container">
@@ -24,8 +29,10 @@ const Home = () => {
                     </div>
 
                     <div className="section-1-text">
-                        <div className="welcome-heading">
+                        <div className={`welcome-heading ${loaded && 'loaded'}`}>
                             <h1>Welcome to Pet Portal.</h1>
+                            <span className="deco-1"></span>
+                            <span className="deco-3"></span>
                         </div>
                         <div className="welcome-message">
                             <p> Whether you&apos;re a seasoned pet parent or embarking on your journey
