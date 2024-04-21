@@ -5,7 +5,7 @@ import { createReminder, destroyReminder, updateReminder } from '../../store/rem
 import { K9_VAX, FEL_VAX, APPT_TYPES, MEDS } from '../../utils/constants';
 import { useCallback } from 'react';
 
-const ReminderFormModal = ({modalState, setModalState, pet, reminder={},setCurrentReminder}) => {
+const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
     const [type, setType] = useState(
         modalState === 'edit' ? reminder.type : '')
 
