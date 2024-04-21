@@ -1,12 +1,11 @@
 import './ReminderFormModal.css'
-
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createReminder, updateReminder } from '../../store/reminderReducer';
+import { createReminder, destroyReminder, updateReminder } from '../../store/reminderReducer';
 import { K9_VAX, FEL_VAX, APPT_TYPES, MEDS } from '../../utils/constants';
 import { useCallback } from 'react';
 
-const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
+const ReminderFormModal = ({modalState, setModalState, pet, reminder={},setCurrentReminder}) => {
     const [type, setType] = useState(
         modalState === 'edit' ? reminder.type : '')
 
@@ -50,7 +49,9 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
             setTitleOptions(conditionalOptions(modalState))
         }
     },[type, modalState, conditionalOptions])
-    
+    useEffect(() => {
+        console.log("Reminder data changed")
+    }, [dispatch, reminder])
     const handleTypeChange = (e) => {
         setType(e.target.value);
         
@@ -99,7 +100,13 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
         setDescription('')
         setLocation('')
     }
-
+    
+    const handleDelete = (e) => {
+        e.preventDefault()
+        console.log("You clicked the reminder id" ,reminder._id)
+        dispatch(destroyReminder(reminder._id))
+        setModalState(null)
+    }
     const reminderForm = () => (
         <>
             <label className="input-label">
@@ -188,7 +195,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                                         fill: 'none',
                                         height: '16px',
                                         width: '16px',
-                                        stroke: 'currentcolor',
+                                        stroke: 'currentColor',
                                         strokeWidth: '3',
                                         overflow: 'visible'
                                     }}>
@@ -202,7 +209,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
 
                                 {modalState && (
                                     <div className='reminder-title'>
-                                        {modalState === 'edit' ? 'Edit' : `Add ${(modalState.charAt(0).toUpperCase() + modalState.slice(1))}`} Reminder
+                                        {modalState === 'edit' ? 'Edit / Delete' : `Add ${(modalState.charAt(0).toUpperCase() + modalState.slice(1))}`} Reminder
                                     </div>
                                 )}
                         </div>
@@ -221,13 +228,17 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                                         )}
 
                                     </button>
+                                    {modalState === 'edit' &&
+                                    <button type='button' className='add-new-reminder-button' onClick={handleDelete}>
+                                        <div className='delete-reminder-button'>Delete</div>
+                                    </button>}
                                 </div>
                             </form>
                         </div>
                     </div>
 
                 </div>
-        </div>
+            </div>
 
         </>
     )
