@@ -43,7 +43,7 @@ const Footer = () => {
                     <Link to="https://github.com/shjang1025"> 
                         <FontAwesomeIcon icon={faSquareGithub}/>
                     </Link>
-                    <Link> 
+                    <Link to="https://www.linkedin.com/in/sohyun-jang-469918115"> 
                         <FontAwesomeIcon icon={faLinkedin} />
                     </Link>
                 </div>
