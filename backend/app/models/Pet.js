@@ -43,6 +43,10 @@ const petSchema = Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'User'
 	},
+	reminder: {
+		type: Schema.Types.ObjectId,
+		ref: 'Reminder'
+	},
 	imageUrl: {
 		type: String,
 		required: true

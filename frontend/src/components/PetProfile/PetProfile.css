@@ -190,7 +190,26 @@
     font-style: italic;
     font-family: domine;
 }
-.edit-pet-dash-buttons:hover{
+.delete-pet-dash-buttons{
+    border: 2px solid var(--green-dark);
+    background: none;
+    box-sizing: border-box;
+    border-radius: 14px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--green-dark);
+    transition: background-color 0.3s ease;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 10px;
+    font-style: italic;
+    font-family: domine;
+}
+.edit-pet-dash-buttons:hover,
+.delete-pet-dash-buttons:hover{
     cursor: pointer;
     background-color: #ffcb5382;
     font-style: bold;
