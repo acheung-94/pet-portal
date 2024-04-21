@@ -2,10 +2,17 @@ import { Link } from "react-router-dom"
 import Footer from "../Footer/Footer"
 import Navbar from "../Navbar/Navbar"
 import './Home.css'
-import { useSelector } from "react-redux"
-import { selectCurrentUser } from "../../store/sessionReducer"
+import { useDispatch, useSelector } from "react-redux"
+import { loginUser, selectCurrentUser } from "../../store/sessionReducer"
 const Home = () => {
-    const currentUser = useSelector(selectCurrentUser)
+    const dispatch = useDispatch()
+    const handleDemoLogin = ()=>{
+        const demo = {
+            email: "demo@demo.com",
+            password: "demouser"
+        }
+        dispatch(loginUser(demo))
+    }
 
     return(
         <div className="home-page-container">
@@ -30,8 +37,11 @@ const Home = () => {
                                   health and happiness has never been easier! Welcome aboard! </p>
                             <div className="h2-splash"> <h3> ✨New here? Get started below. </h3> </div>
                             <div className="welcome-links">
-                                <Link>Thinking about getting a pet</Link>
-                                <Link to={currentUser ? '/dashboard' : '/login'}>Pet Parent</Link>
+                                <div className="demo-login" onClick={handleDemoLogin}>
+                                    <span className='deco-1'></span>
+                                    <span className='deco-2'></span>
+                                     Log in as a demo user
+                                </div>
                             </div>
                         </div>
                     </div>
