@@ -15,13 +15,16 @@ const UpcomingReminder = () => {
     const reminders = useSelector(selectReminders) //all reminders [{}, {},..]
     const currentUserReminder = reminders.filter(ele  => ele.user === currentUser._id.toString())
     const pets = useSelector(selectPets)
+    const pets = useSelector(selectPets)
     const today = new Date()
     const diffDays = []
     const petIds = []
     
+    
     const upcomingReminders = currentUserReminder.filter((ele,idx) => {
         let due = new Date(currentUserReminder[idx].dueDate)
         let diff = Math.ceil((due - today) / (1000 * 60 * 60 * 24));
+        if(diff <= 5 && diff >= 0) {
         if(diff <= 5 && diff >= 0) {
             diffDays.push(diff)
             petIds.push(ele.pet)
@@ -52,12 +55,16 @@ const UpcomingReminder = () => {
     useEffect(() => {
 
     }, [upcomingReminders])
+    useEffect(() => {
+
+    }, [upcomingReminders])
     return(
         <>
             {upcomingReminders.map((ele, idx) => (
 
                 <div key={idx} className='upcoming-reminder-container'>
                     <div className='upcoming-reminder-icon-container'>
+                        <div className={`upcoming-reminder-icon`}>
                         <div className={`upcoming-reminder-icon`}>
                             {ele.type === 'appointment' && <FontAwesomeIcon className="appointment-icon" icon={faCalendarCheck} size="xl"/>}
                             {ele.type === 'vaccination' && <FontAwesomeIcon className="vaccination-icon" icon={faSyringe} size="xl"/>}
@@ -81,6 +88,8 @@ const UpcomingReminder = () => {
                     </div>
                     <div className='upcoming-reminder-pet'>
                         <div className='upcoming-days'>
+                            {(diffDays[idx] === 0) && <p>due date</p> }
+                            {(diffDays[idx] > 0) &&  <p>in {diffDays[idx]} days</p> }
                             {(diffDays[idx] === 0) && <p>due date</p> }
                             {(diffDays[idx] > 0) &&  <p>in {diffDays[idx]} days</p> }
                         </div>

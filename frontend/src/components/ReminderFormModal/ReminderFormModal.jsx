@@ -2,10 +2,11 @@ import './ReminderFormModal.css'
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createReminder, destroyReminder, updateReminder } from '../../store/reminderReducer';
+import { createReminder, destroyReminder, updateReminder } from '../../store/reminderReducer';
 import { K9_VAX, FEL_VAX, APPT_TYPES, MEDS } from '../../utils/constants';
 import { useCallback } from 'react';
 
-const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
+const ReminderFormModal = ({modalState, setModalState, pet, reminder={},setCurrentReminder}) => {
     const [type, setType] = useState(
         modalState === 'edit' ? reminder.type : '')
 
