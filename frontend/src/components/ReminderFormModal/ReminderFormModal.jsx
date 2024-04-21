@@ -50,7 +50,6 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={},setCurre
         }
     },[type, modalState, conditionalOptions])
     useEffect(() => {
-        console.log("Reminder data changed")
     }, [dispatch, reminder])
     const handleTypeChange = (e) => {
         setType(e.target.value);
@@ -103,7 +102,6 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={},setCurre
     
     const handleDelete = (e) => {
         e.preventDefault()
-        console.log("You clicked the reminder id" ,reminder._id)
         dispatch(destroyReminder(reminder._id))
         setModalState(null)
     }

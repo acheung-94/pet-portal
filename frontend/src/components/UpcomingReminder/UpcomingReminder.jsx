@@ -29,7 +29,6 @@ const UpcomingReminder = () => {
         }
     })
     
-    console.log("UPCOMING REMINDERS:",upcomingReminders)
     const petNames = []
     const petImages = []
 
