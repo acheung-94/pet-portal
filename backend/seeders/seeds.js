@@ -35,13 +35,25 @@ for (let i = 1; i < NUM_SEED_USERS; i++) {
 
 const pets = []
 for (let i = 0; i < NUM_SEED_PETS; i++) {
+	const species = faker.helpers.randomize(['dog', 'cat', 'bird'])
+	let breed = ''
+
+	if (species === 'dog') {
+		breed = faker.animal.dog()
+	} else if (species === 'cat') {
+		breed = faker.animal.cat()
+	} else if (species === 'bird') {
+		breed = faker.animal.bird()
+	}
+
+
 	const pet = new Pet({
 		name: faker.name.firstName(),
 		dob: faker.date.past(10),
 		sex: faker.helpers.randomize(['male', 'female', 'unknown']),
-		species: faker.helpers.randomize(['dog', 'cat', 'bird']),
+		species: species,
 		color: faker.commerce.color(),
-		breed: faker.animal.dog(),
+		breed: breed,
 		microchipNumber: faker.datatype.number(),
 		insurancePolicyId: faker.finance.account(),
 		weight: faker.datatype.float({ min: 5, max: 50 }),
@@ -81,7 +93,6 @@ for (let i = 0; i < NUM_SEED_REMINDERS; i++) {
 const insertSeeds = () => {
 	console.log('Resetting db and seeding users, pets, and reminders...')
   
-	// Reset collections
 	User.collection.drop()
 		.then(() => Pet.collection.drop())
 		.then(() => Reminder.collection.drop())
