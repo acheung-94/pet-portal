@@ -158,3 +158,9 @@ textarea {
 .reminder-button-edit{
     color: var(--green-dark);
 }
+.reminder-button-container button {
+    margin-right: 5px;
+}
+.delete-reminder-button {
+    color: #333;
+}

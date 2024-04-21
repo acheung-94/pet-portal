@@ -59,7 +59,7 @@ export default class ReminderController extends ApplicationController {
 		if (req.user._id.toString() !== reminder.user.toString()) {
 			return res.status(403).end()
 		}
-		const result = await Reminder.deleteOne()
+		const result = await Reminder.deleteOne({ _id: req.params.id })
 
 		if (result) {
 			return res.json(result)

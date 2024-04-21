@@ -182,7 +182,8 @@ const PetProfile = () => {
                     modalState={modalState} 
                     setModalState={setModalState} 
                     pet={pet}
-                    reminder={currentReminder}/>}
+                    reminder={currentReminder}
+                />}
             </div>
         )
     }
