@@ -15,6 +15,7 @@ const Home = () => {
             password: "password"
         }
         dispatch(loginUser(demo)).then(()=> navigate('/dashboard'))
+
     }
 
     useEffect( () => {
