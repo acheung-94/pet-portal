@@ -1,8 +1,14 @@
 import * as path from 'path'
-import dotenv from 'dotenv'
-dotenv.config()
-// eslint-disable-next-line sort-imports
 import {isProduction, mongoURI} from './config/keys.js'
+
+if (!isProduction){
+	(async () => {
+		const dotenv = await import('dotenv')
+		dotenv.config()
+	})()
+}
+
+// eslint-disable-next-line sort-imports
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import csurf from 'csurf'
