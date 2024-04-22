@@ -18,7 +18,7 @@
   top: 460px;
   width: 27vw;
   min-width: 350px;
-  height: 800px;
+  height: 860px;
   transform: translate(-50%, -50%);
   background-color: var(--main-bg-beige);
   padding: 10px;
@@ -34,7 +34,7 @@
     top: 460px;
     width: 27vw;
     min-width: 350px;
-    height: 880px;
+    height: 860px;
     transform: translate(-50%, -50%);
     background-color: var(--green-dark);
     color: var(--main-bg-beige);
