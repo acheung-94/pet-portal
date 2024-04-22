@@ -5,7 +5,6 @@ import sessionReducer from './sessionReducer'
 import petReducer from "./petReducer"
 import reminderReducer from "./reminderReducer"
 import errorsReducer from "./errorsReducer"
-import { isProduction } from "../../../backend/config/keys.js"
 
 const rootReducer = combineReducers({
     session: sessionReducer,
@@ -15,7 +14,7 @@ const rootReducer = combineReducers({
 })
 
 let middleware;
-if (isProduction) {
+if (import.meta.env.PROD) {
     middleware = applyMiddleware(thunk)
 } else {
     middleware = applyMiddleware(thunk, logger)
