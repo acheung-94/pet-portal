@@ -1,0 +1,18 @@
+{
+  "name": "pet-portal",
+  "version": "1.0.0",
+  "description": "A convenient reminder management system for your pet's health.",
+  "main": "index.js",
+  "scripts": {
+    "backend-install": "npm install --prefix backend",
+    "backend": "npm run dev --prefix backend",
+    "frontend": "npm run dev --prefix frontend",
+    "build": "npm run backend-install"
+  },
+  "engines": {
+    "node": "21.x"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
