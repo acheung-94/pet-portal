@@ -32,10 +32,6 @@ for (let i = 1; i < NUM_SEED_USERS; i++) {
 		})
 	)
 }
-users.push(new User({
-	email: 'demo@demo.com',
-	hashedPassword: bcrypt.hashSync('demouser', 10)
-}))
 
 const pets = []
 for (let i = 0; i < NUM_SEED_PETS; i++) {

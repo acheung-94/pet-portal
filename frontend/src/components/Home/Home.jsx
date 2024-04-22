@@ -11,7 +11,7 @@ const Home = () => {
     const handleDemoLogin = ()=>{
         const demo = {
             email: "demo@demo.com",
-            password: "demouser"
+            password: "password"
         }
         dispatch(loginUser(demo))
     }
