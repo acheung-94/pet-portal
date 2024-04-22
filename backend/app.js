@@ -1,6 +1,6 @@
 import * as path from 'path'
-import dotenv from 'dotenv'
-dotenv.config()
+// import dotenv from 'dotenv'
+// dotenv.config()
 // eslint-disable-next-line sort-imports
 import {isProduction, mongoURI} from './config/keys.js'
 import cookieParser from 'cookie-parser'
