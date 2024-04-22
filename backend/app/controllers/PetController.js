@@ -2,6 +2,7 @@ import ApplicationController from '../controllers/ApplicationController.js'
 import { convertObjectToStateShape } from '../../util/jsonUtils.js'
 import { DEFAULT_IMAGE_URI } from '../../config/configConstants.js'
 import Pet from '../models/Pet.js'
+import Reminder from '../models/Reminder.js'
 import { singleFileUpload } from '../../util/s3Utils.js'
 
 export default class PetController extends ApplicationController{
@@ -93,6 +94,7 @@ export default class PetController extends ApplicationController{
 		if (req.user._id.toString() != pet.owner.toString()) {
 			return res.status(403).end()
 		}
+		await Reminder.deleteMany({ pet: pet._id })
 		const deleted = await Pet.deleteOne({ _id: req.params.id })
 		if (deleted) {
 			return res.json(deleted)

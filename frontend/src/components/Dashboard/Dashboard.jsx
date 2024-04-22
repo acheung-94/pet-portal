@@ -23,17 +23,18 @@ const Dashboard = () => {
                     <div className="all-reminders">
                         <div className='all-reminders-title'>
                             <h3>Upcoming Reminder</h3>
+                            <div className='highlight'></div>
                         </div>
                         <UpcomingReminder/>
                     </div>
-                    <div className="find-vet-container">
+                    {/* <div className="find-vet-container">
                         <div>
                             <h3>Find a vet near me !</h3>
                         </div>
                         <div>
                             <div><button onClick={() => setClinicModalState('clinic')}>Find a vet</button></div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 
             </div>

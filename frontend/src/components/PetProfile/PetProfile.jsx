@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import './PetProfile.css'
 import { Link, useParams } from 'react-router-dom'
-import { currentPet, fetchPets } from '../../store/petReducer'
+import { currentPet, destroyPet, fetchPets } from '../../store/petReducer'
 import { useEffect } from 'react'
 import Appointments from '../Appointments/Appointments'
 import Vaccines from '../Vaccines/Vaccines'
@@ -123,6 +123,11 @@ const PetProfile = () => {
                                 <div className="name-border">
                                     <h3>{(pet.name.charAt(0).toUpperCase() + pet.name.slice(1).toLowerCase())}</h3>
                                 </div>
+                            </div>
+                            <div>
+                                <Link to={'/dashboard'}>
+                                    <button className='delete-pet-dash-buttons' onClick={() => dispatch(destroyPet(petId))}> Delete </button>
+                                </Link>
                             </div>
                             <div className="pet-attribute">
                                 <h3>Age: </h3>
