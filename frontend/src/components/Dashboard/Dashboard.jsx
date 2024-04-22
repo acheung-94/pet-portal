@@ -23,6 +23,7 @@ const Dashboard = () => {
                     <div className="all-reminders">
                         <div className='all-reminders-title'>
                             <h3>Upcoming Reminder</h3>
+                            <div className='highlight'></div>
                         </div>
                         <UpcomingReminder/>
                     </div>

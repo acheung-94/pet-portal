@@ -49,6 +49,16 @@
     box-sizing: border-box;
 }
 .all-reminders-title {
+    font-size: 32px;
+    padding: 8px;
+}
+.highlight {
+    width: 252px;
+    height: 10px;
+    background-color: var(--bright-gold);
+    border-radius: 20px;
+}
+.title {
     padding: 8px;
     font-size: 28px;
 }
