@@ -1,6 +1,6 @@
 import './Navbar.css'
 import { useDispatch, useSelector } from 'react-redux';
-import {Link, useLocation} from "react-router-dom"
+import {Link, useLocation, useNavigate} from "react-router-dom"
 import { logoutUser, refreshUser, selectCurrentUser } from '../../store/sessionReducer';
 import { useEffect } from 'react';
 import { selectSessionStatus, setSessionAlert } from '../../store/errorsReducer';
@@ -9,14 +9,14 @@ import SessionAlert from '../SessionAlert/SessionAlert';
 const Navbar = () => {
     const currentUser = useSelector(selectCurrentUser)
     const sessionStatus = useSelector(selectSessionStatus)
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
     const location = useLocation()
+    const navigate = useNavigate()
     useEffect( () => {
         if (currentUser && currentUser.sessionExpiration){
             const checkTime = setInterval(()=>{
                 const currentTime = Date.now() //ms
                 const expirationTime = new Date(currentUser.sessionExpiration).getTime() //ms
-
                 if (currentTime >= (expirationTime-5000) ){
                     dispatch(refreshUser())
                     clearInterval(checkTime)
@@ -30,9 +30,9 @@ const Navbar = () => {
     }, [currentUser, dispatch])
 
     useEffect( () => {
+        const login = location.pathname === '/login'
+        const home = location.pathname === '/'
         if (currentUser && currentUser.sessionExpiration){ 
-            const login = location.pathname === '/login'
-            const home = location.pathname === '/'
             const currentTime = Date.now()
             const expirationTime = new Date(currentUser.sessionExpiration).getTime()
             if (currentTime >= expirationTime && !login){
@@ -41,8 +41,10 @@ const Navbar = () => {
             if (currentTime >= expirationTime && home){
                 dispatch(logoutUser())
             }
+        } else if (!home && !login) {
+            navigate('/login')
         }
-    }, [location, currentUser, dispatch])
+    }, [location, currentUser, dispatch, navigate])
 
     return(
         <div>
