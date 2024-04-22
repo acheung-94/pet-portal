@@ -1,11 +1,24 @@
-import { Link } from "react-router-dom"
 import Footer from "../Footer/Footer"
 import Navbar from "../Navbar/Navbar"
 import './Home.css'
-import { useSelector } from "react-redux"
-import { selectCurrentUser } from "../../store/sessionReducer"
+import { useDispatch} from "react-redux"
+import { loginUser} from "../../store/sessionReducer"
+import { useEffect, useState } from "react"
+
 const Home = () => {
-    const currentUser = useSelector(selectCurrentUser)
+    const dispatch = useDispatch()
+    const [loaded, setLoaded] = useState()
+    const handleDemoLogin = ()=>{
+        const demo = {
+            email: "demo@demo.com",
+            password: "demouser"
+        }
+        dispatch(loginUser(demo))
+    }
+
+    useEffect( () => {
+        setLoaded(true)
+    }, [])
 
     return(
         <div className="home-page-container">
@@ -17,22 +30,33 @@ const Home = () => {
                     </div>
 
                     <div className="section-1-text">
-                        <div className="welcome-heading">
+                        <div className={`welcome-heading ${loaded && 'loaded'}`}>
                             <h1>Welcome to Pet Portal.</h1>
+                            <span className="deco-1"></span>
+                            <span className="deco-3"></span>
                         </div>
                         <div className="welcome-message">
-                            <p> Whether you&apos;re a seasoned pet parent or embarking on your journey
+                            <div className="welcome-message-1">
+                                <span className='deco-1'></span>
+                                <p>Whether you&apos;re a seasoned pet parent or embarking on your journey
                                  with a new furry friend, Pet Portal is here to simplify your pet care 
-                                 routine. From managing reminders and appointments to tracking your 
-                                 pet&apos;s health metrics, our platform is designed to make pet ownership 
-                                 a breeze. Join us now to ensure you never miss a beat in your pet&apos;s
-                                  care routine. With Pet Portal, staying on top of your pet&apos;s 
-                                  health and happiness has never been easier! Welcome aboard! </p>
-                            <div className="h2-splash"> <h3> ✨New here? Get started below. </h3> </div>
-                            <div className="welcome-links">
-                                <Link>Thinking about getting a pet</Link>
-                                <Link to={currentUser ? '/dashboard' : '/login'}>Pet Parent</Link>
+                                 routine.</p>
                             </div>
+                            <div className="welcome-message-2">
+                                <span className='deco-1'></span>
+                                <p>Keep track of your pet&apos;s important information, health reminders, and appointments all in one convenient location!</p>
+                            </div>
+                            <div className="welcome-message-3">
+                                <span className='deco-1'></span>
+                                <div className="welcome-links">
+                                    <div className="h2-splash"> <h3> ✨ Ready to get started? </h3> </div>
+                                    <div className="demo-login" onClick={handleDemoLogin}>
+                                        <span className='deco-2'></span>
+                                        Log in as a demo user
+                                    </div>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
