@@ -9,7 +9,6 @@ import { destroyReminder } from './store/reminderReducer';
 
 const store = configureStore()
 window.store = store
-window.destroyReminder = destroyReminder
 const initializeApp = () =>{
   ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
