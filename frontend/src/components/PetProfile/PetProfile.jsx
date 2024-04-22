@@ -61,8 +61,12 @@ const PetProfile = () => {
     }
 
     useEffect( () => {
-        dispatch(fetchPets(currentUser._id))
-        dispatch(fetchPetReminders(petId))
+        if (currentUser?._id){
+            dispatch(fetchPets(currentUser._id))
+        }
+        if (petId) {
+            dispatch(fetchPetReminders(petId))
+        }
     }, [dispatch, currentUser, petId])
 
     if (pet) {
