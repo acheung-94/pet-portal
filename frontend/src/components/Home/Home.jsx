@@ -4,9 +4,10 @@ import './Home.css'
 import { useDispatch} from "react-redux"
 import { loginUser} from "../../store/sessionReducer"
 import { useEffect, useState } from "react"
-
+import { useNavigate } from "react-router-dom"
 const Home = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [loaded, setLoaded] = useState()
     const handleDemoLogin = ()=>{
         const demo = {
@@ -14,6 +15,7 @@ const Home = () => {
             password: "password"
         }
         dispatch(loginUser(demo))
+        navigate('/dashboard')
     }
 
     useEffect( () => {
