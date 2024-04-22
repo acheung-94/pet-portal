@@ -14,8 +14,8 @@ const Home = () => {
             email: "demo@demo.com",
             password: "password"
         }
-        dispatch(loginUser(demo))
-        navigate('/dashboard')
+        dispatch(loginUser(demo)).then(()=> navigate('/dashboard'))
+
     }
 
     useEffect( () => {
