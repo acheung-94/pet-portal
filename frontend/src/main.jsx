@@ -5,10 +5,8 @@ import './index.css';
 import configureStore from './store/store';
 import { Provider } from 'react-redux';
 import { restoreSession } from './utils/jwt';
-import { destroyReminder } from './store/reminderReducer';
 
 const store = configureStore()
-window.store = store
 const initializeApp = () =>{
   ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>

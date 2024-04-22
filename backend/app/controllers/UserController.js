@@ -58,7 +58,6 @@ export default class UserController extends ApplicationController{
 	}
 
 	static async pets (req, res, _) {
-		//console.log('passed to controller')
 		const petsForUser = await Pet.find({owner: req.params.id})
 		if (petsForUser) {
 			return res.json(petsForUser)

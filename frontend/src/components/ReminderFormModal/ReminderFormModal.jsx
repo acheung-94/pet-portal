@@ -131,7 +131,6 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                 </div>
                 <select
                     className="title-select"
-                    // placeholder='Title'
                     value={title}
                     onChange={e => setTitle(e.target.value)}>
                     <optgroup>
