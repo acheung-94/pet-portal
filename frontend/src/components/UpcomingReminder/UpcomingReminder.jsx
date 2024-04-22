@@ -13,13 +13,13 @@ const UpcomingReminder = () => {
     const dispatch = useDispatch()
     const currentUser = useSelector(selectCurrentUser)
     const reminders = useSelector(selectReminders) //all reminders [{}, {},..]
-    const currentUserReminder = reminders.filter(ele  => ele.user === currentUser._id.toString())
+    const currentUserReminder = reminders.filter(ele  => ele.user === currentUser?._id?.toString())
     const pets = useSelector(selectPets)
     const today = new Date()
     const diffDays = []
     const petIds = []
     
-    const upcomingReminders = currentUserReminder.filter((ele,idx) => {
+    const upcomingReminders = currentUserReminder?.filter((ele,idx) => {
         let due = new Date(currentUserReminder[idx].dueDate)
         let diff = Math.ceil((due - today) / (1000 * 60 * 60 * 24));
         if(diff <= 5 && diff >= 0) {
@@ -47,11 +47,10 @@ const UpcomingReminder = () => {
     }
 
     useEffect(() => {
-        dispatch(fetchUserReminders(currentUser._id))
-    }, [dispatch, currentUser._id])
-    useEffect(() => {
-        dispatch(fetchUserReminders(currentUser._id));
-    }, [dispatch, currentUser._id]);
+        if (currentUser?._id) {
+            dispatch(fetchUserReminders(currentUser._id))
+        }
+    }, [dispatch, currentUser?._id])
     return(
         <>
             {upcomingReminders.map((ele, idx) => (
