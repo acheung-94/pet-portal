@@ -16,7 +16,20 @@ There is a demo user available to try out these features!
 ![alt text](./readme/image-2.png)
 3. **Reminders:** This module provides a user-friendly interface for adding, editing, and deleting reminders. Reminders can be made under several categories, including appointments/procedures, vaccines, labwork, preventatives, and contain details specific to each type of reminder.  Users can set reminders for specific dates and times, as well as assign reminders to individual pets.
 ![alt text](./readme/image-1.png)
+4. **RESTful, user-friendly Express routing:**
+- This app utilizes the power and flexibility of Express.js, with the ability to add fully customizable middleware for defining endpoint behavior & robust error handling to any route, while keeping it organized and user-friendly by adopting a Model-View-Controller (MVC) pattern.
+- This pattern makes it easy to collaborate with the front end to add or change routes and behaviors as the need arises.
 
+```js
+const reminderRouter = Router()
+
+reminderRouter.get('/user/:id', ReminderController.indexByUser)
+reminderRouter.get('/pet/:id', ReminderController.indexByPet)
+reminderRouter.get('/:id', ReminderController.show)
+reminderRouter.post('/', requireUser, ReminderController.create)
+reminderRouter.put('/:id', requireUser, ReminderController.update)
+reminderRouter.delete('/:id', requireUser, ReminderController.delete)
+```
 ## Technologies
 **Front End**
 - ![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
