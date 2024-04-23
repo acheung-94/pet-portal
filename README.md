@@ -9,13 +9,15 @@ Pet Portal is a web application designed to simplify pet care management for pet
 Users must log in to access the Pet Portal platform.
 There is a demo user available to try out these features!
 
-1. **Dashboard:** The dashboard serves as the central hub for users to manage their pets and appointments. It displays an index of the user's pets along with any upcoming reminders or events, such as vaccinations, labwork, and vet appointments. Users can add new pets to their dashboard and upload a profile photo. From here, users can navigate to their individual pets' profiles to view/edit detailed information. 
+1. **Dashboard:** The dashboard serves as the central hub for users to manage their pets and appointments. It displays an index of the user's pets along with any upcoming reminders or events, such as vaccinations, labwork, and vet appointments. Users can add new pets to their dashboard and upload a profile photo. From here, users can navigate to their individual pets' profiles to view/edit detailed information. </br>
 ![alt text](./readme/image-5.png)
-![alt text](./readme/image-4.png)
-2. **Pet Profiles:** Users can view individual pet summaries, including physical characteristics and microchip/insurance information. Profiles also house reminder modules that categorize reminders by type and display details for vaccines, medications, and appointments. Users may edit or delete their pet's profiles from here as well.
+![alt text](./readme/image-4.png)</br>
+2. **Pet Profiles:** Users can view individual pet summaries, including physical characteristics and microchip/insurance information. Profiles also house reminder modules that categorize reminders by type and display details for vaccines, medications, and appointments. Users may edit or delete their pet's profiles from here as well. </br>
+
 ![alt text](./readme/image-2.png)
-3. **Reminders:** This module provides a user-friendly interface for adding, editing, and deleting reminders. Reminders can be made under several categories, including appointments/procedures, vaccines, labwork, preventatives, and contain details specific to each type of reminder.  Users can set reminders for specific dates and times, as well as assign reminders to individual pets.
-![alt text](./readme/image-1.png)
+</br>
+3. **Reminders:** This module provides a user-friendly interface for adding, editing, and deleting reminders. Reminders can be made under several categories, including appointments/procedures, vaccines, labwork, preventatives, and contain details specific to each type of reminder.  Users can set reminders for specific dates and times, as well as assign reminders to individual pets.</br>
+![alt text](./readme/image-1.png) </br>
 4. **RESTful, user-friendly Express routing:**
 - This app utilizes the power and flexibility of Express.js, with the ability to add fully customizable middleware for defining endpoint behavior & robust error handling to any route, while keeping it organized and user-friendly by adopting a Model-View-Controller (MVC) pattern.
 - This pattern makes it easy to collaborate with the front end to add or change routes and behaviors as the need arises.
