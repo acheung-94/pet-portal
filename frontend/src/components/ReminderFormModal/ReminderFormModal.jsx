@@ -49,6 +49,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
             setTitleOptions(conditionalOptions(modalState))
         }
     },[type, modalState, conditionalOptions])
+
     useEffect(() => {
     }, [dispatch, reminder])
     const handleTypeChange = (e) => {
@@ -146,14 +147,14 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                     <span>Due Date<span className="required">* required</span></span>
                 </div>
                 <input placeholder='Due Date' 
-                    type='date' value={due} onChange={e => setDue(e.target.value)} />
+                    type='datetime-local' value={due} onChange={e => setDue(e.target.value)} />
             </label>
             <label className="input-label">
                 <div className='perform-date-input-label'>
                     <span>Perform Date</span>
                 </div>
                 <input placeholder='Perform Date' 
-                    type='date' value={performDate} onChange={e => setPerformDate(e.target.value)} />
+                    type='datetime-local' value={performDate} onChange={e => setPerformDate(e.target.value)} />
             </label>
             <label className='input-label'>
                 <div className='description-input-label'>
@@ -168,13 +169,15 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                     cols="36"/>
             
             </label>
-            <label className="input-label">
-                <div className='location-input-label'>
-                    <span>Location</span>
-                </div>
-                <input placeholder='Location' 
-                    type='text' value={location} onChange={e => setLocation(e.target.value)} />
-            </label>
+            {modalState === 'appointment' && (
+                <label className="input-label">
+                    <div className='location-input-label'>
+                        <span>Location</span>
+                    </div>
+                    <input placeholder='Location' 
+                        type='text' value={location} onChange={e => setLocation(e.target.value)} />
+                </label>
+            )}
         </>
     )
 
