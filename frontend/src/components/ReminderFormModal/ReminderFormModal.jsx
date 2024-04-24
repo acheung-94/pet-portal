@@ -166,7 +166,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                     value={description}
                     onChange={e => setDescription(e.target.value)}
                     placeholder="Description"
-                    cols="36"/>
+                    />
             
             </label>
             {modalState === 'appointment' && (

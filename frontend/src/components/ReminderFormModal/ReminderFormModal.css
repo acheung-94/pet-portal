@@ -154,7 +154,11 @@ textarea {
 .description-input::placeholder {
     padding-left: 15px;
 }
-
+.description-input{
+    box-sizing: border-box;
+    padding-left: 15px;
+    width: 306px;
+}
 .reminder-button-edit{
     color: var(--green-dark);
 }
