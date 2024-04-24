@@ -147,14 +147,14 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                     <span>Due Date<span className="required">* required</span></span>
                 </div>
                 <input placeholder='Due Date' 
-                    type='datetime-local' value={due} onChange={e => setDue(e.target.value)} />
+                    type={ modalState === 'appointment' ? 'datetime-local' : 'date'} value={due} onChange={e => setDue(e.target.value)} />
             </label>
             <label className="input-label">
                 <div className='perform-date-input-label'>
                     <span>Perform Date</span>
                 </div>
                 <input placeholder='Perform Date' 
-                    type='datetime-local' value={performDate} onChange={e => setPerformDate(e.target.value)} />
+                    type={ modalState === 'appointment' ? 'datetime-local' : 'date'} value={performDate} onChange={e => setPerformDate(e.target.value)} />
             </label>
             <label className='input-label'>
                 <div className='description-input-label'>

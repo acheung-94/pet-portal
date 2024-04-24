@@ -99,7 +99,13 @@ export const destroyReminder = (reminderId) => dispatch => (
 
 
 //SELECTOR
-export const selectReminders = createSelector(state => state.reminders, reminders => Object.values(reminders))
+export const selectReminders = createSelector(
+    state => state.reminders, 
+    reminders => {
+        const reminderArray = Object.values(reminders)
+        reminderArray.sort((first, second) => new Date(first.dueDate) - new Date(second.dueDate))
+        return reminderArray
+    })
 export const currentReminder = reminderId => state => state.reminders[reminderId]
 
 //REDUCER
