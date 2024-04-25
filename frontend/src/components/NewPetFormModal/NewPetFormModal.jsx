@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './NewPetFormModal.css'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { createPet, updatePet } from '../../store/petReducer'
 import { useLocation } from 'react-router'
 import { SPECIES } from '../../utils/constants'
@@ -19,12 +19,8 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
     const [imageUpdated, setImageUpdated] = useState(false)
     const [filePreview, setFilePreview] = useState(initialPetData?.imageUrl ?? '')
     const dispatch = useDispatch();
-    const currentPets = useSelector(state => state.pets) // placeholder
     const location = useLocation()
     const {pathname} = location
-
-    useEffect(() => {
-    }, [currentPets])
 
     const handleEditSubmit = (e) => {
         e.preventDefault();
@@ -138,9 +134,9 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
                     onChange={e => setSex(e.target.value)}>
                     <optgroup>  
                         <option disabled value="">  </option>
-                        <option id="female">female</option>
-                        <option id="male">male</option>
-                        <option id="unknown">unknown</option>
+                        <option value="female" id="female">Female</option>
+                        <option value="male" id="male">Male</option>
+                        <option value="unknown" id="unknown">Unknown</option>
 
                     </optgroup>
                 </select>
@@ -150,12 +146,12 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
                     <span>Species<span className="required">* required</span></span>
                 </div>
                 <select className='species-select'
-                        value="species"
+                        value={species}
                         onChange={e => setSpecies(e.target.value)}>
                     <optgroup>
                         <option disabled value="">Select Species</option>
                         {SPECIES.map( ( species, idx ) => (
-                            <option key={idx} value={species.toLowerCase()}>{species}</option>
+                            <option key={idx} value={species.toLowerCase()} id={species.toLowerCase()}>{species}</option>
                         ))}
                     </optgroup>
                 </select>
@@ -215,7 +211,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
     }
     return(
         <>
-            <div className="modal-background" onClick={handleBackgroundClick}>
+            <div className="modal-background" >
                 <div className={`${modalState ? `${modalState}` : ''}${editModalState ? `${editModalState}` : ''}-modal-content`} onClick={e => e.stopPropagation()}>
                     <div className={`modal-content-top-${modalState ? `${modalState}` : ''}${editModalState ? `${editModalState}` : ''}`}>
                         <button className='pet-form-button' onClick={handleBackgroundClick}>
