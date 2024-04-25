@@ -13,11 +13,28 @@ export const FEL_VAX = [
 export const APPT_TYPES = [
 "Wellness",
 "Illness",
-"Procedure"
+"Procedure",
 ]
 export const MEDS = [
 "Flea/Tick Prevention",
 "Heartworm Prevention"
+]
+
+export const LABS = [
+    "Bloodwork",
+    "Heartworm Test",
+    "Urine",
+    "Other"
+]
+
+export const SPECIES = [
+    "Canine",
+    "Feline",
+    "Avian",
+    "Pocket Pet",
+    "Reptile",
+    "Equine",
+    "Aquatic"
 ]
 
 export const ICONS = {

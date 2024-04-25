@@ -63,9 +63,10 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                 break;
             case 'vaccination':
                 setTitleOptions(
-                    pet.species === 'cat' ? 
+                    pet.species === 'Feline' ? 
                     FEL_VAX :
                     K9_VAX
+                    //TODO: add relevant vax for other species
                 )
                 break;
             case 'medication':
@@ -147,7 +148,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                     <span>Due Date<span className="required">* required</span></span>
                 </div>
                 <input placeholder='Due Date' 
-                    type={ modalState === 'appointment' ? 'datetime-local' : 'date'} value={due} onChange={e => setDue(e.target.value)} />
+                    type={ modalState === 'edit' && type === 'appointment' ? 'datetime-local' : 'date'} value={due} onChange={e => setDue(e.target.value)} />
             </label>
             <label className="input-label">
                 <div className='perform-date-input-label'>

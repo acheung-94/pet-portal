@@ -222,4 +222,13 @@ input[type="file"] {
 }
 .photo-input-label:hover {
     background-color: var(--pale-purple);
+    color:#333;
+}
+
+.species-select{
+    height: 30px;
+    width: 310px;
+    border:2px solid rgb(205, 205, 205);
+    border-radius: 16px;
+    font-size: 16px;
 }
