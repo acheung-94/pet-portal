@@ -127,7 +127,7 @@
     border: 1px solid green;
     border-radius: 8px;
     transition: all 0.3s ease;
-    font-family: 'DM Serif Display', serif-display;
+    font-family: 'DM Serif Display', serif;
 }
 
 .auth-button-submit:disabled{

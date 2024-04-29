@@ -121,15 +121,12 @@ const Auth = () =>{
                                     { loginErrors && loginErrors}
                                     { (pwError && isRegister) && "Passwords must match!"}
                                 </span>
-                                {/* <div className="auth-button-container">
-                                    <div className="auth-button-submit"> */}
-                                        <button className="auth-button-submit" type="submit" disabled={!email.length || !pw.length || pwError}>Submit</button>
-                                        { (email.length && pw.length && !pwError) ?
-                                            (<span className='deco-2'></span>) :
-                                            (<span></span>)
-                                         }
-                                    {/* </div>
-                                </div> */}
+                                    <button className="auth-button-submit" type="submit" disabled={!email.length || !pw.length || pwError}>Submit</button>
+                                    { (email.length && pw.length && !pwError) ?
+                                        (<span className='deco-2'></span>) :
+                                        (<span></span>)
+                                        }
+
                             </form>
                                 {isLogin && (
                                     <div className="auth-button-new-to-portal">

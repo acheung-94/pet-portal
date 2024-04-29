@@ -101,7 +101,7 @@
 }
 
 .welcome-links h3{
-    font-family: 'DM Serif Display', serif-display;
+    font-family: 'DM Serif Display', serif;
     color: var(--green-dark);
     position:relative;
     font-size: 24px;
