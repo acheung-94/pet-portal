@@ -21,8 +21,17 @@
     box-sizing: border-box;
     padding-left: 5%;
     padding-right: 10%;
+    /* background-image: url('../../assets/layered-waves-haikei.svg');
+    background-position: bottom;
+    background-size: cover; */
 }
-
+.bg-image{
+    position: fixed;
+    z-index: -1;
+    width: 100vw;
+    left: 0;
+    filter: saturate(55%)
+}
 .display-border{
     width: fit-content;
     /* height: fit-content; */
@@ -61,7 +70,7 @@
 }
 .welcome-heading h1{
     font-size: 64px;
-    letter-spacing: 0.1rem;
+
 }
 .welcome-message{
     height: 100%;
@@ -73,6 +82,7 @@
     align-items: flex-end;
     gap: -10px;
     position: relative;
+    /* background-color: rgba(255, 255, 255, 0.76); */
 }
 .welcome-message p{
     line-height: 1.75rem;
@@ -90,15 +100,15 @@
     height: 12px;
     position: relative;
     background-color: var(--pale-purple);
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 .h2-splash h3{
-    font-family: borish;
+    font-family: dm-serif-display;
     color: var(--green-dark);
     position:relative;
-    bottom: 10px;
-    font-size: 24px;
+    bottom: 16px;
+    font-size: 28px;
     text-wrap: nowrap;
     margin: 0;
 }
@@ -120,10 +130,11 @@
 
 .demo-login{
     position: relative;
-    font-size: 24px;
+    font-size: 20px;
     cursor: pointer;
     box-sizing: border-box;
     padding: 8px;
+    font-family: raleway;
 }
 
 .demo-login:hover .deco-2{

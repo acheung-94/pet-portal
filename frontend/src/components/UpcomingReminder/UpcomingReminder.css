@@ -43,7 +43,7 @@
     margin-left: 10px;
 }
 .upcoming-reminder-content p {
-    font-family: borish;
+    font-family: dm-serif-display;
     font-size: 13px;
 }
 .upcoming-reminder-content div {
@@ -79,7 +79,7 @@
 }
 .upcoming-days p {
     text-align: end;
-    font-family: borish;
+    font-family: dm-serif-display;
     font-size: 13px;
 }
 .upcoming-reminder-petnames {

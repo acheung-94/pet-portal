@@ -117,7 +117,7 @@
     overflow: hidden;
     outline: none;
     vertical-align: middle ;
-    font-family: borish;
+    font-family: dm-serif-display;
     font-size: 17px;
 }
 /* .auth-button-submit button::after,
@@ -143,8 +143,7 @@
 .auth-errors{
     color: rgb(250, 94, 76);
     font-style: italic;
-    font-family: domine;
-    /* font-family: borish; */
+    font-family: raleway;
     font-size: 18px;
 }
 

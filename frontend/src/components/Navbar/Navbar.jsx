@@ -67,32 +67,28 @@ const Navbar = () => {
                         <>
                         <div className='login-button-container'>
                             <Link to={'/login'}>
-                                <button value="Login">
                                     Log in
-                                </button>
                             </Link>
                         </div>
+                        <span className='deco-1'></span>
                         <div className='signup-button-container'>
                             <Link to={'/register'}>
-                                <button value="Signup">
                                     Sign up
-                                </button>
                             </Link>
                         </div>
                         </>
                     ): (<>
                         <div className='logout-button-container'>
                             <NavLink to={'/dashboard'}>
-                                <button>
+                                
                                     Dashboard
-                                </button>
+                                
                             </NavLink>
                         </div>
-                        <div className='logout-button-container'>
+                        <span className='deco-1'></span>
+                        <div className='logout-button-container' onClick={() => dispatch(logoutUser())}>
                             <Link to={'/'}>
-                                <button value="Logout" onClick={() => dispatch(logoutUser())}>
-                                    Log out
-                                </button>
+                                Log out                               
                             </Link>
 
                         </div>

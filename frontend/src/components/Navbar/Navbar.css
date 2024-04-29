@@ -17,7 +17,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-    font-family: borish;
+    font-family: dm-serif-display;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -55,7 +55,7 @@ table {
     border-bottom: none;
     z-index: 99;
     background-color: transparent;
-    font-family: borish;
+    font-family: dm-serif-display;
 } */
 /* .navbar {
     padding: 10px 0;
@@ -63,7 +63,7 @@ table {
     padding-right: 10px;
     list-style-type: none;
     justify-content: space-between;
-    font-family: borish;
+    font-family: dm-serif-display;
     font-size: 14px;
     height: 60px;
     width: 100%;
@@ -85,6 +85,7 @@ table {
     box-sizing: border-box;
     padding: 20px;
     box-shadow: 0px -2px 4px black;
+    background-color: #fff;
 }
 /* .petportal-icon {
     padding:0;
@@ -112,7 +113,7 @@ table {
 }
 a {
     text-decoration: none;
-    color: black;
+    color: var(--green-dark);
 }
 
 .pet-portal-title a{
@@ -125,8 +126,11 @@ a {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    position: relative;
 }
-
+.auth-section .deco-1{
+    position: static;
+}
 .login-button-container,
 .signup-button-container,
 .logout-button-container {
@@ -136,16 +140,22 @@ a {
     outline: none;
     height: 30px;
     padding-left: 10px;
-
+    padding-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s ease;
 }
 .login-button-container:hover,
 .signup-button-container:hover,
 .logout-button-container:hover {
-    background-color: var(--pale-purple);
+    /* background-color: var(--pale-purple);
     color: var(--green-dark);
     border: 1px solid var(--green-dark);
     box-sizing: border-box;
-    border-radius: 20px;
+    border-radius: 20px; */
+    font-weight: bold;
 }
 
 .login-button-container button,
@@ -162,6 +172,6 @@ a {
     overflow: hidden;
     outline: none;
     vertical-align: middle ;
-    font-family: borish;
-    font-size: 20px
+    font-family: raleway;
+    font-size: 20px;
 }

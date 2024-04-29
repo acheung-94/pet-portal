@@ -10,8 +10,8 @@
 }
 
 @font-face{
-    font-family: olivera;
-    src: url('./assets/oliver.a.ttf');
+    font-family: dm-serif-display;
+    src: url('./assets/DM_Serif_Display/DMSerifDisplay-Regular.ttf');
     font-weight: 400;
 }
 @font-face{
@@ -20,8 +20,8 @@
     font-weight: 400;
 }
 @font-face{
-    font-family: domine;
-    src: url('./assets/Domine-VariableFont_wght.ttf');
+    font-family: raleway;
+    src: url('./assets/Raleway/Raleway-VariableFont_wght.ttf');
 }
 
 html{
@@ -29,9 +29,9 @@ html{
 }
 
 h1{
-    font-family: borish;
+    font-family: dm-serif-display;
 }
 
 p{
-    font-family: domine;
+    font-family: raleway;
 }
