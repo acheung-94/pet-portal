@@ -63,7 +63,7 @@
 
 .email-label, .password-label{
     font-size: 20px;
-    font-family: raleway;
+    font-family: 'Raleway', sans-serif;
 }
 #email-input, 
 #password-input {
@@ -78,7 +78,7 @@
     font-size: 12px;
     font-style: italic; 
     padding-left: 15px;
-    font-family: raleway;
+    font-family: 'Raleway', sans-serif;
 }
 
 .auth-button-new-to-portal a{
@@ -87,7 +87,7 @@
     padding: 10px;
 
     border-radius: 8px;
-    font-family: raleway;
+    font-family: 'Raleway', sans-serif;
     font-size: 20px;
 }
 .auth-button-new-to-portal{
@@ -119,7 +119,7 @@
 .auth-errors{
     color: rgb(250, 94, 76);
     font-style: italic;
-    font-family: raleway;
+    font-family: 'Raleway', sans-serif;
     font-size: 18px;
 }
 
@@ -127,7 +127,7 @@
     border: 1px solid green;
     border-radius: 8px;
     transition: all 0.3s ease;
-    font-family: dm-serif-display;
+    font-family: 'DM Serif Display', serif-display;
 }
 
 .auth-button-submit:disabled{

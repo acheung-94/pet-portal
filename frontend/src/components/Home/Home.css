@@ -101,7 +101,7 @@
 }
 
 .welcome-links h3{
-    font-family: dm-serif-display;
+    font-family: 'DM Serif Display', serif-display;
     color: var(--green-dark);
     position:relative;
     font-size: 24px;
@@ -131,7 +131,7 @@
     cursor: pointer;
     box-sizing: border-box;
     padding: 10px;
-    font-family: raleway;
+    font-family: 'Raleway', sans-serif;
     border-radius: 8px;
     background-color: var(--gold);
     color: white;

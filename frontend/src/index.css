@@ -1,4 +1,5 @@
 /* TODO: Add sitewide styles */
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 :root{
     --main-bg-beige: #f6f0eb;
     --green-dark: #283333;
@@ -9,29 +10,14 @@
     --sage: #9aa184;
 }
 
-@font-face{
-    font-family: dm-serif-display;
-    src: url('./assets/DM_Serif_Display/DMSerifDisplay-Regular.ttf');
-    font-weight: 400;
-}
-@font-face{
-    font-family: borish;
-    src: url('./assets/borish.regular.ttf');
-    font-weight: 400;
-}
-@font-face{
-    font-family: raleway;
-    src: url('./assets/Raleway/Raleway-VariableFont_wght.ttf');
-}
-
 html{
     background-color: var(--main-bg-beige);
 }
 
 h1{
-    font-family: dm-serif-display;
+    font-family: 'DM Serif Display', serif;
 }
 
 p{
-    font-family: raleway;
+    font-family: 'Raleway', sans-serif;
 }
