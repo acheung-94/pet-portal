@@ -19,8 +19,9 @@
     align-items: center;
     gap: 5%;
     box-sizing: border-box;
-    padding-left: 5%;
+    padding-left: 10%;
     padding-right: 10%;
+    /* background-color: rgba(255, 255, 255, 0.74); */
     /* background-image: url('../../assets/layered-waves-haikei.svg');
     background-position: bottom;
     background-size: cover; */
@@ -91,26 +92,20 @@
     padding: 10%;
     font-size: 20px;
     background-color: white;
-    border-radius: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
     margin: 5%;
-}
-.h2-splash{
-    width: fit-content;
-    height: 12px;
+    /* border: 1px solid var(--gold); */
     position: relative;
-    background-color: var(--pale-purple);
-    /* border-radius: 10px; */
 }
 
-.h2-splash h3{
+.welcome-links h3{
     font-family: dm-serif-display;
     color: var(--green-dark);
     position:relative;
-    bottom: 16px;
-    font-size: 28px;
+    font-size: 24px;
     text-wrap: nowrap;
-    margin: 0;
+
 }
 
 .welcome-links{
@@ -120,12 +115,13 @@
     align-items: center;
     box-sizing: border-box;
     flex-direction: column;
-    padding: 12% 10% 10% 10%;
-    gap: 8px;
+    padding: 10%;
+    gap: 12px;
     background-color: white;
-    border-radius: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
     margin: 5%;
+    position: relative;
 }
 
 .demo-login{
@@ -133,16 +129,15 @@
     font-size: 20px;
     cursor: pointer;
     box-sizing: border-box;
-    padding: 8px;
+    padding: 10px;
     font-family: raleway;
-}
-
-.demo-login:hover .deco-2{
-    width: 90%;
-    height: 1px;
+    border-radius: 8px;
     background-color: var(--gold);
-    position: absolute;
-    box-sizing: border-box;
+    color: white;
+    transition: all 0.3s ease;
+}
+.demo-login:hover{
+    background-color: #7a693a;
 }
 
 .welcome-heading .deco-1{
@@ -176,7 +171,6 @@
     box-sizing: border-box;
     margin-left: 20px;
     position: absolute;
-    border: 1px solid var(--gold);
     border-radius: 20px;
 }
 
@@ -187,19 +181,11 @@
     left: 0;
     z-index: 1;
 }
+
 .welcome-message-1{
     top: 5%;
 }
 
 .welcome-message-3{
-    bottom: 5%;
-}
-.welcome-message-1 .deco-1, .welcome-message-3 .deco-1{
-    top:50%;
-    left: -4px;
-}
-
-.welcome-message-2 .deco-1{
-    top: 50%;
-    left: calc(100% - 4px)
+    bottom: 10%;
 }

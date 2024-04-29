@@ -42,22 +42,20 @@ const Home = () => {
                         </div>
                         <div className="welcome-message">
                             <div className="welcome-message-1">
-                                <span className='deco-1'></span>
+                                
                                 <p>Whether you&apos;re a seasoned pet parent or embarking on your journey
                                  with a new furry friend, Pet Portal is here to simplify your pet care 
                                  routine.</p>
                             </div>
                             <div className="welcome-message-2">
-                                <span className='deco-1'></span>
+                                
                                 <p>Keep track of your pet&apos;s important information, health reminders, and appointments all in one convenient location!</p>
                             </div>
                             <div className="welcome-message-3">
-                                <span className='deco-1'></span>
                                 <div className="welcome-links">
-                                    <div className="h2-splash"> <h3> ✨ Ready to get started? </h3> </div>
+                                    <h3> Ready to get started? </h3>
                                     <div className="demo-login" onClick={handleDemoLogin}>
-                                        <span className='deco-2'></span>
-                                        Log in as a demo user
+                                        Try it out
                                     </div>
                                 </div>
                             </div>
