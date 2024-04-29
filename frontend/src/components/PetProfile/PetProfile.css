@@ -251,3 +251,28 @@
     width: 32px;
     height: 32px;
 }
+
+.edit-del-icons {
+    color: rgba(0, 0, 0, 0.15); 
+    margin-left: 4px;
+    width: 20px;
+    height: auto;
+    cursor: pointer;
+    transition: filter ease-in-out 0.5s;
+}
+
+.edit-del-icons.pen:hover {
+    color: black;
+}
+
+.edit-del-icons.trash:hover {
+    color: rgb(255, 66, 66);
+}
+
+.edit-del-reminder {
+    margin-left: 8px;
+    position: relative;
+    width: auto;
+    height: auto;
+}
+

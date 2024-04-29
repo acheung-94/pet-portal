@@ -1,4 +1,6 @@
 import '../Appointments/Appointments.css'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faTrashCan, faPenToSquare} from '@fortawesome/free-regular-svg-icons'
 
 const Appointments = ({reminders, setModalState, setCurrentReminder}) => {
 
@@ -27,6 +29,15 @@ const Appointments = ({reminders, setModalState, setCurrentReminder}) => {
                         <div className='appointment-header'>
                             <div className='appointment-title'>
                                 <p>{apt.title}</p>
+                                <div className='edit-del-reminder'>
+                                    <FontAwesomeIcon className="edit-del-icons pen" icon={faPenToSquare} 
+                                        onClick={()=>{
+                                            setCurrentReminder(apt)
+                                            setModalState('edit')
+                                        }}
+                                    />
+                                    <FontAwesomeIcon className="edit-del-icons trash" icon={faTrashCan}/>
+                                </div>
                             </div>
                             <div className='appointment-date'>
                                 <p>{formatDateTime(apt.dueDate)}
