@@ -31,6 +31,7 @@
     z-index: -1;
     width: 100vw;
     left: 0;
+    bottom: 0;
     filter: saturate(55%)
 }
 .display-border{

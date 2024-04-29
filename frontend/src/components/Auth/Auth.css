@@ -1,5 +1,4 @@
 .below-navbar {
-    font-family: Saol, Times, "Times New Roman", serif;
     margin-top: 0px;
     padding: 0px;
     display: flex;
@@ -10,11 +9,13 @@
     top: 60px;
     height: calc(100vh - 60px);
     background-color: var(--main-bg-beige);
+    z-index: -2;
 }
 
 .content-container {
     display: flex;
-    /* justify-content: center; */
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     margin-left: 150px;
     margin-right: 150px;
@@ -28,13 +29,18 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* box-shadow: 0 4px 8px rgba(0,0,0,0.3); */
+    border-radius: 8px;
+    background-color: white;
+    width: 40%;
+    box-sizing: border-box;
+    padding: 5%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 
 }
 .session-title {
     text-align: center;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 12px;
+    padding-bottom: 12px;
     background-color: transparent
 }
 .session-input-field {
@@ -42,7 +48,7 @@
     flex-direction: column;
     text-align: center;
     padding-top: 10px;
-    padding-bottom: 30px;
+
     background-color: transparent
 }
 .session-form{
@@ -50,14 +56,22 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    gap: 12px;
+    box-sizing: border-box;
+    margin: 20px;
 }
-.session-form div:first-child {
+/* .session-form div:first-child {
     padding-top: 10px;
     padding-bottom: 10px;
-}
-.session-form div:nth-child(2) {
-    /* padding-top: 10px; */
+} */
+/* .session-form div:nth-child(2) {
+     padding-top: 10px; 
     padding-bottom: 10px;
+} */
+
+.email-label, .password-label{
+    font-size: 20px;
+    font-family: raleway;
 }
 #email-input, 
 #password-input {
@@ -72,9 +86,10 @@
     font-size: 12px;
     font-style: italic; 
     padding-left: 15px;
+    font-family: raleway;
 }
 
-.auth-button-container {
+/* .auth-button-container {
 
     background-color: transparent;
     border: none;
@@ -87,38 +102,40 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-}
-.auth-button-submit{
-  /* margin-right: 10px;
-  margin-left: 27px; */
-  /* margin-bottom: 10px; */
-  position:relative;
-  cursor: pointer;
-}
-.auth-button-new-to-portal {
+} */
+
+.auth-button-new-to-portal a{
     position:relative;
     box-sizing: border-box;
-    margin-top: 20px;
-    padding: 8px;
-    border: 1px solid rgb(255,163,128);
+    padding: 10px;
+
+    border-radius: 8px;
+    font-family: raleway;
+    font-size: 20px;
+}
+.auth-button-new-to-portal{
+    position: relative;
+    width: fit-content;
+    align-self: center;
+    z-index: 2;
 }
 
-.auth-button-submit button, 
-.auth-button-new-to-portal button{
+.auth-button-new-to-portal:hover .marker{
+    width: 100%;
+    background-color: rgba(255, 72, 0, 0.5);
+}
+
+.auth-button-submit{
     align-items: center;
     text-align: center;
-    padding: 0;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px;
     cursor: pointer;
     background-color: transparent;
     background-repeat: no-repeat;
     border: none;
-    overflow: hidden;
     outline: none;
     vertical-align: middle ;
-    font-family: dm-serif-display;
-    font-size: 17px;
+    font-size: 18px;
 }
 /* .auth-button-submit button::after,
 .auth-button-new-to-portal button::after {
@@ -147,68 +164,37 @@
     font-size: 18px;
 }
 
-.auth-button-submit button:disabled{
+.auth-button-submit{
+    border: 1px solid green;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-family: dm-serif-display;
+}
+
+.auth-button-submit:disabled{
     cursor:not-allowed;
+    border: 1px solid rgb(163, 162, 162);
+    border-radius: 8px;
 }
-.deco-submit{
-    width: 8px;
-    height: 8px;
-    box-sizing: border-box;
-    position: absolute;
-    background-color: var(--gold);
-    transform: rotate(45deg);
-    top: 415px;
-    left: 49.8%;
-}
-.deco-submit-with-error {
-    width: 8px;
-    height: 8px;
-    box-sizing: border-box;
-    position: absolute;
-    background-color: var(--gold);
-    transform: rotate(45deg);
-    top: 433px;
-    left: 49.8%;
-}
-.deco-submit-register{
-    width: 8px;
-    height: 8px;
-    box-sizing: border-box;
-    position: absolute;
-    background-color: var(--gold);
-    transform: rotate(45deg);
-    top: 497px;
-    left: 49.8%;
-}
-.pw-error-deco{
-    width: 8px;
-    height: 8px;
-    box-sizing: border-box;
-    position: absolute;
-    background-color: var(--gold);
-    transform: rotate(45deg);
-    top: 510px;
-    left: 49.8%;
-}
-.deco-2{
+/* .deco-2{
     width: 0%;
     transition: width 1s ease;
     transform: translateX(-50%);
     bottom: -20px;
     left: 50%;
     position:absolute;
-}
-.auth-button-submit:hover .deco-2{
+} */
+/* .auth-button-submit:hover .deco-2{
     width: 90%;
     height: 1px;
     background-color: var(--gold);
     position: absolute;
     box-sizing: border-box;
-}
-.auth-button-submit:hover button:disabled .deco-2{
+} */
+/* .auth-button-submit:hover button:disabled .deco-2{
     width: 0%;
     height: 1px;
     background-color: var(--gold);
     position: absolute;
     box-sizing: border-box;
-}
+} */
