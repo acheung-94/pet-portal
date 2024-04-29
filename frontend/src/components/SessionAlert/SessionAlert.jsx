@@ -19,7 +19,8 @@ const SessionAlert = () => {
     return (
         <div className="session-alert-bg">
             <div className="session-alert">
-                <h3>Oh no! Your session has expired. Click below to log in again.</h3>
+                <h3>Oh no! Your session has expired. </h3>
+                <h3>Click below to log in again.</h3>
                 <button onClick={handleClick}>Go to Login</button>
                 <button onClick={endSession}>Log out</button>
             </div>
