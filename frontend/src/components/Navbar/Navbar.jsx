@@ -32,6 +32,7 @@ const Navbar = () => {
     useEffect( () => {
         const login = location.pathname === '/login'
         const home = location.pathname === '/'
+        const register = location.pathname === '/register'
         if (currentUser && currentUser.sessionExpiration){ 
             const currentTime = Date.now()
             const expirationTime = new Date(currentUser.sessionExpiration).getTime()
@@ -41,7 +42,7 @@ const Navbar = () => {
             if (currentTime >= expirationTime && home){
                 dispatch(logoutUser())
             }
-        } else if (!home && !login) {
+        } else if (!home && !login && !register) {
             navigate('/login')
         }
     }, [location, currentUser, dispatch, navigate])

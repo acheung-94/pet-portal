@@ -16,7 +16,7 @@ const router = createBrowserRouter([
       </>, children: [
     {index: true, element: <Dashboard />},
     {path: ':petId', element: <PetProfile />}
-  ]}
+  ]}, {path: '*', element: <Home />}
 ])
 
 const App = () => {

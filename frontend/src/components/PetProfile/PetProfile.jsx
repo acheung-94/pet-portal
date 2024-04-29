@@ -60,6 +60,13 @@ const PetProfile = () => {
         }
     }
 
+    const properName = (string) => {
+        return string.split(' ')
+            .map(word => 
+                word[0].toUpperCase() + word.slice(1).toLowerCase()
+            ).join(' ')
+    }
+
     useEffect( () => {
         if (currentUser?._id){
             dispatch(fetchPets(currentUser._id))
@@ -125,7 +132,7 @@ const PetProfile = () => {
                         <div className='pet-summary'>
                             <div className='name-splash-container'>
                                 <div className="name-border">
-                                    <h3>{(pet.name.charAt(0).toUpperCase() + pet.name.slice(1).toLowerCase())}</h3>
+                                    <h3>{properName(pet.name)}</h3>
                                 </div>
                             </div>
                             <div>

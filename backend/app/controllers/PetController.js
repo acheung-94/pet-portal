@@ -48,7 +48,7 @@ export default class PetController extends ApplicationController{
 		if (req.body.imageUpdated) {
 			imageUrl = req.file ? 
 				await singleFileUpload({file: req.file, isPublic: true}) :
-				DEFAULT_IMAGE_URI
+				pet.imageUrl
 		}
 
 		const allowed = [
