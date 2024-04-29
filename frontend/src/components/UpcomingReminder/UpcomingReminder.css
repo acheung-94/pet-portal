@@ -97,3 +97,7 @@
 .upcoming-reminder-pet-name p {
     color: #7d7df8;
 }
+.no-upcoming-reminder {
+    padding: 10px;
+    font-size: 17.5px;
+}

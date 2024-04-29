@@ -53,7 +53,8 @@ const UpcomingReminder = () => {
     }, [dispatch, currentUser?._id])
     return(
         <>
-            {upcomingReminders.map((ele, idx) => (
+            {upcomingReminders.length === 0 && <div className='no-upcoming-reminder'>Currently, there are no upcoming reminders!</div> }
+            {upcomingReminders.length !== 0 && upcomingReminders.map((ele, idx) => (
 
                 <div key={idx} className='upcoming-reminder-container'>
                     <div className='upcoming-reminder-icon-container'>

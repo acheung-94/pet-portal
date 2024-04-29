@@ -22,8 +22,8 @@
   height: 520px;
   transform: translate(-50%, -50%);
   /* background-color: var(--main-bg-beige); */
-  background-color: var(--green-dark);
-  color: var(--main-bg-beige);
+  background-color: var(--main-bg-beige);
+  /* color: var(--main-bg-beige); */
   padding: 10px;
   border-radius: 30px;
   position: absolute;
@@ -38,7 +38,6 @@
     width: 350px;
     height: 520px;
     transform: translate(-50%, -50%);
-    /* background-color: var(--main-bg-beige); */
     background-color: var(--main-bg-beige);
     color: var(--green-dark);
     padding: 10px;
@@ -51,7 +50,7 @@
 .reminder-modal-content-top {
     display: flex;
     padding: 8px;
-    justify-content: flex-end; /* Align the button to the right */
+    justify-content: flex-end; 
 }
 .modal-content-bottom-title {
     padding: 0;
@@ -62,13 +61,16 @@
     background-color: transparent;
     border-radius: 14px;
     border: 1.5px solid; 
+
     border-color: black;
+
     overflow: hidden;
     outline: none;
-    color: white;
 }
+
 .reminder-modal-content-top button:hover,
 .reminder-button-container button:hover {
+
     background-color: var(--pale-purple);
 }
 .modal-content-bottom-title {
@@ -144,6 +146,7 @@
     margin-top: 10px;
     border-radius: 20px;
 }
+
 
 .modal-content-bottom-form input::placeholder,
 .modal-content-bottom-form select::placeholder {
