@@ -1,20 +1,35 @@
 import '../Appointments/Appointments.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faTrashCan, faPenToSquare} from '@fortawesome/free-regular-svg-icons'
+import { useDispatch } from 'react-redux'
+import { destroyReminder } from '../../store/reminderReducer'
 
 const Appointments = ({reminders, setModalState, setCurrentReminder}) => {
+    const dispatch = useDispatch();
 
     const appointmentsList = reminders.filter(reminder => reminder.type === 'appointment');
     
     const formatDateTime = (dateString) => {
         const aptDate = new Date(dateString)
         const date = aptDate.toLocaleDateString('en-US')
-        const time = aptDate.toLocaleTimeString('en-US', { 
-            hour: '2-digit', 
-            minute: '2-digit' 
-        })
+        let hours = aptDate.getHours();
+        const minutes = aptDate.getMinutes();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+    
+        hours = hours % 12;
+        hours = hours ? hours : 12; 
+        const hoursStr = hours.toString(); 
+        const minutesStr = minutes < 10 ? '0' + minutes : minutes.toString();
+    
+        const time = `${hoursStr}:${minutesStr} ${ampm}`;
+    
+        return `${date} - ${time}`;
+    }
 
-        return `${date} - ${time}`
+    const handleDelete = (reminderId, e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dispatch(destroyReminder(reminderId))
     }
     
     return (
@@ -36,7 +51,11 @@ const Appointments = ({reminders, setModalState, setCurrentReminder}) => {
                                             setModalState('edit')
                                         }}
                                     />
-                                    <FontAwesomeIcon className="edit-del-icons trash" icon={faTrashCan}/>
+                                    <FontAwesomeIcon className="edit-del-icons trash" icon={faTrashCan}
+                                        onClick={(e)=>{
+                                            handleDelete(apt._id, e)
+                                        }}
+                                    />
                                 </div>
                             </div>
                             <div className='appointment-date'>

@@ -1,7 +1,7 @@
 import './ReminderFormModal.css'
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createReminder, destroyReminder, updateReminder } from '../../store/reminderReducer';
+import { createReminder, updateReminder } from '../../store/reminderReducer';
 import { K9_VAX, FEL_VAX, APPT_TYPES, MEDS } from '../../utils/constants';
 import { useCallback } from 'react';
 
@@ -102,16 +102,11 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
         setLocation('')
     }
     
-    const handleDelete = (e) => {
-        e.preventDefault()
-        dispatch(destroyReminder(reminder._id))
-        setModalState(null)
-    }
     const reminderForm = () => (
         <>
             <label className="input-label">
                 <div className='type-select-label'>
-                    <span>Type<span className="required">* required</span></span>
+                    <span>Type<span className="required">· required</span></span>
                 </div>
                 <select
                     className="type-select"
@@ -129,7 +124,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
             </label>
             <label className="input-label">
                 <div className='title-select-label'>
-                    <span>Title<span className="required">* required</span></span>
+                    <span>Title<span className="required">· required</span></span>
                 </div>
                 <select
                     className="title-select"
@@ -145,7 +140,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
             </label>
             <label className="input-label">
                 <div className='duedate-input-label'>
-                    <span>Due Date<span className="required">* required</span></span>
+                    <span>Due Date<span className="required">· required</span></span>
                 </div>
                 <input placeholder='Due Date' 
                     type={ modalState === 'edit' && type === 'appointment' ? 'datetime-local' : 'date'} value={due} onChange={e => setDue(e.target.value)} />
@@ -193,6 +188,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                                     role="presentation" focusable="false" 
                                     style={{
                                         display: 'block',
+                                        color: 'black',
                                         fill: 'none',
                                         height: '16px',
                                         width: '16px',
@@ -210,7 +206,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
 
                                 {modalState && (
                                     <div className='reminder-title'>
-                                        {modalState === 'edit' ? 'Edit / Delete' : `Add ${(modalState.charAt(0).toUpperCase() + modalState.slice(1))}`} Reminder
+                                        {modalState === 'edit' ? 'Update' : `Add ${(modalState.charAt(0).toUpperCase() + modalState.slice(1))}`} Reminder
                                     </div>
                                 )}
                         </div>
@@ -229,10 +225,6 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                                         )}
 
                                     </button>
-                                    {modalState === 'edit' &&
-                                    <button type='button' className='add-new-reminder-button' onClick={handleDelete}>
-                                        <div className='delete-reminder-button'>Delete</div>
-                                    </button>}
                                 </div>
                             </form>
                         </div>
