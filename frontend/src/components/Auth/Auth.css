@@ -81,6 +81,7 @@
     outline: none;
     padding: 0;
     padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
     display: flex;
     flex-direction: row;
@@ -89,8 +90,8 @@
 }
 .auth-button-submit{
   /* margin-right: 10px;
-  margin-left: 27px;
-  margin-bottom: 10px; */
+  margin-left: 27px; */
+  /* margin-bottom: 10px; */
   position:relative;
   cursor: pointer;
 }
@@ -149,11 +150,31 @@
 .auth-button-submit button:disabled{
     cursor:not-allowed;
 }
+.deco-submit{
+    width: 8px;
+    height: 8px;
+    box-sizing: border-box;
+    position: absolute;
+    background-color: var(--gold);
+    transform: rotate(45deg);
+    top: 415px;
+    left: 49.5%;
+}
+.deco-submit-with-error {
+    width: 8px;
+    height: 8px;
+    box-sizing: border-box;
+    position: absolute;
+    background-color: var(--gold);
+    transform: rotate(45deg);
+    top: 433px;
+    left: 49.5%;
+}
 .deco-2{
     width: 0%;
     transition: width 1s ease;
     transform: translateX(-50%);
-    bottom: -7px;
+    bottom: -20px;
     left: 50%;
     position:absolute;
 }
