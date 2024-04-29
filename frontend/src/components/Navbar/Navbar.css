@@ -84,6 +84,7 @@ table {
     height: 60px;
     box-sizing: border-box;
     padding: 20px;
+    box-shadow: 0px -2px 4px black;
 }
 /* .petportal-icon {
     padding:0;
