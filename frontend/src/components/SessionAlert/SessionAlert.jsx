@@ -14,6 +14,7 @@ const SessionAlert = () => {
 
     const endSession = () => {
         dispatch(logoutUser())
+        dispatch(setSessionAlert(false))
         navigate('/')
     }
     return (
