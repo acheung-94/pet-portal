@@ -52,6 +52,20 @@
     line-height: 1.5;
     font-style: italic;
 }
+.appointment-info-container:hover{
+    cursor: pointer;
+}
+.appointment-info-container:hover::after{
+    content: 'Edit';
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif;
+    font-style: italic;
+    color: #666;
+}
 
 .empty-reminders{
     margin: 10px;
@@ -61,7 +75,7 @@
     background-color: #f9f9f9;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: relative;
-    font-family: domine;
+    font-family: 'Raleway', sans-serif;
 }
 
 .empty-reminders span{

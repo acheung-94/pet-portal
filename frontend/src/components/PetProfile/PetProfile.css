@@ -188,7 +188,7 @@
     top: 0;
     margin: 10px;
     font-style: italic;
-    font-family: domine;
+    font-family: ''Raleway', sans-serif', sans-serif;
 }
 .delete-pet-dash-buttons{
     border: 2px solid var(--green-dark);
@@ -206,7 +206,7 @@
     top: 0;
     margin: 10px;
     font-style: italic;
-    font-family: domine;
+    font-family: ''Raleway', sans-serif', sans-serif;
 }
 .edit-pet-dash-buttons:hover,
 .delete-pet-dash-buttons:hover{

@@ -73,12 +73,13 @@ const Auth = () =>{
             <Navbar/>
             <div className="below-navbar">
                 <div className="content-container">
+                <img className="bg-image" src='https://pet-portal-assets.s3.us-west-1.amazonaws.com/layered-waves-haikei.svg' />
                     <div className="session-form-container">
                         <div className="session-title">
                             {pathname === '/login' ? (
-                                <h2>Log in as an existing user</h2>
+                                <h2>Log in to your account</h2>
                             ) : (
-                                <h2>Welcome to Pet Portal</h2>
+                                <h2>Create an Account</h2>
                             )
                             }
                         </div>
@@ -103,6 +104,8 @@ const Auth = () =>{
                                         </div>
                                         <input id="password-input" type="password" placeholder="Password" onChange={(e) => setPw(e.target.value)}/>
                                     </label>
+                                </div>
+                                <div>
                                     {isRegister && (
                                         <label className="password-label-container">
                                         
@@ -118,24 +121,21 @@ const Auth = () =>{
                                     { loginErrors && loginErrors}
                                     { (pwError && isRegister) && "Passwords must match!"}
                                 </span>
-                                <div className="auth-button-container">
-                                    <div className="auth-button-submit">
-                                        <button type="submit" disabled={!email.length || !pw.length || pwError}>Submit</button>
-                                        { (email.length && pw.length && !pwError) ?
-                                            (<span className='deco-2'></span>) :
-                                            (<span></span>)
-                                         }
-                                    </div>
-                                    <span className={`${isLogin && loginErrors ? 'deco-submit-with-error' : isLogin ? 'deco-submit' : isRegister && pwError ? 'pw-error-deco' : isRegister ? 'deco-submit-register' : ''}`}></span>
-                                </div>
+                                    <button className="auth-button-submit" type="submit" disabled={!email.length || !pw.length || pwError}>Submit</button>
+                                    { (email.length && pw.length && !pwError) ?
+                                        (<span className='deco-2'></span>) :
+                                        (<span></span>)
+                                        }
+
+                            </form>
                                 {isLogin && (
                                     <div className="auth-button-new-to-portal">
+                                        <span className="marker"></span>
                                         <Link to={'/register'}>
-                                            <button>New to Pet Portal</button>
+                                            New to Pet Portal
                                         </Link>
                                     </div>
                                 )}
-                            </form>
                         </div>
                     </div>
                 </div>

@@ -28,7 +28,7 @@
 }
 
 .session-alert h3{
-    font-family: domine;
+    font-family: 'Raleway', sans-serif;
     font-size: 16px;
 }
 
@@ -46,4 +46,5 @@
 .session-alert button:hover {
     box-shadow: 2px 2px 2px 2px #97828184;
 
+    font-family: raleway;
 }

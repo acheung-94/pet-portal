@@ -17,7 +17,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-    font-family: borish;
+    font-family: 'DM Serif Display', serif;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -46,35 +46,7 @@ table {
     margin: 0;
     padding:0;
 }
-/* .header-container {
-    box-sizing: border-box;
-    display: flex;
-    margin: 0;
-    margin-top: 0px;
-    width: 100vw;
-    border-bottom: none;
-    z-index: 99;
-    background-color: transparent;
-    font-family: borish;
-} */
-/* .navbar {
-    padding: 10px 0;
-    padding-left: 10px;
-    padding-right: 10px;
-    list-style-type: none;
-    justify-content: space-between;
-    font-family: borish;
-    font-size: 14px;
-    height: 60px;
-    width: 100%;
-    left: 0px;
-    line-break: strict;
-    line-height: 20.02px;
-    position: relative;
-    text-size-adjust :100%;
-    align-items: center;
-    box-sizing:  border-box;
-} */
+
 .navbar-container {
     display: flex;
     flex-direction: row;
@@ -85,34 +57,25 @@ table {
     box-sizing: border-box;
     padding: 20px;
     box-shadow: 0px -2px 4px black;
+    background-color: #fff;
 }
-/* .petportal-icon {
-    padding:0;
-    padding-right: 10px;
-    width: 80px; 
-    height: 80px;
-} */
 
 .nav-icon{
     width: 60px;
     height: 60px;
 }
-/* .title-section span{
-    vertical-align: middle ;
-}
-.title-section span:nth-child(2){
-    padding-top: 10px;
-} */
+
 .title-section {
-    /* padding-left: 20px; */
+
     text-decoration: none;
     display: flex;
     align-items: center;
     gap: 10px;
 }
+
 a {
     text-decoration: none;
-    color: black;
+    color: var(--green-dark);
 }
 
 .pet-portal-title a{
@@ -125,43 +88,41 @@ a {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    position: relative;
 }
-
+.auth-section .deco-1{
+    position: static;
+}
 .login-button-container,
 .signup-button-container,
 .logout-button-container {
     cursor: pointer;
-    background-color: transparent;
     border: none;
     outline: none;
     height: 30px;
     padding-left: 10px;
-
-}
-.login-button-container:hover,
-.signup-button-container:hover,
-.logout-button-container:hover {
-    background-color: var(--pale-purple);
-    color: var(--green-dark);
-    border: 1px solid var(--green-dark);
-    box-sizing: border-box;
-    border-radius: 20px;
-}
-
-.login-button-container button,
-.signup-button-container button,
-.logout-button-container button {
-    align-items: center;
-    text-align: center;
-    padding: 0;
     padding-right: 10px;
-    cursor: pointer;
-    background-color: transparent;
-    background-repeat: no-repeat;
-    border: none;
-    overflow: hidden;
-    outline: none;
-    vertical-align: middle ;
-    font-family: borish;
-    font-size: 20px
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s ease;
+    z-index: 99;
+}
+
+
+.marker{
+    width: 0%;
+    height: 10px;
+    background-color: var(--bright-gold);
+    position: absolute;
+    bottom: 0;
+    transition: all 0.5s ease;
+    z-index: -1;
+}
+
+.login-button-container:hover .marker, 
+.signup-button-container:hover .marker,
+.logout-button-container:hover .marker {
+    width: 80%;
 }
