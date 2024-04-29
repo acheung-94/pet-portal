@@ -69,9 +69,11 @@ const Navbar = () => {
                             <Link to={'/login'}>
                                     Log in
                             </Link>
+                        <span className="marker"></span>
                         </div>
                         <span className='deco-1'></span>
                         <div className='signup-button-container'>
+                        <span className="marker"></span>
                             <Link to={'/register'}>
                                     Sign up
                             </Link>
@@ -79,14 +81,15 @@ const Navbar = () => {
                         </>
                     ): (<>
                         <div className='logout-button-container'>
+                            <span className="marker"></span>
                             <NavLink to={'/dashboard'}>
-                                
                                     Dashboard
                                 
                             </NavLink>
                         </div>
                         <span className='deco-1'></span>
                         <div className='logout-button-container' onClick={() => dispatch(logoutUser())}>
+                            <span className="marker"></span>
                             <Link to={'/'}>
                                 Log out                               
                             </Link>
