@@ -1,6 +1,6 @@
 import './Navbar.css'
 import { useDispatch, useSelector } from 'react-redux';
-import {Link, useLocation, useNavigate} from "react-router-dom"
+import {Link, NavLink, useLocation, useNavigate} from "react-router-dom"
 import { logoutUser, refreshUser, selectCurrentUser } from '../../store/sessionReducer';
 import { useEffect } from 'react';
 import { selectSessionStatus, setSessionAlert } from '../../store/errorsReducer';
@@ -80,7 +80,14 @@ const Navbar = () => {
                             </Link>
                         </div>
                         </>
-                    ): (
+                    ): (<>
+                        <div className='logout-button-container'>
+                            <NavLink to={'/dashboard'}>
+                                <button>
+                                    Dashboard
+                                </button>
+                            </NavLink>
+                        </div>
                         <div className='logout-button-container'>
                             <Link to={'/'}>
                                 <button value="Logout" onClick={() => dispatch(logoutUser())}>
@@ -89,6 +96,7 @@ const Navbar = () => {
                             </Link>
 
                         </div>
+                    </>
                     )}
                 </div>
             </div>
