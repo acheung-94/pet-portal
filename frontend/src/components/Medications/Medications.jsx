@@ -44,10 +44,15 @@ const Medications = ({reminders, setModalState, setCurrentReminder}) => {
                                     className='proximity-icon'/>
                             </div>
                         </div>
-                        <div className='reminder-divider'></div>
-                        <div className='medication-content'>
-                            <p>{med.description}</p>
-                        </div>
+                        {
+                            med.description && 
+                            <>
+                                <div className='reminder-divider'></div>
+                                <div className='medication-content'>
+                                        <p>{med.description}</p>
+                                </div>
+                            </>
+                        }
                     </div>
                 ))
             }
