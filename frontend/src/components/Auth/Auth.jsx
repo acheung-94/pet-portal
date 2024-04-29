@@ -121,12 +121,12 @@ const Auth = () =>{
                                 <div className="auth-button-container">
                                     <div className="auth-button-submit">
                                         <button type="submit" disabled={!email.length || !pw.length || pwError}>Submit</button>
-                                        <span className='deco-1'></span>
                                         { (email.length && pw.length && !pwError) ?
                                             (<span className='deco-2'></span>) :
                                             (<span></span>)
                                          }
                                     </div>
+                                    <span className={`${isLogin && loginErrors ? 'deco-submit-with-error' : isLogin ? 'deco-submit' : isRegister && pwError ? 'pw-error-deco' : isRegister ? 'deco-submit-register' : ''}`}></span>
                                 </div>
                                 {isLogin && (
                                     <div className="auth-button-new-to-portal">
