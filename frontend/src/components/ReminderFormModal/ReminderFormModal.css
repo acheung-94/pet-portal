@@ -59,13 +59,18 @@
 .reminder-modal-content-top button {
     cursor: pointer;
     background-color: transparent;
-    background-repeat: no-repeat;
     border-radius: 14px;
     border: 1.5px solid; 
+
+    border-color: black;
+
     overflow: hidden;
     outline: none;
 }
-.reminder-modal-content-top button:hover {
+
+.reminder-modal-content-top button:hover,
+.reminder-button-container button:hover {
+
     background-color: var(--pale-purple);
 }
 .modal-content-bottom-title {
@@ -84,6 +89,7 @@
     border: 2px solid rgb(205, 205, 205);
     border-radius: 16px;
     font-size: 16px;
+    padding-left: 6px;
 }
 .type-select-label,
 .title-select-label,
@@ -107,6 +113,7 @@
     border:2px solid rgb(205, 205, 205);
     border-radius: 16px;
     font-size: 16px;
+    padding-left: 6px;
 }
 .modal-content-bottom-form {
     display: flex;
@@ -115,13 +122,21 @@
     align-items: center;
 }
 
+.reminder-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 16px;
+}
+
 .reminder-button-container button{
     padding: 5px;
     cursor: pointer;
     background-color: transparent;
     background-repeat: no-repeat;
     border: 1.5px solid rgb(255,163,128);
-    /* color: white; */
+    color: white;
     overflow: hidden;
     outline: none;
     vertical-align: middle ;
@@ -132,10 +147,7 @@
     border-radius: 20px;
 }
 
-.reminder-button-container button:hover {
-    /* background-color:  #f8d78986; */
-    background-color: var(--pale-purple);
-}
+
 .modal-content-bottom-form input::placeholder,
 .modal-content-bottom-form select::placeholder {
     color: #999;
@@ -151,15 +163,19 @@ textarea {
 }
 .description-input{
     box-sizing: border-box;
-    padding-left: 15px;
+    padding: 10px 20px;
     width: 306px;
 }
 .reminder-button-edit{
     color: var(--green-dark);
 }
-.reminder-button-container button {
-    margin-right: 5px;
-}
+
 .delete-reminder-button {
     color: #333;
+}
+
+.description-input::placeholder {
+    font-family: Arial, sans-serif; 
+    font-size: 14px; 
+    color: grey; 
 }

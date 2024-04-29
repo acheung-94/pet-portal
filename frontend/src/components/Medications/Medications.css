@@ -27,23 +27,14 @@
     font-weight: bold;
     text-align: right; 
 }
-.medication-info-container:hover{
-    cursor: pointer;
-}
-.medication-info-container:hover::after{
-    content: 'Edit';
-    position: absolute;
-    top: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 14px;
-    font-family: domine;
-    font-style: italic;
-    color: #666;
-}
 
 .medication-date{
     display: flex;
     align-items: center;
     gap: 12px;
+}
+
+.medication-title {
+    display: flex;
+    align-items: center;
 }

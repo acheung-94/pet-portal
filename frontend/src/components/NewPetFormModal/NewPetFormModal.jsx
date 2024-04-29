@@ -109,7 +109,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
          <>
             <label className="input-label">
                 <div className='name-input-label'>
-                    <span>Name<span className="required">* required</span></span>
+                    <span>Name<span className="required">· required</span></span>
                 </div>
                 <input placeholder='Name' 
                     type='text' value={name} onChange={e => setName(e.target.value)} />
