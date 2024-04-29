@@ -26,7 +26,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
             case 'appointment':
                 return APPT_TYPES;
             case 'vaccination':
-                if (pet.species === 'cat') {
+                if (pet.species === 'feline') {
                     return FEL_VAX;
                 } else {
                     return K9_VAX;
@@ -63,7 +63,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                 break;
             case 'vaccination':
                 setTitleOptions(
-                    pet.species === 'Feline' ? 
+                    pet.species.toLowerCase() === 'feline' ? 
                     FEL_VAX :
                     K9_VAX
                     //TODO: add relevant vax for other species
