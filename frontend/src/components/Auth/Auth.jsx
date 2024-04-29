@@ -126,7 +126,7 @@ const Auth = () =>{
                                             (<span></span>)
                                          }
                                     </div>
-                                    <span className={loginErrors ? 'deco-submit-with-error':'deco-submit'}></span>
+                                    <span className={`${isLogin && loginErrors ? 'deco-submit-with-error' : isLogin ? 'deco-submit' : isRegister && pwError ? 'pw-error-deco' : isRegister ? 'deco-submit-register' : ''}`}></span>
                                 </div>
                                 {isLogin && (
                                     <div className="auth-button-new-to-portal">

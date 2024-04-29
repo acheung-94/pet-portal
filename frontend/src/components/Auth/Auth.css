@@ -143,7 +143,8 @@
 .auth-errors{
     color: rgb(250, 94, 76);
     font-style: italic;
-    font-family: domine;
+    /* font-family: domine; */
+    font-family: borish;
     font-size: 18px;
 }
 
@@ -168,6 +169,26 @@
     background-color: var(--gold);
     transform: rotate(45deg);
     top: 433px;
+    left: 49.5%;
+}
+.deco-submit-register{
+    width: 8px;
+    height: 8px;
+    box-sizing: border-box;
+    position: absolute;
+    background-color: var(--gold);
+    transform: rotate(45deg);
+    top: 497px;
+    left: 49.5%;
+}
+.pw-error-deco{
+    width: 8px;
+    height: 8px;
+    box-sizing: border-box;
+    position: absolute;
+    background-color: var(--gold);
+    transform: rotate(45deg);
+    top: 510px;
     left: 49.5%;
 }
 .deco-2{
