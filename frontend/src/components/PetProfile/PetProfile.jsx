@@ -9,7 +9,8 @@ import Medications from '../Medications/Medications'
 import { fetchPetReminders, selectReminders } from '../../store/reminderReducer'
 import { useState } from 'react'
 import NewPetFormModal from '../NewPetFormModal/NewPetFormModal'
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faTrashCan, faPenToSquare} from '@fortawesome/free-regular-svg-icons'
 import ReminderFormModal from '../ReminderFormModal/ReminderFormModal'
 import { selectCurrentUser } from '../../store/sessionReducer'
 
@@ -139,7 +140,9 @@ const PetProfile = () => {
                             </div>
                             <div>
                                 <Link to={'/dashboard'}>
-                                    <button className='delete-pet-dash-buttons' onClick={() => dispatch(destroyPet(petId))}> Delete </button>
+                                    <button className='delete-pet-dash-buttons' onClick={() => dispatch(destroyPet(petId))}>
+                                    <FontAwesomeIcon icon={faTrashCan}/>    
+                                    </button>
                                 </Link>
                             </div>
                             <div className="pet-attribute">
@@ -189,7 +192,9 @@ const PetProfile = () => {
                                 </div>
                             )}
                             <div>
-                            <button className='edit-pet-dash-buttons' onClick={() => setEditPetState('edit')}> Edit </button>
+                            <button className='edit-pet-dash-buttons' onClick={() => setEditPetState('edit')}>
+                                <FontAwesomeIcon icon={faPenToSquare} />
+                            </button>
                             </div>
                         </div>
                     </div>
