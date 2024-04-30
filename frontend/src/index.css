@@ -18,6 +18,7 @@ h1{
     font-family: 'DM Serif Display', serif;
 }
 
-p{
+p, input, select, textarea{
     font-family: 'Raleway', sans-serif;
 }
+

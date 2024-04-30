@@ -4,24 +4,25 @@
 }
 
 .get-grid-header-form button{
-    padding: 0 10px;
+    padding: 10px;
     cursor: pointer;
     background-color: transparent;
     background-repeat: no-repeat;
-    border: none;
+    border: 1px solid var(--bright-gold);
     overflow: hidden;
     outline: none;
     vertical-align: middle ;
-    font-family: 'DM Serif Display', serif;
-    font-weight: bold;
-    border-radius: 20px;
-    font-size: 32px;
-    color:var(--gold); 
-    transition: color 1s ease;
+    font-family: 'Raleway', sans-serif;
+    border-radius: 8px;
+    font-size: 20px;
+    color:var(--bright-gold); 
+    transition: all 0.5s ease;
 }
 
 .get-grid-header-form button:hover {
     color: white;
+    border: 1px solid white;
+    border-radius: 8px;
 }
 
 
@@ -31,6 +32,7 @@
     overflow: hidden;
     flex: 1;
     min-height: 0;
+    border: 1px solid;
 }
 
 .pet-grid-header-container {
@@ -38,6 +40,7 @@
     justify-content: space-between;
     background-color: var(--green-dark);
     text-align: center;
+    box-sizing: border-box;
 }
 
 .pet-grid-header-form {
@@ -65,6 +68,8 @@
     overflow-y: auto;
     align-content: start;
     /* margin-bottom: 30px; */
+    background-color: rgba(255, 255, 255, 0.5);
+    flex: 1;
 }
 
 .pet-item {

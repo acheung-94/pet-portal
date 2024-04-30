@@ -11,19 +11,21 @@ const Dashboard = () => {
 
     return(
         <div className='page-container'>
-                <h1 className='dashboard-header'>Your Dashboard</h1>
-                <span className='dashboard-sep'></span>
+            <img className="bg-image" src='https://pet-portal-assets.s3.us-west-1.amazonaws.com/layered-waves-haikei.svg' />
+
+            <h1 className='dashboard-header'><span className='pet-dash-highlight'></span>Dashboard</h1>
+
             <div className='dashboard-container'>
                 
                 <div className='index-container'>
                     <PetGrid/>
                 </div>
-                <span className='dashboard-sep'></span>
+
                 <div className="right-container">
                     <div className="all-reminders">
                         <div className='all-reminders-title'>
                             <h3>Upcoming Reminders</h3>
-                            <div className='highlight'></div>
+                            
                         </div>
                         <UpcomingReminder/>
                     </div>

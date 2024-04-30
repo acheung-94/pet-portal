@@ -9,7 +9,8 @@ import Medications from '../Medications/Medications'
 import { fetchPetReminders, selectReminders } from '../../store/reminderReducer'
 import { useState } from 'react'
 import NewPetFormModal from '../NewPetFormModal/NewPetFormModal'
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faTrashCan, faPenToSquare} from '@fortawesome/free-regular-svg-icons'
 import ReminderFormModal from '../ReminderFormModal/ReminderFormModal'
 import { selectCurrentUser } from '../../store/sessionReducer'
 
@@ -80,11 +81,13 @@ const PetProfile = () => {
 
         return(
             <div className='dash-page-container'>
+                <img className="bg-image" src='https://pet-portal-assets.s3.us-west-1.amazonaws.com/layered-waves-haikei.svg' />
+
             <div className='pet-dashboard-container'>
                 <div className="pet-dashboard">
                     <Link to={'/dashboard'} className='back-link'> ← Back to your pets </Link>
                     
-                    <div className='pet-dash-highlight'><h1 className='pet-dash-header'> Pet Dashboard </h1></div>
+                    <h1 className='pet-dash-header'><span className='pet-dash-highlight'></span>{`${pet.name}'s Profile`}</h1>
                     <div className="pet-metrics-container">
                         <div className='pet-reminder-module'> 
                             <div className='pet-reminder-header'>
@@ -137,7 +140,9 @@ const PetProfile = () => {
                             </div>
                             <div>
                                 <Link to={'/dashboard'}>
-                                    <button className='delete-pet-dash-buttons' onClick={() => dispatch(destroyPet(petId))}> Delete </button>
+                                    <button className='delete-pet-dash-buttons' onClick={() => dispatch(destroyPet(petId))}>
+                                    <FontAwesomeIcon icon={faTrashCan}/>    
+                                    </button>
                                 </Link>
                             </div>
                             <div className="pet-attribute">
@@ -187,7 +192,9 @@ const PetProfile = () => {
                                 </div>
                             )}
                             <div>
-                            <button className='edit-pet-dash-buttons' onClick={() => setEditPetState('edit')}> Edit </button>
+                            <button className='edit-pet-dash-buttons' onClick={() => setEditPetState('edit')}>
+                                <FontAwesomeIcon icon={faPenToSquare} />
+                            </button>
                             </div>
                         </div>
                     </div>
