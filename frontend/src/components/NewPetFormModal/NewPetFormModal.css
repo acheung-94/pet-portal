@@ -75,7 +75,15 @@
     align-items: center; 
 
 }
+.pet-modal-h2{
+    position: relative;
+}
 
+.pet-modal-h2 .pet-dash-highlight{
+    height: 12px;
+    bottom: 0px;
+    background-color: rgb(255,163,128);
+}
 .modal-content-center-title {
     font-size: 28px;
     margin-bottom: 10px; 

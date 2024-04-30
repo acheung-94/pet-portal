@@ -36,11 +36,7 @@ const Appointments = ({reminders, setModalState, setCurrentReminder}) => {
         <>
             {appointmentsList &&
                appointmentsList.map((apt, idx) => (
-                    <div key={idx} className='appointment-info-container' 
-                            onClick={()=> {
-                                setCurrentReminder(apt)
-                                setModalState('edit')
-                                }}>
+                    <div key={idx} className='appointment-info-container'>
                         <div className='appointment-header'>
                             <div className='appointment-title'>
                                 <p>{apt.title}</p>

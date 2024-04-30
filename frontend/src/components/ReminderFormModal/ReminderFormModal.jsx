@@ -179,7 +179,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
 
     return (
         <>
-        <div className="modal-background" onClick={_ => setModalState(null)}>
+        <div className="modal-background" >
                 <div className={`modal-content-${modalState}`} onClick={e => e.stopPropagation()}>
                     <div className='reminder-modal-content-top'>
                         <button onClick={_ => setModalState(null)}>
@@ -206,6 +206,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
 
                                 {modalState && (
                                     <div className='reminder-title'>
+                                        <span className='pet-dash-highlight'></span>
                                         {modalState === 'edit' ? 'Update' : `Add ${(modalState.charAt(0).toUpperCase() + modalState.slice(1))}`} Reminder
                                     </div>
                                 )}

@@ -117,7 +117,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
             
             <label className="input-label">
                 <div className='dob-input-label'>
-                    <span>Date of Birth<span className="required">* required</span></span>
+                    <span>Date of Birth<span className="required">· required</span></span>
                 </div>
                 <input placeholder='Date of birth' 
                     type='date' value={dob} onChange={e => setDob(e.target.value)} />
@@ -125,7 +125,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
 
             <label className="input-label">
                 <div className='sex-select-label'>
-                    <span>Sex<span className="required">* required</span></span>
+                    <span>Sex<span className="required">· required</span></span>
                 </div>
                 <select
                     className="sex-select"
@@ -143,7 +143,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
             </label>
             <label className="input-label">
                 <div className='species-input-label'>
-                    <span>Species<span className="required">* required</span></span>
+                    <span>Species<span className="required">· required</span></span>
                 </div>
                 <select className='species-select'
                         value={species}
@@ -158,7 +158,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
             </label>
             <label className="input-label">
                 <div className='color-input-label'>
-                    <span>Color<span className="required">* required</span></span> 
+                    <span>Color<span className="required">· required</span></span> 
                 </div>
                 <input placeholder='Color' 
                     type='text' value={color} onChange={e => setColor(e.target.value)} />
@@ -234,8 +234,8 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
                     </div>
                     <div className='modal-content-center'>
                         <div className='modal-content-center-title'>
-                            {modalState && <h2>Add New Pet</h2>}
-                            {editModalState && <h2>Edit Pet</h2>}
+                            {modalState && <h2 className='pet-modal-h2'> <span className='pet-dash-highlight'></span>Add New Pet</h2>}
+                            {editModalState && <h2 className='pet-modal-h2'><span className='pet-dash-highlight'></span>Edit Pet</h2>}
                         </div>
                         {filePreview && (<div className='file-preview'>
                             <img src={filePreview} />
