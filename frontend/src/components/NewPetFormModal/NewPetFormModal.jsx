@@ -104,7 +104,6 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
         setPhoto(file);
         setFilePreview(URL.createObjectURL(file))
     }
-    useEffect(()=> console.log(species), [species])
     const formContent = () => (
          <>
             <label className="input-label">
