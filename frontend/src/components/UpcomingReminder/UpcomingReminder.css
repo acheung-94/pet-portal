@@ -43,7 +43,7 @@
     margin-left: 10px;
 }
 .upcoming-reminder-content p {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 13px;
 }
 .upcoming-reminder-content div {
@@ -68,6 +68,7 @@
 .upcoming-reminder-type {
     font-size: 15px;
     font-weight: 600;
+    font-family: 'Raleway', sans-serif
 }
 .upcoming-days {
     flex: 0.5;
@@ -79,8 +80,8 @@
 }
 .upcoming-days p {
     text-align: end;
-    font-family: 'DM Serif Display', serif;
-    font-size: 13px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
 }
 .upcoming-reminder-petnames {
     font-size: 13px;

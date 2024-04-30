@@ -26,7 +26,7 @@ const PetGrid = () => {
                         <h1>Your Pets</h1>
                     </div>
                     <div className='get-grid-header-form'>
-                        <button className='grid-add-pet-button' onClick={() => setModalState('add')}>Add pet</button>
+                        <button className='grid-add-pet-button' onClick={() => setModalState('add')}>+ Add pet</button>
                     </div>
                 </div>
                 <div className='pet-grid-divider'>

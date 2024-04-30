@@ -81,7 +81,8 @@ const UpcomingReminder = () => {
                     </div>
                     <div className='upcoming-reminder-pet'>
                         <div className='upcoming-days'>
-                            {(diffDays[idx] === 0) && <p>due date</p> }
+                            {(diffDays[idx] < 0) && <p> Overdue! </p> }
+                            {(diffDays[idx] === 0) && <p>due today</p> }
                             {(diffDays[idx] > 0) &&  <p>in {diffDays[idx]} days</p> }
                         </div>
 

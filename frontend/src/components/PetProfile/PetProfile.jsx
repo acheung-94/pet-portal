@@ -80,11 +80,13 @@ const PetProfile = () => {
 
         return(
             <div className='dash-page-container'>
+                <img className="bg-image" src='https://pet-portal-assets.s3.us-west-1.amazonaws.com/layered-waves-haikei.svg' />
+
             <div className='pet-dashboard-container'>
                 <div className="pet-dashboard">
                     <Link to={'/dashboard'} className='back-link'> ← Back to your pets </Link>
                     
-                    <div className='pet-dash-highlight'><h1 className='pet-dash-header'> Pet Dashboard </h1></div>
+                    <h1 className='pet-dash-header'><span className='pet-dash-highlight'></span>{`${pet.name}'s Profile`}</h1>
                     <div className="pet-metrics-container">
                         <div className='pet-reminder-module'> 
                             <div className='pet-reminder-header'>
