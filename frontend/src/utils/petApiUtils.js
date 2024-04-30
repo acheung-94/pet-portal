@@ -1,7 +1,7 @@
 import jwtFetch from "./jwt";
 import { getCookie } from "./jwt";
 
-const jwtToken = localStorage.getItem("jwtToken");
+// const jwtToken = localStorage.getItem("jwtToken");
 
 export const getPets = () => (
     jwtFetch(`/api/pets`, {
@@ -26,7 +26,7 @@ export const postPet = petInfo => (
         headers: {
             'CSRF-TOKEN' : getCookie("CSRF-TOKEN"),
             'Accept' : 'application/json',
-            "Authorization": 'Bearer ' + jwtToken
+            "Authorization": 'Bearer ' + localStorage.getItem("jwtToken")
         }
     })
 )
@@ -38,7 +38,7 @@ export const putPet = (petInfo, petId) => (
         headers: {
             'CSRF-TOKEN' : getCookie("CSRF-TOKEN"),
             'Accept' : 'application/json',
-            "Authorization": 'Bearer ' + jwtToken
+            "Authorization": 'Bearer ' + localStorage.getItem("jwtToken")
         }
     })
 )

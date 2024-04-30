@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './NewPetFormModal.css'
 import { useDispatch } from 'react-redux'
 import { createPet, updatePet } from '../../store/petReducer'
@@ -104,7 +104,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
         setPhoto(file);
         setFilePreview(URL.createObjectURL(file))
     }
-
+    useEffect(()=> console.log(species), [species])
     const formContent = () => (
          <>
             <label className="input-label">
