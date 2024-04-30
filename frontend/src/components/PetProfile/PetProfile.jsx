@@ -81,7 +81,7 @@ const PetProfile = () => {
 
         return(
             <div className='dash-page-container'>
-                <img className="bg-image" src='https://pet-portal-assets.s3.us-west-1.amazonaws.com/layered-waves-haikei.svg' />
+                <img className="bg-image" src='https://pet-portal-assets.s3.us-west-1.amazonaws.com/layered-waves-haikei+adjusted.svg' />
 
             <div className='pet-dashboard-container'>
                 <div className="pet-dashboard">

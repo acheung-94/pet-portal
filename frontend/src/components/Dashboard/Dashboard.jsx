@@ -11,7 +11,7 @@ const Dashboard = () => {
 
     return(
         <div className='page-container'>
-            <img className="bg-image" src='https://pet-portal-assets.s3.us-west-1.amazonaws.com/layered-waves-haikei.svg' />
+            <img className="bg-image" src='https://pet-portal-assets.s3.us-west-1.amazonaws.com/layered-waves-haikei+adjusted.svg' />
 
             <h1 className='dashboard-header'><span className='pet-dash-highlight'></span>Dashboard</h1>
 
