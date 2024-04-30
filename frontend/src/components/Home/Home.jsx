@@ -27,7 +27,7 @@ const Home = () => {
             <Navbar/>
             <div className="welcome-container-1">
                 <div className="section-1">
-                    <img className="bg-image" src='https://pet-portal-assets.s3.us-west-1.amazonaws.com/layered-waves-haikei+adjusted.svg' />
+                    <img className="bg-image" src='https://pet-portal-assets.s3.us-west-1.amazonaws.com/layered-waves-haikei+(1).svg' />
                     <div className="display-container">
                         <div className="display-border">
                             <img className="display-dog" src="https://pet-portal-assets.s3.us-west-1.amazonaws.com/depositphotos_570233356-stock-photo-australian-cattle-dog-forest-hiking.jpg" />

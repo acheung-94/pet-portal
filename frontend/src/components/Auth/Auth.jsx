@@ -73,7 +73,7 @@ const Auth = () =>{
             <Navbar/>
             <div className="below-navbar">
                 <div className="content-container">
-                <img className="bg-image" src='https://pet-portal-assets.s3.us-west-1.amazonaws.com/layered-waves-haikei+adjusted.svg' />
+                <img className="bg-image" src='https://pet-portal-assets.s3.us-west-1.amazonaws.com/layered-waves-haikei+(1).svg' />
                     <div className="session-form-container">
                         <div className="session-title">
                             {pathname === '/login' ? (
