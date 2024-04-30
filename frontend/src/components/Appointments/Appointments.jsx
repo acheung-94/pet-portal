@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faTrashCan, faPenToSquare} from '@fortawesome/free-regular-svg-icons'
 import { useDispatch } from 'react-redux'
 import { destroyReminder } from '../../store/reminderReducer'
+import EmptyReminders from '../EmptyReminder/EmptyReminder.jsx'
 
 const Appointments = ({reminders, setModalState, setCurrentReminder}) => {
     const dispatch = useDispatch();
@@ -71,11 +72,7 @@ const Appointments = ({reminders, setModalState, setCurrentReminder}) => {
                     </div>
                 ))
             }
-            { !appointmentsList.length && (
-                <div className="empty-reminders">
-                    Click the <span>+</span> icon to add a reminder!
-                </div>
-            )}
+            { !appointmentsList.length && <EmptyReminders name='appointment reminder' />}
         </>
     )
 }

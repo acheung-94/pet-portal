@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faTrashCan, faPenToSquare} from '@fortawesome/free-regular-svg-icons'
 import { useDispatch } from 'react-redux';
 import { destroyReminder } from '../../store/reminderReducer';
+import EmptyReminders from '../EmptyReminder/EmptyReminder.jsx';
 const Vaccines = ({reminders, setModalState, setCurrentReminder}) => {
 
     const dispatch = useDispatch();
@@ -49,11 +50,7 @@ const Vaccines = ({reminders, setModalState, setCurrentReminder}) => {
 
                 ))
             }
-            { !vaccinesList.length && (
-                    <div className="empty-reminders">
-                        Click the <span>+</span> icon to add a reminder!
-                    </div>
-            )}
+            { !vaccinesList.length && <EmptyReminders name='vaccine reminder' />}
         </>
     )
 }
