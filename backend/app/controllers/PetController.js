@@ -28,12 +28,16 @@ export default class PetController extends ApplicationController{
 			owner: req.user._id,
 			imageUrl: imageUrl
 		})
+		try {
 
-		const pet = await newPet.save()
-		if (pet) {
-			return res.json(pet)
-		} else {
-			res.status(400).end()
+			const pet = await newPet.save()
+			if (pet) {
+				return res.json(pet)
+			} else {
+				res.status(400).end()
+			}
+		} catch (err) {
+			return res.status(422).json(err)
 		}
 	}
 
@@ -71,11 +75,14 @@ export default class PetController extends ApplicationController{
 
 		// this updates the pet's image url only if it was changed
 		pet.imageUrl = imageUrl ?? pet.imageUrl
-
-		if (await pet.save()) {
-			return res.json(pet)
-		} else {
-			res.status(400).end()
+		try{
+			if (await pet.save()) {
+				return res.json(pet)
+			} else {
+				res.status(400).end()
+			}
+		} catch (err) {
+			return res.status(422).json(err)
 		}
 	}
 
@@ -95,11 +102,15 @@ export default class PetController extends ApplicationController{
 			return res.status(403).end()
 		}
 		await Reminder.deleteMany({ pet: pet._id })
-		const deleted = await Pet.deleteOne({ _id: req.params.id })
-		if (deleted) {
-			return res.json(deleted)
-		} else {
-			return res.status(404).end()
+		try{
+			const deleted = await Pet.deleteOne({ _id: req.params.id })
+			if (deleted) {
+				return res.json(deleted)
+			} else {
+				return res.status(404).end()
+			}
+		} catch (err) {
+			return res.status(403).json(err)
 		}
 	}
 
