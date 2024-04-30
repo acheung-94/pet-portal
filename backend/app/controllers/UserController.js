@@ -39,7 +39,7 @@ export default class UserController extends ApplicationController{
 					const user = await newUser.save()
 					return res.json(await loginUser(user))
 				} catch (err) {
-					return res.status(422).json({'errors': ['unknown error']})
+					return res.status(422).json(err)
 				}
 			})
 		})
