@@ -121,6 +121,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
             .catch( async (res) => {
                 let errors = await res.json()
                 setErrors(errors.errors)
+                console.log(errors.errors)
 
             })
         }
@@ -151,7 +152,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                 <div className='title-select-label'>
                     <span>Title<span className="required">· required</span></span>
                 </div>
-                {errors.title && <div className='reminder-error'>* {errors.title.message}</div>}
+                {errors.title && <div className='reminder-error'>* {errors.title}</div>}
                 <select
                     className="title-select"
                     value={title}
@@ -170,7 +171,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                 <div className='duedate-input-label'>
                     <span>Due Date<span className="required">· required</span></span>
                 </div>
-                {errors.dueDate && <div className='reminder-error'>* {errors.dueDate.message}</div>}
+                {errors.dueDate && <div className='reminder-error'>* {errors.dueDate}</div>}
                 <input placeholder='Due Date' 
                     onFocus={() => setErrors( old => ({...old, dueDate:null}))}
                     type={ type === 'appointment' ? 'datetime-local' : 'date'} value={due} onChange={e => setDue(e.target.value)} />
