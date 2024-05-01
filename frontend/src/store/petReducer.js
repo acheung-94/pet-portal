@@ -47,33 +47,31 @@ export const fetchPet = petInfo => dispatch => {
         .then(pet => dispatch(receivePet(pet)))
     }
 
-export const createPet = petInfo => dispatch => (
-    postPet(petInfo)
-        .then(res => {
-            if (res.ok) {
-                return res.json()
-            } else {
-                throw res
-            }
-        })
-        .then(pet => dispatch(receivePet(pet)))
-        .catch(err => console.error(err))
-)
+export const createPet = petInfo => async dispatch => {
+    const res = await postPet(petInfo)
 
-export const updatePet = (petInfo, petId) => dispatch => {
+    if (res.ok) {
+        return dispatch(receivePet(await res.json()))
+    } else if (res.status === 422) {
+        return await res.json()
+    } else {
+        throw res
+    }
+}
+
+export const updatePet = (petInfo, petId) => async dispatch => {
     if (! petId) {
-        console.error('attempted to update a pet without an id')
+        //console.error('attempted to update a pet without an id')
         return petInfo
     }
-    putPet(petInfo, petId)
-        .then(res => {
-            if (res.ok) {
-                return res.json()
-            } else {
-                throw res
-            }
-        })
-        .then(pet => dispatch(receivePet(pet)))
+    const res = await putPet(petInfo, petId)
+    if (res.ok) {
+        return dispatch(receivePet(await res.json()))
+    } else if (res.status === 422) {
+        return await res.json()
+    } else {
+        throw res
+    }
 }
 
 export const destroyPet = petId => dispatch => (
@@ -96,7 +94,8 @@ const petReducer = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_PETS:
             
-            return (action.pets.reduce((a, e)=> {
+     
+        return (action.pets.reduce((a, e)=> {
                 a[e._id] = e
                 return a
             }, {}))
