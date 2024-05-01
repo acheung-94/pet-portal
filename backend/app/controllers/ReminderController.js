@@ -69,24 +69,32 @@ export default class ReminderController extends ApplicationController {
 		return res.status(404).end()
 	}
 	static async create(req, res, _) {
-		const newReminder = new Reminder({
-			type: req.body.type,
-			title: req.body.title,
-			dueDate: req.body.dueDate,
-			performDate: req.body.performDate,
-			description: req.body.description,
-			location: req.body.location,
-			pet: req.body.pet,
-			user: req.user._id
-		})
-		try{
+		try {
+			const newReminder = new Reminder({
+				type: req.body.type,
+				title: req.body.title,
+				dueDate: req.body.dueDate,
+				performDate: req.body.performDate,
+				description: req.body.description,
+				location: req.body.location,
+				pet: req.body.pet,
+				user: req.user._id
+			})
 			const reminder = await newReminder.save()
-			if (reminder) {
-				return res.json( reminder )
+			return res.json( reminder )
+		} catch (error) {
+			if(error.name === 'ValidationError') {
+				const validationErrors = {}
+				for (let err in error.errors) {
+					validationErrors[err] = error.errors[err].message;
+				}
+				console.log("ValidationError", validationErrors)
+				return res.status(422).json({ errors: validationErrors });
+			} else {
+				console.error("Error:", error);
+				return res.status(500).json({ error: 'Internal server error' });
 			}
-			return res.status(400).end()
-		} catch (err) {
-			return res.status(422).json(err)
+
 		}
 	}
 }

@@ -20,6 +20,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
     const [location, setLocation] = useState(
         modalState === 'edit' ? reminder.location : '')
     const dispatch = useDispatch()
+    const [errors, setErrors] = useState({})
 
     const conditionalOptions = useCallback((type) => {
         switch (type) {
@@ -76,6 +77,9 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                 setTitleOptions([]);
         }
     }
+    useEffect(() => {
+        console.log("error", errors)
+    },[errors])
     const handleSubmit = (e) => {
         e.preventDefault()
         const reminderInfo = {
@@ -92,6 +96,14 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
         modalState === 'edit' ?
         dispatch(updateReminder(reminderInfo)) :
         dispatch(createReminder(reminderInfo))
+            .then(() => {
+                setErrors({});
+            })
+            .catch(async res =>{
+                let data = await res.json();
+                setErrors(data.errors);
+            });
+
 
         setModalState(null)
         setType('')
