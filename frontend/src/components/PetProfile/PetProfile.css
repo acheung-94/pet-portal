@@ -293,3 +293,7 @@
     height: auto;
 }
 
+.pet-attribute p {
+    word-wrap: break-word;
+    max-width: 60%;
+}
