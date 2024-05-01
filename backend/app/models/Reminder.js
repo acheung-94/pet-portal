@@ -8,11 +8,13 @@ const reminderSchema = Schema({
 	},
 	dueDate: {
 		type: Date,
-		required: true
+		required: true,
+		min: Date.now
 	},
 	performDate: {
 		type: Date,
-		required: false
+		required: false,
+		max: Date.now
 	},
 	description: {
 		type: String,

@@ -7,7 +7,8 @@ const petSchema = Schema({
 	},
 	dob: {
 		type: Date,
-		required: true
+		required: true,
+		max: Date.now
 	},
 	sex: {
 		type: String,
