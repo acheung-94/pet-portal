@@ -32,7 +32,7 @@
     width: 100vw;
     left: 0;
     bottom: 0;
-    filter: saturate(55%)
+    filter: saturate(55%);
 }
 .display-border{
     width: fit-content;
