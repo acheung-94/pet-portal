@@ -59,30 +59,27 @@ export const fetchReminder = (reminderId) => dispatch => (
         .then(reminder => dispatch(receiveReminder(reminder)))
         .catch(err => console.error(err))
 )
-export const createReminder = (reminderInfo) => dispatch => (
-    postReminder(reminderInfo)
-        .then(res => {
-            if(res.ok) {
-                return res.json()
-            } else {
-                throw res
-            }
-        })
-        .then(reminder => dispatch(receiveReminder(reminder)))
-        .catch(err => console.error(err))
-)
-export const updateReminder = (reminderInfo) => dispatch => (
-    editReminder(reminderInfo)
-        .then(res => {
-            if(res.ok) {
-                return res.json()
-            } else {
-                throw res
-            }
-        })
-        .then(reminder => dispatch(receiveReminder(reminder)))
-        .catch(err => console.error(err))
-)
+export const createReminder = (reminderInfo) => async dispatch => {
+    const res = await postReminder(reminderInfo)
+
+    if (res.ok) {
+        return dispatch(receiveReminder(await res.json()))
+    } else if (res.status === 422) {
+        return await res.json()
+    } else {
+        throw res
+    }
+}
+export const updateReminder = (reminderInfo) => async dispatch => {
+    const res = await editReminder(reminderInfo)
+    if (res.ok){
+        return dispatch(receiveReminder(await res.json()))
+    } else if (res.status === 422) {
+        return await res.json()
+    } else {
+        throw res
+    }
+}
 
 export const destroyReminder = (reminderId) => dispatch => (
     deleteReminder(reminderId)
