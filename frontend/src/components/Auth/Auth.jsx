@@ -29,7 +29,11 @@ const Auth = () =>{
 
         if(isRegister) {
             dispatch(createUser({email: email, password: pw}))
-                .then(()=> navigate('/dashboard'))
+                .then(()=> {
+                    setEmail('')
+                    setPw('')
+                    setPwConfirm('')
+                    navigate('/dashboard')})
                 .catch( res => {
                     if (!res.ok){
                         res.json().then(err => setRegistrationErrors(err.email))
@@ -37,17 +41,18 @@ const Auth = () =>{
                 } )
         } else if (isLogin) {
             dispatch(loginUser({email: email, password: pw}))
-                .then(()=> navigate('/dashboard'))
+                .then(()=> {
+                    setEmail('')
+                    setPw('')
+                    setPwConfirm('')
+                    navigate('/dashboard')})
                 .catch(res => {
                     if (!res.ok){
                         setLoginErrors('Invalid credentials')
                     }
                 })
-                
         }
-        setEmail('');
-        setPw('');
-        setPwConfirm('')
+
     }
 
     useEffect(() => {
@@ -90,7 +95,12 @@ const Auth = () =>{
                                         <div className="email-label">
                                             Email: 
                                         </div>
-                                        <input id="email-input" type="email" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)} />
+                                        <input onFocus={()=> loginErrors && setLoginErrors('')}
+                                                id="email-input" 
+                                                type="email" 
+                                                placeholder="E-mail" 
+                                                onChange={(e) => setEmail(e.target.value)} 
+                                                value={email}/>
                                     </label>
                                 </div>
                                 <span className="auth-errors">
@@ -102,7 +112,12 @@ const Auth = () =>{
                                         <div className="password-label">
                                             Password: 
                                         </div>
-                                        <input id="password-input" type="password" placeholder="Password" onChange={(e) => setPw(e.target.value)}/>
+                                        <input onFocus={()=> loginErrors && setLoginErrors('')} 
+                                        id="password-input" 
+                                        type="password" 
+                                        placeholder="Password" 
+                                        onChange={(e) => setPw(e.target.value)}
+                                        value={pw} />
                                     </label>
                                 </div>
                                 <div>
@@ -121,7 +136,7 @@ const Auth = () =>{
                                     { loginErrors && loginErrors}
                                     { (pwError && isRegister) && "Passwords must match!"}
                                 </span>
-                                    <button className="auth-button-submit" type="submit" disabled={!email.length || !pw.length || pwError}>Submit</button>
+                                    <button className="auth-button-submit" type="submit" disabled={!email.length || !pw.length || pwError || loginErrors || registrationErrors}>Submit</button>
                                     { (email.length && pw.length && !pwError) ?
                                         (<span className='deco-2'></span>) :
                                         (<span></span>)
