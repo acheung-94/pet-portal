@@ -18,6 +18,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
     const [photo, setPhoto] = useState(initialPetData ? initialPetData.photo : null)
     const [imageUpdated, setImageUpdated] = useState(false)
     const [filePreview, setFilePreview] = useState(initialPetData?.imageUrl ?? '')
+    const [errors, setErrors] = useState([])
     const dispatch = useDispatch();
     const location = useLocation()
     const {pathname} = location
@@ -48,9 +49,14 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
                 data.append(`${key}`, petInfo[key])
             }
         }
-        dispatch(updatePet(data, petId))
-        setEditModalState(null)
-        setImageUpdated(false)
+        dispatch(updatePet(data, petId)).then(result => {
+            if (result.errors) {
+                setErrors(Object.keys(result.errors))
+            } else {
+                setEditModalState(null)
+                setImageUpdated(false)
+            }
+        })
     }
     
     const handleCreateSubmit = (e) => {
@@ -81,21 +87,26 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
         }
 
         // if( /dashboard\/?$/.test(pathname)) {
-        dispatch(createPet(data))
-        setModalState(null)
-        // }
-
-        setName('')
-        setDob('')
-        setSex('')
-        setSpecies('')
-        setColor('')
-        setBreed('')
-        setMicrochipNum('')
-        setInsurancePolicyId('')
-        setWeight('')
-        setPhoto(null)
-        setFilePreview('')
+        dispatch(createPet(data)).then(result => {
+            if (result.errors) {
+                setErrors(Object.keys(result.errors))
+            } else {
+                setModalState(null)
+                // }
+            
+                setName('')
+                setDob('')
+                setSex('')
+                setSpecies('')
+                setColor('')
+                setBreed('')
+                setMicrochipNum('')
+                setInsurancePolicyId('')
+                setWeight('')
+                setPhoto(null)
+                setFilePreview('')
+            }
+        })
     } 
 
 
@@ -249,6 +260,10 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
                                     </button>
                                 </div>
                             </form> 
+                        {errors && errors.map((v, i) => {
+                                return <li key={i}>{v} is required.</li>
+                            })}
+
                         </div>
                     </div>                      
                 </div>
