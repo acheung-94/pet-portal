@@ -113,8 +113,6 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
     }
 
     useEffect(() => {
-        console.log("errors", errors)
-
     },[errors])
 
     const reminderForm = () => (

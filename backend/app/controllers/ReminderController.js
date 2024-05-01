@@ -88,7 +88,6 @@ export default class ReminderController extends ApplicationController {
 				for (let err in error.errors) {
 					validationErrors[err] = error.errors[err].message;
 				}
-				console.log("ValidationError", validationErrors)
 				return res.status(422).json({ errors: validationErrors });
 			} else {
 				console.error("Error:", error);
