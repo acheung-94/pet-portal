@@ -86,12 +86,11 @@ export default class ReminderController extends ApplicationController {
 			if(error.name === 'ValidationError') {
 				const validationErrors = {}
 				for (let err in error.errors) {
-					validationErrors[err] = error.errors[err].message;
+					validationErrors[err] = error.errors[err].message
 				}
-				return res.status(422).json({ errors: validationErrors });
+				return res.status(422).json({ errors: validationErrors })
 			} else {
-				console.error("Error:", error);
-				return res.status(500).json({ error: 'Internal server error' });
+				return res.status(500).json({ error: 'Internal server error' })
 			}
 
 		}
