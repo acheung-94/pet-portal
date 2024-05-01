@@ -161,11 +161,13 @@ const PetProfile = () => {
                                 <p>{pet.species}</p>
                                 <span className='decoration'></span>
                             </div>
-                            <div className="pet-attribute">
-                                <h3>Breed: </h3>
-                                <p>{pet.breed}</p>
-                                <span className='decoration'></span>
-                            </div>
+                            {pet.breed && (
+                                <div className="pet-attribute">
+                                    <h3>Breed: </h3>
+                                    <p>{pet.breed}</p>
+                                    <span className='decoration'></span>
+                                </div>
+                            )}
                             <div className="pet-attribute">
                                 <h3>Color: </h3>
                                 <p>{pet.color}</p>
