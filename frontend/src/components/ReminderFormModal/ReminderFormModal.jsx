@@ -19,7 +19,6 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
         modalState === 'edit' ? reminder.description : '')
     const [location, setLocation] = useState(
         modalState === 'edit' ? reminder.location : '')
-    const [reminderErrors, setReminderErrors] = useState({})
     const dispatch = useDispatch()
     const [errors, setErrors] = useState({})
 
@@ -104,8 +103,8 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
             })
             .catch( async (res) => {
                 let errors = await res.json()
-                console.log(errors.errors)
-                setReminderErrors(errors.errors)
+
+                setErrors(errors.errors)
             })
 
         }else {
@@ -121,8 +120,8 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
             })
             .catch( async (res) => {
                 let errors = await res.json()
-                setReminderErrors(errors.errors)
-                console.log(errors.errors)
+                setErrors(errors.errors)
+
             })
         }
     }
@@ -152,11 +151,11 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                 <div className='title-select-label'>
                     <span>Title<span className="required">· required</span></span>
                 </div>
-                {errors.title && <div className='reminder-error'>* {errors.title.split(' ').slice(1).join(' ')}</div>}
+                {errors.title && <div className='reminder-error'>* {errors.title.message}</div>}
                 <select
                     className="title-select"
                     value={title}
-                    onFocus={() => setReminderErrors( old => ({...old, title:null}))}
+                    onFocus={() => setErrors( old => ({...old, title:null}))}
                     onChange={e => setTitle(e.target.value)}>
                     <optgroup>
                         <option disabled value=""> {`Select ${modalState !== 'edit' && modalState}`} </option>
@@ -166,17 +165,17 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                     </optgroup>
                 </select>
             </label>
-            {reminderErrors.title && <span className='errors'>{reminderErrors.title.message}</span>}
+            
             <label className="input-label">
                 <div className='duedate-input-label'>
                     <span>Due Date<span className="required">· required</span></span>
                 </div>
-                {errors.dueDate && <div className='reminder-error'>* {errors.dueDate.split(' ').slice(1).join(' ')}</div>}
+                {errors.dueDate && <div className='reminder-error'>* {errors.dueDate.message}</div>}
                 <input placeholder='Due Date' 
-                    onFocus={() => setReminderErrors( old => ({...old, dueDate:null}))}
+                    onFocus={() => setErrors( old => ({...old, dueDate:null}))}
                     type={ type === 'appointment' ? 'datetime-local' : 'date'} value={due} onChange={e => setDue(e.target.value)} />
             </label>
-            {reminderErrors.dueDate && <span className='errors'>{reminderErrors.dueDate.message}</span>}
+            
             <label className="input-label">
                 <div className='perform-date-input-label'>
                     <span>Perform Date</span>
@@ -184,7 +183,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                 <input placeholder='Perform Date' 
                     type={ type === 'appointment' ? 'datetime-local' : 'date'} value={performDate} onChange={e => setPerformDate(e.target.value)} />
             </label>
-            {reminderErrors.performDate && <span className='errors'>{reminderErrors.performDate.message}</span>}
+            
             <label className='input-label'>
                 <div className='description-input-label'>
                     <span>Description</span>
