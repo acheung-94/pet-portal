@@ -97,11 +97,12 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
         dispatch(updateReminder(reminderInfo)) :
         dispatch(createReminder(reminderInfo))
             .then(() => {
-                setErrors({});
+                setErrors({})
             })
             .catch(async res =>{
-                let data = await res.json();
-                setErrors(data.errors);
+                let data = await res.json()
+                
+                setErrors(data.errors)
             });
 
 
