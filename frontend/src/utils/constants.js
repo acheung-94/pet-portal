@@ -1,4 +1,5 @@
-export const K9_VAX = ['Rabies', 
+export const K9_VAX = [
+'Rabies', 
 'Distemper/Parvo', 
 'Leptospirosis', 
 'Bordetella', 
@@ -9,6 +10,21 @@ export const FEL_VAX = [
 'Rabies',
 'FVRCP',
 'FELV'
+]
+export const AV_VAX = [
+    'Coming Soon!'
+]
+export const RODENT_VAX = [
+    'Coming Soon!'
+]
+export const EQ_VAX = [
+    'Equine Encephalomyelitis',
+    'Rabies',
+    'Tetanus',
+    'Other'
+]
+export const AQ_VAX =[
+    'Coming Soon!'
 ]
 export const APPT_TYPES = [
 "Wellness",
