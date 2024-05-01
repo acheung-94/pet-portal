@@ -8,7 +8,7 @@ const petSchema = Schema({
 	dob: {
 		type: Date,
 		required: true,
-		max: Date.now
+		max: [Date.now, 'Pet birthdate can\'t be in the future.']
 	},
 	sex: {
 		type: String,

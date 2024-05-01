@@ -19,6 +19,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
         modalState === 'edit' ? reminder.description : '')
     const [location, setLocation] = useState(
         modalState === 'edit' ? reminder.location : '')
+    const [reminderErrors, setReminderErrors] = useState({})
     const dispatch = useDispatch()
     const [errors, setErrors] = useState({})
 
@@ -90,31 +91,43 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
             pet: pet._id
         }
 
-        modalState === 'edit' ?
-        dispatch(updateReminder(reminderInfo)) :
-        dispatch(createReminder(reminderInfo))
-            .then(() => {
-                setErrors({})
+        if (modalState === 'edit') {
+            dispatch(updateReminder(reminderInfo))
+            .then( () => {
+                setModalState(null)
+                setType('')
+                setTitle('')
+                setDue('')
+                setPerformDate('')
+                setDescription('')
+                setLocation('')
             })
-            .catch(async res =>{
-                let data = await res.json()
-                setErrors(data.errors)
+            .catch( async (res) => {
+                let errors = await res.json()
+                console.log(errors.errors)
+                setReminderErrors(errors.errors)
             })
 
-        if(Object.keys(errors).length !== 0) {
-            setModalState(null)
+        }else {
+            dispatch(createReminder(reminderInfo))
+            .then( () => {
+                setModalState(null)
+                setType('')
+                setTitle('')
+                setDue('')
+                setPerformDate('')
+                setDescription('')
+                setLocation('')
+            })
+            .catch( async (res) => {
+                let errors = await res.json()
+                setReminderErrors(errors.errors)
+                console.log(errors.errors)
+            })
         }
-        setType('')
-        setTitle('')
-        setDue('')
-        setPerformDate('')
-        setDescription('')
-        setLocation('')
     }
 
-    useEffect(() => {
-    },[errors])
-
+    
     const reminderForm = () => (
         <>
             <label className="input-label">
@@ -143,6 +156,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                 <select
                     className="title-select"
                     value={title}
+                    onFocus={() => setReminderErrors( old => ({...old, title:null}))}
                     onChange={e => setTitle(e.target.value)}>
                     <optgroup>
                         <option disabled value=""> {`Select ${modalState !== 'edit' && modalState}`} </option>
@@ -152,14 +166,17 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                     </optgroup>
                 </select>
             </label>
+            {reminderErrors.title && <span className='errors'>{reminderErrors.title.message}</span>}
             <label className="input-label">
                 <div className='duedate-input-label'>
                     <span>Due Date<span className="required">· required</span></span>
                 </div>
                 {errors.dueDate && <div className='reminder-error'>* {errors.dueDate.split(' ').slice(1).join(' ')}</div>}
                 <input placeholder='Due Date' 
+                    onFocus={() => setReminderErrors( old => ({...old, dueDate:null}))}
                     type={ type === 'appointment' ? 'datetime-local' : 'date'} value={due} onChange={e => setDue(e.target.value)} />
             </label>
+            {reminderErrors.dueDate && <span className='errors'>{reminderErrors.dueDate.message}</span>}
             <label className="input-label">
                 <div className='perform-date-input-label'>
                     <span>Perform Date</span>
@@ -167,6 +184,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                 <input placeholder='Perform Date' 
                     type={ type === 'appointment' ? 'datetime-local' : 'date'} value={performDate} onChange={e => setPerformDate(e.target.value)} />
             </label>
+            {reminderErrors.performDate && <span className='errors'>{reminderErrors.performDate.message}</span>}
             <label className='input-label'>
                 <div className='description-input-label'>
                     <span>Description</span>
