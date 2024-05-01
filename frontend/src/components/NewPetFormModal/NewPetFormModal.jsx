@@ -18,6 +18,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
     const [photo, setPhoto] = useState(initialPetData ? initialPetData.photo : null)
     const [imageUpdated, setImageUpdated] = useState(false)
     const [filePreview, setFilePreview] = useState(initialPetData?.imageUrl ?? '')
+    const [petErrors, setPetErrors] = useState({})
     const dispatch = useDispatch();
     const location = useLocation()
     const {pathname} = location
@@ -49,8 +50,15 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
             }
         }
         dispatch(updatePet(data, petId))
-        setEditModalState(null)
-        setImageUpdated(false)
+        .then( () => {
+            setEditModalState(null)
+            setImageUpdated(false)
+        })
+        .catch( async res => {
+            let errors = await res.json()
+            setPetErrors(errors.errors)
+        })
+
     }
     
     const handleCreateSubmit = (e) => {
@@ -80,22 +88,25 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
             data.append('image', photo);
         }
 
-        // if( /dashboard\/?$/.test(pathname)) {
         dispatch(createPet(data))
-        setModalState(null)
-        // }
-
-        setName('')
-        setDob('')
-        setSex('')
-        setSpecies('')
-        setColor('')
-        setBreed('')
-        setMicrochipNum('')
-        setInsurancePolicyId('')
-        setWeight('')
-        setPhoto(null)
-        setFilePreview('')
+        .then( () => {
+            setModalState(null)
+            setName('')
+            setDob('')
+            setSex('')
+            setSpecies('')
+            setColor('')
+            setBreed('')
+            setMicrochipNum('')
+            setInsurancePolicyId('')
+            setWeight('')
+            setPhoto(null)
+            setFilePreview('')
+        })
+        .catch( async res => {
+            let errors = await res.json()
+            setPetErrors(errors.errors)
+        })
     } 
 
 
@@ -110,6 +121,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
                 <div className='name-input-label'>
                     <span>Name<span className="required">· required</span></span>
                 </div>
+                {petErrors.name && <span className="errors">{petErrors.name.message}</span> }
                 <input placeholder='Name' 
                     type='text' value={name} onChange={e => setName(e.target.value)} />
             </label>
@@ -118,6 +130,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
                 <div className='dob-input-label'>
                     <span>Date of Birth<span className="required">· required</span></span>
                 </div>
+                {petErrors.dob && <span className="errors">{petErrors.dob.message}</span> }
                 <input placeholder='Date of birth' 
                     type='date' value={dob} onChange={e => setDob(e.target.value)} />
             </label>
@@ -126,6 +139,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
                 <div className='sex-select-label'>
                     <span>Sex<span className="required">· required</span></span>
                 </div>
+                {petErrors.sex && <span className="errors">{petErrors.sex.message}</span> }
                 <select
                     className="sex-select"
                     placeholder='Sex'
@@ -138,12 +152,13 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
                         <option value="unknown" id="unknown">Unknown</option>
 
                     </optgroup>
-                </select>
+                </select> 
             </label>
             <label className="input-label">
                 <div className='species-input-label'>
                     <span>Species<span className="required">· required</span></span>
                 </div>
+                {petErrors.species && <span className="errors">{petErrors.species.message}</span> }
                 <select className='species-select'
                         value={species}
                         onChange={e => setSpecies(e.target.value)}>
@@ -159,6 +174,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
                 <div className='color-input-label'>
                     <span>Color<span className="required">· required</span></span> 
                 </div>
+                {petErrors.color && <span className="errors">{petErrors.color.message}</span> }
                 <input placeholder='Color' 
                     type='text' value={color} onChange={e => setColor(e.target.value)} />
             </label>

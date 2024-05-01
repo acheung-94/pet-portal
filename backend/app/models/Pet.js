@@ -3,25 +3,26 @@ import mongoose, { Schema } from 'mongoose'
 const petSchema = Schema({
 	name: {
 		type: String,
-		required: true
+		required: [true, 'Must provide a name.']
 	},
 	dob: {
 		type: Date,
-		required: true
+		required: [true, 'Must provide a birth date.'],
+		max: [Date.now, 'Pet birthdate can\'t be in the future.']
 	},
 	sex: {
 		type: String,
-		lowercase: true,
+		lowercase: [true, 'Must provide a sex.'],
 		trim: true,
 		match: /(male|female|unknown)/
 	},
 	species: {
 		type: String,
-		required: true
+		required: [true, 'Must provide a species.']
 	},
 	color: {
 		type: String,
-		required: true
+		required: [true, 'Must provide a color.']
 	},
 	breed: {
 		type: String,

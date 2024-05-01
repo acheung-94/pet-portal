@@ -52,9 +52,7 @@ export const createPet = petInfo => async dispatch => {
 
     if (res.ok) {
         return dispatch(receivePet(await res.json()))
-    } else if (res.status === 422) {
-        return await res.json()
-    } else {
+    }else {
         throw res
     }
 }
@@ -67,9 +65,7 @@ export const updatePet = (petInfo, petId) => async dispatch => {
     const res = await putPet(petInfo, petId)
     if (res.ok) {
         return dispatch(receivePet(await res.json()))
-    } else if (res.status === 422) {
-        return await res.json()
-    } else {
+    }else {
         throw res
     }
 }

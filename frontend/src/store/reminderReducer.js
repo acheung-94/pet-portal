@@ -64,9 +64,7 @@ export const createReminder = (reminderInfo) => async dispatch => {
 
     if (res.ok) {
         return dispatch(receiveReminder(await res.json()))
-    } else if (res.status === 422) {
-        return await res.json()
-    } else {
+    }else {
         throw res
     }
 }
@@ -74,9 +72,7 @@ export const updateReminder = (reminderInfo) => async dispatch => {
     const res = await editReminder(reminderInfo)
     if (res.ok){
         return dispatch(receiveReminder(await res.json()))
-    } else if (res.status === 422) {
-        return await res.json()
-    } else {
+    }else {
         throw res
     }
 }

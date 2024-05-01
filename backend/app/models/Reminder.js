@@ -3,16 +3,18 @@ import mongoose, { Schema } from 'mongoose'
 const reminderSchema = Schema({
 	title: {
 		type: String,
-		required: true,
+		required: [true, 'Must select a title.'],
 		maxLength: 32
 	},
 	dueDate: {
 		type: Date,
-		required: true
+		required: [true, 'Must enter a date.'],
+		min: [Date.now, 'Due date can\'t be in the past.']
 	},
 	performDate: {
 		type: Date,
-		required: false
+		required: false,
+		max: [Date.now, 'Perform date can\'t be in the future.']
 	},
 	description: {
 		type: String,
