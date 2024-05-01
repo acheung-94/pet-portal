@@ -46,13 +46,15 @@ export default class ReminderController extends ApplicationController {
 		).forEach(([k, v]) => {
 			reminder[k] = v
 		})
-
-		const updated = await reminder.save()
-
-		if (updated) {
-			return res.json(updated)
+		try{
+			const updated = await reminder.save()
+			if (updated) {
+				return res.json(updated)
+			}
+			return res.status(400).end()
+		} catch (err) {
+			return res.status(422).json(err)
 		}
-		return res.status(400).end()
 	}
 	static async delete(req, res, _) {
 		const reminder = await Reminder.findById(req.params.id)
@@ -77,10 +79,14 @@ export default class ReminderController extends ApplicationController {
 			pet: req.body.pet,
 			user: req.user._id
 		})
-		const reminder = await newReminder.save()
-		if (reminder) {
-			return res.json( reminder )
+		try{
+			const reminder = await newReminder.save()
+			if (reminder) {
+				return res.json( reminder )
+			}
+			return res.status(400).end()
+		} catch (err) {
+			return res.status(422).json(err)
 		}
-		return res.status(400).end()
 	}
 }
