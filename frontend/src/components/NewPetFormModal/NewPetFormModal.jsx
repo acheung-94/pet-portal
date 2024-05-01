@@ -33,7 +33,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
             species: species, 
             color: color,
             breed: breed, 
-            microchipNum: microchipNum, 
+            microchipNumber: microchipNum, 
             insurancePolicyId: insurancePolicyId, 
             weight: weight,
             imageUpdated: imageUpdated
@@ -63,7 +63,7 @@ const NewPetForm = ({modalState, setModalState, editModalState, setEditModalStat
             species: species, 
             color: color,
             breed: breed, 
-            microchipNum: microchipNum, 
+            microchipNumber: microchipNum, 
             insurancePolicyId: insurancePolicyId, 
             weight: weight
         }
