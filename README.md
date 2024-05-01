@@ -1,22 +1,35 @@
 
-![alt text](./readme/image-6.png)
+![alt text](image-1.png)
 
-[🐾 Live Demo ](https://mern-pet-portal-4c9fd5ba0b2f.herokuapp.com/)
+🐾 [Live Demo](https://mern-pet-portal-4c9fd5ba0b2f.herokuapp.com/)
 ## Background and Overview
-Pet Portal is a web application designed to simplify pet care management for pet owners. With Pet Portal, users can create profiles for their pets, track their health records, set reminders for important events like vaccinations, preventatives, and appointments, and track metrics on their pets over time. The platform aims to streamline the pet care process, providing users with a centralized hub for managing some common aspects of their pets' health.
+Pet Portal is a web application designed to simplify pet care management for pet owners. With Pet Portal, users can create profiles for their pets, track their health records, and set reminders for important events like vaccinations, preventatives, and appointments. The platform aims to streamline the pet care process, providing users with a centralized hub for managing some common aspects of their pets' health.
 
-## Features:
-Users must log in to access the Pet Portal platform.
-There is a demo user available to try out these features!
+## Current Features:
+1. **JWT-based User Authentication:**
 
-1. **Dashboard:** The dashboard serves as the central hub for users to manage their pets and appointments. It displays an index of the user's pets along with any upcoming reminders or events, such as vaccinations, labwork, and vet appointments. Users can add new pets to their dashboard and upload a profile photo. From here, users can navigate to their individual pets' profiles to view/edit detailed information. </br>
+- Users must log in to access the Pet Portal platform.
+
+- 🔑*There is a demo user available to try out these features!*
+- The session will auto-refresh as it nears its expiration, but if unsuccessful or if expiration happens while the app is not loaded, will prompt the user to log in and refresh their session.
+
+2. **Pets:** *(CRUD feature)* 
+- **Dashboard** The dashboard serves as the central hub for users to manage their pets and appointments. It displays an index of the user's pets along with any upcoming reminders or events, such as vaccinations, labwork, and vet appointments. Users can add new pets to their dashboard and upload a profile photo. From here, users can navigate to their individual pets' profiles to view/edit detailed information. </br>
 ![alt text](./readme/image-7.png)
 ![alt text](./readme/image-8.png)</br>
-2. **Pet Profiles:** Users can view individual pet summaries, including physical characteristics and microchip/insurance information. Profiles also house reminder modules that categorize reminders by type and display details for vaccines, medications, and appointments. Users may edit or delete their pet's profiles from here as well. </br>
+- **Pet Profiles**
+- Users can view individual pet summaries on their pets' profiles, including physical characteristics and microchip/insurance information. 
+- Profiles also house reminder modules that categorize reminders by type and display details for vaccines, medications, and appointments. 
+
+- Users may edit or delete their pet's profiles from here as well. </br>
 
 ![alt text](./readme/image-9.png)
 </br>
-3. **Reminders:** This module provides a user-friendly interface for adding, editing, and deleting reminders. Reminders can be made under several categories, including appointments/procedures, vaccines, labwork, preventatives, and contain details specific to each type of reminder.  Users can set reminders for specific dates and times, as well as assign reminders to individual pets.</br>
+3. **Reminders:** *(CRUD feature)* 
+- This module provides a user-friendly interface for adding, editing, and deleting reminders. 
+- Reminders can be made under several categories, including appointments/procedures, vaccines, and preventatives, and render details specific to each type of reminder.
+- Vaccines that are due in < 2 months have a yellow indicator, green if due in > 2 months, and red if overdue.
+- Users can set reminders for specific dates and times, as well as assign reminders to individual pets.</br>
 ![alt text](./readme/image-10.png) </br>
 4. **RESTful, user-friendly Express routing:**
 - This app utilizes the power and flexibility of Express.js, with the ability to add fully customizable middleware for defining endpoint behavior & robust error handling to any route, while keeping it organized and user-friendly by adopting a Model-View-Controller (MVC) pattern.
@@ -76,3 +89,20 @@ reminderRouter.delete('/:id', requireUser, ReminderController.delete)
 6. **Day 6 - Deployment & bugfixes**
 - Assess for smooth interactions and flow, accurate and reliable data served from backend in production environment, etc.
 - Heroku deployment, allow time to debug potential production bugs.
+
+### What's next?
+1. **User Profiles & Add Labwork Module**
+- Create a user preview section in the dashboard with options to edit or delete account.
+- implement email verification
+
+2. **Find A Vet Module**
+- Integrate Yelp API to help users to find a vet for their pets!
+- Create a display section to show a list of the user's vets & their contact information.
+
+3. **Pet Metrics**
+- Add document to database that holds a pet's previous weights and the dates they were update on.
+- Render a line plot to display the changes in a pet's weight over time. 
+
+4. **Vet Document Storage and CloudVision assisted reminders**
+- Integrate Google CloudVision to use OCR on uploaded veterinary documents (invoices, medical notes, etc) to generate text.
+- Parse results, display them on a form for the user to verify correct values, and then send it to the database as a reminder.
