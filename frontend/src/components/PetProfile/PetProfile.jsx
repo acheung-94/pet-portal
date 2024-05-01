@@ -24,6 +24,7 @@ const PetProfile = () => {
     const [editPetState, setEditPetState] = useState(null)
     const [currentReminder, setCurrentReminder] = useState(null)
     const reminders = useSelector(selectReminders)
+
     const calculateAge = (dateString) => {
         const birthday = new Date(dateString)
         const today = new Date()
@@ -31,33 +32,33 @@ const PetProfile = () => {
         let years = today.getFullYear() - birthday.getFullYear()
         let months = today.getMonth() - birthday.getMonth()
         let days = today.getDate() - birthday.getDate()
-
+    
         if (months < 0 || (months === 0 && days < 0)) {
-            years--;
-            if (months < 0) {
-                months += 12;
-            }
-            if (days < 0) {
-                const lastMonth = new Date(today.getFullYear(), today.getMonth() - 1, 0);
-                days += lastMonth.getDate();
-            }
+            years--
+            months += 12
         }
-
-        if (years < 1) {
-            if(months < 4){
-                let weeks = Math.floor(days / 7)
-                let daysDiff = days % 7
-                if (weeks > 1) {
-                    return (`${weeks} weeks & ${daysDiff} days`)
-                }else{
-                    return (`${days} ${days === 1 ? "day" : "days"}`)
-                }
-
-            }else{
-                return (`${months} months`)
+    
+        if (days < 0) {
+            months--
+            const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0)
+            days += lastMonth.getDate()
+        }
+    
+        if (months < 0) {
+            years--
+            months += 12
+        }
+    
+        if (years === 0) {
+            const weeks = Math.floor(days / 7)
+            const remainderDays = days % 7
+            if (months === 0) {
+                return `${weeks} week${weeks !== 1 ? 's' : ''} & ${remainderDays} day${remainderDays !== 1 ? 's' : ''}`
+            } else {
+                return `${months} month${months !== 1 ? 's' : ''} & ${days} day${days !== 1 ? 's' : ''}`
             }
-        }else{
-            return (`${years} ${years === 1 ? "year" : "years"} & ${months} months`)
+        } else {
+            return `${years} year${years !== 1 ? 's' : ''} & ${months} month${months !== 1 ? 's' : ''}`
         }
     }
 
