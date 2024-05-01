@@ -186,3 +186,8 @@ textarea {
     font-size: 14px; 
     color: grey; 
 }
+.reminder-error {
+    font-size: 10px;
+    font-style: italic;
+    color: #f34607;
+}

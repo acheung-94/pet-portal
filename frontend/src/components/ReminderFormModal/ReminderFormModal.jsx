@@ -77,9 +77,6 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                 setTitleOptions([]);
         }
     }
-    useEffect(() => {
-        console.log("error", errors)
-    },[errors])
     const handleSubmit = (e) => {
         e.preventDefault()
         const reminderInfo = {
@@ -101,12 +98,12 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
             })
             .catch(async res =>{
                 let data = await res.json()
-                
                 setErrors(data.errors)
-            });
+            })
 
-
-        setModalState(null)
+        if(Object.keys(errors).length !== 0) {
+            setModalState(null)
+        }
         setType('')
         setTitle('')
         setDue('')
@@ -114,7 +111,12 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
         setDescription('')
         setLocation('')
     }
-    
+
+    useEffect(() => {
+        console.log("errors", errors)
+
+    },[errors])
+
     const reminderForm = () => (
         <>
             <label className="input-label">
@@ -139,6 +141,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                 <div className='title-select-label'>
                     <span>Title<span className="required">· required</span></span>
                 </div>
+                {errors.title && <div className='reminder-error'>* {errors.title.split(' ').slice(1).join(' ')}</div>}
                 <select
                     className="title-select"
                     value={title}
@@ -155,6 +158,7 @@ const ReminderFormModal = ({modalState, setModalState, pet, reminder={}}) => {
                 <div className='duedate-input-label'>
                     <span>Due Date<span className="required">· required</span></span>
                 </div>
+                {errors.dueDate && <div className='reminder-error'>* {errors.dueDate.split(' ').slice(1).join(' ')}</div>}
                 <input placeholder='Due Date' 
                     type={ type === 'appointment' ? 'datetime-local' : 'date'} value={due} onChange={e => setDue(e.target.value)} />
             </label>
